@@ -199,7 +199,7 @@ public class UITableInput : OperationsInput
         Vector3 localDirection = new Vector3(uiDirection.x, 0f, uiDirection.y);
 
         // プレイヤーのY軸方向を考慮した回転（ローカル → ワールド）
-        Vector3 worldDirection = transform.rotation * localDirection;
+        Vector3 worldDirection = PlayerBodyTransform.rotation * localDirection;
 
         // powerRange が小さいほど Y軸方向の影響を減らす
         // Y軸方向とは、プレイヤーの上下方向の影響を抑えるために、worldDirection を水平に近づける

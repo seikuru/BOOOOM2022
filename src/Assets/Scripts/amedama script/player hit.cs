@@ -56,7 +56,7 @@ public class playerhit : MonoBehaviour
         {
 
             player.PlayerHP--;
-            EnemyCountText.text = player.PlayerHP.ToString();
+            //EnemyCountText.text = player.PlayerHP.ToString();
             Invincible = true;
             StartCoroutine(WaitLoop());
 
