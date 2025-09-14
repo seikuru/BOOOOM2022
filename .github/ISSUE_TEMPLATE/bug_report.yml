@@ -1,0 +1,53 @@
+name: Bug report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+assignees: 
+  - 
+
+body:
+  - type: markdown
+    attributes:
+      value: "タイトルにどんなバグが起こったか入力してください"
+
+  - type: textarea
+    attributes:
+      label: "どんなバグが起こったか？"
+      description: "どんな状態でどんな操作をした結果どんなバグが起こったか教えてください"
+      placeholder: "どんなバグが起きましたか？"
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "警告文"
+      description: "その時出ていた警告文があればここにコピペしてください"
+      placeholder: "コピペ plz!!!"
+      render: shell
+
+  - type: dropdown
+    attributes:
+      label: "再現性"
+      description: "再現性はありますか？"
+      options:
+        - "あります"
+        - "なさそう"
+    validations:
+      required: true
+      
+  - type: dropdown
+    attributes:
+      label: "頻度"
+      description: "どのくらいの頻度で起こりますか？"
+      options:
+        - "めったに起こらない"
+        - "10回に1回ほど"
+        - "2回に1回ほど"
+        - "ほぼ毎回"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "入力ありがとうございました！</br>Create を押して完了してください"
