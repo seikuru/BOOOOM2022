@@ -15,8 +15,10 @@ public class Bombeffects : MonoBehaviour
     [SerializeField] GameObject BombOuter;//爆弾の外枠のオブジェクト
     [SerializeField] Rigidbody BombRB;//爆弾のRigidBody
     [SerializeField] bool GetKillCount = false;
-
+    
+    Animator PlayerAnimation;
     EnemyCount EnemyCountText;
+    bool GetPlayerAnimationFlag = false;
 
     // public float _bombradius { get { return BombRadius; } set { BombRadius = value; } }
 
@@ -44,9 +46,10 @@ public class Bombeffects : MonoBehaviour
     }
 
 
-    public void Bakuhatu()
+    public async void Bakuhatu()
     {
         float BombStrangeValue = BombStrange;
+        
 
         if (GetKillCount)
             BombStrangeValue += GetBombAddStrange();
@@ -82,7 +85,7 @@ public class Bombeffects : MonoBehaviour
                     continue;
                 }
             }
-            else if(P[i].tag == "Noize")
+            else if (P[i].tag == "Noize")
             {
                 Destroy(P[i]);
                 continue;
@@ -90,28 +93,37 @@ public class Bombeffects : MonoBehaviour
             else if (P[i].tag == "enemy")
             {
 
-                 PlayerRigidbodies[i].isKinematic = false;
-                 if (P[i].TryGetComponent<EnemiesAttack>(out EnemiesAttack EA))
-                 {
-                     EA.willDestoroy = true;
-                    
-                 }
-                 if(P[i].TryGetComponent<enemyMove>(out enemyMove EM))
-                 {
-                     EM.willDestroy = true;
+                PlayerRigidbodies[i].isKinematic = false;
+                if (P[i].TryGetComponent<EnemiesAttack>(out EnemiesAttack EA))
+                {
+                    EA.willDestoroy = true;
 
-                 }
+                }
+                if (P[i].TryGetComponent<enemyMove>(out enemyMove EM))
+                {
+                    EM.willDestroy = true;
+
+                }
 
 
                 Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
             }
-            else if( P[i].tag == "Attack2")//敵の弾を爆弾で防ぐ際はこれを使用
+            else if (P[i].tag == "Attack2")//敵の弾を爆弾で防ぐ際はこれを使用
             {
                 PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.1f;
+            }
+            else if (P[i].tag == "Player")
+            {
+                if (P[i].TryGetComponent<Animator>(out Animator animator))
+                {
+                    animator.SetTrigger("BombHit");
+                    animator.SetInteger("PlayerState", 2);
+                }
             }
 
             PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
             //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
+
         }
 
         if(bombCollider != null)
