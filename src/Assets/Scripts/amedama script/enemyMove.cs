@@ -59,12 +59,12 @@ public class enemyMove : MonoBehaviour
 
                         if (invert)
                         {
-                            rb.linearVelocity = Vector3.zero;
+                            rb.velocity = Vector3.zero;
                             rb.AddForce(transform.right * MovementSpeed, ForceMode.Impulse);
                         }
                         else
                         {
-                            rb.linearVelocity = Vector3.zero;
+                            rb.velocity = Vector3.zero;
                             rb.AddForce(-transform.right * MovementSpeed, ForceMode.Impulse);
                         }
 

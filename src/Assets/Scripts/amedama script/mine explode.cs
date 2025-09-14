@@ -25,7 +25,7 @@ public class mineexplode : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerRigidbody.linearVelocity = Vector3.up * BombStrange;
+            PlayerRigidbody.velocity = Vector3.up * BombStrange;
             Destroy(gameObject);
         }
     }

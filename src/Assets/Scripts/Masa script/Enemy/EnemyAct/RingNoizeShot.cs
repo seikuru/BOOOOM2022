@@ -54,7 +54,7 @@ public class RingNoizeShot : EnemyActBace
                 Vector3 rotatedDir = rotation * dirTarget.normalized;
 
                 // 発射方向を代入
-                RB.linearVelocity = rotatedDir * NoizeSpeed;
+                RB.velocity = rotatedDir * NoizeSpeed;
 
                 // 弾を発射方向に回転させる
                 if (rotatedDir != Vector3.zero)

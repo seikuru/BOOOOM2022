@@ -107,10 +107,10 @@ public class Bombeffects : MonoBehaviour
             }
             else if( P[i].tag == "Attack2")//敵の弾を爆弾で防ぐ際はこれを使用
             {
-                PlayerRigidbodies[i].linearVelocity = PlayerRigidbodies[i].linearVelocity * 0.1f;
+                PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.1f;
             }
 
-            PlayerRigidbodies[i].linearVelocity = PlayerRigidbodies[i].linearVelocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
+            PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
             //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
         }
 

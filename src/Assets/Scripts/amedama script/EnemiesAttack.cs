@@ -205,7 +205,7 @@ public class EnemiesAttack : MonoBehaviour
 
                 yield return new WaitForSeconds(ChargeTime);
 
-                rb.linearVelocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
 
                 yield return null;
 

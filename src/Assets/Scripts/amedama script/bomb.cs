@@ -33,7 +33,7 @@ public class bomb : MonoBehaviour
         // Vector3 _force = direction * (Bombthrow + PlayerRigidbody.linearVelocity.magnitude);
         // Vector3 _force = direction * ThrowPower + this.gameObject.GetComponent<Rigidbody>().linearVelocity * 0.4f;
 
-        Vector3 _Inertia = PlayerRigidbody.linearVelocity;
+        Vector3 _Inertia = PlayerRigidbody.velocity;
 
         // 力を加える（投擲力＋慣性）
         Bomb_rb.AddForce(_force + _Inertia, ForceMode.VelocityChange);
@@ -65,16 +65,16 @@ public class bomb : MonoBehaviour
 
         // 投げる力（プレイヤーの移動速度を加味する）
         // Bombthrow + プレイヤーの速度の大きさ × percentage
-        Vector3 _force = direction * (Bombthrow + PlayerRigidbody.linearVelocity.magnitude) * percentage;
+        Vector3 _force = direction * (Bombthrow + PlayerRigidbody.velocity.magnitude) * percentage;
         // Vector3 _force = direction * ThrowPower + this.gameObject.GetComponent<Rigidbody>().linearVelocity * 0.4f;
 
-        Vector3 _Inertia = PlayerRigidbody.linearVelocity * (1f - percentage);
+        Vector3 _Inertia = PlayerRigidbody.velocity * (1f - percentage);
 
         // 投擲力を加える（Impulseは質量を考慮した一時的な力）
         Bomb_rb.AddForce(_force, ForceMode.Impulse);
 
         // 慣性（プレイヤーの移動速度）を追加で加算
-        Bomb_rb.linearVelocity += _Inertia;
+        Bomb_rb.velocity += _Inertia;
 
         BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
     }
@@ -129,7 +129,7 @@ public class bomb : MonoBehaviour
             GameObject Spawned_Bomb;
             Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
             Spawned_Bomb.GetComponent<Rigidbody>().AddForce
-                (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().linearVelocity
+                (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
                 , ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
@@ -139,7 +139,7 @@ public class bomb : MonoBehaviour
         {
             GameObject Spawned_Bomb;
             Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().linearVelocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
         }
@@ -148,7 +148,7 @@ public class bomb : MonoBehaviour
         {
             GameObject Spawned_Bomb;
             Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
-            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().linearVelocity, ForceMode.Impulse);
+            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
         }
