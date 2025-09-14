@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 771941831845421543}
   - component: {fileID: -7422967389172039610}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Sphere 1
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,9 +63,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -153,12 +150,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 3456
+    m_Bits: 448
   DestroyEnemyTimer: 3
   BombStrange: 30
   BombRadius: 20
-  particle: {fileID: 6609037613087421534, guid: 400cab16d88564548ae818b5d864fe53, type: 3}
+  bombCollider: {fileID: 0}
+  VEffect: {fileID: 0}
+  BombOuter: {fileID: 0}
+  BombRB: {fileID: 0}
   GetKillCount: 0
+  PlayerAnimation: {fileID: 3516061217993647259, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
 --- !u!114 &771941831845421543
 MonoBehaviour:
   m_ObjectHideFlags: 0
