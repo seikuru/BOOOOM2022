@@ -16,9 +16,9 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(playerRigidbody.linearVelocity.y);
+        Debug.Log(playerRigidbody.velocity.y);
 
-        if (playerRigidbody.linearVelocity.y < -10)
+        if (playerRigidbody.velocity.y < -10)
         {
             PlayerAnimator.SetTrigger("Falling");
         }

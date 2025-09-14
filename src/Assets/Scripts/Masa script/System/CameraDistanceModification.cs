@@ -28,7 +28,7 @@ public class CameraDistanceModification : MonoBehaviour
     void FixedUpdate()
     {
         // プレイヤーの垂直方向の速度を取得
-        float velocity = Player_rb.linearVelocity.y;
+        float velocity = Player_rb.velocity.y;
 
         // 速度に応じて上昇カウンターを増減
         if (velocity > 0)
