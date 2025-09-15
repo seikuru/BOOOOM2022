@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &265370627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1099211181979488091, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541400740616221505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &265370639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265370627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a602b66bbeffff14c9ea21eb28714d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb: {fileID: 3672593736015811124, guid: fd11e9b19917e77419fff8ef1bf0e27f, type: 3}
+  ThrowBombSpawnPosition: {fileID: 1328412480}
+  JumpBombSpawnPosition: {fileID: 1328849550}
+  BrinkBombSpawnPosition: {fileID: 412999793}
+  Bombthrow: 20
+  Underthrow: 3
+  spawnDistance: 2
+  InputFlag: 1
+  BombShotInterval: 60
+--- !u!1 &412999793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6107638355448208974, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541400740616221505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &903372965
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +454,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4139013036789186053, guid: 8477889b6ad91324fbc9fd9f2b5157a2, type: 3}
   enemycount: 30
+--- !u!1 &1328412480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6404189555333178009, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541400740616221505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1328849550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7182992711636978006, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541400740616221505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4541400740616221505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,6 +480,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 475757326369631188, guid: 069f5e639eefae14cb739a094c9ff15f,
         type: 3}
+    - target: {fileID: 476899176365345687, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1067940049182426481, guid: 7adb862f2be1a9740a6a11347d5098bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,7 +553,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1099211181979488091, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 265370639}
   m_SourcePrefab: {fileID: 100100000, guid: 7adb862f2be1a9740a6a11347d5098bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
