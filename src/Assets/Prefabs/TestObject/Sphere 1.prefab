@@ -159,8 +159,6 @@ MonoBehaviour:
   BombOuter: {fileID: 0}
   BombRB: {fileID: 0}
   GetKillCount: 0
-  PlayerAnimation: {fileID: 3516061217993647259, guid: 7adb862f2be1a9740a6a11347d5098bf,
-    type: 3}
 --- !u!114 &771941831845421543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,19 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDestroyed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3328892927492549462}
-        m_TargetAssemblyTypeName: Bombeffects, Assembly-CSharp
-        m_MethodName: Bakuhatu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &-7422967389172039610
 MonoBehaviour:
   m_ObjectHideFlags: 0

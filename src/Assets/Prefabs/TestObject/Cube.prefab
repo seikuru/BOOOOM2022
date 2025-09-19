@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4294105291568438451}
   - component: {fileID: 401557847832135818}
   - component: {fileID: 6266408383169721680}
+  - component: {fileID: 1686695383862460140}
   m_Layer: 7
   m_Name: Cube
   m_TagString: enemy
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4139013036789186053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac1b1d7e618afc46aa73bf70cb65ebb, type: 3}
   m_Name: 
@@ -264,3 +265,24 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1686695383862460140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce77c6641c8cb248a91b5678d29e747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1099211181979488091, guid: 7adb862f2be1a9740a6a11347d5098bf, type: 3}
+  mineObject: {fileID: 79768923967456754, guid: bc2ce5a7409a3714a894e7961592fe07,
+    type: 3}
+  ThrowPower: 10
+  ThrowAngle: 45
+  ThrowInterval: 1
+  DistanceTarget: 50
+  DestroyTime: 10
+  FlightTIme: 1
