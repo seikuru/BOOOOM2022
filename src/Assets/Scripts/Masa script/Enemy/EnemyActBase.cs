@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyActBace : MonoBehaviour
+public class EnemyActBase : MonoBehaviour
 {
     public virtual void Act_Start()
     {
