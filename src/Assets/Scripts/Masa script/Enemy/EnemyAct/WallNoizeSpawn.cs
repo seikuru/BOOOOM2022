@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PillarNoizeShot : EnemyActBase
+public class WallNoizeSpawn : EnemyActBase
 {
     [SerializeField] Transform target;
 
-    [SerializeField] GameObject PillarPrehabSeed;
+    [SerializeField] GameObject WallPrehabSeed;
 
-    [SerializeField] float ShotAngle = 45f;
+    [SerializeField] float Interpolation = 0.5f;
 
-    [SerializeField] float StartShotPower = 3f;
-
-    [SerializeField] float StopShotPower = 30f;
-
-    [SerializeField] float AddShotPower = 1f;
+    [SerializeField] float SpwanPosY = 30f;
 
     [SerializeField] float ActTimeCount = 10f;
 
-    [SerializeField] float DestroyTime = 6f;
+    [SerializeField] float DestroyTime = 30f;
 
     float ActCount;
 
@@ -28,13 +25,30 @@ public class PillarNoizeShot : EnemyActBase
     }
 
 
-    public override void Act_FixedUpdate() 
+    public override void Act_FixedUpdate()
     {
         ActCount += Time.fixedDeltaTime;
 
         if (ActCount > ActTimeCount)
         {
             ActCount = 0;
+
+            Vector3 SpawnPos = Vector3.Lerp(transform.position, target.position, Interpolation);
+
+            SpawnPos.y = SpwanPosY;
+
+            // XZ平面の基準方向
+            Vector3 dirTarget = (target.position - transform.position);
+            dirTarget.y = 0f;
+            dirTarget.Normalize();
+
+
+            // オブジェクト生成
+            GameObject prehab = Instantiate(WallPrehabSeed, SpawnPos, Quaternion.LookRotation(dirTarget.normalized, Vector3.up));
+
+            Destroy(prehab, DestroyTime);
+            /*
+            
 
             Vector3 SpwanPos = transform.position + Vector3.up;
 
@@ -48,7 +62,7 @@ public class PillarNoizeShot : EnemyActBase
             Quaternion tilt = Quaternion.AngleAxis(ShotAngle, Vector3.Cross(Vector3.up, dirTarget));
             Vector3 shotDir = tilt * dirTarget;
 
-            for (float i = StartShotPower; i <= StopShotPower; i+= AddShotPower)
+            for (float i = StartShotPower; i <= StopShotPower; i += AddShotPower)
             {
                 // オブジェクト生成
                 GameObject prehab = Instantiate(PillarPrehabSeed, SpwanPos, Quaternion.identity);
@@ -66,7 +80,8 @@ public class PillarNoizeShot : EnemyActBase
                 }
 
                 Destroy(prehab, DestroyTime);
-            }   
+            }
+            */
         }
     }
 }

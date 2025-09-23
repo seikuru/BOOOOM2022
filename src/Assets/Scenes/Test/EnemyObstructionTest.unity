@@ -913,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 4294105291568438451, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6975119401278478508, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
@@ -923,7 +923,7 @@ PrefabInstance:
     - target: {fileID: 6975119401278478508, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6975119401278478508, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
@@ -985,6 +985,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1494589132}
+    - targetCorrespondingSourceObject: {fileID: 4139013036789186053, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494589138}
+    - targetCorrespondingSourceObject: {fileID: 4139013036789186053, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494589139}
   m_SourcePrefab: {fileID: 100100000, guid: 8477889b6ad91324fbc9fd9f2b5157a2, type: 3}
 --- !u!1 &1014929410
 GameObject:
@@ -1180,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 1014929410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 85.2}
+  m_LocalPosition: {x: 0.16, y: 1, z: 73.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1606,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2102b8011c3a7a74ab8c3e693e6786dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActBase: {fileID: 1494589132}
+  enemyActBase: {fileID: 1494589139}
 --- !u!114 &1494589126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,7 +1635,7 @@ MonoBehaviour:
   StopShotPower: 40
   AddShotPower: 2
   ActTimeCount: 5
-  DestroyCount: 6
+  DestroyTime: 6
 --- !u!114 &1494589132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,6 +1655,46 @@ MonoBehaviour:
   ActTimeCount: 5
   NoizeSpeed: 3
   DestroyTime: 5
+--- !u!114 &1494589138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494589118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1014929419}
+  SpeakerPrehab: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
+    type: 3}
+  SpawnDistance: 3
+  InstantiateValue: 6
+  ShotWaitTime: 0.2
+  ActTimeCount: 3
+  NoizeSpeed: 3
+  DestroyTime: 10
+--- !u!114 &1494589139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494589118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5599b7e4264274394e04d991a00c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1014929419}
+  WallPrehabSeed: {fileID: 212955810481138592, guid: c928f34edc799c841bee76435d10c4bb,
+    type: 3}
+  Interpolation: 0.5
+  SpwanPosY: 30
+  ActTimeCount: 5
+  DestroyTime: 30
 --- !u!224 &1522747564 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2389123703896980866, guid: 4c5e65352373962428b7994b5eaeb76d,
