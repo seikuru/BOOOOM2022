@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce77c6641c8cb248a91b5678d29e747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1099211181979488091, guid: 7adb862f2be1a9740a6a11347d5098bf, type: 3}
   mineObject: {fileID: 79768923967456754, guid: bc2ce5a7409a3714a894e7961592fe07,
     type: 3}
   ThrowPower: 10
@@ -286,3 +285,4 @@ MonoBehaviour:
   DistanceTarget: 50
   DestroyTime: 10
   FlightTIme: 1
+  GravityMultiply: 1
