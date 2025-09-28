@@ -39,7 +39,6 @@ public class EnemiesAttack : MonoBehaviour
     float CountTime = 0.0f;
     bool yokokuOn = false;
     bool ChargeNow = false;//Charge(突進)攻撃中かどうか
-    bool StopRutineFlag = false;
     LayerMask PlayerMask;
 
     Coroutine AttackCorutine;
@@ -87,9 +86,8 @@ public class EnemiesAttack : MonoBehaviour
 
             lineRenderer.enabled = false;
             yokokuOn = false;
-            CountTime = 0.0f;
-
             StopCoroutine(AttackCorutine);
+            CountTime = 0.0f;
         }
         else
         {
