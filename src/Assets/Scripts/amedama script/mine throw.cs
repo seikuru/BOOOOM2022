@@ -29,6 +29,7 @@ public class minethrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.FindWithTag("Player");
         waitForSeconds = new WaitForSeconds(ThrowInterval);
         Countdown = (int)(ThrowInterval / Time.fixedDeltaTime);
@@ -55,7 +56,7 @@ public class minethrow : MonoBehaviour
         if (Countdown == 0)
         {
             
-            mineRB = ThrowMine2();
+            mineRB = ThrowMine2(player);
             Countdown = (int)(ThrowInterval / Time.fixedDeltaTime);
         }
 
@@ -68,7 +69,7 @@ public class minethrow : MonoBehaviour
 
     }
 
-    IEnumerator ThrowMine()
+    public IEnumerator ThrowMine()
     {
         yield return waitForSeconds;
 
@@ -86,8 +87,9 @@ public class minethrow : MonoBehaviour
       
     }
 
-    Rigidbody ThrowMine2()
+    public Rigidbody ThrowMine2(GameObject player)
     {
+
 
         Vector3 EnemyPoint = (new Vector3(this.transform.position.x, 0, this.transform.position.z));
         Vector3 PlayerPoint = (new Vector3(player.transform.position.x, 0, player.transform.position.z) + EnemyPoint) / 2;

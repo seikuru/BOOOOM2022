@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6975119401278478508}
   - component: {fileID: 9168468435628465923}
   - component: {fileID: 3791334493464596069}
+  - component: {fileID: 2698594068783851999}
   - component: {fileID: 8325885980756645978}
   - component: {fileID: 4294105291568438451}
   - component: {fileID: 401557847832135818}
@@ -88,6 +89,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2698594068783851999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e240c3de8d54f4386e65d0892f45fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &8325885980756645978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,12 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce77c6641c8cb248a91b5678d29e747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineObject: {fileID: 79768923967456754, guid: bc2ce5a7409a3714a894e7961592fe07,
+  mineObject: {fileID: 8567939986125202426, guid: 9454b8babbaef954aafde7a86f8cc1a9,
     type: 3}
-  ThrowPower: 10
-  ThrowAngle: 45
+  ThrowAngle: 60
   ThrowInterval: 1
-  DistanceTarget: 50
-  DestroyTime: 10
-  FlightTIme: 1
+  DistanceTarget: 100
   GravityMultiply: 1
+  BurstThrow: 5
