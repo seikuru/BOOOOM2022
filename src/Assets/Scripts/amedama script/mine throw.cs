@@ -18,7 +18,6 @@ public class minethrow : MonoBehaviour
     [SerializeField] int BurstThrow = 5;
 
     GameObject player;
-    Rigidbody mineRB;
     WaitForSeconds waitForSeconds;
     Coroutine coroutine;
     Vector3 ProjectionVector = Vector3.zero;
@@ -45,7 +44,7 @@ public class minethrow : MonoBehaviour
         if (Vector3.Distance(player.transform.position, this.transform.position) <= DistanceTarget && CanThrow == true)
         {
             //coroutine = StartCoroutine(ThrowMine());
-            //mineRB = ThrowMine2();
+            //_mineRB = ThrowMine2();
             CanThrow = false;
         }
         else
@@ -56,15 +55,7 @@ public class minethrow : MonoBehaviour
         if (Countdown == 0)
         {
             
-            mineRB = ThrowMine2(player);
             Countdown = (int)(ThrowInterval / Time.fixedDeltaTime);
-        }
-
-        if (mineRB != null)
-        {
-
-            mineRB.AddForce((GravityMultiply - 1) * Physics.gravity, ForceMode.Force);
-
         }
 
     }
@@ -87,24 +78,23 @@ public class minethrow : MonoBehaviour
       
     }
 
-    public Rigidbody ThrowMine2(GameObject player)
+    public void ThrowMine2(GameObject player)
     {
 
 
         Vector3 EnemyPoint = (new Vector3(this.transform.position.x, 0, this.transform.position.z));
         Vector3 PlayerPoint = (new Vector3(player.transform.position.x, 0, player.transform.position.z) + EnemyPoint) / 2;
         GameObject mine;
-        Rigidbody mineRB;
+        minegenerate _minegenerate;
         //Destroy(mine = Instantiate(mineObject, transform.position + ((player.transform.position - transform.position).normalized) * 5, Quaternion.identity), DestroyTime);
         mine = Instantiate(mineObject, this.transform.position, Quaternion.identity);
+        _minegenerate = GetComponent<minegenerate>();
+        _minegenerate.setParamator(GravityMultiply);
+
         ProjectionVector = CalculateVelocity(this.transform.position, PlayerPoint);
-        mineRB = mine.GetComponent<Rigidbody>();
-        mineRB.AddForce(ProjectionVector, ForceMode.Impulse);
-        Debug.Log(ProjectionVector);
-        
+        mine.GetComponent<Rigidbody>().AddForce(ProjectionVector, ForceMode.Impulse);
 
         CanThrow = true;
-        return mineRB;
 
     }
 
