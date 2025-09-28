@@ -20,7 +20,7 @@ public class EnemyAttackPattern : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         MineThrowFunc = minethrow[0].ThrowMine;
-        MineThrowFunc2 = minethrow[0].ThrowMine2;
+        //MineThrowFunc2 = minethrow[0].ThrowMine2;
 
         MineThrowFunc2(player);
     }
