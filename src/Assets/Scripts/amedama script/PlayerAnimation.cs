@@ -9,21 +9,20 @@ public class PlayerAnimation : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PlayerAnimator.SetInteger("PlayerState", 0);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (playerRigidbody.velocity.y <= -10)
+        Debug.Log(playerRigidbody.velocity.y);
+
+        if (playerRigidbody.velocity.y < -10)
         {
-            PlayerAnimator.SetInteger("PlayerState", 4);
-            
+            PlayerAnimator.SetTrigger("Falling");
         }
-        PlayerAnimator.SetFloat("VectorY", playerRigidbody.velocity.y);
     }
-        
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,7 +30,6 @@ public class PlayerAnimation : MonoBehaviour
         {
 
             PlayerAnimator.SetTrigger("OnGround");
-            PlayerAnimator.SetInteger("PlayerState", 1);
 
         }        
     }
@@ -42,7 +40,8 @@ public class PlayerAnimation : MonoBehaviour
         {
 
             PlayerAnimator.ResetTrigger("OnGround");
-            PlayerAnimator.SetInteger("PlayerState", 2);
+            PlayerAnimator.SetTrigger("BombHit");
+            
         }
     }
 }
