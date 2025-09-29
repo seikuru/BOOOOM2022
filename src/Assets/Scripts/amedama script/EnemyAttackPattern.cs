@@ -1,38 +1,55 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyAttackPattern : MonoBehaviour
 {
-    [SerializeField] UnityEvent aaa;
-    [SerializeField] UnityEvent<GameObject> bbb;
-    [SerializeField] Event ccc;
-    [SerializeField] Func<IEnumerator> MineThrowFunc;
-    [SerializeField] Func<GameObject,Rigidbody> MineThrowFunc2;
-    [SerializeField] minethrow[] minethrow;
 
+    [SerializeField] EnemyActBace[] minethrow;
+    [SerializeField] float AttackInterval = 7.0f;
+
+    int AttackNumber = 0;
+    int AttackIntervalCount = 0;
     GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        MineThrowFunc = minethrow[0].ThrowMine;
-        //MineThrowFunc2 = minethrow[0].ThrowMine2;
 
-        MineThrowFunc2(player);
+        foreach (EnemyActBace act in minethrow)
+        { 
+           act.Act_Start();
+        }
+
+        AttackIntervalCount = (int)(AttackInterval / Time.fixedDeltaTime);
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-    }
+        AttackIntervalCount--;
 
-    void Mine()
-    {
+        if (AttackIntervalCount < 0)
+        {
+            minethrow[AttackNumber].Act_FixedUpdate();
+
+            if (AttackNumber == minethrow.Length - 1)
+            { 
+                AttackNumber = 0;
+            }
+            else
+            {
+                AttackNumber++;
+            }
+
+            
+            AttackIntervalCount = (int)(AttackInterval / Time.fixedDeltaTime);
+
+        }
 
     }
 

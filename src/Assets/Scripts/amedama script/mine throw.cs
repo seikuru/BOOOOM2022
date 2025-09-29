@@ -3,10 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
-public class minethrow : MonoBehaviour
+public class minethrow : EnemyActBace
 {
 
 
@@ -14,94 +15,65 @@ public class minethrow : MonoBehaviour
     [SerializeField,Range(0.0f,90.0f)] float ThrowAngle = 45.0f;
     [SerializeField] float ThrowInterval = 1.0f;
     [SerializeField] float DistanceTarget = 50.0f;
-    [SerializeField] float GravityMultiply = 1.0f;
-    [SerializeField] int BurstThrow = 5;
+    [SerializeField] float GravityMultiply = 1.0f;//投射物の重力をどれくらい掛けるか
+    [SerializeField] int BurstThrow = 5;//何回バーストするか
+    [SerializeField] int BurstDelay = 10;//何フレームで1バースト行うか
+    
 
     GameObject player;
-    WaitForSeconds waitForSeconds;
+    WaitForFixedUpdate waitFixedUpdate;
     Coroutine coroutine;
     Vector3 ProjectionVector = Vector3.zero;
     int Countdown = 0;
-    
+    int BurstCount = 0;
+    int BurstDelayCount = 0;
     bool CanThrow = true;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Act_Start()
     {
 
         player = GameObject.FindWithTag("Player");
-        waitForSeconds = new WaitForSeconds(ThrowInterval);
         Countdown = (int)(ThrowInterval / Time.fixedDeltaTime);
-        
+        waitFixedUpdate = new WaitForFixedUpdate();
+        BurstCount = BurstThrow;
+        BurstDelayCount = BurstDelay;
 
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        Countdown--;
+    public override void Act_FixedUpdate()
+    {  
+        StartCoroutine(ThrowMine());
+    }
 
-        if (Vector3.Distance(player.transform.position, this.transform.position) <= DistanceTarget && CanThrow == true)
-        {
-            //coroutine = StartCoroutine(ThrowMine());
-            //_mineRB = ThrowMine2();
-            CanThrow = false;
-        }
-        else
+    IEnumerator ThrowMine()
+    {
+
+        for (int i = 0; i < BurstCount; i++)
         {
 
+            Vector3 EnemyPoint = (new Vector3(this.transform.position.x, 0, this.transform.position.z));
+            Vector3 PlayerPoint = (new Vector3(player.transform.position.x, 0, player.transform.position.z) + EnemyPoint) / 2;
+
+            GameObject mine;
+            minegenerate _minegenerate;
+
+            mine = Instantiate(mineObject, this.transform.position, Quaternion.identity);
+            _minegenerate = mine.GetComponent<minegenerate>();
+            _minegenerate.setParamator(GravityMultiply);
+
+            ProjectionVector = CalculateVelocity(this.transform.position, PlayerPoint);
+            mine.GetComponent<Rigidbody>().AddForce(ProjectionVector, ForceMode.Impulse);
+
+            for (int j = 0; j < BurstDelay; j++)
+            {
+                yield return waitFixedUpdate;
+            }
         }
 
-        if (Countdown == 0)
-        {
-            
-            Countdown = (int)(ThrowInterval / Time.fixedDeltaTime);
-        }
-
     }
 
-    public IEnumerator ThrowMine()
-    {
-        yield return waitForSeconds;
-
-        Vector3 EnemyPoint = (new Vector3(this.transform.position.x, 0, this.transform.position.z));
-        Vector3 PlayerPoint = (new Vector3(player.transform.position.x,0,player.transform.position.z) + EnemyPoint) / 2;
-        
-        GameObject mine;
-        //Destroy(mine = Instantiate(mineObject, transform.position + ((player.transform.position - transform.position).normalized) * 5, Quaternion.identity), DestroyTime);
-        mine = Instantiate(mineObject,this.transform.position,Quaternion.identity);
-        ProjectionVector = CalculateVelocity(this.transform.position,PlayerPoint );
-        mine.GetComponent<Rigidbody>().AddForce(ProjectionVector,ForceMode.Impulse);
-
-        CanThrow = true;
-        
-      
-    }
-
-    public void ThrowMine2(GameObject player)
-    {
-
-
-        Vector3 EnemyPoint = (new Vector3(this.transform.position.x, 0, this.transform.position.z));
-        Vector3 PlayerPoint = (new Vector3(player.transform.position.x, 0, player.transform.position.z) + EnemyPoint) / 2;
-        GameObject mine;
-        minegenerate _minegenerate;
-        //Destroy(mine = Instantiate(mineObject, transform.position + ((player.transform.position - transform.position).normalized) * 5, Quaternion.identity), DestroyTime);
-        mine = Instantiate(mineObject, this.transform.position, Quaternion.identity);
-        _minegenerate = GetComponent<minegenerate>();
-        _minegenerate.setParamator(GravityMultiply);
-
-        ProjectionVector = CalculateVelocity(this.transform.position, PlayerPoint);
-        mine.GetComponent<Rigidbody>().AddForce(ProjectionVector, ForceMode.Impulse);
-
-        CanThrow = true;
-
-    }
-
-    IEnumerator Wait()
-    {
-        yield return waitForSeconds;
-    }
 
     private Vector3 CalculateVelocity(Vector3 SpawnPoint, Vector3 PlayerPoint)
     {
@@ -110,8 +82,6 @@ public class minethrow : MonoBehaviour
         float y = PlayerPoint.y - SpawnPoint.y;
         float speed = Mathf.Sqrt(-Physics.gravity.y * GravityMultiply * Mathf.Pow(x, 2) / (2 * Mathf.Pow(Mathf.Cos(rad), 2) * (x * Mathf.Tan(rad) - y)));
         
-
-
         if (float.IsNaN(speed))
         {
             return Vector3.zero;
@@ -120,8 +90,5 @@ public class minethrow : MonoBehaviour
         {
             return new Vector3(PlayerPoint.x - SpawnPoint.x, x * Mathf.Tan(rad), PlayerPoint.z - SpawnPoint.z).normalized * speed;
         }
-
-
     }
-
 }
