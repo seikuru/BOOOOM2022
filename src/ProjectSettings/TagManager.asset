@@ -3,12 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bomb
+  - Noize
+  - Obstacle
+  - enemy
+  - Terrain
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -19,7 +24,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Terrain
   - 
   - 
   - 
