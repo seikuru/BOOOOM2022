@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [Serializable]
 class AttackPatternClass
 {
-    public EnemyActBace AttackPattern;
+    public EnemyActBase AttackPattern;
     public float AttackInterval;
 
 }

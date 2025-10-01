@@ -7,7 +7,7 @@ using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
-public class minethrow : EnemyActBace
+public class minethrow : EnemyActBase
 {
 
 

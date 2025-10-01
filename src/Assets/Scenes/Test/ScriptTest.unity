@@ -320,18 +320,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a097dd932489f41bfa978c3fec551c, type: 3}
---- !u!114 &980405044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1686695383862460140, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1635265149}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407068801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce77c6641c8cb248a91b5678d29e747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &980405053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,12 +338,22 @@ MonoBehaviour:
   ActTimeCount: 0
   NoizeSpeed: 10
   DestroyTime: 10
---- !u!4 &1008788609 stripped
+--- !u!4 &1008788609
 Transform:
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 1067940049182426481, guid: 7adb862f2be1a9740a6a11347d5098bf,
     type: 3}
   m_PrefabInstance: {fileID: 4541400740616221505}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1552223339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,7 +449,7 @@ PrefabInstance:
         type: 3}
       propertyPath: minethrow
       value: 
-      objectReference: {fileID: 980405044}
+      objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: AttackInterval
@@ -466,7 +464,7 @@ PrefabInstance:
         type: 3}
       propertyPath: minethrow.Array.data[0]
       value: 
-      objectReference: {fileID: 980405044}
+      objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: minethrow.Array.data[1]
@@ -476,7 +474,7 @@ PrefabInstance:
         type: 3}
       propertyPath: minethrow.Array.data[2]
       value: 
-      objectReference: {fileID: 980405044}
+      objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: minethrowPattern.Array.size
@@ -496,7 +494,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyAttackPattern.Array.data[0].AttackPattern
       value: 
-      objectReference: {fileID: 980405044}
+      objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: enemyAttackPattern.Array.data[1].AttackPattern
@@ -511,7 +509,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyAttackPattern.Array.data[3].AttackPattern
       value: 
-      objectReference: {fileID: 980405044}
+      objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: enemyAttackPattern.Array.data[0].AttackInterval
