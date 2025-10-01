@@ -11,7 +11,7 @@ public class WallNoize : MonoBehaviour
 
     [SerializeField] int InstantiateSegment = 10;
 
-    [SerializeField] float ShotWaitTime = 1f;
+    [SerializeField] float ShotWaitTime = 0.04f;
 
     [SerializeField] float RayDistance = 150f;
 
