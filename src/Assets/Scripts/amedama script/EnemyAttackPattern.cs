@@ -27,7 +27,7 @@ public class EnemyAttackPattern : MonoBehaviour
     {
         foreach (AttackPatternClass act in enemyAttackPattern)
         {
-            act.AttackPattern.Act_Start();    
+            act.AttackPattern.Act_Start();
         }
 
         AttackIntervalCount = (int)(enemyAttackPattern[0].AttackInterval / Time.fixedDeltaTime);

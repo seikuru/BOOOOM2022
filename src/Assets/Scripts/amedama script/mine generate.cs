@@ -5,16 +5,16 @@ using UnityEngine;
 public class minegenerate : MonoBehaviour
 {
 
-    [SerializeField] GameObject mineObject;
+    [SerializeField]GameObject mineObject;
     [SerializeField] float DestroyTime = 10.0f;
 
     Rigidbody Rigidbody;
 
     private float _GravityMultiply = 0;
 
-    public void setParamator(float gravity)
+    public void setParamator(float gravity) 
     {
-        _GravityMultiply = gravity;
+        _GravityMultiply = gravity; 
     }
 
     // Start is called before the first frame update
@@ -31,13 +31,13 @@ public class minegenerate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Terrain")
+        if(other.tag == "Terrain")
         {
-
+            
             Vector3 minePosition = this.transform.position + Vector3.up;
 
             Destroy(this.gameObject);
-            Destroy(Instantiate(mineObject, minePosition, Quaternion.identity), DestroyTime);
+            Destroy(Instantiate(mineObject,minePosition,Quaternion.identity),DestroyTime);
         }
     }
 }
