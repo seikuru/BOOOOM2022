@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class EnemyActionSingle : MonoBehaviour
 {
-    [SerializeField] EnemyActBace enemyActBace;
+    [SerializeField] EnemyActBase enemyActBase;
 
     void Start()
     {
-        enemyActBace.Act_Start();
+        enemyActBase.Act_Start();
     }
 
     
     void FixedUpdate()
     {
-        enemyActBace.Act_FixedUpdate();
+        enemyActBase.Act_FixedUpdate();
     }
 }

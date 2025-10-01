@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 6530253593774039959}
   - component: {fileID: 7104464763104517611}
   - component: {fileID: 1066588395531623786}
-  - component: {fileID: 8173033026392101766}
   - component: {fileID: 5067167621653919192}
   m_Layer: 0
   m_Name: Bomb
@@ -213,42 +212,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 24
   DestroyEnemyTimer: 3
-  BombStrange: 30
-  BombRadius: 20
+  BombStrange: 5
+  BombRadius: 10
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
   GetKillCount: 0
---- !u!114 &8173033026392101766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3672593736015811124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1300bbb27eac8d8478fbb01d0d321d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1066588395531623786}
-        m_TargetAssemblyTypeName: Bombeffects, Assembly-CSharp
-        m_MethodName: Bakuhatu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +276,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4004615901524930672}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: bd23fd706a8872341883d67c1f967ad4, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 0204508a2b662b8438285438b86bd4ce, type: 3}
   m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
@@ -314,7 +286,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 40
+      - m_Value: 7.98
         m_Name: Radius
         m_Overridden: 1
     m_Vector2f:
