@@ -479,6 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 980405044}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
+      propertyPath: minethrowPattern.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
       propertyPath: aaa.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -486,6 +491,46 @@ PrefabInstance:
         type: 3}
       propertyPath: bbb.m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[0].AttackPattern
+      value: 
+      objectReference: {fileID: 980405044}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[1].AttackPattern
+      value: 
+      objectReference: {fileID: 980405053}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[2].AttackPattern
+      value: 
+      objectReference: {fileID: 980405053}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[3].AttackPattern
+      value: 
+      objectReference: {fileID: 980405044}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[0].AttackInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[1].AttackInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[2].AttackInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
+        type: 3}
+      propertyPath: enemyAttackPattern.Array.data[3].AttackInterval
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}

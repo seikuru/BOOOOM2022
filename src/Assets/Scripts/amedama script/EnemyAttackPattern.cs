@@ -5,11 +5,18 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
+class AttackPatternClass
+{
+    public EnemyActBace AttackPattern;
+    public float AttackInterval;
+
+}
+
 public class EnemyAttackPattern : MonoBehaviour
 {
 
-    [SerializeField] EnemyActBace[] minethrow;
-    [SerializeField] float AttackInterval = 7.0f;
+    [SerializeField] AttackPatternClass[] enemyAttackPattern;
 
     int AttackNumber = 0;
     int AttackIntervalCount = 0;
@@ -18,13 +25,12 @@ public class EnemyAttackPattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        foreach (EnemyActBace act in minethrow)
-        { 
-           act.Act_Start();
+        foreach (AttackPatternClass act in enemyAttackPattern)
+        {
+            act.AttackPattern.Act_Start();    
         }
 
-        AttackIntervalCount = (int)(AttackInterval / Time.fixedDeltaTime);
+        AttackIntervalCount = (int)(enemyAttackPattern[0].AttackInterval / Time.fixedDeltaTime);
 
     }
 
@@ -35,9 +41,9 @@ public class EnemyAttackPattern : MonoBehaviour
 
         if (AttackIntervalCount < 0)
         {
-            minethrow[AttackNumber].Act_FixedUpdate();
+            enemyAttackPattern[AttackNumber].AttackPattern.Act_FixedUpdate();
 
-            if (AttackNumber == minethrow.Length - 1)
+            if (AttackNumber == enemyAttackPattern.Length - 1)
             { 
                 AttackNumber = 0;
             }
@@ -46,8 +52,7 @@ public class EnemyAttackPattern : MonoBehaviour
                 AttackNumber++;
             }
 
-            
-            AttackIntervalCount = (int)(AttackInterval / Time.fixedDeltaTime);
+            AttackIntervalCount = (int)(enemyAttackPattern[AttackNumber].AttackInterval / Time.fixedDeltaTime);
 
         }
 
