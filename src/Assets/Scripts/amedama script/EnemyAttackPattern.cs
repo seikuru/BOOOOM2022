@@ -9,14 +9,19 @@ using UnityEngine.Events;
 class AttackPatternClass
 {
     public EnemyActBase AttackPattern;
-    public float AttackInterval;
+    public float AttackInterval = 3f;
 
 }
 
+[Serializable]
+class ShortAttackPatternClass : AttackPatternClass
+{
+    public float AttackDistance = 100f;
+}
 public class EnemyAttackPattern : MonoBehaviour
 {
     [Header("行動パターン")]
-    [SerializeField] AttackPatternClass[] ShortRangeAttackPattern;
+    [SerializeField] ShortAttackPatternClass[] ShortRangeAttackPattern;
     [SerializeField] AttackPatternClass[] LongRangeAttackPattern;
     [SerializeField] AttackPatternClass[] enemyAttackPattern;
 
@@ -75,27 +80,73 @@ public class EnemyAttackPattern : MonoBehaviour
             // プレイヤーとの距離取得
             float PlayerDistance = Vector3.Distance(Player.GetTransformPlayer.position, transform.position);
 
+            // 近距離か遠距離かを判定
+            bool IsShortRange = ChengeRangeDistance > PlayerDistance;
+
             // 扱う行動パターンを取得
-            var CurrentPattern = ChengeRangeDistance > PlayerDistance 
-                ? ShortRangeAttackPattern : LongRangeAttackPattern;
+            //var CurrentPattern = IsShortRange ? ShortRangeAttackPattern : LongRangeAttackPattern;
 
             //パターン進行
-            if (AttackNumber >= CurrentPattern.Length - 1)
-            { 
-                AttackNumber = 0;
+            if (IsShortRange)
+            {
+                NextAttackShortRange(PlayerDistance);
             }
             else
             {
-                AttackNumber++;
+                NextAttackLongRange();
             }
-
-            //次回攻撃パターンの設定
-            NextAttackClass = CurrentPattern[AttackNumber];
-
-            //攻撃のインターバルを設定
-            AttackIntervalCount = GetInterval(NextAttackClass);
         }
     }
+
+    /// <summary>
+    /// 近距離でのパターンを進行
+    /// </summary>
+    void NextAttackShortRange(float distance)
+    {
+        // 距離に応じてパターン変更
+        for(int i = 0; i < ShortRangeAttackPattern.Length; i++)
+        {
+            AttackNumber = i;
+
+            if (distance < ShortRangeAttackPattern[i].AttackDistance)
+            {
+                break;
+            }
+        }
+
+        //次回攻撃パターンの設定
+        NextAttackClass = ShortRangeAttackPattern[AttackNumber];
+
+        //攻撃のインターバルを設定
+        AttackIntervalCount = GetInterval(NextAttackClass);
+    }
+
+    /// <summary>
+    /// 遠距離でのパターンを進行
+    /// </summary>
+    void NextAttackLongRange()
+    {
+        //パターン進行
+        if (AttackNumber >= LongRangeAttackPattern.Length - 1)
+        {
+            AttackNumber = 0;
+        }
+        else
+        {
+            AttackNumber++;
+        }
+
+        //次回攻撃パターンの設定
+        NextAttackClass = LongRangeAttackPattern[AttackNumber];
+
+        //攻撃のインターバルを設定
+        AttackIntervalCount = GetInterval(NextAttackClass);
+    }
+
+
+
+
+
 
     private void OnDrawGizmos()
     {
