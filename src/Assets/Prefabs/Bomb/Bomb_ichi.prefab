@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Bomb_ichi
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 24
   DestroyEnemyTimer: 3
-  BombStrange: 5
+  BombStrange: 12
   BombRadius: 10
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}
@@ -286,7 +286,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 7.98
+      - m_Value: 15
         m_Name: Radius
         m_Overridden: 1
     m_Vector2f:
