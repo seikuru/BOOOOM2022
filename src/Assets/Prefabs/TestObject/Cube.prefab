@@ -106,12 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  SpeakerPrehab: {fileID: 0}
+  SpeakerPrehab: {fileID: 3071352268874809501, guid: b9d74507855f8a548b01d563581720bc,
+    type: 3}
   SpawnDistance: 3
   InstantiateValue: 6
   ShotWaitTime: 0.2
-  ActTimeCount: 10
+  ActTimeCount: 0
   NoizeSpeed: 3
   DestroyTime: 10
 --- !u!114 &8662501476004126075
@@ -127,12 +127,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  PillarPrehabSeed: {fileID: 0}
-  ShotAngle: 45
-  StartShotPower: 3
-  StopShotPower: 30
-  AddShotPower: 1
-  ActTimeCount: 10
+  PillarPrehabSeed: {fileID: 7071231020316606031, guid: 5d2e0b19f1d069e49bbdce39e5de032e,
+    type: 3}
+  ShotAngle: -45
+  StartShotPower: 10
+  StopShotPower: 40
+  AddShotPower: 2
+  ActTimeCount: 0
   DestroyTime: 6
 --- !u!114 &6804056025975900912
 MonoBehaviour:
@@ -147,8 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  WavePrehab: {fileID: 0}
-  ActTimeCount: 10
+  WavePrehab: {fileID: 1276640274538128876, guid: 748759182ef8b1b47b0e5ca804292548,
+    type: 3}
+  ActTimeCount: 0
   NoizeSpeed: 3
   DestroyTime: 10
 --- !u!114 &7383511855144646429
@@ -163,9 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607cc08f1cc558a45b12aa75657ace9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeakerPrehab: {fileID: 0}
+  SpeakerPrehab: {fileID: 3071352268874809501, guid: b9d74507855f8a548b01d563581720bc,
+    type: 3}
   SpawnDistance: 3
-  ActTimeCount: 10
+  ActTimeCount: 0
   RandomAngleMax: 60
   DestroyTime: 41
 --- !u!114 &5414888684379505843
@@ -181,10 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  WallPrehabSeed: {fileID: 0}
+  WallPrehabSeed: {fileID: 212955810481138592, guid: c928f34edc799c841bee76435d10c4bb,
+    type: 3}
   Interpolation: 0.5
   SpwanPosY: 30
-  ActTimeCount: 10
+  ActTimeCount: 0
   DestroyTime: 30
 --- !u!114 &1686695383862460140
 MonoBehaviour:
@@ -218,7 +222,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e240c3de8d54f4386e65d0892f45fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttackPattern: []
+  ShortRangeAttackPattern:
+  - AttackPattern: {fileID: 6804056025975900912}
+    AttackInterval: 3
+    AttackDistance: 100
+  - AttackPattern: {fileID: 8177429287922896303}
+    AttackInterval: 3
+    AttackDistance: 50
+  LongRangeAttackPattern:
+  - AttackPattern: {fileID: 7383511855144646429}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 5414888684379505843}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 1686695383862460140}
+    AttackInterval: 3
+  enemyAttackPattern:
+  - AttackPattern: {fileID: 6804056025975900912}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 1686695383862460140}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 7383511855144646429}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 5414888684379505843}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 8662501476004126075}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 8177429287922896303}
+    AttackInterval: 3
+  ChengeRangeDistance: 100
+  willDestroy: 0
 --- !u!65 &8325885980756645978
 BoxCollider:
   m_ObjectHideFlags: 0
