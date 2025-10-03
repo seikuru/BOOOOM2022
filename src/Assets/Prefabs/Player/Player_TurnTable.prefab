@@ -224,12 +224,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &7110388174797900764
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 5879780920479016593}
   - component: {fileID: 212854837450941789}
   - component: {fileID: 6237948340714680666}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Player_TurnTable
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -330,9 +330,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -420,17 +417,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c680cc8185fd5d5438afcfa938578e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 475757326369631188, guid: eea6cd15a02f5524da1ef6d74e962ece, type: 3}
+  Bomb: {fileID: 3672593736015811124, guid: 05c3f7b033a51d24eb1ecf500d2291d8, type: 3}
   ThrowBombSpawnPosition: {fileID: 2084188084522524296}
   JumpBombSpawnPosition: {fileID: 7110388174797900764}
   BrinkBombSpawnPosition: {fileID: 1145693954825425375}
-  PlayerModelObject: {fileID: 0}
   Bombthrow: 20
   Underthrow: 3
-  JumpCoolDownTime: 5
   spawnDistance: 2
   InputFlag: 0
-  SlapeFlame: 6
 --- !u!114 &5879780920479016593
 MonoBehaviour:
   m_ObjectHideFlags: 0

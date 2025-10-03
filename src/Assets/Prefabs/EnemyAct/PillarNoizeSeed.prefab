@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8060461647583411820}
   - component: {fileID: 2171878948481982473}
   - component: {fileID: 5359359799135975476}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: PillarNoizeSeed
   m_TagString: Noize
   m_Icon: {fileID: 0}
@@ -151,5 +151,6 @@ MonoBehaviour:
   DownPowerMax: 10
   AddPowerFlat: 5
   AddPowerY: 12
+  PillarDestroyTime: 15
   PillarPrehab: {fileID: 4740212383680962180, guid: 48f6381a033e3a449a19d3bf4d3e06b6,
     type: 3}

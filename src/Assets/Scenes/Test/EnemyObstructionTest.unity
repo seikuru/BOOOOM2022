@@ -1006,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 4139013036789186053, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4139013036789186053, guid: 8477889b6ad91324fbc9fd9f2b5157a2,
         type: 3}
@@ -1365,6 +1365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstcle_Prehab
       objectReference: {fileID: 0}
+    - target: {fileID: 1114996535927368292, guid: 409885671ca706b4badb1af983b835db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1695,7 +1700,7 @@ GameObject:
   - component: {fileID: 1364427328}
   - component: {fileID: 1364427327}
   - component: {fileID: 1364427326}
-  m_Layer: 4
+  m_Layer: 7
   m_Name: BossFirst
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -1871,7 +1876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2102b8011c3a7a74ab8c3e693e6786dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActBase: {fileID: 1494589145}
+  enemyActBace: {fileID: 0}
 --- !u!114 &1494589126
 MonoBehaviour:
   m_ObjectHideFlags: 0
