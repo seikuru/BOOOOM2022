@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class RingNoizeShot : EnemyActBace
+public class RingNoizeShot : EnemyActBase
 {
     [SerializeField] Transform target;
 

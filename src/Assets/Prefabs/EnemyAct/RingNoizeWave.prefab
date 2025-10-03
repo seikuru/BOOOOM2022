@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3287094424735991709}
   - component: {fileID: -5342226985709423376}
   - component: {fileID: 854815500083653401}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: RingNoizeWave
   m_TagString: Noize
   m_Icon: {fileID: 0}
@@ -61,9 +61,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

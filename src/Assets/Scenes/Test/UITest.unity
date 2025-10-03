@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 56299716}
   - component: {fileID: 56299715}
   - component: {fileID: 56299719}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1249,9 +1249,9 @@ GameObject:
   - component: {fileID: 1189391063}
   - component: {fileID: 1189391062}
   - component: {fileID: 1189391061}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1553,6 +1553,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstcle_Prehab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114996535927368292, guid: 409885671ca706b4badb1af983b835db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
