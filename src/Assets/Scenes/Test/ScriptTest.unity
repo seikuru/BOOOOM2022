@@ -131,56 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[0].AttackPattern
-      value: 
-      objectReference: {fileID: 250411560}
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[1].AttackPattern
-      value: 
-      objectReference: {fileID: 250411556}
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[0].AttackDistance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[0].AttackInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[1].AttackDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ShortRangeAttackPattern.Array.data[1].AttackInterval
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4139013036789186053, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
       propertyPath: m_Name
       value: Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596918157222143026, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596918157222143026, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: NoizePrehab
-      value: 
-      objectReference: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
-        type: 3}
-    - target: {fileID: 4596918157222143026, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: ActTimeCount
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5414888684379505843, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
@@ -242,17 +196,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8177429287922896303, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1307487292}
-    - target: {fileID: 8177429287922896303, guid: 86f451dfe3ea216449c04c58616054b4,
-        type: 3}
-      propertyPath: SpeakerPrehab
-      value: 
-      objectReference: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
-        type: 3}
     - target: {fileID: 8662501476004126075, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
       propertyPath: target
@@ -263,30 +206,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86f451dfe3ea216449c04c58616054b4, type: 3}
---- !u!114 &250411556 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6804056025975900912, guid: 86f451dfe3ea216449c04c58616054b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 250411555}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064c63c52af3fd54ab044cfb4e28593e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &250411560 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8177429287922896303, guid: 86f451dfe3ea216449c04c58616054b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 250411555}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &903372965
 GameObject:
   m_ObjectHideFlags: 0
