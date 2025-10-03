@@ -18,6 +18,7 @@ public class EnemyAttackPattern : MonoBehaviour
 
     [SerializeField] AttackPatternClass[] enemyAttackPattern;
 
+    [HideInInspector] public bool willDestroy = false;
     int AttackNumber = 0;
     int AttackIntervalCount = 0;
     GameObject player;
@@ -37,7 +38,10 @@ public class EnemyAttackPattern : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        AttackIntervalCount--;
+        if (!willDestroy)
+        {
+            AttackIntervalCount--;
+        }
 
         if (AttackIntervalCount < 0)
         {

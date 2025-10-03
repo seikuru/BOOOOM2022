@@ -104,6 +104,10 @@ public class Bombeffects : MonoBehaviour
                     EM.willDestroy = true;
 
                 }
+                if (P[i].TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
+                {
+                    EAP.willDestroy = true;
+                }
 
 
                 Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
