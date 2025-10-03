@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class RingNoizeShot : EnemyActBase
 {
@@ -39,10 +41,10 @@ public class RingNoizeShot : EnemyActBase
                 dirTarget.y = 0f; // 水平方向だけ考慮
 
                 // オブジェクト生成
-                GameObject prehab = Instantiate(WavePrehab, transform.position, Quaternion.identity);
+                GameObject gameObject = Instantiate(WavePrehab, transform.position, Quaternion.identity);
 
                 // Rigidbody取得 (3D用)
-                Rigidbody RB = prehab.GetComponent<Rigidbody>();
+                Rigidbody RB = gameObject.GetComponent<Rigidbody>();
 
                 // 発射方向の回転角度 (Y軸回転)
                 float angleRadians = (AngleSplit * i) * Mathf.Deg2Rad;
@@ -57,10 +59,10 @@ public class RingNoizeShot : EnemyActBase
                 // 弾を発射方向に回転させる
                 if (rotatedDir != Vector3.zero)
                 {
-                    prehab.transform.rotation = Quaternion.LookRotation(rotatedDir, Vector3.up);
+                    gameObject.transform.rotation = Quaternion.LookRotation(rotatedDir, Vector3.up);
                 }
 
-                Destroy(prehab, DestroyTime);
+                Destroy(gameObject, DestroyTime);
             }
 
         }
