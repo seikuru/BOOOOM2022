@@ -105,7 +105,6 @@ public class bomb : MonoBehaviour
         if (bombs != null)
         {
             bombs.Bakuhatu();
-            Debug.Log("Bakuhatu");
         }
     }
 

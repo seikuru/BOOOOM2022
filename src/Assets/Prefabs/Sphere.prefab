@@ -159,6 +159,11 @@ MonoBehaviour:
   BombOuter: {fileID: 0}
   BombRB: {fileID: 0}
   GetKillCount: 0
+  PlayerAudioSource: {fileID: 5661760782103362207, guid: 7adb862f2be1a9740a6a11347d5098bf,
+    type: 3}
+  BombAudioSource: {fileID: 8021611194544413830, guid: 069f5e639eefae14cb739a094c9ff15f,
+    type: 3}
+  AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
 --- !u!114 &771941831845421543
 MonoBehaviour:
   m_ObjectHideFlags: 0
