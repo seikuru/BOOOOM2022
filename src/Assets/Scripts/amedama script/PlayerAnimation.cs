@@ -20,10 +20,10 @@ public class PlayerAnimation : MonoBehaviour
 
         PlayerAnimator.SetFloat("VectorY", playerRigidbody.velocity.y);
 
-        if (playerRigidbody.velocity.y < -10)
-        {
-            PlayerAnimator.SetTrigger("Falling");
-        }
+        //if (playerRigidbody.velocity.y < -10)
+        //{
+        //    PlayerAnimator.SetTrigger("Falling");
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
