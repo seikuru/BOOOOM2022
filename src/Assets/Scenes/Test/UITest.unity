@@ -238,6 +238,7 @@ Transform:
   - {fileID: 578363944}
   - {fileID: 755955451}
   - {fileID: 1048404998}
+  - {fileID: 1523000995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &56299714
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcd9e50ccf74b54fa6adacc7f171939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBodyTransform: {fileID: 56299713}
+  PlayerBodyTransform: {fileID: 1523000995}
   PlayerModelTransform: {fileID: 1048404998}
 --- !u!1001 &91175277
 PrefabInstance:
@@ -988,7 +989,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1459,6 +1460,37 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 91175277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1523000994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523000995}
+  m_Layer: 0
+  m_Name: CameraFollowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523000995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523000994}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 56299713}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1537413988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1569,9 +1601,19 @@ PrefabInstance:
       objectReference: {fileID: 56299719}
     - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
+      propertyPath: rotateAction
+      value: 
+      objectReference: {fileID: 56299719}
+    - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
       propertyPath: PlayerBodyTransform
       value: 
       objectReference: {fileID: 56299713}
+    - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: FollowPointTransform
+      value: 
+      objectReference: {fileID: 1523000995}
     - target: {fileID: 1145243405148272137, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Name
@@ -1594,9 +1636,19 @@ PrefabInstance:
       objectReference: {fileID: 56299719}
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
+      propertyPath: rotateAction
+      value: 
+      objectReference: {fileID: 56299719}
+    - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
       propertyPath: PlayerBodyTransform
       value: 
       objectReference: {fileID: 56299713}
+    - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: FollowPointTransform
+      value: 
+      objectReference: {fileID: 1523000995}
     - target: {fileID: 9221303649064141504, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Pivot.x
