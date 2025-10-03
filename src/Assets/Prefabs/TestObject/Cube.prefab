@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeakerPrehab: {fileID: 3071352268874809501, guid: b9d74507855f8a548b01d563581720bc,
+  SpeakerPrehab: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
     type: 3}
   SpawnDistance: 3
   InstantiateValue: 6
@@ -223,12 +223,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShortRangeAttackPattern:
-  - AttackPattern: {fileID: 6804056025975900912}
-    AttackInterval: 3
-    AttackDistance: 100
   - AttackPattern: {fileID: 8177429287922896303}
-    AttackInterval: 3
+    AttackInterval: 1
     AttackDistance: 50
+  - AttackPattern: {fileID: 6804056025975900912}
+    AttackInterval: 3.5
+    AttackDistance: 100
   LongRangeAttackPattern:
   - AttackPattern: {fileID: 7383511855144646429}
     AttackInterval: 3
