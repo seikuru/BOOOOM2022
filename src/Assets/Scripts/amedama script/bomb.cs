@@ -13,6 +13,7 @@ public class bomb : MonoBehaviour
     [SerializeField] float spawnDistance = 2f;
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
 
+    Animator PlayerAnimator;
     Queue<Bombeffects> BombsQueue;
     Rigidbody PlayerRigidbody;
     
@@ -112,6 +113,7 @@ public class bomb : MonoBehaviour
     void Start()
     {
         PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        PlayerAnimator = this.gameObject.GetComponent<Animator>();
         BombsQueue = new Queue<Bombeffects>();
     }
 
@@ -133,6 +135,7 @@ public class bomb : MonoBehaviour
                 , ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+            PlayerAnimator.SetTrigger("OnThrow");
         }
 
         else if (Input.GetMouseButtonUp(0))
@@ -142,6 +145,7 @@ public class bomb : MonoBehaviour
             Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+            PlayerAnimator.SetTrigger("OnThrow");
         }
 
         else if (Input.GetMouseButtonUp(1))
@@ -151,6 +155,7 @@ public class bomb : MonoBehaviour
             Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
             BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+            PlayerAnimator.SetTrigger("OnThrow");
         }
 
         if (Input.GetKeyUp(KeyCode.Space))

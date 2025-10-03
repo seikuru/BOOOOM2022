@@ -109,6 +109,14 @@ public class Bombeffects : MonoBehaviour
             {
                 PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.1f;
             }
+            else if (P[i].tag == "Player")
+            {
+                if (P[i].TryGetComponent<Animator>(out Animator animator))
+                {
+                    animator.SetTrigger("BombHit");
+                    animator.SetInteger("PlayerState", 2);
+                }
+            }
 
             PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
             //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける

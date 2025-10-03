@@ -13,10 +13,12 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
-        Debug.Log(playerRigidbody.velocity.y);
+        //Debug.Log(playerRigidbody.velocity.y);
+
+        PlayerAnimator.SetFloat("VectorY", playerRigidbody.velocity.y);
 
         if (playerRigidbody.velocity.y < -10)
         {
