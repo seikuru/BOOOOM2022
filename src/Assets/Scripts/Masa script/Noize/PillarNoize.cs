@@ -49,7 +49,7 @@ public class PillarNoize : MonoBehaviour
 
             rb.velocity = (flat * AddPowerFlat) + (Vector3.up * AddPowerY);
         }
-        if (Object.CompareTag("Terrain"))
+        if (Object.CompareTag("Terrain") || Object.CompareTag("Floor"))
         {
             Vector3 SpwanPos = transform.position + Vector3.up * (PillarPrehab.transform.localScale.y / 2);
 
