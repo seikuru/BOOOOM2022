@@ -138,6 +138,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
+      propertyPath: LongRangeAttackPattern.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: ShortRangeAttackPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
       propertyPath: enemyAttackPattern.Array.data[0].AttackPattern
       value: 
       objectReference: {fileID: 250411556}
@@ -194,6 +204,56 @@ PrefabInstance:
     - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
       propertyPath: enemyAttackPattern.Array.data[5].AttackInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[0].AttackPattern
+      value: 
+      objectReference: {fileID: 1501176098}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[1].AttackPattern
+      value: 
+      objectReference: {fileID: 250411557}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[2].AttackPattern
+      value: 
+      objectReference: {fileID: 1321455401}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[0].AttackInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[1].AttackInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: LongRangeAttackPattern.Array.data[2].AttackInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: ShortRangeAttackPattern.Array.data[0].AttackPattern
+      value: 
+      objectReference: {fileID: 250411556}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: ShortRangeAttackPattern.Array.data[1].AttackPattern
+      value: 
+      objectReference: {fileID: 250411560}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: ShortRangeAttackPattern.Array.data[0].AttackInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: ShortRangeAttackPattern.Array.data[1].AttackInterval
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4139013036789186053, guid: 86f451dfe3ea216449c04c58616054b4,
