@@ -15,6 +15,9 @@ public class Bombeffects : MonoBehaviour
     [SerializeField] GameObject BombOuter;//爆弾の外枠のオブジェクト
     [SerializeField] Rigidbody BombRB;//爆弾のRigidBody
     [SerializeField] bool GetKillCount = false;
+    AudioSource PlayerAudioSource;
+    [SerializeField] AudioSource BombAudioSource;
+    [SerializeField] AudioScriptable AudioScriptable;
     
     Animator PlayerAnimation;
     EnemyCount EnemyCountText;
@@ -43,6 +46,12 @@ public class Bombeffects : MonoBehaviour
         {
             EnemyCountText = GameObject.Find("EnemyCount").GetComponent<EnemyCount>();
         }
+
+        if (GameObject.FindWithTag("Player").TryGetComponent<AudioSource>(out AudioSource AS))
+        {
+            PlayerAudioSource = AS;
+        }
+
     }
 
 
@@ -53,6 +62,8 @@ public class Bombeffects : MonoBehaviour
 
         if (GetKillCount)
             BombStrangeValue += GetBombAddStrange();
+
+        BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
 
         Collider[] hits = Physics.OverlapSphere(this.transform.position, BombRadius, InfluencedMask);
         //爆弾が爆発した際、爆弾を中心に、爆弾の影響範囲下にある、影響を受けるレイヤーを探す。
@@ -82,12 +93,14 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(transform.position, BombStrangeValue);
+                    PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
                 }
             }
             else if (P[i].tag == "Noize")
             {
                 Destroy(P[i]);
+                PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
             else if (P[i].tag == "enemy")
@@ -104,6 +117,10 @@ public class Bombeffects : MonoBehaviour
                     EM.willDestroy = true;
 
                 }
+                if (P[i].TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
+                {
+                    EAP.willDestroy = true;
+                }
 
 
                 Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
@@ -114,10 +131,11 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "Player")
             {
+
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
                 {
                     animator.SetTrigger("BombHit");
-                    animator.SetInteger("PlayerState", 2);
+                    PlayerAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
                 }
             }
 

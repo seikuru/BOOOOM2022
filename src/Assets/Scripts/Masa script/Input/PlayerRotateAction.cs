@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAction : MonoBehaviour
+public class PlayerRotateAction : MonoBehaviour
 {
     /// プレイヤーの回転アクション管理クラス
     /// 身体の即座のY軸回転とモデルのスムーズな回転補間を制御
@@ -33,7 +33,7 @@ public class PlayerAction : MonoBehaviour
     public void RotateBody_Y(float angle)
     {
         // 現在のオブジェクトの回転（オイラー角）を取得
-        Vector3 localAngle = transform.eulerAngles;
+        Vector3 localAngle = PlayerBodyTransform.eulerAngles;
 
         // Y軸回転を設定。360fを足してからmod 360で負の角度や360度以上を正規化
         // 例: angle = -30 → 330度として扱われる

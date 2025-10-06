@@ -11,6 +11,13 @@ GameObject:
   - component: {fileID: 6975119401278478508}
   - component: {fileID: 9168468435628465923}
   - component: {fileID: 3791334493464596069}
+  - component: {fileID: 8177429287922896303}
+  - component: {fileID: 8662501476004126075}
+  - component: {fileID: 6804056025975900912}
+  - component: {fileID: 7383511855144646429}
+  - component: {fileID: 5414888684379505843}
+  - component: {fileID: 1686695383862460140}
+  - component: {fileID: 2698594068783851999}
   - component: {fileID: 8325885980756645978}
   - component: {fileID: 4294105291568438451}
   - component: {fileID: 401557847832135818}
@@ -87,6 +94,163 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8177429287922896303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeakerPrehab: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
+    type: 3}
+  SpawnDistance: 3
+  InstantiateValue: 6
+  ShotWaitTime: 0.2
+  ActTimeCount: 0
+  NoizeSpeed: 3
+  DestroyTime: 10
+--- !u!114 &8662501476004126075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5290c5b0c549f3f448a9c998c7fbb2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  PillarPrehabSeed: {fileID: 7071231020316606031, guid: 5d2e0b19f1d069e49bbdce39e5de032e,
+    type: 3}
+  ShotAngle: -45
+  StartShotPower: 10
+  StopShotPower: 40
+  AddShotPower: 2
+  ActTimeCount: 0
+  DestroyTime: 6
+--- !u!114 &6804056025975900912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064c63c52af3fd54ab044cfb4e28593e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  WavePrehab: {fileID: 1276640274538128876, guid: 748759182ef8b1b47b0e5ca804292548,
+    type: 3}
+  ActTimeCount: 0
+  NoizeSpeed: 3
+  DestroyTime: 10
+--- !u!114 &7383511855144646429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607cc08f1cc558a45b12aa75657ace9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeakerPrehab: {fileID: 3071352268874809501, guid: b9d74507855f8a548b01d563581720bc,
+    type: 3}
+  SpawnDistance: 3
+  ActTimeCount: 0
+  RandomAngleMax: 60
+  DestroyTime: 41
+--- !u!114 &5414888684379505843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5599b7e4264274394e04d991a00c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  WallPrehabSeed: {fileID: 212955810481138592, guid: c928f34edc799c841bee76435d10c4bb,
+    type: 3}
+  Interpolation: 0.5
+  SpwanPosY: 30
+  ActTimeCount: 0
+  DestroyTime: 30
+--- !u!114 &1686695383862460140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce77c6641c8cb248a91b5678d29e747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mineObject: {fileID: 8567939986125202426, guid: 9454b8babbaef954aafde7a86f8cc1a9,
+    type: 3}
+  ThrowAngle: 60
+  ThrowInterval: 1
+  DistanceTarget: 100
+  GravityMultiply: 1
+  BurstThrow: 5
+  BurstDelay: 10
+--- !u!114 &2698594068783851999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e240c3de8d54f4386e65d0892f45fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShortRangeAttackPattern:
+  - AttackPattern: {fileID: 8177429287922896303}
+    AttackInterval: 1
+    AttackDistance: 50
+  - AttackPattern: {fileID: 6804056025975900912}
+    AttackInterval: 3.5
+    AttackDistance: 100
+  LongRangeAttackPattern:
+  - AttackPattern: {fileID: 7383511855144646429}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 5414888684379505843}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 1686695383862460140}
+    AttackInterval: 3
+  enemyAttackPattern:
+  - AttackPattern: {fileID: 6804056025975900912}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 1686695383862460140}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 7383511855144646429}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 5414888684379505843}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 8662501476004126075}
+    AttackInterval: 3
+  - AttackPattern: {fileID: 8177429287922896303}
+    AttackInterval: 3
+  ChengeRangeDistance: 100
+  willDestroy: 0
 --- !u!65 &8325885980756645978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4139013036789186053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac1b1d7e618afc46aa73bf70cb65ebb, type: 3}
   m_Name: 
