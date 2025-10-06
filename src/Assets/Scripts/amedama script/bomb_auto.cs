@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class bomb : MonoBehaviour
+public class bomb_auto : MonoBehaviour
 {
     [SerializeField] GameObject Bomb;
     [SerializeField] GameObject ThrowBombSpawnPosition;//前に投げる際に参照する位置
@@ -13,14 +14,14 @@ public class bomb : MonoBehaviour
     [SerializeField] float spawnDistance = 2f;
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
     [SerializeField] bool FullautoEnable = false;
-    [SerializeField] int BombShotInterval = 8;//爆弾を投げる間隔
+    [SerializeField] int BombShotInterval = 25;//爆弾を投げる間隔
 
     Queue<Bombeffects> BombsQueue;
     Animator PlayerAnimator;
     Rigidbody PlayerRigidbody;
     int ShotInterval_Count = 0;
-
-
+    
+    
 
     public void InstantiateUnder()
     {
@@ -214,7 +215,7 @@ public class bomb : MonoBehaviour
             }
         }
 
-
+        
 #endif
 
     }
