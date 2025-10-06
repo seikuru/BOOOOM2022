@@ -131,7 +131,7 @@ public class bomb_auto : MonoBehaviour
 
 #if UNITY_EDITOR
 
-        if (FullautoEnable)//フルオートにするのかどうか
+        if (FullautoEnable)//フルオートの時
         {
 
             if ((Input.GetMouseButton(0) && Input.GetMouseButton(1)) && ShotInterval_Count == 0)//左右のマウスボタンが両方押されているとき
@@ -177,9 +177,13 @@ public class bomb_auto : MonoBehaviour
             {
                 ShotInterval_Count = 0;
             }
-
         }
-        else
+    }
+
+    void Update()
+    {
+
+        if (!FullautoEnable)//フルオートで無い時
         {
             if ((Input.GetMouseButton(0) && Input.GetMouseButtonUp(1)) ||
             (Input.GetMouseButtonUp(0) && Input.GetMouseButton(1)))//左右のマウスボタンが両方押されているとき
@@ -215,17 +219,11 @@ public class bomb_auto : MonoBehaviour
             }
         }
 
-        
-#endif
-
-    }
-
-    void Update()
-    {
         if (Input.GetKeyUp(KeyCode.Space))
         {
             DestroyBombs();
         }
+#endif
     }
 }
 

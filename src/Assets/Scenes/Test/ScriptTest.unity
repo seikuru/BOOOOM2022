@@ -301,6 +301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476899176365345687, guid: 7adb862f2be1a9740a6a11347d5098bf,
         type: 3}
+      propertyPath: FullautoEnable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476899176365345687, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
       propertyPath: BombShotInterval
       value: 8
       objectReference: {fileID: 0}
@@ -774,7 +779,7 @@ MonoBehaviour:
   Underthrow: 3
   spawnDistance: 2
   InputFlag: 1
-  FullautoEnable: 0
+  FullautoEnable: 1
   BombShotInterval: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
