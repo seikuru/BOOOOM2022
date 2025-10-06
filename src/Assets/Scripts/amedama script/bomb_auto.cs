@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class bomb_auto : MonoBehaviour
@@ -12,12 +13,14 @@ public class bomb_auto : MonoBehaviour
     [SerializeField] float Underthrow = 3f;
     [SerializeField] float spawnDistance = 2f;
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
+    [SerializeField] bool FullautoEnable = false;
     [SerializeField] int BombShotInterval = 25;//爆弾を投げる間隔
 
     Queue<Bombeffects> BombsQueue;
     Animator PlayerAnimator;
     Rigidbody PlayerRigidbody;
     int ShotInterval_Count = 0;
+    
     
 
     public void InstantiateUnder()
@@ -108,7 +111,6 @@ public class bomb_auto : MonoBehaviour
         if (bombs != null)
         {
             bombs.Bakuhatu();
-            Debug.Log("Bakuhatu");
         }
     }
 
@@ -121,78 +123,109 @@ public class bomb_auto : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
-        bool Shot_now = false;
 
         if (!InputFlag)
             return;
 
 #if UNITY_EDITOR
 
-        if ((Input.GetMouseButton(0) && Input.GetMouseButton(1)) && ShotInterval_Count == 0)//左右のマウスボタンが両方押されているとき
+        if (FullautoEnable)//フルオートにするのかどうか
         {
-            GameObject Spawned_Bomb;
-            Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
-            Spawned_Bomb.GetComponent<Rigidbody>().AddForce
-                (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
-                , ForceMode.Impulse);
 
-            BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-            PlayerAnimator.SetTrigger("OnThrow");
-            PlayerAnimator.SetInteger("PlayerState", 3);
-            Shot_now = true;
+            if ((Input.GetMouseButton(0) && Input.GetMouseButton(1)) && ShotInterval_Count == 0)//左右のマウスボタンが両方押されているとき
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce
+                    (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
+                    , ForceMode.Impulse);
+
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+            }
+            else if (Input.GetMouseButton(0) && ShotInterval_Count == 0)
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+
+            }
+            else if (Input.GetMouseButton(1) && ShotInterval_Count == 0)
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+
+            }
+
+            ShotInterval_Count++;
+
+            if (!Input.GetMouseButton(1) && !Input.GetMouseButton(0))
+            {
+                ShotInterval_Count = 0;
+            }
+
+            if (ShotInterval_Count >= BombShotInterval)
+            {
+                ShotInterval_Count = 0;
+            }
+
         }
-        else if (Input.GetMouseButton(0) && ShotInterval_Count == 0)
+        else
         {
-            GameObject Spawned_Bomb;
-            Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+            if ((Input.GetMouseButton(0) && Input.GetMouseButtonUp(1)) ||
+            (Input.GetMouseButtonUp(0) && Input.GetMouseButton(1)))//左右のマウスボタンが両方押されているとき
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce
+                    (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
+                    , ForceMode.Impulse);
 
-            BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-            PlayerAnimator.SetTrigger("OnThrow");
-            PlayerAnimator.SetInteger("PlayerState", 3);
-            Shot_now = true;
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+            }
 
+            else if (Input.GetMouseButtonUp(0))
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+            }
+
+            else if (Input.GetMouseButtonUp(1))
+            {
+                GameObject Spawned_Bomb;
+                Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
+                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+
+                BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+                PlayerAnimator.SetTrigger("OnThrow");
+            }
         }
-        else if (Input.GetMouseButton(1) && ShotInterval_Count == 0)
-        {
-            GameObject Spawned_Bomb;
-            Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
-            Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
-            BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-            PlayerAnimator.SetTrigger("OnThrow");
-            PlayerAnimator.SetInteger("PlayerState", 3);
-            Shot_now = true;
+        
+#endif
 
-        }
+    }
 
-
-
-        Debug.Log(ShotInterval_Count);
-
+    void Update()
+    {
         if (Input.GetKeyUp(KeyCode.Space))
         {
             DestroyBombs();
         }
-
-        ShotInterval_Count++;
-        if (!Input.GetMouseButton(1) && !Input.GetMouseButton(0))
-        {
-
-            ShotInterval_Count = 0;
-            
-
-        }
-
-        if (ShotInterval_Count >= BombShotInterval)
-        {
-            ShotInterval_Count = 0;
-        }
-#endif
-
     }
 }
 
