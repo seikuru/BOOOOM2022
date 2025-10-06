@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7104464763104517611}
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 24
+    m_Bits: 9160
   DestroyEnemyTimer: 3
   BombStrange: 5
   BombRadius: 10

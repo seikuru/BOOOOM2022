@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3287094424735991709}
   - component: {fileID: -5342226985709423376}
   - component: {fileID: 854815500083653401}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: RingNoizeWave
   m_TagString: Noize
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f6b7ce6f703b5499a99352e24bcc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScaleUpSpeed: 1
-  ScaleUPMax: 10
+  ScaleUpSpeed: 1.7
+  ScaleUPMax: 20
   AddPowerFlat: 10
   AddPowerY: 10

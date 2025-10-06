@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        PlayerTransform = transform; 
+        PlayerTransform = transform;
     }
 
     public static Transform GetTransformPlayer => PlayerTransform;

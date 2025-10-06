@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8060461647583411820}
   - component: {fileID: 2171878948481982473}
   - component: {fileID: 5359359799135975476}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: PillarNoizeSeed
   m_TagString: Noize
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,7 +123,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -151,5 +151,6 @@ MonoBehaviour:
   DownPowerMax: 10
   AddPowerFlat: 5
   AddPowerY: 12
+  PillarDestroyTime: 15
   PillarPrehab: {fileID: 4740212383680962180, guid: 48f6381a033e3a449a19d3bf4d3e06b6,
     type: 3}

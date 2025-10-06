@@ -15,6 +15,7 @@ public class bomb : MonoBehaviour
 
     Animator PlayerAnimator;
     Queue<Bombeffects> BombsQueue;
+    Animator PlayerAnimator;
     Rigidbody PlayerRigidbody;
     
     public void InstantiateUnder()

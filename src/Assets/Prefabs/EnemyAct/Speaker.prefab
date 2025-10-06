@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7770980536456519929}
   - component: {fileID: 6540886235581508083}
   - component: {fileID: 7488822901030494252}
-  m_Layer: 0
+  - component: {fileID: 9095240351964688424}
+  m_Layer: 9
   m_Name: Speaker
-  m_TagString: Untagged
+  m_TagString: Noize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +122,34 @@ MonoBehaviour:
   NoizePrehab: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
     type: 3}
   SpawnDistance: 1.5
-  ActTimeCount: 3
-  InstantiateValue: 6
-  ShotWaitTime: 0.2
+  ActTimeCount: 1.5
+  InstantiateValue: 8
+  ShotWaitTime: 0.4
   DestroyTime: 10
+--- !u!54 &9095240351964688424
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071352268874809501}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
