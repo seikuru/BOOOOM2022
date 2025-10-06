@@ -8,7 +8,7 @@ public class OperationsInput : MonoBehaviour
     [Header("Operation")]
     [Space]
     [SerializeField] bomb BombClass; // 爆弾生成・投擲を管理するクラス
-    [SerializeField] PlayerAction playerAction; // プレイヤーの回転アクションを管理するクラス
+    [SerializeField] PlayerRotateAction rotateAction; // プレイヤーの回転アクションを管理するクラス
 
     void Update()
     {
@@ -29,7 +29,7 @@ public class OperationsInput : MonoBehaviour
     /// PlayerActionクラスのRotateBody_Yメソッドのラッパー
     /// </summary>
     /// <param name="angle">設定するY軸角度</param>
-    protected void RotateAngle_Y(float angle) => playerAction.RotateBody_Y(angle);
+    protected void RotateAngle_Y(float angle) => rotateAction.RotateBody_Y(angle);
 
     /// <summary>
     /// 下方向への爆弾投擲
@@ -51,7 +51,7 @@ public class OperationsInput : MonoBehaviour
         // 向いている方向に回転を合わせて投擲（direction方向に向ける）
         Quaternion lookDirection = Quaternion.LookRotation(direction, Vector3.up); // 方向からクォータニオンを生成
 
-        playerAction.RecordingModelRotate(lookDirection); // プレイヤーモデルを段階的に回転
+        rotateAction.RecordingModelRotate(lookDirection); // プレイヤーモデルを段階的に回転
 
         BombClass.InstantiateBomb(percentage, direction, lookDirection); // 爆弾を生成・投擲
     }

@@ -13,15 +13,17 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
-        if (playerRigidbody.velocity.y <= -10)
-        {
-            PlayerAnimator.SetInteger("PlayerState", 4);
-            
-        }
+        //Debug.Log(playerRigidbody.velocity.y);
+
         PlayerAnimator.SetFloat("VectorY", playerRigidbody.velocity.y);
+
+        //if (playerRigidbody.velocity.y < -10)
+        //{
+        //    PlayerAnimator.SetTrigger("Falling");
+        //}
     }
         
 
