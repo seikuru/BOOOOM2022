@@ -31,7 +31,7 @@ public class minegenerate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Terrain")
+        if(other.CompareTag("Terrain")|| other.CompareTag("Floor"))
         {
             
             Vector3 minePosition = this.transform.position + Vector3.up;

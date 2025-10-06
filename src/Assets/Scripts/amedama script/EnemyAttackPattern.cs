@@ -23,7 +23,8 @@ public class EnemyAttackPattern : MonoBehaviour
     [Header("行動パターン")]
     [SerializeField] ShortAttackPatternClass[] ShortRangeAttackPattern;
     [SerializeField] AttackPatternClass[] LongRangeAttackPattern;
-    [SerializeField] AttackPatternClass[] enemyAttackPattern;
+
+    //[SerializeField] AttackPatternClass[] enemyAttackPattern;
 
     [Header("行動パターン切り替え距離")]
 
@@ -34,6 +35,7 @@ public class EnemyAttackPattern : MonoBehaviour
     int AttackNumber = 0;
     int AttackIntervalCount = 0;
     AttackPatternClass NextAttackClass;
+
     /// <summary>
     /// AttackPatternClassからAttackIntervalを取得する
     /// </summary>
@@ -108,6 +110,7 @@ public class EnemyAttackPattern : MonoBehaviour
         {
             AttackNumber = i;
 
+            // 現在の距離が目標距離よりも小さければループから出る
             if (distance < ShortRangeAttackPattern[i].AttackDistance)
             {
                 break;
@@ -142,6 +145,7 @@ public class EnemyAttackPattern : MonoBehaviour
         //攻撃のインターバルを設定
         AttackIntervalCount = GetInterval(NextAttackClass);
     }
+
 
     private void OnDrawGizmos()
     {
