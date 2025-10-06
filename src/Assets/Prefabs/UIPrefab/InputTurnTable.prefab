@@ -159,8 +159,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9221303649064141504}
-  - component: {fileID: 6517762818485769081}
   - component: {fileID: 892774487872043940}
+  - component: {fileID: 6517762818485769081}
   m_Layer: 5
   m_Name: InputTurnTable
   m_TagString: Untagged
@@ -190,29 +190,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6517762818485769081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145243405148272137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b0dc742a229d24e80ef2b4cc765de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BombClass: {fileID: 0}
-  playerAction: {fileID: 0}
-  OutSideTableRect: {fileID: 8880686438128464987}
-  InSideTableRect: {fileID: 6141265550163291532}
-  OutSideRange: 512
-  InSideRange: 400
-  SenterRange: 100
-  MapingClampMin: 0
-  MapingClampMax: 2
-  SenterTapFlag: 1
-  PlayerBodyTransform: {fileID: 0}
 --- !u!114 &892774487872043940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BombClass: {fileID: 0}
-  playerAction: {fileID: 0}
+  rotateAction: {fileID: 0}
   OutSideTableRect: {fileID: 8880686438128464987}
   InSideTableRect: {fileID: 6141265550163291532}
   OutSideRange: 512
@@ -235,7 +212,30 @@ MonoBehaviour:
   MapingClampMin: 0
   MapingClampMax: 2
   SenterTapFlag: 1
-  PlayerBodyTransform: {fileID: 0}
+  FollowPointTransform: {fileID: 0}
+--- !u!114 &6517762818485769081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145243405148272137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0dc742a229d24e80ef2b4cc765de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombClass: {fileID: 0}
+  rotateAction: {fileID: 0}
+  OutSideTableRect: {fileID: 8880686438128464987}
+  InSideTableRect: {fileID: 6141265550163291532}
+  OutSideRange: 512
+  InSideRange: 400
+  SenterRange: 100
+  MapingClampMin: 0
+  MapingClampMax: 2
+  SenterTapFlag: 1
+  FollowPointTransform: {fileID: 0}
 --- !u!1 &7054559093413011264
 GameObject:
   m_ObjectHideFlags: 0

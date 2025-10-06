@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class WallNoizeSpawn : EnemyActBase
 {
-    [SerializeField] Transform target;
-
     [SerializeField] GameObject WallPrehabSeed;
 
     [SerializeField] float Interpolation = 0.5f;
 
     [SerializeField] float SpwanPosY = 30f;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float DestroyTime = 30f;
+
+    Transform target => Player.GetTransformPlayer;
 
     float ActCount;
 

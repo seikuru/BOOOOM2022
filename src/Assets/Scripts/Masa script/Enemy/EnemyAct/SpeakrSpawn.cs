@@ -8,7 +8,7 @@ public class SpeakrSpawn : EnemyActBase
 
     [SerializeField] float SpawnDistance = 3.0f;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float RandomAngleMax = 60f;
 
