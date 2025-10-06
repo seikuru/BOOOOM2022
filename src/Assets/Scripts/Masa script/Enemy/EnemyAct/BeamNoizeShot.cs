@@ -12,7 +12,7 @@ public class BeamNoizeShot : EnemyActBase
 
     [SerializeField] float ShotWaitTime = 0.2f;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float NoizeSpeed = 3f;
 

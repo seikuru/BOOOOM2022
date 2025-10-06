@@ -87,20 +87,23 @@ public class Bombeffects : MonoBehaviour
 
         for (int i = 0; i < P.Length; i++)
         {
-            Debug.Log("Obstacle" + P[i].tag);
+            //Debug.Log("Obstacle" + P[i].tag);
             if (P[i].tag == "Obstacle")
             {
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(transform.position, BombStrangeValue);
-                    PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+                    BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
+                    //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
                 }
             }
             else if (P[i].tag == "Noize")
             {
                 Destroy(P[i]);
-                PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+               
+                BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+                //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
             else if (P[i].tag == "enemy")
@@ -135,7 +138,8 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
                 {
                     animator.SetTrigger("BombHit");
-                    PlayerAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
+                    BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
+                    //PlayerAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
                 }
             }
 

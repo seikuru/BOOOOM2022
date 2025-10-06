@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PillarNoizeShot : EnemyActBase
 {
-    [SerializeField] Transform target;
-
     [SerializeField] GameObject PillarPrehabSeed;
 
-    [SerializeField] float ShotAngle = 45f;
+    [SerializeField] float ShotAngle = -45f;
 
-    [SerializeField] float StartShotPower = 3f;
+    [SerializeField] float StartShotPower = 10f;
 
-    [SerializeField] float StopShotPower = 30f;
+    [SerializeField] float StopShotPower = 40f;
 
-    [SerializeField] float AddShotPower = 1f;
+    [SerializeField] float AddShotPower = 2f;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float DestroyTime = 6f;
+
+    Transform target => Player.GetTransformPlayer;
 
     float ActCount;
 

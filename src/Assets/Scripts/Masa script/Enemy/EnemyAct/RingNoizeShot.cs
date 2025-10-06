@@ -4,11 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class RingNoizeShot : EnemyActBase
 {
-    [SerializeField] Transform target;
-
     [SerializeField] GameObject WavePrehab;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float NoizeSpeed = 3f;
 
@@ -17,6 +15,9 @@ public class RingNoizeShot : EnemyActBase
     static readonly float AllForwardAngle = 360f;
 
     static readonly float AngleSplit = 10f;
+
+    Transform target => Player.GetTransformPlayer;
+
     float ActCount;
 
     public override void Act_Start()

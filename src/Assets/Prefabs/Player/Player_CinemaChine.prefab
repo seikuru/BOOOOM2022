@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 568083875313027701}
   - component: {fileID: 2579846102088291873}
   - component: {fileID: 7834042539771189614}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Player_CinemaChine
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -226,6 +226,8 @@ MonoBehaviour:
   Underthrow: 3
   spawnDistance: 2
   InputFlag: 0
+  FullautoEnable: 0
+  BombShotInterval: 8
 --- !u!114 &568083875313027701
 MonoBehaviour:
   m_ObjectHideFlags: 0
