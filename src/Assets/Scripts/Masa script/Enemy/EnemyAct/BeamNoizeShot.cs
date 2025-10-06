@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BeamNoizeShot : EnemyActBase
 {
-    [SerializeField] Transform target;
-
     [SerializeField] GameObject SpeakerPrehab;
 
     [SerializeField] float SpawnDistance = 3.0f;
@@ -20,7 +18,7 @@ public class BeamNoizeShot : EnemyActBase
 
     [SerializeField] float DestroyTime = 10f;
 
-   
+    Transform target => Player.GetTransformPlayer;
 
     float ActCount;
 
