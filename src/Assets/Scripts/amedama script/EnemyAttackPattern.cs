@@ -143,11 +143,6 @@ public class EnemyAttackPattern : MonoBehaviour
         AttackIntervalCount = GetInterval(NextAttackClass);
     }
 
-
-
-
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red; // ƒMƒYƒ‚‚ÌF‚ğÔ‚Éİ’è
