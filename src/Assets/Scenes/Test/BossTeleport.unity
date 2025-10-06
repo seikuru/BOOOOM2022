@@ -308,10 +308,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa09dca99ceec6647b32ac19ad241742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeleportPoint:
-  - {fileID: 1323219970}
-  - {fileID: 1254654476}
-  - {fileID: 1120116463}
+  Teleport:
+  - TeleportPoint: {fileID: 1323219970}
+    BombHitRequire: 1
+    TeleportDelay: 3
+  - TeleportPoint: {fileID: 1254654476}
+    BombHitRequire: 1
+    TeleportDelay: 3
+  - TeleportPoint: {fileID: 1120116463}
+    BombHitRequire: 1
+    TeleportDelay: 3
 --- !u!1001 &612295537
 PrefabInstance:
   m_ObjectHideFlags: 0

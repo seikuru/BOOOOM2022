@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 360986648033660454}
   - component: {fileID: 8529852219820945690}
   - component: {fileID: 3328892927492549462}
-  - component: {fileID: 771941831845421543}
   - component: {fileID: -7422967389172039610}
   - component: {fileID: 8021611194544413830}
   m_Layer: 6
@@ -160,25 +159,8 @@ MonoBehaviour:
   BombOuter: {fileID: 0}
   BombRB: {fileID: 0}
   GetKillCount: 0
-  PlayerAudioSource: {fileID: 5661760782103362207, guid: 7adb862f2be1a9740a6a11347d5098bf,
-    type: 3}
   BombAudioSource: {fileID: 8021611194544413830}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
---- !u!114 &771941831845421543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475757326369631188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1300bbb27eac8d8478fbb01d0d321d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-7422967389172039610
 MonoBehaviour:
   m_ObjectHideFlags: 0
