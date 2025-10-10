@@ -52,6 +52,9 @@ public class bomb : MonoBehaviour
         // Bomb_rb.linearVelocity += _Inertia;
 
         BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+        
+        // Animator にトリガーを送信
+        playerAnimation.onThrow();
     }
 
     public void InstantiateBomb(float percentage, Vector3 direction, Quaternion rotation)

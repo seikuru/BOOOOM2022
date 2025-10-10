@@ -2984,6 +2984,12 @@ Transform:
   - {fileID: 165125467}
   m_Father: {fileID: 1164829099}
   m_LocalEulerAnglesHint: {x: 0, y: 8.535, z: 0}
+--- !u!4 &613747141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 855050583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &617632871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4031,22 +4037,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2079553139}
     m_Modifications:
-    - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
+    - target: {fileID: 1513172763982559615, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.1019604
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513172763982559615, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035242413172566479, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035242413172566479, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'RightForeArm'\n\tTransform 'LeftForeArm'\n\tTransform
+        'Hips'\n\tTransform 'Spine1'\n\tTransform 'LeftArm'\n\tTransform 'Rightleg'\n\tTransform
+        'LeftUpleg'\n\tTransform 'Leftleg'\n\tTransform 'RightForeArm'\n\tTransform
+        'RightArm'\n\tand more ...\n\tFrom animation clip 'PlayerCharaV2.Motion2_Landing_forWrite'"
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
-      propertyPath: m_LocalPosition.y
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
       propertyPath: m_LocalPosition.z
-      value: 404.1454
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
@@ -4056,17 +4087,17 @@ PrefabInstance:
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3324547996391385919, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
@@ -4083,6 +4114,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3938681774857597651, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938681774857597651, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938681774857597651, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_ImplicitCom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938681774857597651, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668565427591895411, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5668565427591895411, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
       propertyPath: playerBomb
@@ -4093,10 +4149,25 @@ PrefabInstance:
       propertyPath: playerRigidbody
       value: 
       objectReference: {fileID: 2079553143}
+    - target: {fileID: 8378245432249872070, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8770046810776133087, guid: 43c018ef8562133409cd265e8720adaa,
         type: 3}
       propertyPath: m_Name
       value: AnimationTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770046810776133087, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770046810776133087, guid: 43c018ef8562133409cd265e8720adaa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4814,11 +4885,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 855050583}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88081868843fd0458abf596d48e98e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1138530091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2079553129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1139809614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9242,7 +9319,12 @@ PrefabInstance:
         type: 3}
       propertyPath: playerAnimation
       value: 
-      objectReference: {fileID: 1136272035}
+      objectReference: {fileID: 2079553149}
+    - target: {fileID: 4887803152705769510, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8050834733684318280, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9296,12 +9378,24 @@ PrefabInstance:
     - target: {fileID: 8253266369385063216, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8050834733684318280, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 613747141}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 2079553149}
+    - targetCorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2079553150}
   m_SourcePrefab: {fileID: 100100000, guid: 4c4540aab68bb1742aa0ce62f2473a8a, type: 3}
 --- !u!114 &2079553130 stripped
 MonoBehaviour:
@@ -9309,7 +9403,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2079553129}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1138530091}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfcd9e50ccf74b54fa6adacc7f171939, type: 3}
@@ -9327,7 +9421,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2079553129}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1138530091}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c680cc8185fd5d5438afcfa938578e02, type: 3}
@@ -9345,6 +9439,46 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 2079553129}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2079553149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138530091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88081868843fd0458abf596d48e98e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAnimator: {fileID: 2079553150}
+  playerRigidbody: {fileID: 2079553143}
+--- !u!95 &2079553150
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138530091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c75549011c66d4e428f8ed09cc8383cd, type: 3}
+  m_Controller: {fileID: 9100000, guid: a33e7d6e12092344da49b18bc4d9dbba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'RightForeArm'\n\tTransform 'LeftForeArm'\n\tTransform
+    'Hips'\n\tTransform 'Spine1'\n\tTransform 'LeftArm'\n\tTransform 'Rightleg'\n\tTransform
+    'LeftUpleg'\n\tTransform 'Leftleg'\n\tTransform 'RightForeArm'\n\tTransform 'RightArm'\n\tand
+    more ...\n\tFrom animation clip 'PlayerCharaV2.Motion2_Landing_forWrite'"
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2093006307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8006464337837263343, guid: ac96bfaa2d856e5478292d37eaebd439,
@@ -9682,6 +9816,5 @@ SceneRoots:
   - {fileID: 158599414}
   - {fileID: 396646704}
   - {fileID: 2079553129}
-  - {fileID: 855050583}
   - {fileID: 1826781279}
   - {fileID: 1164829099}
