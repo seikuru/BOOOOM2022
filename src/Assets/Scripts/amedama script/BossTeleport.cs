@@ -32,8 +32,6 @@ public class BossTeleport : MonoBehaviour
 
     public IEnumerator BossStateChange()
     {
-   
-        yield return new WaitForSeconds(2);
 
         BombHitCount++;
 
@@ -41,7 +39,16 @@ public class BossTeleport : MonoBehaviour
         {
             if (BossState < Teleport.Length - 1)
             {
+                BombHitCount = 0;
+
                 if (this.TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
+                {
+                    EAP.willDestroy = true;
+                }
+
+                yield return new WaitForSeconds(1);
+
+                if (EAP != null)
                 {
                     EAP.willDestroy = false;
                 }
@@ -49,9 +56,18 @@ public class BossTeleport : MonoBehaviour
                 {
                     RB.velocity = Vector3.zero;
                 }
+
                 BossState++;
                 this.transform.position = Teleport[BossState].TeleportPoint.transform.position;
             }
+            else
+            {
+                if (this.TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
+                {
+                    EAP.willDestroy = true;
+                }
+            }
+
         }
     }
 }

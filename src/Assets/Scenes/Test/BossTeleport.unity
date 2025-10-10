@@ -131,10 +131,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2698594068783851999, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4139013036789186053, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294105291568438451, guid: 86f451dfe3ea216449c04c58616054b4,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5414888684379505843, guid: 86f451dfe3ea216449c04c58616054b4,
         type: 3}
@@ -310,11 +320,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Teleport:
   - TeleportPoint: {fileID: 1323219970}
-    BombHitRequire: 1
-    TeleportDelay: 3
+    BombHitRequire: 3
+    TeleportDelay: 1
   - TeleportPoint: {fileID: 1254654476}
-    BombHitRequire: 1
-    TeleportDelay: 3
+    BombHitRequire: 2
+    TeleportDelay: 2
   - TeleportPoint: {fileID: 1120116463}
     BombHitRequire: 1
     TeleportDelay: 3

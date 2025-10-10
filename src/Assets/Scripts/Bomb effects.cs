@@ -122,7 +122,7 @@ public class Bombeffects : MonoBehaviour
                 }
                 if (P[i].TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
                 {
-                    EAP.willDestroy = true;
+                    //EAP.willDestroy = true;
                 }
                 if(P[i].TryGetComponent<BossTeleport>(out BossTeleport BT))
                 {
