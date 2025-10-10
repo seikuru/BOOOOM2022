@@ -23,7 +23,7 @@ public class ControllerManager : MonoBehaviour
         if (message == null) return;
         if (message.Length >= 10 && message[0] == 'S' && message[9] == 'E') // "S rot(3) button(1) rad(4) E" -> 11 
         {
-            Debug.Log(message);
+            // Debug.Log(message);
             string recData;
             int t;
 
