@@ -122,11 +122,15 @@ public class Bombeffects : MonoBehaviour
                 }
                 if (P[i].TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
                 {
-                    EAP.willDestroy = true;
+                    //EAP.willDestroy = true;
+                }
+                if(P[i].TryGetComponent<BossTeleport>(out BossTeleport BT))
+                {
+                    StartCoroutine(BT.BossStateChange());
                 }
 
 
-                Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
+                //Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
             }
             else if (P[i].tag == "Attack2")//敵の弾を爆弾で防ぐ際はこれを使用
             {
