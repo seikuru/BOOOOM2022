@@ -18,12 +18,13 @@ GameObject:
   - component: {fileID: 5414888684379505843}
   - component: {fileID: 1686695383862460140}
   - component: {fileID: 2698594068783851999}
+  - component: {fileID: 2302658381529545414}
   - component: {fileID: 8325885980756645978}
   - component: {fileID: 4294105291568438451}
   - component: {fileID: 401557847832135818}
   - component: {fileID: 6266408383169721680}
   m_Layer: 7
-  m_Name: Cube
+  m_Name: Boss
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d16b8b690bdc64ca41790d79dd3a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeakerPrehab: {fileID: 4883242128615403885, guid: 01052a1d2dd70f04aa6a0520f8ff4384,
+  SpeakerPrehab: {fileID: 3071352268874809501, guid: b9d74507855f8a548b01d563581720bc,
     type: 3}
   SpawnDistance: 3
   InstantiateValue: 6
@@ -126,7 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5290c5b0c549f3f448a9c998c7fbb2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   PillarPrehabSeed: {fileID: 7071231020316606031, guid: 5d2e0b19f1d069e49bbdce39e5de032e,
     type: 3}
   ShotAngle: -45
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064c63c52af3fd54ab044cfb4e28593e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   WavePrehab: {fileID: 1276640274538128876, guid: 748759182ef8b1b47b0e5ca804292548,
     type: 3}
   ActTimeCount: 0
@@ -183,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5599b7e4264274394e04d991a00c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   WallPrehabSeed: {fileID: 212955810481138592, guid: c928f34edc799c841bee76435d10c4bb,
     type: 3}
   Interpolation: 0.5
@@ -236,21 +234,30 @@ MonoBehaviour:
     AttackInterval: 3
   - AttackPattern: {fileID: 1686695383862460140}
     AttackInterval: 3
-  enemyAttackPattern:
-  - AttackPattern: {fileID: 6804056025975900912}
-    AttackInterval: 3
-  - AttackPattern: {fileID: 1686695383862460140}
-    AttackInterval: 3
-  - AttackPattern: {fileID: 7383511855144646429}
-    AttackInterval: 3
-  - AttackPattern: {fileID: 5414888684379505843}
-    AttackInterval: 3
-  - AttackPattern: {fileID: 8662501476004126075}
-    AttackInterval: 3
-  - AttackPattern: {fileID: 8177429287922896303}
-    AttackInterval: 3
   ChengeRangeDistance: 100
   willDestroy: 0
+--- !u!114 &2302658381529545414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139013036789186053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa09dca99ceec6647b32ac19ad241742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Teleport:
+  - TeleportPoint: {fileID: 0}
+    BombHitRequire: 3
+    TeleportDelay: 1
+  - TeleportPoint: {fileID: 0}
+    BombHitRequire: 2
+    TeleportDelay: 2
+  - TeleportPoint: {fileID: 0}
+    BombHitRequire: 1
+    TeleportDelay: 3
 --- !u!65 &8325885980756645978
 BoxCollider:
   m_ObjectHideFlags: 0
