@@ -98,12 +98,14 @@ public class WayPointMove : MonoBehaviour
         // 設定されたポイントに球を表示
         foreach(var p in wayPoints)
         {
+            if(p == null) continue;
             Gizmos.DrawSphere(p.transform.position, 1);
         }
 
         // 移動順にラインを表示
         for(int i = 0; i < wayPoints.Count - 1; i++)
         {
+            if (wayPoints[i] == null || wayPoints[i+1] == null) continue;
             Gizmos.DrawLine(wayPoints[i].transform.position, wayPoints[i+1].transform.position);
         }
     }
