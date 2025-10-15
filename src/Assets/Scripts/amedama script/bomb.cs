@@ -14,12 +14,13 @@ public class bomb : MonoBehaviour
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
     [SerializeField] bool FullautoEnable = false;
     [SerializeField] int BombShotInterval = 25;//爆弾を投げる間隔
+    [SerializeField] PlayerAnimation playerAnimation;
 
     Queue<Bombeffects> BombsQueue;
     Animator PlayerAnimator;
     Rigidbody PlayerRigidbody;
     int ShotInterval_Count = 0;
-
+    private bool PlayerHit = false;
 
 
     public void InstantiateUnder()
@@ -51,6 +52,9 @@ public class bomb : MonoBehaviour
         // Bomb_rb.linearVelocity += _Inertia;
 
         BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+        
+        // Animator にトリガーを送信
+        playerAnimation.onThrow();
     }
 
     public void InstantiateBomb(float percentage, Vector3 direction, Quaternion rotation)
@@ -83,11 +87,15 @@ public class bomb : MonoBehaviour
         Bomb_rb.velocity += _Inertia;
 
         BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
+
+        // Animator にトリガーを送信
+        playerAnimation.onThrow();
     }
 
     public void DestroyBombs()
     {
         float waitTime = 0f;
+        PlayerHit = false;
 
         foreach (Bombeffects bombs in BombsQueue)
         {
@@ -97,9 +105,21 @@ public class bomb : MonoBehaviour
             StartCoroutine(DestroyBombsRoutine(waitTime, bombs));
 
             waitTime += Time.fixedDeltaTime;
+
+            Debug.Log("getHit()" + bombs.getHit());
+            if (bombs.getHit())
+            {
+                Debug.Log("bomb hit");
+                PlayerHit = true;
+                bombs.setHit(false);
+            }
         }
 
         BombsQueue.Clear();
+        if(PlayerHit)
+        {
+            playerAnimation.BombHit();
+        }
     }
 
     private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
@@ -124,7 +144,6 @@ public class bomb : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         if (!InputFlag)
             return;
 
@@ -142,7 +161,8 @@ public class bomb : MonoBehaviour
                     , ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
             else if (Input.GetMouseButton(0) && ShotInterval_Count == 0)
             {
@@ -151,8 +171,8 @@ public class bomb : MonoBehaviour
                 Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
-
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
             else if (Input.GetMouseButton(1) && ShotInterval_Count == 0)
             {
@@ -161,8 +181,8 @@ public class bomb : MonoBehaviour
                 Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
-
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
 
             ShotInterval_Count++;
@@ -181,6 +201,8 @@ public class bomb : MonoBehaviour
 
     void Update()
     {
+        if (!InputFlag)
+            return;
 
         if (!FullautoEnable)//フルオートで無い時
         {
@@ -194,7 +216,8 @@ public class bomb : MonoBehaviour
                     , ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
 
             else if (Input.GetMouseButtonUp(0))
@@ -204,7 +227,8 @@ public class bomb : MonoBehaviour
                 Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
 
             else if (Input.GetMouseButtonUp(1))
@@ -214,7 +238,8 @@ public class bomb : MonoBehaviour
                 Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
-                PlayerAnimator.SetTrigger("OnThrow");
+                // PlayerAnimator.SetTrigger("OnThrow");
+                playerAnimation.onThrow();
             }
         }
 

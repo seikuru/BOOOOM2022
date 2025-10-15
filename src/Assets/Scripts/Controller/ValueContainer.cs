@@ -9,11 +9,12 @@ public class ValueContainer : MonoBehaviour
     public int button;
     public int t_rad;
 
-    private const float oneseg = 7.2375f;
+    private const float oneseg = 1.94343f;
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Debug.Log(get_rad() + ", " + get_button() + ", " + get_Trad());
+        Debug.Log(rot * oneseg);
     }
 
     /// <summary>

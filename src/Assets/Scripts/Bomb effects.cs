@@ -18,10 +18,12 @@ public class Bombeffects : MonoBehaviour
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
+    [SerializeField] PlayerAnimation playerAnimation;
     
-    Animator PlayerAnimation;
+    // Animator PlayerAnimation;
     EnemyCount EnemyCountText;
     bool GetPlayerAnimationFlag = false;
+    bool isHitPlayer = false;
 
     // public float _bombradius { get { return BombRadius; } set { BombRadius = value; } }
 
@@ -58,7 +60,6 @@ public class Bombeffects : MonoBehaviour
     public async void Bakuhatu()
     {
         float BombStrangeValue = BombStrange;
-        
 
         if (GetKillCount)
             BombStrangeValue += GetBombAddStrange();
@@ -138,13 +139,15 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "Player")
             {
-
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
                 {
+                    Debug.Log("try get component Animator");
                     animator.SetTrigger("BombHit");
-                    BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
-                    //PlayerAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
                 }
+                BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
+
+                // Debug.Log("set bombs hit true");
+                isHitPlayer = true;
             }
 
             PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
@@ -161,6 +164,17 @@ public class Bombeffects : MonoBehaviour
         if (BombOuter != null)
             BombOuter.SetActive(false);
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
+    }
+
+    public bool getHit()
+    {
+        // Debug.Log("bombs hit");
+        return isHitPlayer;
+    }
+
+    public void setHit(bool hit)
+    {
+        isHitPlayer = hit;
     }
 }
