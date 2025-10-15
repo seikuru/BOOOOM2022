@@ -61,7 +61,7 @@ public class WayPointMove : MonoBehaviour
         Debug.Log("trigger something");
         if (other.transform.tag != "Player") return;
         Debug.Log("trigger player");
-        if (goalPoint < wayPoints.Count - 2) // 当たったのがプレイヤーで動く先があるなら
+        if (goalPoint < wayPoints.Count - 1) // 当たったのがプレイヤーで動く先があるなら
         {
             goalPoint++;
             goalPosition = wayPoints[goalPoint].transform.position;
@@ -88,6 +88,23 @@ public class WayPointMove : MonoBehaviour
         foreach(Collider col in cols)
         {
             col.enabled = true;
+        }
+    }
+
+    // ギズモの表示
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        // 設定されたポイントに球を表示
+        foreach(var p in wayPoints)
+        {
+            Gizmos.DrawSphere(p.transform.position, 1);
+        }
+
+        // 移動順にラインを表示
+        for(int i = 0; i < wayPoints.Count - 1; i++)
+        {
+            Gizmos.DrawLine(wayPoints[i].transform.position, wayPoints[i+1].transform.position);
         }
     }
 }
