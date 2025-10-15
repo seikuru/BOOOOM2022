@@ -18,7 +18,6 @@ public class Bombeffects : MonoBehaviour
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
-    [SerializeField] PlayerAnimation playerAnimation;
     
     // Animator PlayerAnimation;
     EnemyCount EnemyCountText;
