@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2205502499917246584}
   - component: {fileID: 8630106071925469342}
   - component: {fileID: 5003685680114671419}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6845853709575911063
 Transform:
@@ -120,7 +120,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6609248533690026542
 Transform:
@@ -153,12 +153,12 @@ GameObject:
   - component: {fileID: 6167169643847790603}
   - component: {fileID: 8540758834723827697}
   - component: {fileID: 2561696942188174169}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7040407311428017775
 Transform:
@@ -259,12 +259,12 @@ GameObject:
   - component: {fileID: 4587905059929030973}
   - component: {fileID: 2968355048362684295}
   - component: {fileID: 7149408885514434738}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5956990478514546801
 Transform:
@@ -415,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: table
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b8df8bf2c06ae74f80b7ce9093a75b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

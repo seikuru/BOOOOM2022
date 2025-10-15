@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 4426385101356293489}
   - component: {fileID: 141822494031998994}
   - component: {fileID: 4736709486690723517}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7375293912985809616
 Transform:
@@ -117,12 +117,12 @@ GameObject:
   - component: {fileID: 3176849773061151078}
   - component: {fileID: 6947703392990274160}
   - component: {fileID: 8682817757486480127}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7425992427110053654
 Transform:
@@ -222,12 +222,12 @@ GameObject:
   - component: {fileID: 2287391981225600764}
   - component: {fileID: 1520512890228367227}
   - component: {fileID: 482872231576155920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2110464907075442445
 Transform:
@@ -327,12 +327,12 @@ GameObject:
   - component: {fileID: 2645125829443974845}
   - component: {fileID: 2989785806318180690}
   - component: {fileID: 2512429200842582515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &885511526945500947
 Transform:
@@ -434,7 +434,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4043263291703589152
 Transform:
@@ -469,12 +469,12 @@ GameObject:
   - component: {fileID: 5868672033031767697}
   - component: {fileID: 197327106992342214}
   - component: {fileID: 632765661873062594}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mesh
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1911806568302647765
 Transform:
@@ -645,6 +645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4607e71ba82e4f46a7fe2e3a8e8007a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
