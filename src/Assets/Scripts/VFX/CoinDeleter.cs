@@ -24,7 +24,10 @@ public class CoinDeleter : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             coinEffect.SendEvent("OnHit");
-            Destroy(this, delayDeleteTime);
+
+            CoinCounter.AddCount();
+
+            Destroy(gameObject, delayDeleteTime);
         }
     }
 }
