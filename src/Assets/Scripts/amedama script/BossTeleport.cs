@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 class TeleportClass
@@ -15,6 +16,7 @@ public class BossTeleport : MonoBehaviour
 {
 
     [SerializeField] TeleportClass[] Teleport;
+    [SerializeField] UnityEvent ClearEvent;
     int BombHitCount = 0;
     int BossState = 0;
 
@@ -35,7 +37,7 @@ public class BossTeleport : MonoBehaviour
 
         BombHitCount++;
 
-        if (BombHitCount >= Teleport[BossState].BombHitRequire)
+        if (BossState >= Teleport.Length - 1 || BombHitCount >= Teleport[BossState].BombHitRequire)
         {
             if (BossState < Teleport.Length - 1)
             {
@@ -66,6 +68,8 @@ public class BossTeleport : MonoBehaviour
                 {
                     EAP.willDestroy = true;
                 }
+
+                ClearEvent.Invoke();
             }
 
         }
