@@ -128,6 +128,10 @@ public class Bombeffects : MonoBehaviour
                 {
                     StartCoroutine(BT.BossStateChange());
                 }
+                if (P[i].TryGetComponent<Animator>(out Animator enemyAnimator))
+                {
+                    enemyAnimator.SetTrigger("OnDamage");
+                }
 
 
                 //Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
