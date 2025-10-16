@@ -10,7 +10,7 @@ class AttackPatternClass
 {
     public EnemyActBase AttackPattern;
     public float AttackInterval = 3f;
-
+    [Range(0, 2)]public int TeleportCount = 0;
 }
 
 [Serializable]
@@ -20,6 +20,9 @@ class ShortAttackPatternClass : AttackPatternClass
 }
 public class EnemyAttackPattern : MonoBehaviour
 {
+
+    [SerializeField] BossTeleport bossTeleport;
+
     [Header("行動パターン")]
     [SerializeField] ShortAttackPatternClass[] ShortRangeAttackPattern;
     [SerializeField] AttackPatternClass[] LongRangeAttackPattern;
@@ -31,6 +34,8 @@ public class EnemyAttackPattern : MonoBehaviour
     [SerializeField] float ChengeRangeDistance = 100f;
 
     [HideInInspector] public bool willDestroy = false;
+
+    
 
     int AttackNumber = 0;
     int AttackIntervalCount = 0;
@@ -49,6 +54,7 @@ public class EnemyAttackPattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //それぞれのスタート処理
         foreach (AttackPatternClass act in ShortRangeAttackPattern)
         {
@@ -129,15 +135,20 @@ public class EnemyAttackPattern : MonoBehaviour
     /// </summary>
     void NextAttackLongRange()
     {
-        //パターン進行
-        if (AttackNumber >= LongRangeAttackPattern.Length - 1)
+
+        do
         {
-            AttackNumber = 0;
-        }
-        else
-        {
-            AttackNumber++;
-        }
+            //パターン進行
+            if (AttackNumber >= LongRangeAttackPattern.Length - 1)
+            {
+                AttackNumber = 0;
+            }
+            else
+            {
+                AttackNumber++;
+            }
+
+        } while (bossTeleport.BossState >= LongRangeAttackPattern[AttackNumber].TeleportCount);
 
         //次回攻撃パターンの設定
         NextAttackClass = LongRangeAttackPattern[AttackNumber];

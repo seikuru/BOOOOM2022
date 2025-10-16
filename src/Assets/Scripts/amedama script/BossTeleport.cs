@@ -16,7 +16,7 @@ public class BossTeleport : MonoBehaviour
 
     [SerializeField] TeleportClass[] Teleport;
     int BombHitCount = 0;
-    int BossState = 0;
+    [HideInInspector]public int BossState = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -69,5 +69,7 @@ public class BossTeleport : MonoBehaviour
             }
 
         }
+
+        yield return null;
     }
 }
