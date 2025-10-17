@@ -10,6 +10,8 @@ public class PlayerRotateAction : MonoBehaviour
     [SerializeField] Transform PlayerBodyTransform; // プレイヤー本体のTransform（瞬間回転用）
     [SerializeField] Transform PlayerModelTransform; // プレイヤーモデルのTransform（補間回転用）
 
+    [SerializeField, Range(0f, 1f)] float LimitModelVertical = 0.9f;
+
     /// <summary>
     /// 回転補間用のデータ構造
     /// Slerpアニメーションの各フレームの情報を格納
@@ -62,6 +64,36 @@ public class PlayerRotateAction : MonoBehaviour
             quaternionSlape.Look = lookRotation; // 目標回転
             quaternionSlape.clamp = i / slapeFlame; // 補間率（0→1まで段階的に）
             slapesQueue.Enqueue(quaternionSlape); // キューに追加
+        }
+    }
+
+    /// <summary>
+    /// 爆発したベクトル方向にモデルを回転する
+    /// </summary>
+    /// <param name="explosionDir">爆発位置 → 自分の方向ベクトル</param>
+    public void RotateToExplosion(Vector3 explosionDir)
+    {
+        Vector3 dir = explosionDir.normalized;
+
+        // 一定以上の上下方向成分がある場合は回転をスキップ
+        // 具体例:90%以上が上下方向ならスキップ
+        if (Mathf.Abs(dir.y) > LimitModelVertical)
+        {
+            // 爆風がほぼ真上・真下から来ている → 回転をスキップ
+            return;
+        }
+
+        // 回転補間キューを初期化
+        slapesQueue = new Queue<QuaternionSlape>();
+
+        // 水平方向だけを考慮（Y軸の高さは無視）
+        dir.y = 0f;
+
+        // 向きを回転として適用
+        if (dir.sqrMagnitude > 0.001f)
+        {
+            Quaternion rot = Quaternion.LookRotation(dir);
+            PlayerModelTransform.rotation = rot;
         }
     }
 

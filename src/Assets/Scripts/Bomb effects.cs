@@ -142,6 +142,12 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "Player")
             {
+                if (P[i].TryGetComponent<PlayerRotateAction>(out PlayerRotateAction act))
+                {
+                    Debug.Log("try get component PlayerRotateAction");
+                    act.RotateToExplosion(P[i].transform.position - this.transform.position);
+                }
+
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
                 {
                     Debug.Log("try get component Animator");
