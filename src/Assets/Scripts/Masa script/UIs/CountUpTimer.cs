@@ -22,6 +22,12 @@ public class CountUpTimer : MonoBehaviour
     /// </summary>
     public void CountStop() => CountFlag = false;
 
+    /// <summary>
+    /// クリアタイム文字列を取得
+    /// </summary>
+    /// <returns>文字列</returns>
+    public string GetText() => text.text;
+
     void Start()
     {
         // 初期化処理

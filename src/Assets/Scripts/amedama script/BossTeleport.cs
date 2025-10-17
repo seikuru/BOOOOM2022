@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 class TeleportClass
@@ -15,6 +16,7 @@ public class BossTeleport : MonoBehaviour
 {
 
     [SerializeField] TeleportClass[] Teleport;
+    [SerializeField] UnityEvent ClearEvent;
     int BombHitCount = 0;
     [HideInInspector]public int BossState = 0;
 
@@ -73,6 +75,8 @@ public class BossTeleport : MonoBehaviour
                 {
                     EAP.willDestroy = true;
                 }
+
+                ClearEvent.Invoke();
             }
 
         }
