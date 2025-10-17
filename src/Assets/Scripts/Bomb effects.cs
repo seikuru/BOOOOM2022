@@ -144,7 +144,6 @@ public class Bombeffects : MonoBehaviour
             {
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
                 {
-                    Debug.Log("try get component Animator");
                     animator.SetTrigger("BombHit");
                 }
                 BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);

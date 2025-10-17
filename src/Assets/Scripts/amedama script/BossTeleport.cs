@@ -35,11 +35,11 @@ public class BossTeleport : MonoBehaviour
 
         BombHitCount++;
 
-        if (BombHitCount >= Teleport[BossState].BombHitRequire)
+        if (BossState >= Teleport.Length - 1 || BombHitCount >= Teleport[BossState].BombHitRequire)
         {
             if (BossState < Teleport.Length - 1)
             {
-                BombHitCount = 0;
+                
 
                 if (this.TryGetComponent<EnemyAttackPattern>(out EnemyAttackPattern EAP))
                 {
@@ -47,6 +47,10 @@ public class BossTeleport : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(1);
+
+                if (BombHitCount >= Teleport[BossState].BombHitRequire)
+                {
+                    BombHitCount = 0;
 
                 if (EAP != null)
                 {
@@ -57,8 +61,11 @@ public class BossTeleport : MonoBehaviour
                     RB.velocity = Vector3.zero;
                 }
 
-                BossState++;
-                this.transform.position = Teleport[BossState].TeleportPoint.transform.position;
+                
+                    BossState++;
+                    this.transform.position = Teleport[BossState].TeleportPoint.transform.position;
+                }
+                Debug.Log(BossState);
             }
             else
             {

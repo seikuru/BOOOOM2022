@@ -106,7 +106,7 @@ public class bomb : MonoBehaviour
 
             waitTime += Time.fixedDeltaTime;
 
-            Debug.Log("getHit()" + bombs.getHit());
+            //Debug.Log("getHit()" + bombs.getHit());
             if (bombs.getHit())
             {
                 Debug.Log("bomb hit");
