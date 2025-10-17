@@ -10,7 +10,16 @@ class AttackPatternClass
 {
     public EnemyActBase AttackPattern;
     public float AttackInterval = 3f;
+}
 
+[Serializable]
+class ArrayClass
+{
+    public ShortAttackPatternClass[] ShortRangeAttackPattern;
+    public AttackPatternClass[] LongRangeAttackPattern;
+    [Header("行動パターン切り替え距離")]
+
+    public float ChengeRangeDistance = 100f;
 }
 
 [Serializable]
@@ -20,17 +29,20 @@ class ShortAttackPatternClass : AttackPatternClass
 }
 public class EnemyAttackPattern : MonoBehaviour
 {
+
+    [SerializeField] BossTeleport bossTeleport;
+
     [Header("行動パターン")]
-    [SerializeField] ShortAttackPatternClass[] ShortRangeAttackPattern;
-    [SerializeField] AttackPatternClass[] LongRangeAttackPattern;
+
+    [SerializeField] ArrayClass[] AttackPatternArray;
 
     //[SerializeField] AttackPatternClass[] enemyAttackPattern;
 
-    [Header("行動パターン切り替え距離")]
-
-    [SerializeField] float ChengeRangeDistance = 100f;
+    
 
     [HideInInspector] public bool willDestroy = false;
+
+    
 
     int AttackNumber = 0;
     int AttackIntervalCount = 0;
@@ -49,18 +61,28 @@ public class EnemyAttackPattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //それぞれのスタート処理
-        foreach (AttackPatternClass act in ShortRangeAttackPattern)
+        foreach (ArrayClass act in AttackPatternArray)
         {
-            act.AttackPattern.Act_Start();
-        }
-        foreach (AttackPatternClass act in LongRangeAttackPattern)
-        {
-            act.AttackPattern.Act_Start();
+            foreach (AttackPatternClass act2 in act.ShortRangeAttackPattern)
+            {
+                if (act2.AttackPattern != null)
+                {
+                    act2.AttackPattern.Act_Start();
+                }
+            }
+            foreach (AttackPatternClass act3 in act.LongRangeAttackPattern)
+            {
+                if (act3.AttackPattern != null)
+                {
+                    act3.AttackPattern.Act_Start();
+                }
+            }
         }
 
         //初回攻撃は遠距離攻撃にしておく
-        NextAttackClass = LongRangeAttackPattern[0];
+        NextAttackClass = AttackPatternArray[0].LongRangeAttackPattern[0];
 
         //遠距離攻撃の最初のインターバルを設定
         AttackIntervalCount = GetInterval(NextAttackClass);
@@ -77,13 +99,15 @@ public class EnemyAttackPattern : MonoBehaviour
         if (AttackIntervalCount < 0)
         {
             // 行動実行
-            NextAttackClass.AttackPattern.Act_FixedUpdate();
-
+            if (NextAttackClass.AttackPattern != null)
+            {
+                NextAttackClass.AttackPattern.Act_FixedUpdate();
+            }
             // プレイヤーとの距離取得
             float PlayerDistance = Vector3.Distance(Player.GetTransformPlayer.position, transform.position);
 
             // 近距離か遠距離かを判定
-            bool IsShortRange = ChengeRangeDistance > PlayerDistance;
+            bool IsShortRange = AttackPatternArray[bossTeleport.BossState].ChengeRangeDistance > PlayerDistance;
 
             // 扱う行動パターンを取得
             //var CurrentPattern = IsShortRange ? ShortRangeAttackPattern : LongRangeAttackPattern;
@@ -106,19 +130,19 @@ public class EnemyAttackPattern : MonoBehaviour
     void NextAttackShortRange(float distance)
     {
         // 距離に応じてパターン変更
-        for(int i = 0; i < ShortRangeAttackPattern.Length; i++)
+        for(int i = 0; i < AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern.Length; i++)
         {
             AttackNumber = i;
 
             // 現在の距離が目標距離よりも小さければループから出る
-            if (distance < ShortRangeAttackPattern[i].AttackDistance)
+            if (distance < AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern[i].AttackDistance)
             {
                 break;
             }
         }
 
         //次回攻撃パターンの設定
-        NextAttackClass = ShortRangeAttackPattern[AttackNumber];
+        NextAttackClass = AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern[AttackNumber];
 
         //攻撃のインターバルを設定
         AttackIntervalCount = GetInterval(NextAttackClass);
@@ -129,18 +153,21 @@ public class EnemyAttackPattern : MonoBehaviour
     /// </summary>
     void NextAttackLongRange()
     {
-        //パターン進行
-        if (AttackNumber >= LongRangeAttackPattern.Length - 1)
-        {
-            AttackNumber = 0;
-        }
-        else
-        {
-            AttackNumber++;
-        }
+
+
+            //パターン進行
+            if (AttackNumber >= AttackPatternArray[bossTeleport.BossState].LongRangeAttackPattern.Length - 1)
+            {
+                AttackNumber = 0;
+            }
+            else
+            {
+                AttackNumber++;
+            }
+
 
         //次回攻撃パターンの設定
-        NextAttackClass = LongRangeAttackPattern[AttackNumber];
+        NextAttackClass = AttackPatternArray[bossTeleport.BossState].LongRangeAttackPattern[AttackNumber];
 
         //攻撃のインターバルを設定
         AttackIntervalCount = GetInterval(NextAttackClass);
@@ -150,6 +177,6 @@ public class EnemyAttackPattern : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red; // ギズモの色を赤に設定
-        Gizmos.DrawWireSphere(transform.position, ChengeRangeDistance); // 球体を描画
+        Gizmos.DrawWireSphere(transform.position, AttackPatternArray[bossTeleport.BossState].ChengeRangeDistance); // 球体を描画
     }
 }
