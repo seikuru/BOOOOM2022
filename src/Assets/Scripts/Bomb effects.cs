@@ -109,6 +109,8 @@ public class Bombeffects : MonoBehaviour
             else if (P[i].tag == "enemy")
             {
 
+                ComboCounter.AddCombo();
+
                 PlayerRigidbodies[i].isKinematic = false;
                 if (P[i].TryGetComponent<EnemiesAttack>(out EnemiesAttack EA))
                 {
