@@ -90,6 +90,8 @@ public class Bombeffects : MonoBehaviour
             //Debug.Log("Obstacle" + P[i].tag);
             if (P[i].tag == "Obstacle")
             {
+                ComboCounter.AddCombo();
+
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(transform.position, BombStrangeValue);
