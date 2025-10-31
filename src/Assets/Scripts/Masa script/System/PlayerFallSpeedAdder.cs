@@ -43,8 +43,8 @@ public class PlayerFallSpeedAdder : MonoBehaviour
             TimeCounter += Time.deltaTime * AddFallValue;
 
             // デバッグ出力
-            if (PrintDebug) 
-                Debug.Log("Fall"); 
+            if (PrintDebug) ;
+                 
         }
         else // 上昇または速度維持の場合
         {
@@ -53,9 +53,9 @@ public class PlayerFallSpeedAdder : MonoBehaviour
 
         // 追加重力の計算（最大値で制限）
         float AddAcceleration = Mathf.Min(MaxAddFallSpeed, TimeCounter);
-
+        Debug.Log(AddAcceleration);
         // 基本重力 + 追加重力を下向きに適用
-        PlayerRB.AddForce(Vector3.down * (BaseGrabityAcceleration + AddAcceleration), ForceMode.Acceleration);
+        PlayerRB.AddForce(Vector3.down * (BaseGrabityAcceleration + AddAcceleration * AddAcceleration * AddAcceleration ), ForceMode.Acceleration);
 
         // 次フレーム用に現在の速度を保存
         BeforeVerocity = PlayerRB.velocity;

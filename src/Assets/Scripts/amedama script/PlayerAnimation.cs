@@ -18,7 +18,6 @@ public class PlayerAnimation : MonoBehaviour
         
         // ã‰º‚Ì“®‚«
         var VecY = playerRigidbody.velocity.y;
-        Debug.Log(VecY);
         if (Mathf.Abs(VecY) < 0.1f) VecY = 0;
         PlayerAnimator.SetFloat("VectorY", VecY);
 
