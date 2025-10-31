@@ -37,7 +37,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
             return; 
 
         // 落下判定（現在の垂直速度が前フレームより小さい場合）
-        if (PlayerRB.linearVelocity.y < BeforeVerocity.y)
+        if (PlayerRB.velocity.y < BeforeVerocity.y)
         {
             // 落下時間カウンターを増加（時間×倍率）
             TimeCounter += Time.deltaTime * AddFallValue;
@@ -58,6 +58,6 @@ public class PlayerFallSpeedAdder : MonoBehaviour
         PlayerRB.AddForce(Vector3.down * (BaseGrabityAcceleration + AddAcceleration), ForceMode.Acceleration);
 
         // 次フレーム用に現在の速度を保存
-        BeforeVerocity = PlayerRB.linearVelocity;
+        BeforeVerocity = PlayerRB.velocity;
     }
 }

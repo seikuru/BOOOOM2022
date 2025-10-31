@@ -24,7 +24,9 @@ public class UITableInput : OperationsInput
 
     [SerializeField] bool SenterTapFlag = true; // 中心タップでの下方向投擲有効フラグ
 
-    [SerializeField] Transform PlayerBodyTransform; // プレイヤー本体のTransform
+    [SerializeField] Transform FollowPointTransform; //カメラ制御用Transform
+
+        //PlayerBodyTransform; // プレイヤー本体のTransform
 
     protected float MouseUpangle = 0; // マウスアップ時点の角度（回転基準値）
 
@@ -112,7 +114,7 @@ public class UITableInput : OperationsInput
     void StartUIRotate()
     {
         // プレイヤーのY軸角度を取得
-        float yAngle = PlayerBodyTransform.localEulerAngles.y; 
+        float yAngle = FollowPointTransform.localEulerAngles.y; 
 
         // 負の角度を正の角度に変換
         if (yAngle < 0)
@@ -199,7 +201,7 @@ public class UITableInput : OperationsInput
         Vector3 localDirection = new Vector3(uiDirection.x, 0f, uiDirection.y);
 
         // プレイヤーのY軸方向を考慮した回転（ローカル → ワールド）
-        Vector3 worldDirection = transform.rotation * localDirection;
+        Vector3 worldDirection = FollowPointTransform.rotation * localDirection;
 
         // powerRange が小さいほど Y軸方向の影響を減らす
         // Y軸方向とは、プレイヤーの上下方向の影響を抑えるために、worldDirection を水平に近づける

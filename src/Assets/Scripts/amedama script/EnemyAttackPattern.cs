@@ -1,0 +1,182 @@
+using System;
+using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+class AttackPatternClass
+{
+    public EnemyActBase AttackPattern;
+    public float AttackInterval = 3f;
+}
+
+[Serializable]
+class ArrayClass
+{
+    public ShortAttackPatternClass[] ShortRangeAttackPattern;
+    public AttackPatternClass[] LongRangeAttackPattern;
+    [Header("行動パターン切り替え距離")]
+
+    public float ChengeRangeDistance = 100f;
+}
+
+[Serializable]
+class ShortAttackPatternClass : AttackPatternClass
+{
+    public float AttackDistance = 100f;
+}
+public class EnemyAttackPattern : MonoBehaviour
+{
+
+    [SerializeField] BossTeleport bossTeleport;
+
+    [Header("行動パターン")]
+
+    [SerializeField] ArrayClass[] AttackPatternArray;
+
+    //[SerializeField] AttackPatternClass[] enemyAttackPattern;
+
+    
+
+    [HideInInspector] public bool willDestroy = false;
+
+    
+
+    int AttackNumber = 0;
+    int AttackIntervalCount = 0;
+    AttackPatternClass NextAttackClass;
+
+    /// <summary>
+    /// AttackPatternClassからAttackIntervalを取得する
+    /// </summary>
+    /// <param name="AttackPattern">攻撃パターン</param>
+    /// <returns>インターバル</returns>
+    int GetInterval(AttackPatternClass Pattern)
+    {
+        return (int)(Pattern.AttackInterval / Time.fixedDeltaTime);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        //それぞれのスタート処理
+        foreach (ArrayClass act in AttackPatternArray)
+        {
+            foreach (AttackPatternClass act2 in act.ShortRangeAttackPattern)
+            {
+                if (act2.AttackPattern != null)
+                {
+                    act2.AttackPattern.Act_Start();
+                }
+            }
+            foreach (AttackPatternClass act3 in act.LongRangeAttackPattern)
+            {
+                if (act3.AttackPattern != null)
+                {
+                    act3.AttackPattern.Act_Start();
+                }
+            }
+        }
+
+        //初回攻撃は遠距離攻撃にしておく
+        if (AttackPatternArray[0].LongRangeAttackPattern != null)
+        {
+            NextAttackClass = AttackPatternArray[0].LongRangeAttackPattern[0];
+        }
+
+        //遠距離攻撃の最初のインターバルを設定
+        AttackIntervalCount = NextAttackClass == null ? 0 : GetInterval(NextAttackClass);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (!willDestroy)
+        {
+            AttackIntervalCount--;
+        }
+
+        if (AttackIntervalCount < 0)
+        {
+            // 行動実行
+            if (NextAttackClass.AttackPattern != null)
+            {
+                NextAttackClass.AttackPattern.Act_FixedUpdate();
+            }
+            // プレイヤーとの距離取得
+            float PlayerDistance = Vector3.Distance(Player.GetTransformPlayer.position, transform.position);
+
+            // 近距離か遠距離かを判定
+            bool IsShortRange = AttackPatternArray[bossTeleport.BossState].ChengeRangeDistance > PlayerDistance;
+
+            // 扱う行動パターンを取得
+            //var CurrentPattern = IsShortRange ? ShortRangeAttackPattern : LongRangeAttackPattern;
+
+            //パターン進行
+            if (IsShortRange)
+            {
+                NextAttackShortRange(PlayerDistance);
+            }
+            else
+            {
+                NextAttackLongRange();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 近距離でのパターンを進行
+    /// </summary>
+    void NextAttackShortRange(float distance)
+    {
+        // 距離に応じてパターン変更
+        for(int i = 0; i < AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern.Length; i++)
+        {
+            AttackNumber = i;
+
+            // 現在の距離が目標距離よりも小さければループから出る
+            if (distance < AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern[i].AttackDistance)
+            {
+                break;
+            }
+        }
+
+        //次回攻撃パターンの設定
+        NextAttackClass = AttackPatternArray[bossTeleport.BossState].ShortRangeAttackPattern[AttackNumber];
+
+        //攻撃のインターバルを設定
+        AttackIntervalCount = GetInterval(NextAttackClass);
+    }
+
+    /// <summary>
+    /// 遠距離でのパターンを進行
+    /// </summary>
+    void NextAttackLongRange()
+    {
+
+
+            //パターン進行
+            if (AttackNumber >= AttackPatternArray[bossTeleport.BossState].LongRangeAttackPattern.Length - 1)
+            {
+                AttackNumber = 0;
+            }
+            else
+            {
+                AttackNumber++;
+            }
+
+
+        //次回攻撃パターンの設定
+        NextAttackClass = AttackPatternArray[bossTeleport.BossState].LongRangeAttackPattern[AttackNumber];
+
+        //攻撃のインターバルを設定
+        AttackIntervalCount = GetInterval(NextAttackClass);
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // ギズモの色を赤に設定
+        Gizmos.DrawWireSphere(transform.position, AttackPatternArray[bossTeleport.BossState].ChengeRangeDistance); // 球体を描画
+    }
+}

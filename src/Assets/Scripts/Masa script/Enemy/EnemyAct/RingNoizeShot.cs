@@ -2,13 +2,11 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class RingNoizeShot : EnemyActBace
+public class RingNoizeShot : EnemyActBase
 {
-    [SerializeField] Transform target;
-
     [SerializeField] GameObject WavePrehab;
 
-    [SerializeField] float ActTimeCount = 10f;
+    [SerializeField] float ActTimeCount = 0f;
 
     [SerializeField] float NoizeSpeed = 3f;
 
@@ -17,6 +15,9 @@ public class RingNoizeShot : EnemyActBace
     static readonly float AllForwardAngle = 360f;
 
     static readonly float AngleSplit = 10f;
+
+    Transform target => Player.GetTransformPlayer;
+
     float ActCount;
 
     public override void Act_Start()
@@ -54,7 +55,7 @@ public class RingNoizeShot : EnemyActBace
                 Vector3 rotatedDir = rotation * dirTarget.normalized;
 
                 // 発射方向を代入
-                RB.linearVelocity = rotatedDir * NoizeSpeed;
+                RB.velocity = rotatedDir * NoizeSpeed;
 
                 // 弾を発射方向に回転させる
                 if (rotatedDir != Vector3.zero)

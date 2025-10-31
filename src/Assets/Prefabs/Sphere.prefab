@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 360986648033660454}
   - component: {fileID: 8529852219820945690}
   - component: {fileID: 3328892927492549462}
-  - component: {fileID: 771941831845421543}
   - component: {fileID: -7422967389172039610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -63,9 +62,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -153,39 +149,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 3456
+    m_Bits: 9160
   DestroyEnemyTimer: 3
   BombStrange: 30
   BombRadius: 20
-  particle: {fileID: 6609037613087421534, guid: 400cab16d88564548ae818b5d864fe53, type: 3}
+  bombCollider: {fileID: 0}
+  VEffect: {fileID: 0}
+  BombOuter: {fileID: 0}
+  BombRB: {fileID: 0}
   GetKillCount: 0
---- !u!114 &771941831845421543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475757326369631188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1300bbb27eac8d8478fbb01d0d321d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDestroyed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3328892927492549462}
-        m_TargetAssemblyTypeName: Bombeffects, Assembly-CSharp
-        m_MethodName: Bakuhatu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  BombAudioSource: {fileID: 8021611194544413830, guid: 069f5e639eefae14cb739a094c9ff15f,
+    type: 3}
+  AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
 --- !u!114 &-7422967389172039610
 MonoBehaviour:
   m_ObjectHideFlags: 0

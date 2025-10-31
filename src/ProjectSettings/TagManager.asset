@@ -3,25 +3,32 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bomb
+  - Noize
+  - Obstacle
+  - enemy
+  - Terrain
+  - Floor
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Bomb
+  - Enemy
+  - Noize_Trigger
+  - Noize_Collision
+  - Wall
+  - Floor
   - 
+  - NoizePerforate
+  - Terrain
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Coin
   - 
   - 
   - 
@@ -40,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WayPoint
+    uniqueID: 3194649777
     locked: 0
