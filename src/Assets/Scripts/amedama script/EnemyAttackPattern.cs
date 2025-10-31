@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -82,10 +79,13 @@ public class EnemyAttackPattern : MonoBehaviour
         }
 
         //‰‰ñUŒ‚‚Í‰“‹——£UŒ‚‚É‚µ‚Ä‚¨‚­
-        NextAttackClass = AttackPatternArray[0].LongRangeAttackPattern[0];
+        if (AttackPatternArray[0].LongRangeAttackPattern != null)
+        {
+            NextAttackClass = AttackPatternArray[0].LongRangeAttackPattern[0];
+        }
 
         //‰“‹——£UŒ‚‚ÌÅ‰‚ÌƒCƒ“ƒ^[ƒoƒ‹‚ğİ’è
-        AttackIntervalCount = GetInterval(NextAttackClass);
+        AttackIntervalCount = NextAttackClass == null ? 0 : GetInterval(NextAttackClass);
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ using UnityEngine;
 public class bomb : MonoBehaviour
 {
     [SerializeField] GameObject Bomb;
+    [SerializeField] GameObject Bomb2;
     [SerializeField] GameObject ThrowBombSpawnPosition;//前に投げる際に参照する位置
     [SerializeField] GameObject JumpBombSpawnPosition;//下に投げる際に参照する位置
     [SerializeField] GameObject BrinkBombSpawnPosition;//後ろに投げる際に参照する位置
@@ -29,7 +30,7 @@ public class bomb : MonoBehaviour
         Vector3 spawnPos = this.transform.position + (Vector3.down * spawnDistance);
 
         // 爆弾を生成
-        GameObject Spawned_Bomb = Instantiate(Bomb, spawnPos, Quaternion.identity);
+        GameObject Spawned_Bomb = Instantiate(Bomb2, spawnPos, Quaternion.identity);
 
         // Rigidbodyを取得
         Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Rigidbody>();
@@ -124,6 +125,8 @@ public class bomb : MonoBehaviour
 
     private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
     {
+        ComboCounter.ResetCombo();
+
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
 

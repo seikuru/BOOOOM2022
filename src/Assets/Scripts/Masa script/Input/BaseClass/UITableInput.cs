@@ -107,6 +107,16 @@ public class UITableInput : OperationsInput
         return TableDistansePow(input, OutSideTableRect.position) < TableRectRangePow(OutSideRange);
     }
 
+    /// <summary>
+    /// 入力位置が内側テーブルの有効範囲内かを判定
+    /// </summary>
+    /// <param name="input">入力位置</param>
+    /// <returns>範囲内の場合true</returns>
+    protected bool IsInInnerTableRect(Vector3 input)
+    {
+        return TableDistansePow(input, InSideTableRect.position) < TableRectRangePow(InSideRange);
+    }
+
     // <summary>
     /// UIテーブルの初期回転を設定
     /// プレイヤーの現在の回転に合わせてテーブルを初期化
@@ -164,13 +174,14 @@ public class UITableInput : OperationsInput
     /// 距離で力を決定し、方向で投擲方向を決定
     /// </summary>
     /// <param name="TouchDownPos">タッチ位置</param>
-    protected void ShotTable(Vector3 TouchDownPos)
+    /// <param name="overTouch">内側から外れても投擲するか</param>
+    protected void ShotTable(Vector3 TouchDownPos, bool overTouch = false)
     {
         // 入力位置と中心位置の距離の2乗
         float distansPow = TableDistansePow(TouchDownPos, InSideTableRect.position);
 
         // 範囲外除外
-        if (distansPow > TableRectRangePow(InSideRange))
+        if (!overTouch && distansPow > TableRectRangePow(InSideRange))
             return;
 
         // 入力位置と中心位置の距離

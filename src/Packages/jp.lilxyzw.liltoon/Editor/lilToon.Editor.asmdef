@@ -1,8 +1,17 @@
 {
     "name": "lilToon.Editor",
+    "rootNamespace": "",
+    "references": [],
     "includePlatforms": [
+        "Android",
         "Editor"
     ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
     "versionDefines": [
         {
             "name": "com.vrchat.avatars",
@@ -24,5 +33,6 @@
             "expression": "1.4",
             "define": "LILTOON_LTCGI"
         }
-    ]
+    ],
+    "noEngineReferences": false
 }
