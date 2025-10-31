@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5067167621653919192}
   - component: {fileID: 6993103614394412173}
   m_Layer: 6
-  m_Name: Bomb_Model
+  m_Name: Bomb_ModelUNder
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 140232
   DestroyEnemyTimer: 3
-  BombStrange: 35
+  BombStrange: 20
   BombRadius: 10
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}

@@ -90,6 +90,8 @@ public class Bombeffects : MonoBehaviour
             //Debug.Log("Obstacle" + P[i].tag);
             if (P[i].tag == "Obstacle")
             {
+                ComboCounter.AddCombo();
+
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(transform.position, BombStrangeValue);
@@ -108,6 +110,8 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "enemy")
             {
+
+                ComboCounter.AddCombo();
 
                 PlayerRigidbodies[i].isKinematic = false;
                 if (P[i].TryGetComponent<EnemiesAttack>(out EnemiesAttack EA))

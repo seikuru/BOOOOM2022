@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.39, z: -10}
+  m_FollowOffset: {x: 0, y: 1.36, z: -4}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1738,8 +1738,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257293533}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1170308, y: 0.000000018147567, z: -0.0000000021385194, w: 0.9931283}
-  m_LocalPosition: {x: 692.1, y: 3.39, z: 393.3}
+  m_LocalRotation: {x: 0.16313685, y: -0.000000008489188, z: 0.0000000014037042, w: 0.9866035}
+  m_LocalPosition: {x: 692.1, y: 2.3600001, z: 399.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8322,8 +8322,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1170308, y: 0.000000018147567, z: -0.0000000021385194, w: 0.9931283}
-  m_LocalPosition: {x: 692.1, y: 3.39, z: 393.3}
+  m_LocalRotation: {x: 0.16313685, y: -0.000000008489188, z: 0.0000000014037042, w: 0.9866035}
+  m_LocalPosition: {x: 692.1, y: 2.3600001, z: 399.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13223,6 +13223,22 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
+      propertyPath: Bomb2
+      value: 
+      objectReference: {fileID: 3672593736015811124, guid: 283bc40633189af4686430534f88f280,
+        type: 3}
+    - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: InputFlag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: FullautoEnable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
       propertyPath: playerAnimation
       value: 
       objectReference: {fileID: 2079553156}
@@ -13571,6 +13587,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputTurnTable
       objectReference: {fileID: 0}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: BombClass
+      value: 
+      objectReference: {fileID: 2079553132}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: rotateAction
+      value: 
+      objectReference: {fileID: 2079553130}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: TraceDistance
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: FollowPointTransform
+      value: 
+      objectReference: {fileID: 2079553131}
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: BombClass
@@ -13579,7 +13620,7 @@ PrefabInstance:
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
