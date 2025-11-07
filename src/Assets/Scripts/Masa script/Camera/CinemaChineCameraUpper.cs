@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class CinemaChineCameraUpper : MonoBehaviour
 {
-    [SerializeField] float CheckDistanceValue = 3f;
+    [SerializeField] float CheckDistanceY = 0.1f;
 
-    [SerializeField] float UpperAimComposerScreenY = 0.85f;
-    [SerializeField] float DefaltAimComposerScreenY = 0.5f;
+    [SerializeField] float FallYDumping = 1f;
+    [SerializeField] float DefaltYDumping = 0.2f;
 
     [SerializeField] float MaxLimitAngle = 30f;
 
@@ -19,17 +19,20 @@ public class CinemaChineCameraUpper : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera VirtualCamera;
 
+     CinemachineOrbitalTransposer orbital;
     CinemachineComposer composer;
     CinemachineTransposer transposer;
 
     Vector3 BeforePos;
+    Vector3 BeforePosFixed;
 
     void Start()
     {
-        composer = VirtualCamera.GetCinemachineComponent<CinemachineComposer>();
+        orbital = VirtualCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         transposer = VirtualCamera.GetCinemachineComponent<CinemachineTransposer>();
 
         BeforePos = Player.GetTransformPlayer.position;
+        BeforePosFixed = Player.GetTransformPlayer.position;
     }
 
     float GetAngle(Vector3 a, Vector3 b, Vector3 c)
@@ -42,45 +45,56 @@ public class CinemaChineCameraUpper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (composer != null)
+        if (orbital != null)
         {
-            float distance = Vector3.Distance(Player.GetTransformPlayer.position, VirtualCamera.transform.position);
-            //Debug.Log(distance);
-            if (distance > CheckDistanceValue)
-            {
-                //composer.m_ScreenY = DefaltAimComposerScreenY;
-            }
+            float distance_y = BeforePosFixed.y - Player.GetTransformPlayer.position.y;
 
-            //else
-                //composer.m_ScreenY = UpperAimComposerScreenY;
+            Debug.Log(distance_y);
+
+            if (distance_y > CheckDistanceY)
+                orbital.m_YDamping = FallYDumping;
+            else
+                orbital.m_YDamping = DefaltYDumping;
         }
+
+        BeforePosFixed = Player.GetTransformPlayer.position;
+    }
+    private void Update()
+    {      
         if(transposer != null)
         {
             float distance = Vector3.Distance(Player.GetTransformPlayer.position, BeforePos);
+            
+            float bonus = transposer.m_FollowOffset.z;
 
-            // 距離に応じたボーナス計算
-            float bonus = DefaltFollowOffset_Z;
-            if (MaxLimitAngle > GetAngle(Player.GetTransformPlayer.position,BeforePos, transform.position))
+            // 距離に応じた加算部分計算
+            if (MaxLimitAngle < GetAngle(Player.GetTransformPlayer.position,BeforePos, transform.position))
             {
                 if (distance <= nearDistance)
                 {
-                    bonus = maxBonusOffset_Z; // 3以下なら最大
+                    bonus += Time.deltaTime * -1f;
                 }
-                else if (distance < farDistance)
+                if (distance < farDistance)
                 {
+
+                    bonus += Time.deltaTime * -1f;
+                    /*
                     // 3～5の範囲で線形に減少（5で0）
                     float t = Mathf.InverseLerp(farDistance, nearDistance, distance);
                     bonus = Mathf.Lerp(DefaltFollowOffset_Z, maxBonusOffset_Z - DefaltFollowOffset_Z, t);
+                    */
                 }
             }
-          
+            else
+                bonus += Time.deltaTime * 1f;
+
             transposer.m_FollowOffset = new()
             {
                 x = transposer.m_FollowOffset.x,
                 y = transposer.m_FollowOffset.y,
-                z = bonus
+                z = Mathf.Clamp(bonus , maxBonusOffset_Z ,DefaltFollowOffset_Z)
             };
         }
 
