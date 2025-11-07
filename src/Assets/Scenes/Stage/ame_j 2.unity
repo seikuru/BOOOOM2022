@@ -15390,6 +15390,21 @@ MonoBehaviour:
   BaseComboValue: 150
   AddComboValue: 50
   NoCoronText: 0
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1972494586}
+        m_TargetAssemblyTypeName: GameClearSetiingTest, Assembly-CSharp
+        m_MethodName: GameClear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1674791240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19197,7 +19212,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Bomb
       value: 
-      objectReference: {fileID: 3672593736015811124, guid: fd11e9b19917e77419fff8ef1bf0e27f,
+      objectReference: {fileID: 3672593736015811124, guid: 05c3f7b033a51d24eb1ecf500d2291d8,
+        type: 3}
+    - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: Bomb2
+      value: 
+      objectReference: {fileID: 3672593736015811124, guid: 283bc40633189af4686430534f88f280,
         type: 3}
     - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
@@ -19207,7 +19228,7 @@ PrefabInstance:
     - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
       propertyPath: FullautoEnable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4393592498401854528, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
@@ -19878,6 +19899,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputTurnTable
       objectReference: {fileID: 0}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: BombClass
+      value: 
+      objectReference: {fileID: 2079553132}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: rotateAction
+      value: 
+      objectReference: {fileID: 2079553130}
+    - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
+        type: 3}
+      propertyPath: FollowPointTransform
+      value: 
+      objectReference: {fileID: 2079553131}
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: BombClass
@@ -19886,7 +19922,7 @@ PrefabInstance:
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517762818485769081, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
