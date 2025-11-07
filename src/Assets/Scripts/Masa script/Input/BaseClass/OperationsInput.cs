@@ -55,4 +55,6 @@ public class OperationsInput : MonoBehaviour
 
         BombClass.InstantiateBomb(percentage, direction, lookDirection); // 爆弾を生成・投擲
     }
+
+    protected void BombsDestroy() => BombClass.DestroyBombs();
 }
