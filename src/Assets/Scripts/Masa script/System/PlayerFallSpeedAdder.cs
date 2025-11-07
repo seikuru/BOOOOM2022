@@ -83,6 +83,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
                     BombHitSwitch = false;
                     BombHitCounter = 0;
                     TimeCounter = 0;
+                    //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.1f, PlayerRB.velocity.y, PlayerRB.velocity.z * 0.1f);
                 }
                 else 
                 {
@@ -91,10 +92,11 @@ public class PlayerFallSpeedAdder : MonoBehaviour
                 float AddAcceleration = TimeCounter ;
 
                 //下向きのベクトルを値で入力（最小値で制限）
-                PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
+                PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
+                  //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
 
-                // 落下時間カウンターを増加（時間×倍率）
-                TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
+                    // 落下時間カウンターを増加（時間×倍率）
+                    TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
 
                 }
             }
