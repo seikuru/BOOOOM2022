@@ -7,14 +7,28 @@ public class ValueContainer : MonoBehaviour
     // コントローラーから受け取るデータ
     public int rot;
     public int button;
-    public int t_rad;
+    public int center;
+    public List<int> t_rad;
+    private List<int> old_rad;
+    private int list_num = 2;
 
     private const float oneseg = 1.94343f;
+
+    private void Start()
+    {
+        t_rad = new List<int>();
+        old_rad = new List<int>();
+        for(int i = 0; i < list_num; i++)
+        {
+            t_rad.Add(-999);
+            old_rad.Add(-999);
+        }
+    }
 
     private void FixedUpdate()
     {
         // Debug.Log(get_rad() + ", " + get_button() + ", " + get_Trad());
-        Debug.Log(rot * oneseg);
+        // Debug.Log(rot * oneseg);
     }
 
     /// <summary>
@@ -49,7 +63,16 @@ public class ValueContainer : MonoBehaviour
     /// </summary>
     /// <returns>タッチした時の角度</returns>
     public int get_Trad() 
-    { 
-        return t_rad; 
+    {
+        int ret;
+        if (t_rad[0] == old_rad[0])
+        {
+            ret = -999;
+        } else
+        {
+            ret = t_rad[0];
+        }
+        old_rad = new(t_rad);
+        return ret;
     }
 }

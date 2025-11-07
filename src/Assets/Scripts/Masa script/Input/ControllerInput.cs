@@ -9,18 +9,22 @@ public class ControllerInput : ControllerTableInput
     [SerializeField] ValueContainer valueContainer; // コントローラのパラメータ取得クラス
 
     static readonly int NoTorchValue = -999;
+
+    float angle = 0;
+
     /// <summary>
     /// タッチ入力処理のメイン関数
     /// 基底クラスのInputOperateをオーバーライドしてマルチタッチ処理を実装
     /// </summary>
     protected override void InputOperate()
     {
-        // テーブル回転処理
-        float angle = valueContainer.get_rad();
+        // アングルを加算
+        angle -= valueContainer.get_rad();
 
         // radリセット処理
         valueContainer.reset_rad();
 
+        // テーブル回転処理
         RotateTable(angle);
 
         // 爆弾を投擲する処理
