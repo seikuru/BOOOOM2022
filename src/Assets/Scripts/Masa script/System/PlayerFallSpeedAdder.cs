@@ -17,6 +17,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
     /// ある特定の条件を満たしたら下方向に急加速する処理を追加実装
 
     [SerializeField] float FallSpeed = 1.0f;
+    [SerializeField] float FallJudgeTime = 3.0f;
     float FallJudgeValue = 1.0f;//落下していると判定する下向きのベクトルの強さの値
 
 
@@ -87,17 +88,22 @@ public class PlayerFallSpeedAdder : MonoBehaviour
                 }
                 else
                 {
+                    if (PlayerRB.velocity.y < 0) 
+                    {
+                        if(TimeCounter > FallJudgeTime)
+                        {
+                            // 追加重力の計算
+                            float AddAcceleration = TimeCounter;
 
-                    // 追加重力の計算
-                    float AddAcceleration = TimeCounter;
+                            //下向きのベクトルを値で入力（最小値で制限）
+                            PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
+                            //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
 
-                    //下向きのベクトルを値で入力（最小値で制限）
-                    PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
-                    //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
+                            // 落下時間カウンターを増加（時間×倍率）
+                            TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
 
-                    // 落下時間カウンターを増加（時間×倍率）
-                    TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
-
+                        }
+                    }            
                 }
             }
         }

@@ -1242,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108644156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: -0.000000017054674, z: 0.0000000022798152, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9190,8 +9190,9 @@ MonoBehaviour:
   MaxAddFallSpeed: 2.5
   BaseGravityAcceleration: 9.8
   AddFallValue: 1
-  PrintDebug: 1
+  PrintDebug: 0
   FallSpeed: 65
+  FallJudgeTime: 3
   SecondsUntilFall: 2
 --- !u!1001 &1330677809
 PrefabInstance:
@@ -13428,7 +13429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930925408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: -0.000000017054674, z: 0.0000000022798152, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
