@@ -1242,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108644156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17842482, y: 0.000000008465141, z: -0.0000000015350229, w: 0.98395354}
+  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9081,6 +9081,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1321393199}
+    - targetCorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1321393206}
   m_SourcePrefab: {fileID: 100100000, guid: 4c4540aab68bb1742aa0ce62f2473a8a, type: 3}
 --- !u!4 &1321393192 stripped
 Transform:
@@ -9163,6 +9167,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &1321393200 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2364280095217102194, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1321393191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1321393206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321393198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3404f2c6cb3dfad49abbb7f5764fe82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerRB: {fileID: 1321393200}
+  FallFlag: 1
+  MaxAddFallSpeed: 13
+  BaseGravityAcceleration: 9.8
+  AddFallValue: 2
+  PrintDebug: 0
+  FallSpeed: 1
+  SecondsUntilFall: 3.5
 --- !u!1001 &1330677809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10824,11 +10854,11 @@ MonoBehaviour:
   m_HorizontalDamping: 1
   m_VerticalDamping: 2
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.01
-  m_DeadZoneHeight: 0.02
-  m_SoftZoneWidth: 0.05
-  m_SoftZoneHeight: 0.3
+  m_ScreenY: 0.6
+  m_DeadZoneWidth: 0.005
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.04
+  m_SoftZoneHeight: 0.08
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -10858,9 +10888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 2, z: -8}
-  m_XDamping: 0.5
+  m_XDamping: 0.01
   m_YDamping: 0.2
-  m_ZDamping: 0.5
+  m_ZDamping: 0.01
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -10879,7 +10909,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -13342,7 +13372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930925410}
   - component: {fileID: 1930925409}
-  - component: {fileID: 1930925411}
+  - component: {fileID: 1930925413}
   - component: {fileID: 1930925412}
   m_Layer: 0
   m_Name: Virtual Camera
@@ -13398,7 +13428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930925408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17842482, y: 0.000000008465141, z: -0.0000000015350229, w: 0.98395354}
+  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13406,27 +13436,6 @@ Transform:
   - {fileID: 1587632907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1930925411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930925408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccf27eca30d77943b58d8505b59a376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CheckDistanceY: -1
-  FallYDumping: 2.5
-  DefaltYDumping: 0.3
-  MaxLimitAngle: 20
-  nearDistance: 3
-  farDistance: 5
-  maxBonusOffset_Z: -12
-  DefaltFollowOffset_Z: -8
-  VirtualCamera: {fileID: 1930925409}
 --- !u!114 &1930925412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13434,7 +13443,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930925408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
   m_Name: 
@@ -13457,6 +13466,22 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &1930925413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930925408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76bc0f595f40c445ac92b0df5cb163f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  YMoveLimit: 0.5
+  FallOffset_Y: 4
+  DefaltOffset_Y: 2
+  VirtualCamera: {fileID: 1930925409}
 --- !u!1 &1945441939
 GameObject:
   m_ObjectHideFlags: 0
