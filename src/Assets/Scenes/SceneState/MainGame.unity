@@ -1242,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108644156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249825, y: 1e-45, z: 0, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9194,6 +9194,18 @@ MonoBehaviour:
   FallSpeed: 65
   FallJudgeTime: 3
   SecondsUntilFall: 2
+--- !u!114 &1321393208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 568083875313027701, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1321393191}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321393198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690a94774f162e744b1363d6decc46bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1330677809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13429,7 +13441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930925408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: 0.00000001705468, z: -0.0000000022798161, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249825, y: 1e-45, z: 0, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13479,10 +13491,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76bc0f595f40c445ac92b0df5cb163f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1321393208}
+  PlayerRB: {fileID: 1321393200}
+  VirtualCamera: {fileID: 1930925409}
+  CompletionTime: 0.7
+  DefaltOffSet: {x: 0, y: 2, z: -8}
+  FallOffSet: {x: 0, y: 10, z: -4}
   YMoveLimit: 0.5
   FallOffset_Y: 4
   DefaltOffset_Y: 2
-  VirtualCamera: {fileID: 1930925409}
+  DefaltAngleSpeed: 10
+  FlatAngleSpeed: 2
+  FallAngleSpeed: 2
 --- !u!1 &1945441939
 GameObject:
   m_ObjectHideFlags: 0

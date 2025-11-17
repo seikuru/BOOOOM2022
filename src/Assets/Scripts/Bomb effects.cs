@@ -148,6 +148,10 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "Player")
             {
+                if (P[i].TryGetComponent<Player>(out Player p))
+                {
+                    p.PlayerBombHit = true;
+                }
                 if (P[i].TryGetComponent<PlayerRotateAction>(out PlayerRotateAction act))
                 {
                     Debug.Log("try get component PlayerRotateAction");

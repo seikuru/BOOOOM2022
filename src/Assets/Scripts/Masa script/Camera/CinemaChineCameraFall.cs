@@ -16,12 +16,24 @@ public class CinemaChineCameraFall : MonoBehaviour
     [SerializeField] float maxBonusOffset_Z = -12f;
     [SerializeField] float DefaltFollowOffset_Z = -8f;
     */
+    [SerializeField] Player player;
+    [SerializeField] Rigidbody PlayerRB;
+    [SerializeField] CinemachineVirtualCamera VirtualCamera;
+    [Space]
+    [SerializeField, Header("補完時間")] float CompletionTime = 0.7f;
+    [SerializeField, Header("標準カメラ距離")] Vector3 DefaltOffSet = new Vector3(0, 2, -8);
+    [SerializeField, Header("落下カメラ距離")] Vector3 FallOffSet = new Vector3(0, 10, -4);
+
     [SerializeField] float YMoveLimit = 5f;
 
     [SerializeField] float FallOffset_Y = 3f;
     [SerializeField] float DefaltOffset_Y = 2f;
 
-    [SerializeField] CinemachineVirtualCamera VirtualCamera;
+    [SerializeField] float DefaltAngleSpeed = 2f;
+    [SerializeField] float FlatAngleSpeed = 0.5f;
+    [SerializeField] float FallAngleSpeed = 2f;
+
+    
 
     CinemachineOrbitalTransposer orbital;
     CinemachineComposer composer;
@@ -49,59 +61,73 @@ public class CinemaChineCameraFall : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    /// <summary>
+    /// 二つのベクトルをXZ平面上で角度を評価
+    /// </summary>
+    /// <param name="a">基準ベクトル</param>
+    /// <param name="b">対象ベクトル</param>
+    /// <returns>直角ほど 0、平行ほど 1</returns>
+    float GetRightAngleFactor(Vector3 a, Vector3 b)
+    {
+        // XZ 平面に投影
+        Vector2 a2 = new Vector2(a.x, a.z).normalized;
+        Vector2 b2 = new Vector2(b.x, b.z).normalized;
+
+        // cosθ（＝dot）を求める
+        float dot = Vector2.Dot(a2, b2);
+
+        // 0°→1, 90°→0, 180°→1 に変換
+        return Mathf.Abs(dot);
+    }
+
     void FixedUpdate()
     {
-        /*
-        if (orbital != null)
+        if (transposer == null)
+            return;
+        float distance = Vector3.Distance(Player.GetTransformPlayer.position, BeforePos);
+        float distance_y = Mathf.Abs(BeforePosFixed.y - Player.GetTransformPlayer.position.y);
+        float distanceXZ = Vector2.Distance(
+            new(Player.GetTransformPlayer.position.x, Player.GetTransformPlayer.position.z),
+            new(BeforePosFixed.x, BeforePosFixed.z));
+
+        float bonus = transposer.m_FollowOffset.y;
+
+        // 距離に応じた加算部分計算
+        if (YMoveLimit < distance_y || BeforePosFixed.y - Player.GetTransformPlayer.position.y > 0)
         {
-            
-
-            Debug.Log(distance_y);
-
-            if (distance_y > CheckDistanceY)
-                orbital.m_YDamping = FallYDumping;
-            else
-                orbital.m_YDamping = DefaltYDumping;
-        }
-        */
-        if (transposer != null)
-        {
-            float distance = Vector3.Distance(Player.GetTransformPlayer.position, BeforePos);
-            float distance_y = Mathf.Abs(BeforePosFixed.y - Player.GetTransformPlayer.position.y);
-            float distanceXZ = Vector2.Distance(
-                new(Player.GetTransformPlayer.position.x, Player.GetTransformPlayer.position.z),
-                new(BeforePosFixed.x, BeforePosFixed.z));
-
-            float bonus = transposer.m_FollowOffset.y;
-
-            // 距離に応じた加算部分計算
-            if (YMoveLimit < distance_y || BeforePosFixed.y - Player.GetTransformPlayer.position.y > 0)
+            //Debug.Log(distance_y +" "+ distanceXZ);
+            if (distance_y <= distanceXZ)
             {
-                //Debug.Log(distance_y +" "+ distanceXZ);
-                if (distance_y <= distanceXZ)
-                {
-                    bonus += Time.deltaTime * -0.5f;
-                }
-                else
-                {
-                    bonus += Time.fixedDeltaTime * 2f;       
-                }
+                bonus += Time.fixedDeltaTime * -FlatAngleSpeed;
             }
             else
-                bonus += Time.fixedDeltaTime * -2f;
-
-            transposer.m_FollowOffset = new()
             {
-                x = transposer.m_FollowOffset.x,
-                y = Mathf.Clamp(bonus, DefaltOffset_Y, FallOffset_Y),
-                z = transposer.m_FollowOffset.z,
-            };
+                bonus += Time.fixedDeltaTime * FallAngleSpeed;
+            }
         }
+        else
+            bonus += Time.fixedDeltaTime * -DefaltAngleSpeed;
+
+        transposer.m_FollowOffset = new()
+        {
+            x = transposer.m_FollowOffset.x,
+            y = Mathf.Clamp(bonus, DefaltOffset_Y, FallOffset_Y),
+            z = transposer.m_FollowOffset.z,
+        };
 
         BeforePosFixed = Player.GetTransformPlayer.position;
     }
+
+    float min = 0f;
     private void Update()
     {
+        if(PlayerRB.velocity.y < min)
+        {
+            min = PlayerRB.velocity.y;
+            Debug.Log(min);
+        }
+
         /*
         if (transposer != null)
         {
@@ -142,4 +168,14 @@ public class CinemaChineCameraFall : MonoBehaviour
         */
     }
 
+    private void LateUpdate()
+    {
+        if(!player.PlayerBombHit)
+        {
+            return;
+        }
+
+        player.PlayerBombHit = false;
+        //float AngleFactor = GetRightAngleFactor();
+    }
 }
