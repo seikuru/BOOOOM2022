@@ -10814,6 +10814,7 @@ GameObject:
   - component: {fileID: 1587632910}
   - component: {fileID: 1587632911}
   - component: {fileID: 1587632912}
+  - component: {fileID: 1587632913}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -10941,6 +10942,23 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 0
+--- !u!114 &1587632913
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587632906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 0}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1588413339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13387,6 +13405,7 @@ GameObject:
   - component: {fileID: 1930925409}
   - component: {fileID: 1930925413}
   - component: {fileID: 1930925412}
+  - component: {fileID: 1930925414}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -13494,15 +13513,40 @@ MonoBehaviour:
   player: {fileID: 1321393208}
   PlayerRB: {fileID: 1321393200}
   VirtualCamera: {fileID: 1930925409}
-  CompletionTime: 0.7
+  CompletionTimeBack: 0.1
+  CompletionTimeForward: 0.7
   DefaltOffSet: {x: 0, y: 2, z: -8}
   FallOffSet: {x: 0, y: 10, z: -4}
+  FallSpeedLimit: 50
   YMoveLimit: 0.5
   FallOffset_Y: 4
   DefaltOffset_Y: 2
   DefaltAngleSpeed: 10
   FlatAngleSpeed: 2
   FallAngleSpeed: 2
+--- !u!114 &1930925414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930925408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: -1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1945441939
 GameObject:
   m_ObjectHideFlags: 0
