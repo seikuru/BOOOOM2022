@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 300781202}
   - component: {fileID: 300781201}
   - component: {fileID: 300781205}
+  - component: {fileID: 300781207}
   - component: {fileID: 300781206}
   m_Layer: 17
   m_Name: Cube (3)
@@ -716,6 +717,21 @@ MonoBehaviour:
   DustPrehab: {fileID: 0}
   DestroyTime: 3
   DustDivisionSize: 1
+--- !u!114 &300781207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300781200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3c13f94f26184d8ea8c5ea5e910c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  Center: {fileID: 458321878}
+  MoveSpeed: 2
 --- !u!1 &458321878
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +849,7 @@ Transform:
   m_GameObject: {fileID: 458321878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -83.3, y: 0.5, z: -64.7}
+  m_LocalPosition: {x: 2.7, y: 0.5, z: 25.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1680,6 +1696,7 @@ GameObject:
   - component: {fileID: 1099446330}
   - component: {fileID: 1099446329}
   - component: {fileID: 1099446333}
+  - component: {fileID: 1099446335}
   - component: {fileID: 1099446334}
   m_Layer: 17
   m_Name: Cube (1)
@@ -1816,6 +1833,21 @@ MonoBehaviour:
   DustPrehab: {fileID: 0}
   DestroyTime: 3
   DustDivisionSize: 1
+--- !u!114 &1099446335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099446328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3c13f94f26184d8ea8c5ea5e910c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  Center: {fileID: 458321878}
+  MoveSpeed: 2
 --- !u!1 &1100295327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +2010,7 @@ GameObject:
   - component: {fileID: 1108193188}
   - component: {fileID: 1108193187}
   - component: {fileID: 1108193191}
+  - component: {fileID: 1108193193}
   - component: {fileID: 1108193192}
   m_Layer: 17
   m_Name: Cube (4)
@@ -2114,6 +2147,21 @@ MonoBehaviour:
   DustPrehab: {fileID: 0}
   DestroyTime: 3
   DustDivisionSize: 1
+--- !u!114 &1108193193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108193186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3c13f94f26184d8ea8c5ea5e910c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  Center: {fileID: 458321878}
+  MoveSpeed: 2
 --- !u!1 &1158124630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6107638355448208974, guid: 7adb862f2be1a9740a6a11347d5098bf,
@@ -2137,7 +2185,7 @@ PrefabInstance:
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.204148
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
@@ -2147,7 +2195,7 @@ PrefabInstance:
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.2680726
+      value: -20.7
       objectReference: {fileID: 0}
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
@@ -2286,6 +2334,7 @@ GameObject:
   - component: {fileID: 1370997257}
   - component: {fileID: 1370997256}
   - component: {fileID: 1370997260}
+  - component: {fileID: 1370997262}
   - component: {fileID: 1370997261}
   m_Layer: 17
   m_Name: Cube (2)
@@ -2422,6 +2471,21 @@ MonoBehaviour:
   DustPrehab: {fileID: 0}
   DestroyTime: 3
   DustDivisionSize: 1
+--- !u!114 &1370997262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370997255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3c13f94f26184d8ea8c5ea5e910c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveType: 0
+  Center: {fileID: 458321878}
+  MoveSpeed: 2
 --- !u!114 &1450402007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3606492471069258951, guid: 881d8efb4ef168e4cba0e9a1f2357186,
