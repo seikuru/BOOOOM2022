@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CinemaChineCameraFall : MonoBehaviour
@@ -20,9 +21,14 @@ public class CinemaChineCameraFall : MonoBehaviour
     [SerializeField] Rigidbody PlayerRB;
     [SerializeField] CinemachineVirtualCamera VirtualCamera;
     [Space]
-    [SerializeField, Header("補完時間")] float CompletionTime = 0.7f;
+    [SerializeField, Header("補完時間_引き")] float CompletionTimeBack = 0.1f;
+    [SerializeField, Header("補完時間_縮み")] float CompletionTimeForward = 0.7f;
+    
     [SerializeField, Header("標準カメラ距離")] Vector3 DefaltOffSet = new Vector3(0, 2, -8);
     [SerializeField, Header("落下カメラ距離")] Vector3 FallOffSet = new Vector3(0, 10, -4);
+
+    [SerializeField, Header("落下速度計算上限")] float FallSpeedLimit = 50f;
+
 
     [SerializeField] float YMoveLimit = 5f;
 
@@ -39,6 +45,11 @@ public class CinemaChineCameraFall : MonoBehaviour
     CinemachineComposer composer;
     CinemachineTransposer transposer;
 
+    Vector3 TargetOffSet;
+
+    Coroutine Coroutine_Z;
+    float AddAngleforward;
+
     Vector3 BeforePos;
     Vector3 BeforePosFixed;
 
@@ -49,6 +60,9 @@ public class CinemaChineCameraFall : MonoBehaviour
 
         BeforePos = Player.GetTransformPlayer.position;
         BeforePosFixed = Player.GetTransformPlayer.position;
+
+        TargetOffSet = DefaltOffSet;
+        AddAngleforward = 0f;
     }
 
     float GetAngle(Vector3 a, Vector3 b, Vector3 c)
@@ -59,8 +73,6 @@ public class CinemaChineCameraFall : MonoBehaviour
         // 角度を求める（単位は度）
         return Vector3.Angle(AB, AC);
     }
-
-    // Update is called once per frame
 
     /// <summary>
     /// 二つのベクトルをXZ平面上で角度を評価
@@ -81,6 +93,11 @@ public class CinemaChineCameraFall : MonoBehaviour
         return Mathf.Abs(dot);
     }
 
+    float NormalizeClamp(float value, float min, float max)
+    {
+        return Mathf.Clamp01((value - min) / (max - min));
+    }
+
     void FixedUpdate()
     {
         if (transposer == null)
@@ -92,6 +109,13 @@ public class CinemaChineCameraFall : MonoBehaviour
             new(BeforePosFixed.x, BeforePosFixed.z));
 
         float bonus = transposer.m_FollowOffset.y;
+
+        float clamp = NormalizeClamp(PlayerRB.velocity.y, -FallSpeedLimit, 0);
+
+        Vector3 LerpOffset = Vector3.Lerp(FallOffSet, DefaltOffSet, clamp);
+
+        TargetOffSet = LerpOffset;
+        /*
 
         // 距離に応じた加算部分計算
         if (YMoveLimit < distance_y || BeforePosFixed.y - Player.GetTransformPlayer.position.y > 0)
@@ -116,18 +140,12 @@ public class CinemaChineCameraFall : MonoBehaviour
             z = transposer.m_FollowOffset.z,
         };
 
-        BeforePosFixed = Player.GetTransformPlayer.position;
+        BeforePosFixed = Player.GetTransformPlayer.position;*/
     }
 
-    float min = 0f;
     private void Update()
     {
-        if(PlayerRB.velocity.y < min)
-        {
-            min = PlayerRB.velocity.y;
-            Debug.Log(min);
-        }
-
+        transposer.m_FollowOffset = TargetOffSet - Vector3.forward * AddAngleforward;
         /*
         if (transposer != null)
         {
@@ -175,7 +193,56 @@ public class CinemaChineCameraFall : MonoBehaviour
             return;
         }
 
+        // フラグ解除
         player.PlayerBombHit = false;
-        //float AngleFactor = GetRightAngleFactor();
+
+        float AngleFactor = GetRightAngleFactor(PlayerRB.velocity, Player.GetTransformPlayer.position - transform.position);
+
+        float AddFlatAngle = AngleFactor * (FallOffSet.z - DefaltOffSet.z);
+
+        //TargetOffSet = new Vector3(TargetOffSet.x,TargetOffSet.y,DefaltOffSet.z + AddFlatAngle);
+        if (Coroutine_Z != null)
+        {
+            StopCoroutine(Coroutine_Z);
+        }
+        Coroutine_Z = StartCoroutine(SlerpTarget_Z(AddFlatAngle));
+    }
+
+    
+
+
+    IEnumerator SlerpTarget_Z(float AddAngle)
+    {
+        //Vector3 Target = TargetOffSet;
+
+        float count = NormalizeClamp(AddAngleforward, 0f, FallOffSet.z - DefaltOffSet.z);
+
+        while (count < CompletionTimeBack)
+        {
+            count += Time.deltaTime;
+            float t = Mathf.Clamp01(count / CompletionTimeBack);
+
+            float lerp = AddAngle * t;
+
+            AddAngleforward = lerp;
+            //transposer.m_FollowOffset = TargetOffSet + Vector3.forward * lerp;            
+            
+            yield return null;
+        }
+
+        count = CompletionTimeForward;
+
+        while (count > 0)
+        {
+            count -= Time.deltaTime;
+            float t = Mathf.Clamp01(count / CompletionTimeForward);
+
+            float lerp = AddAngle * t;
+
+            AddAngleforward = lerp;
+            //transposer.m_FollowOffset = TargetOffSet + Vector3.forward * lerp;
+
+            yield return null;
+        }
     }
 }

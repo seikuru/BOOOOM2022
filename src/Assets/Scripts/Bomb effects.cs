@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class Bombeffects : MonoBehaviour
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
-    
+    [SerializeField] CinemachineImpulseSource impulseSource;
     // Animator PlayerAnimation;
     EnemyCount EnemyCountText;
     bool GetPlayerAnimationFlag = false;
@@ -185,6 +186,8 @@ public class Bombeffects : MonoBehaviour
             VEffect.SendEvent("OnPlay");
         if (BombOuter != null)
             BombOuter.SetActive(false);
+        if (impulseSource != null)
+            impulseSource.GenerateImpulse();
 
         Destroy(gameObject, 3f);
     }
