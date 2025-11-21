@@ -156,6 +156,10 @@ public class Bombeffects : MonoBehaviour
                 {
                     animator.SetTrigger("BombHit");
                 }
+                if (P[i].TryGetComponent<PlayerFallSpeedAdder>(out PlayerFallSpeedAdder PFSA))
+                {
+                    PFSA._BombHit = true;
+                }
                 BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
 
                 // Debug.Log("set bombs hit true");

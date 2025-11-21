@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
   - component: {fileID: 6993103614394412173}
+  - component: {fileID: 7358893034013187044}
   m_Layer: 6
   m_Name: Bomb_Model
   m_TagString: Bomb
@@ -216,7 +217,7 @@ MonoBehaviour:
     m_Bits: 140232
   DestroyEnemyTimer: 3
   BombStrange: 35
-  BombRadius: 10
+  BombRadius: 15
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
@@ -334,6 +335,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7358893034013187044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672593736015811124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3404f2c6cb3dfad49abbb7f5764fe82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerRB: {fileID: 7104464763104517611}
+  FallFlag: 1
+  MaxAddFallSpeed: 2.5
+  BaseGravityAcceleration: 9.8
+  AddFallValue: 1
+  PrintDebug: 0
+  FallSpeed: 65
+  FallJudgeTime: 3
+  SecondsUntilFall: 2
 --- !u!1 &4004615901524930672
 GameObject:
   m_ObjectHideFlags: 0
