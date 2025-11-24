@@ -13,7 +13,7 @@ public class CollectObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -43,6 +43,7 @@ public class CollectObject : MonoBehaviour
                 Debug.Log(CollectPoint);
                 once = false;
                 Destroy(this.gameObject);
+                
             }
         }
 
