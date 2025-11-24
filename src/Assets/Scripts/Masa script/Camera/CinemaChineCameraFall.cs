@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.InputSystem.Controls.AxisControl;
 
 public class CinemaChineCameraFall : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class CinemaChineCameraFall : MonoBehaviour
     [SerializeField] Rigidbody PlayerRB;
     [SerializeField] CinemachineVirtualCamera VirtualCamera;
     [Space]
+    [SerializeField, Header("•âŠ®‚·‚éŽž‚ÌÅ‘å”{—¦")] float CompletionMaxDiameter = 1.1f;
+
     [SerializeField, Header("•âŠ®ŽžŠÔ_ˆø‚«")] float CompletionTimeBack = 0.1f;
     [SerializeField, Header("•âŠ®ŽžŠÔ_k‚Ý")] float CompletionTimeForward = 0.7f;
     
@@ -28,7 +31,12 @@ public class CinemaChineCameraFall : MonoBehaviour
     [SerializeField, Header("—Ž‰ºƒJƒƒ‰‹——£")] Vector3 FallOffSet = new Vector3(0, 10, -4);
 
     [SerializeField, Header("—Ž‰º‘¬“xŒvŽZãŒÀ")] float FallSpeedLimit = 50f;
+    [SerializeField, Header("ã¸—ÊŒvŽZãŒÀ")] float UpPosLimit = 40f;
 
+    [SerializeField, Header("ã¸‚É‚æ‚éƒJƒƒ‰‚ÌLeap‚Ì”{—¦")
+        ,Range(0f,1f)] float UpCameraDiameter = 0.65f; 
+
+    [SerializeField, Header("ƒIƒtƒZƒbƒg•ÏX‘¬“x")] Vector3 OffsetSpeed = Vector3.one;
 
     [SerializeField] float YMoveLimit = 5f;
 
@@ -52,6 +60,13 @@ public class CinemaChineCameraFall : MonoBehaviour
 
     Vector3 BeforePos;
     Vector3 BeforePosFixed;
+
+    bool BeforeGround;
+    float ExitGroundPos = 0;
+
+    float UpClampValue = 0;
+
+    Vector3 OffsetSpeedVector => OffsetSpeed * Time.fixedDeltaTime;
 
     void Start()
     {
@@ -102,19 +117,70 @@ public class CinemaChineCameraFall : MonoBehaviour
     {
         if (transposer == null)
             return;
-        float distance = Vector3.Distance(Player.GetTransformPlayer.position, BeforePos);
-        float distance_y = Mathf.Abs(BeforePosFixed.y - Player.GetTransformPlayer.position.y);
-        float distanceXZ = Vector2.Distance(
-            new(Player.GetTransformPlayer.position.x, Player.GetTransformPlayer.position.z),
-            new(BeforePosFixed.x, BeforePosFixed.z));
 
-        float bonus = transposer.m_FollowOffset.y;
+        GroundCheck();
 
-        float clamp = NormalizeClamp(PlayerRB.velocity.y, -FallSpeedLimit, 0);
+        float clamp;
+        Vector3 LerpOffset;
 
-        Vector3 LerpOffset = Vector3.Lerp(FallOffSet, DefaltOffSet, clamp);
+        if (!player.OnGround && PlayerRB.velocity.y >= 0)
+        {
+            UpClampValue = 0;
 
-        TargetOffSet = LerpOffset;
+            float distance_y = Mathf.Max(Player.GetTransformPlayer.position.y - ExitGroundPos, 0);
+            
+            clamp = NormalizeClamp(distance_y, 0, UpPosLimit) * UpCameraDiameter;
+            
+            LerpOffset = Vector3.Lerp(DefaltOffSet, FallOffSet, clamp);
+
+            UpClampValue = clamp;
+        }
+        else
+        {
+            clamp = NormalizeClamp(PlayerRB.velocity.y, -FallSpeedLimit, 0);
+
+            clamp = Mathf.Max(1 - clamp,UpClampValue);
+
+            LerpOffset = Vector3.Lerp(DefaltOffSet, FallOffSet, clamp);
+        }
+
+        //float distance = Vector3.Distance(Player.GetTransformPlayer.position, BeforePos);
+        //float distance_y = Mathf.Abs(BeforePosFixed.y - Player.GetTransformPlayer.position.y);
+        //float distanceXZ = Vector2.Distance(
+        //    new(Player.GetTransformPlayer.position.x, Player.GetTransformPlayer.position.z),
+        //    new(BeforePosFixed.x, BeforePosFixed.z));
+        //float bonus = transposer.m_FollowOffset.y;
+
+        Vector3 FixOffset = TargetOffSet;
+        /*
+        if(TargetOffSet.x < LerpOffset.x)
+        {
+            FixedOffset.x = Mathf.Min(TargetOffSet.x + FixedOffset.x, LerpOffset.x);
+        }
+        else if(TargetOffSet.x > LerpOffset.x)
+        {
+            FixedOffset.x = Mathf.Max(TargetOffSet.x - FixedOffset.x, LerpOffset.x);
+        }
+        */
+
+        if (TargetOffSet.y < LerpOffset.y)
+        {
+            FixOffset.y = Mathf.Min(TargetOffSet.y + OffsetSpeedVector.y, LerpOffset.y);
+        }
+        else if (TargetOffSet.y > LerpOffset.y)
+        {
+            FixOffset.y = Mathf.Max(TargetOffSet.y - OffsetSpeedVector.y, LerpOffset.y);
+        }
+
+        if (TargetOffSet.z < LerpOffset.z)
+        {
+            FixOffset.z = Mathf.Min(TargetOffSet.z +OffsetSpeedVector.z, LerpOffset.z);
+        }
+        else if (TargetOffSet.z > LerpOffset.z)
+        {
+            FixOffset.z = Mathf.Max(TargetOffSet.z - OffsetSpeedVector.z, LerpOffset.z);
+        }
+        TargetOffSet = FixOffset;
         /*
 
         // ‹——£‚É‰ž‚¶‚½‰ÁŽZ•”•ªŒvŽZ
@@ -143,9 +209,38 @@ public class CinemaChineCameraFall : MonoBehaviour
         BeforePosFixed = Player.GetTransformPlayer.position;*/
     }
 
+    void GroundCheck()
+    {
+        if (BeforeGround && !player.OnGround)
+        {
+            ExitGroundPos = transform.position.y;
+        }
+        if(player.OnGround)
+        {
+            UpClampValue = 0;
+        }
+
+        BeforeGround = player.OnGround;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     private void Update()
     {
-        transposer.m_FollowOffset = TargetOffSet - Vector3.forward * AddAngleforward;
+        //transposer.m_FollowOffset = TargetOffSet - Vector3.forward * (AddAngleforward);
+        transposer.m_FollowOffset = TargetOffSet + TargetOffSet * (1 + (AddAngleforward -1));
+        
+
         /*
         if (transposer != null)
         {
@@ -198,9 +293,8 @@ public class CinemaChineCameraFall : MonoBehaviour
 
         float AngleFactor = GetRightAngleFactor(PlayerRB.velocity, Player.GetTransformPlayer.position - transform.position);
 
-        float AddFlatAngle = AngleFactor * (FallOffSet.z - DefaltOffSet.z);
+        float AddFlatAngle = AngleFactor * (CompletionMaxDiameter);
 
-        //TargetOffSet = new Vector3(TargetOffSet.x,TargetOffSet.y,DefaltOffSet.z + AddFlatAngle);
         if (Coroutine_Z != null)
         {
             StopCoroutine(Coroutine_Z);
@@ -208,14 +302,11 @@ public class CinemaChineCameraFall : MonoBehaviour
         Coroutine_Z = StartCoroutine(SlerpTarget_Z(AddFlatAngle));
     }
 
-    
-
-
     IEnumerator SlerpTarget_Z(float AddAngle)
     {
         //Vector3 Target = TargetOffSet;
 
-        float count = NormalizeClamp(AddAngleforward, 0f, FallOffSet.z - DefaltOffSet.z);
+        float count = NormalizeClamp(AddAngleforward, 0f, CompletionMaxDiameter);
 
         while (count < CompletionTimeBack)
         {
@@ -225,7 +316,6 @@ public class CinemaChineCameraFall : MonoBehaviour
             float lerp = AddAngle * t;
 
             AddAngleforward = lerp;
-            //transposer.m_FollowOffset = TargetOffSet + Vector3.forward * lerp;            
             
             yield return null;
         }
@@ -240,8 +330,7 @@ public class CinemaChineCameraFall : MonoBehaviour
             float lerp = AddAngle * t;
 
             AddAngleforward = lerp;
-            //transposer.m_FollowOffset = TargetOffSet + Vector3.forward * lerp;
-
+            
             yield return null;
         }
     }
