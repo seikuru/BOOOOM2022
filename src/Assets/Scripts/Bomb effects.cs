@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,11 +19,13 @@ public class Bombeffects : MonoBehaviour
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
-    
+    [SerializeField] CinemachineImpulseSource impulseSource;
     // Animator PlayerAnimation;
     EnemyCount EnemyCountText;
     bool GetPlayerAnimationFlag = false;
     bool isHitPlayer = false;
+
+    public Rigidbody GetRB => BombRB;
 
     // public float _bombradius { get { return BombRadius; } set { BombRadius = value; } }
 
@@ -146,6 +149,10 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "Player")
             {
+                if (P[i].TryGetComponent<Player>(out Player p))
+                {
+                    p.PlayerBombHit = true;
+                }
                 if (P[i].TryGetComponent<PlayerRotateAction>(out PlayerRotateAction act))
                 {
                     //Debug.Log("try get component PlayerRotateAction");
@@ -156,12 +163,10 @@ public class Bombeffects : MonoBehaviour
                 {
                     animator.SetTrigger("BombHit");
                 }
-
-                if(P[i].TryGetComponent<PlayerFallSpeedAdder>(out PlayerFallSpeedAdder PFSA))
+                if (P[i].TryGetComponent<PlayerFallSpeedAdder>(out PlayerFallSpeedAdder PFSA))
                 {
                     PFSA._BombHit = true;
                 }
-
                 BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
 
                 // Debug.Log("set bombs hit true");
@@ -181,6 +186,8 @@ public class Bombeffects : MonoBehaviour
             VEffect.SendEvent("OnPlay");
         if (BombOuter != null)
             BombOuter.SetActive(false);
+        if (impulseSource != null)
+            impulseSource.GenerateImpulse();
 
         Destroy(gameObject, 3f);
     }

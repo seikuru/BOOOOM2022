@@ -72,7 +72,7 @@ public class bomb : MonoBehaviour
         GameObject Spawned_Bomb = Instantiate(Bomb, spawnPos, rotation);
 
         // Rigidbodyを取得
-        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Rigidbody>();
+        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Bombeffects>().GetRB;
 
         // 投げる力（プレイヤーの移動速度を加味する）
         // Bombthrow + プレイヤーの速度の大きさ × percentage
@@ -125,7 +125,7 @@ public class bomb : MonoBehaviour
 
     private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
     {
-        ComboCounter.ResetCombo();
+        //ComboCounter.ResetCombo();
 
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
