@@ -45,7 +45,7 @@ VisualEffect:
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
@@ -217,10 +217,12 @@ MonoBehaviour:
   BombStrange: 30
   BombRadius: 20
   bombCollider: {fileID: 6530253593774039959}
-  VEffect: {fileID: 0}
+  VEffect: {fileID: 5578185777037969535}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
   GetKillCount: 0
+  BombAudioSource: {fileID: 0}
+  AudioScriptable: {fileID: 0}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ VisualEffect:
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
