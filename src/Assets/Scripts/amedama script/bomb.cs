@@ -125,7 +125,7 @@ public class bomb : MonoBehaviour
 
     private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
     {
-        ComboCounter.ResetCombo();
+        //ComboCounter.ResetCombo();
 
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
