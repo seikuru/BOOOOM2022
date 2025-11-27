@@ -15,6 +15,7 @@ public class Bombeffects : MonoBehaviour
     [SerializeField] VisualEffect VEffect;//爆発した際のエフェクト
     [SerializeField] GameObject BombOuter;//爆弾の外枠のオブジェクト
     [SerializeField] Rigidbody BombRB;//爆弾のRigidBody
+    [SerializeField] Transform BombSenterPos;//爆発の中心位置
     [SerializeField] bool GetKillCount = false;
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
@@ -56,6 +57,8 @@ public class Bombeffects : MonoBehaviour
             PlayerAudioSource = AS;
         }
 
+        if (BombSenterPos == null)
+            BombSenterPos = this.transform;
     }
 
 
@@ -67,8 +70,8 @@ public class Bombeffects : MonoBehaviour
             BombStrangeValue += GetBombAddStrange();
 
         BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
-
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, BombRadius, InfluencedMask);
+        
+        Collider[] hits = Physics.OverlapSphere(BombSenterPos.position, BombRadius, InfluencedMask);
         //爆弾が爆発した際、爆弾を中心に、爆弾の影響範囲下にある、影響を受けるレイヤーを探す。
 
         GameObject[] P = { };
@@ -97,7 +100,7 @@ public class Bombeffects : MonoBehaviour
 
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
-                    obstacle.Explosion(transform.position, BombStrangeValue);
+                    obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
                     BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
                     //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
@@ -156,7 +159,7 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<PlayerRotateAction>(out PlayerRotateAction act))
                 {
                     //Debug.Log("try get component PlayerRotateAction");
-                    act.RotateToExplosion(P[i].transform.position - this.transform.position);
+                    act.RotateToExplosion(P[i].transform.position - BombSenterPos.position);
                 }
 
                 if (P[i].TryGetComponent<Animator>(out Animator animator))
@@ -173,7 +176,7 @@ public class Bombeffects : MonoBehaviour
                 isHitPlayer = true;
             }
 
-            PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - this.transform.position).normalized * BombStrangeValue;
+            PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - BombSenterPos.position).normalized * BombStrangeValue;
             //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
 
         }

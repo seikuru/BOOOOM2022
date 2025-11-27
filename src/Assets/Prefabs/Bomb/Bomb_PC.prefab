@@ -221,9 +221,11 @@ MonoBehaviour:
   VEffect: {fileID: 5578185777037969535}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
+  BombSenterPos: {fileID: 3268544491426306342}
   GetKillCount: 0
   BombAudioSource: {fileID: -2240922392109693862}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
+  impulseSource: {fileID: 0}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
