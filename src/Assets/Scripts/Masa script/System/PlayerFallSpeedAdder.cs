@@ -170,30 +170,4 @@ public class PlayerFallSpeedAdder : MonoBehaviour
             TimeCounter = 0; // 時間カウンターをリセット
         }
     }
-
-    void HighSpeedFall()
-    {
-        // 落下判定(落下速度が規定値を下回った時)
-        if (PlayerRB.velocity.y < -FallJudgeValue)
-        {
-
-            // 追加重力の計算（最大値で制限）
-            float AddAcceleration = Mathf.Min(FallSpeed, TimeCounter + FallJudgeValue);
-
-            //下向きのベクトルを値で入力
-            PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, -AddAcceleration, PlayerRB.velocity.z);
-
-            // デバッグ出力
-            if (PrintDebug)
-                ;
-
-            // 落下時間カウンターを増加（時間×倍率）
-            TimeCounter += (TimeCounter * FallSpeed * 0.0007f) + FallJudgeValue;
-
-        }
-        else // 上昇または速度維持の場合
-        {
-            TimeCounter = 0; // 時間カウンターをリセット
-        }
-    }
 }
