@@ -218,13 +218,17 @@ MonoBehaviour:
   DestroyEnemyTimer: 3
   BombStrange: 20
   BombRadius: 15
+  OffScreenAddRadius: 0
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
+  BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
+  BombRenderer: {fileID: 2587731209140225725}
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
+  impulseSource: {fileID: 0}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +255,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -295,7 +299,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -324,8 +328,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.2929287
+      value: 0.25170135
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -572,6 +576,12 @@ GameObject:
 --- !u!4 &1130060760798242871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
+    type: 3}
+  m_PrefabInstance: {fileID: 586718350541967324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2587731209140225725 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6067185528594298527, guid: 58c3db60fef44ee40aed57ff7d927444,
     type: 3}
   m_PrefabInstance: {fileID: 586718350541967324}
   m_PrefabAsset: {fileID: 0}
