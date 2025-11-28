@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &41727313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -306,8 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &84492815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -864,8 +866,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!114 &300781207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,8 +918,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &394305046
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1191,8 +1195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &466288857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1449,6 +1454,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 476899176365345687, guid: 7adb862f2be1a9740a6a11347d5098bf,
         type: 3}
+      propertyPath: Bomb2
+      value: 
+      objectReference: {fileID: 3672593736015811124, guid: 05c3f7b033a51d24eb1ecf500d2291d8,
+        type: 3}
+    - target: {fileID: 476899176365345687, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1532,6 +1543,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1153313987117184016, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
+      propertyPath: rotateSpeed_X
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153313987117184016, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
+      propertyPath: rotateSpeed_Y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2410387516261316350, guid: 7adb862f2be1a9740a6a11347d5098bf,
         type: 3}
       propertyPath: m_Enabled
@@ -1541,6 +1562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661760782103362207, guid: 7adb862f2be1a9740a6a11347d5098bf,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1712,7 +1738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartBGM: {fileID: 646455340}
   COC:
-  - COCMusicType: 0
+  - COCMusicType: 1
     CollectObject:
     - {fileID: 458321878}
     - {fileID: 1796007401}
@@ -1723,7 +1749,7 @@ MonoBehaviour:
     - {fileID: 151334436}
     - {fileID: 1453164257}
   CMC:
-  - CMCMusicType: 0
+  - CMCMusicType: 1
     AudioSources:
     - {fileID: 646455343}
     - {fileID: 646455346}
@@ -1732,7 +1758,6 @@ MonoBehaviour:
     AudioSources:
     - {fileID: 646455345}
     - {fileID: 646455344}
-    - {fileID: 0}
 --- !u!82 &646455343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2151,8 +2176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &687596666
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2300,8 +2326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &764461003
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2567,8 +2594,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &941773352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2716,8 +2744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &995845146
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2865,8 +2894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1039425100
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3128,8 +3158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!114 &1099446335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3179,8 +3210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1100295329
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3442,8 +3474,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!114 &1108193193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3505,8 +3538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1206785521
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3915,8 +3949,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!114 &1370997262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3966,8 +4001,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1410159418
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4327,8 +4363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1604496798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4476,8 +4513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1631577107
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4717,8 +4755,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1695711509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4993,8 +5032,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1838184425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5142,8 +5182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1864929590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5418,8 +5459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1910503924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5567,8 +5609,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &1919600654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5723,7 +5766,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035204172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6809db24b40cbea4c80a291b472257f5, type: 3}
   m_Name: 
@@ -5770,8 +5813,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustPrehab: {fileID: 0}
-  DestroyTime: 0.5
+  DestroyTime: 5
   DustDivisionSize: 1
+  IsExplosed: 0
 --- !u!54 &2146883658
 Rigidbody:
   m_ObjectHideFlags: 0

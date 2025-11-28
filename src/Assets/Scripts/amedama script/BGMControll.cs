@@ -59,10 +59,21 @@ public class BGMControll : MonoBehaviour
             {
                 if (b2 == null)
                 {
-                    if (CMC[(int)b1.COCMusicType].AudioSources.Length > ObjectNumber 
-                        && CMC[(int)b1.COCMusicType].AudioSources[ObjectNumber] != null)
+                    int i = 0;
+                    foreach (var a1 in CMC)
                     {
-                        CMC[(int)b1.COCMusicType].AudioSources[ObjectNumber].mute = false;
+     
+                        if (a1.CMCMusicType == b1.COCMusicType)
+                        {
+                            break;
+                        }
+                        i++;
+                    }
+                    
+                    if (CMC[i].AudioSources.Length > ObjectNumber 
+                        && CMC[i].AudioSources[ObjectNumber] != null)
+                    {
+                        CMC[i].AudioSources[ObjectNumber].mute = false;
                     }
                     ObjectNumber++;
                 }

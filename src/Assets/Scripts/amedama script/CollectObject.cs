@@ -7,49 +7,61 @@ public class CollectObject : MonoBehaviour
 {
     [HideInInspector] static public int CollectPoint;
     [SerializeField] private GameObject[] CollectObjects;
+    ObstacleExplosion[] obstacleExplosions;
     bool BreakObject = false;
     bool once = true;
     int BrokeNumber;
     // Start is called before the first frame update
     void Start()
     {
-       
+        obstacleExplosions = new ObstacleExplosion[CollectObjects.Length];
+        int i = 0;
+        foreach (var obj in CollectObjects)
+        {
+            if (obj.TryGetComponent<ObstacleExplosion>(out ObstacleExplosion OE))
+            {
+                
+                obstacleExplosions[i] = OE;
+            }
+            
+                i++;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        int i = 0;
         foreach (var obj in CollectObjects)
         {
-            if (obj != null)
-            {
-                Debug.Log("able");
-
-                break;
-            }
-            else
-            {
-                BrokeNumber++;
-
-                if (BrokeNumber >= CollectObjects.Length)
+            Debug.Log(obstacleExplosions[i].IsExplosed);
+                if (obj != null && !obstacleExplosions[i].IsExplosed)
                 {
-                    BreakObject = true;
+                    break;
                 }
-            }
+                else
+                {
+                    BrokeNumber++;
 
+                    if (BrokeNumber >= CollectObjects.Length)
+                    {
+                        BreakObject = true;
+                    }
+
+                }
+            i++;
             if (BreakObject && once)
             {
                 CollectPoint++;
-                Debug.Log(CollectPoint);
                 once = false;
                 Destroy(this.gameObject);
-                
+
             }
         }
 
 
         BrokeNumber = 0;
-       
+
     }
 
 }
