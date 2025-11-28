@@ -150,7 +150,7 @@ public class Bombeffects : MonoBehaviour
             {
                 if (P[i].TryGetComponent<PlayerRotateAction>(out PlayerRotateAction act))
                 {
-                    Debug.Log("try get component PlayerRotateAction");
+                    //Debug.Log("try get component PlayerRotateAction");
                     act.RotateToExplosion(P[i].transform.position - this.transform.position);
                 }
 
@@ -158,6 +158,12 @@ public class Bombeffects : MonoBehaviour
                 {
                     animator.SetTrigger("BombHit");
                 }
+
+                if(P[i].TryGetComponent<PlayerFallSpeedAdder>(out PlayerFallSpeedAdder PFSA))
+                {
+                    PFSA._BombHit = true;
+                }
+
                 BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
 
                 // Debug.Log("set bombs hit true");
