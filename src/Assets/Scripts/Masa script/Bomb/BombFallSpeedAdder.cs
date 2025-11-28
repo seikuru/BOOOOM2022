@@ -16,7 +16,7 @@ public class BombFallSpeedAdder : MonoBehaviour
     [SerializeField,Header("デバッグログ出力フラグ")] bool PrintDebug = false;
 
     [SerializeField] float FallSpeed = 65.0f;
-    [SerializeField] float SecondsUntilFall = 2f;//何秒後に加速するか
+    [SerializeField,Header("何秒後に加速するか")] float SecondsUntilFall = 2f;//何秒後に加速するか
     [SerializeField] float FallSpeedDiameter = 0.0007f;
 
     float TimeCounter; // 落下継続時間のカウンター
@@ -47,18 +47,21 @@ public class BombFallSpeedAdder : MonoBehaviour
         // 機能が無効な場合は処理を終了
         if (BombRB == null || !FallFlag)
             return;
-
+        /*
         //現在の垂直速度が前フレームよりも大きい場合（接地判定）
         if (BombRB.velocity.y > BeforeVerocity.y)
         {
             TimeCounter = 0;
         }
+        */
+
         else
         {
             // 落下時間カウンターを増加（時間×倍率）
-            TimeCounter += Time.fixedDeltaTime;
+            if (TimeCounter < SecondsUntilFall)
+                TimeCounter += Time.fixedDeltaTime;
 
-            if (TimeCounter > SecondsUntilFall)
+            else 
             {
                 // 追加重力の計算
                 float AddAcceleration = TimeCounter;
