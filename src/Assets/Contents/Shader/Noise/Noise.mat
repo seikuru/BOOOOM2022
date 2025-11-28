@@ -111,11 +111,12 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FrameRate: 20
+    - _FrameRate: 13
+    - _FresnelPower: 0.95
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GreenRatio: 0.8
+    - _GreenRatio: -0.06
     - _Height: 0.5
     - _Metallic: 0
     - _NarmalHight: 0.01
@@ -125,16 +126,16 @@ Material:
     - _QueueOffset: 0
     - _Range: 2
     - _ReceiveShadows: 1
-    - _RedRatio: 0.5
-    - _SimpleNoiseScale: 11
+    - _RedRatio: 0.03
+    - _SimpleNoiseScale: 2.07
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _StepRatio: 0.25
+    - _StepRatio: 0.3
     - _Surface: 0
-    - _Width: 0.2
+    - _Width: 0.4
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
