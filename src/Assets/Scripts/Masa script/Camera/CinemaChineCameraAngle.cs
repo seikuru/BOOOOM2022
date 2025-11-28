@@ -130,7 +130,7 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
             clamp = Mathf.Max(1 - clamp, UpClampValue);
 
-            clamp = Mathf.Max(clamp - clampFlat, 0);
+            //clamp = Mathf.Max(clamp - clampFlat, 0);
 
             LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
         }
