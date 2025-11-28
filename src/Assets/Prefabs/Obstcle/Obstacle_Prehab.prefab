@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 333b5fbbe9d99c64fa3f2cda9ba6b9a5, type: 2}
+  - {fileID: 2100000, guid: ed27a7ce280cb8e43ba3529123ca2280, type: 2}
   - {fileID: 2100000, guid: 565fb438bd76c794b991bdf5adc77182, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -150,4 +150,4 @@ MonoBehaviour:
   DustPrehab: {fileID: 2951154445695890836, guid: 605f3649aca95b641b3f91feb43c1780,
     type: 3}
   DestroyTime: 6
-  DustDivisionSize: 5
+  DustDivisionSize: 3

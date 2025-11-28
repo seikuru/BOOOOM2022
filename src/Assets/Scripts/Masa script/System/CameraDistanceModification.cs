@@ -45,6 +45,6 @@ public class CameraDistanceModification : MonoBehaviour
         float velocityClamp = Mathf.Clamp(UpMoveCount, 0, DistanceMax);
 
         // カメラ位置を調整（初期位置に倍率を適用）
-        CameraTransform.localPosition = StartCameraLocalPos * (1 + velocityClamp * AddSpeedMagnification);
+        CameraTransform.localPosition = StartCameraLocalPos +Vector3.up * (1 + velocityClamp * AddSpeedMagnification);
     }
 }

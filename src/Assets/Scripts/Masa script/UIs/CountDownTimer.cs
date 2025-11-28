@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
@@ -17,6 +18,8 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] int AddComboValue = 50; // コンボ数に応じた追加加算値
 
     [SerializeField] bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
+
+    [SerializeField] UnityEvent Event;
 
     bool CountFlag; // カウントダウン実行フラグ
     int seconds; // 現在の秒数（内部カウンター）
@@ -69,6 +72,13 @@ public class CountDownTimer : MonoBehaviour
         if (CountFlag)
         {
             seconds -= Subtractcount;// 設定値分減算
+
+            if (seconds <= 0)
+            {
+                Event.Invoke();
+                CountFlag = false;
+            }
+               
         }
         // UI表示更新
         if (text != null)

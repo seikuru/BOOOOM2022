@@ -154,11 +154,13 @@ MonoBehaviour:
   DestroyEnemyTimer: 3
   BombStrange: 30
   BombRadius: 20
+  OffScreenAddRadius: 10000
   bombCollider: {fileID: 0}
   VEffect: {fileID: 0}
   BombOuter: {fileID: 0}
   BombRB: {fileID: 0}
   GetKillCount: 0
+  BombRenderer: {fileID: 636416818746980002}
   BombAudioSource: {fileID: 8021611194544413830}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
 --- !u!114 &-7422967389172039610
