@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
 
-    [SerializeField] float rotateSpeed;
+    [SerializeField] float rotateSpeed_Y;
+    [SerializeField] float rotateSpeed_X;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,12 +19,12 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 localAngle = transform.localEulerAngles;
 
-        localAngle.x -= Input.GetAxis("Mouse Y") * rotateSpeed;
+        localAngle.x -= Input.GetAxis("Mouse Y") * rotateSpeed_X;
 
         transform.localEulerAngles = localAngle;
 
         Vector3 angle = transform.eulerAngles;
-        angle.y += Input.GetAxis("Mouse X") * rotateSpeed;
+        angle.y += Input.GetAxis("Mouse X") * rotateSpeed_Y;
         transform.eulerAngles = angle;
     }
 }

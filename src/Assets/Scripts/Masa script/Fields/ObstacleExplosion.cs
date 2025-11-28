@@ -67,5 +67,8 @@ public class ObstacleExplosion : MonoBehaviour
         // 元のオブジェクトを削除
         Destroy(this.gameObject, DestroyTime);
         this.gameObject.SetActive(false);
+
+        //オブジェクトを破壊した数をカウント
+        CoinCounter.AddCount();
     }
 }

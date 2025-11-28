@@ -83,4 +83,16 @@ public class BossTeleport : MonoBehaviour
 
         yield return null;
     }
+
+    // テレポート先にギズモを表示
+    private void OnDrawGizmos()
+    {
+        foreach (var point in Teleport)
+        {
+            if (point == null) continue;
+            Gizmos.color = new Color(0, 1, 0, 0.5f);
+            Gizmos.DrawSphere(point.TeleportPoint.transform.position, 1);
+            Gizmos.DrawWireSphere(point.TeleportPoint.transform.position, 100);
+        }
+    }
 }
