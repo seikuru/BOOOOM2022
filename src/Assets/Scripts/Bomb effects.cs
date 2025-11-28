@@ -24,6 +24,8 @@ public class Bombeffects : MonoBehaviour
     bool GetPlayerAnimationFlag = false;
     bool isHitPlayer = false;
 
+    public Rigidbody GetRB => BombRB;
+
     // public float _bombradius { get { return BombRadius; } set { BombRadius = value; } }
 
     /// <summary>

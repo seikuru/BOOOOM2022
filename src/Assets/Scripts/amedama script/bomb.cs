@@ -72,14 +72,16 @@ public class bomb : MonoBehaviour
         GameObject Spawned_Bomb = Instantiate(Bomb, spawnPos, rotation);
 
         // Rigidbodyを取得
-        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Rigidbody>();
+        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Bombeffects>().GetRB;
 
         // 投げる力（プレイヤーの移動速度を加味する）
         // Bombthrow + プレイヤーの速度の大きさ × percentage
-        Vector3 _force = direction * (Bombthrow + PlayerRigidbody.velocity.magnitude) * percentage;
+        // Vector3 _force = (Bombthrow + PlayerRigidbody.velocity.magnitude) * percentage * direction;
+        Vector3 _force = Bombthrow * direction.normalized;
         // Vector3 _force = direction * ThrowPower + this.gameObject.GetComponent<Rigidbody>().linearVelocity * 0.4f;
 
-        Vector3 _Inertia = PlayerRigidbody.velocity * (1f - percentage);
+        // Vector3 _Inertia = PlayerRigidbody.velocity * (1f - percentage);
+        Vector3 _Inertia = PlayerRigidbody.velocity;
 
         // 投擲力を加える（Impulseは質量を考慮した一時的な力）
         Bomb_rb.AddForce(_force, ForceMode.Impulse);
