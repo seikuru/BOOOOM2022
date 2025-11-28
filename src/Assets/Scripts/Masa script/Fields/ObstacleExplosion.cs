@@ -10,7 +10,7 @@ public class ObstacleExplosion : MonoBehaviour
 
     [SerializeField] float DustDivisionSize = 3f; // 破片を生成する間隔（分割サイズ）
 
-    bool IsExplosed = false;// 爆発済みかどうかのフラグ
+    [HideInInspector]public bool IsExplosed = false;// 爆発済みかどうかのフラグ
 
     /// <summary>
     /// オブジェクトのスケールの半分の値を取得
