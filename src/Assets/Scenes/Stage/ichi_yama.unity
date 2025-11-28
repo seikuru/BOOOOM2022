@@ -3705,8 +3705,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.039441723, y: 0.25195056, z: -0.01027775, w: 0.96688145}
-  m_LocalPosition: {x: 452.21695, y: 30.26824, z: 362.58215}
+  m_LocalRotation: {x: 0.28702232, y: 0.24081177, z: -0.07479212, w: 0.9241397}
+  m_LocalPosition: {x: 452.74628, y: 32.602962, z: 363.52884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3967,7 +3967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0.8682409, z: -4.924039}
+  m_FollowOffset: {x: 0, y: 3.202962, z: -3.839406}
   m_XDamping: 0.01
   m_YDamping: 0.2
   m_ZDamping: 0.01
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   MaxAngle: 80
   MinAngle: 10
   AngleChengeSpeed: 1600
-  FallSpeedLimit: 50
+  FallSpeedLimit: 20
   UpPosLimit: 40
   UpCameraDiameter: 0.65
   FlatVerocityLimit: 60
@@ -4355,8 +4355,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827190775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.039441723, y: 0.25195056, z: -0.01027775, w: 0.96688145}
-  m_LocalPosition: {x: 452.21695, y: 30.26824, z: 362.58215}
+  m_LocalRotation: {x: 0.28702232, y: 0.24081177, z: -0.07479212, w: 0.9241397}
+  m_LocalPosition: {x: 452.74628, y: 32.602962, z: 363.52884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5195,7 +5195,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: fe39a2cae108499458ca7b6e72999af5, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: a73995d70fe84084cbb2dcf25ce47d7f, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
