@@ -11,12 +11,14 @@ public class Bombeffects : MonoBehaviour
     [SerializeField] float DestroyEnemyTimer = 3f;//敵が爆発の影響を受けてから何秒で消えるか
     [SerializeField] float BombStrange = 5.0f;//爆弾が与える力の大きさ
     [SerializeField] float BombRadius = 10.0f;//爆発の影響の範囲
+    [SerializeField] float OffScreenAddRadius;//爆発の画面外補正
     [SerializeField] Collider bombCollider;
     [SerializeField] VisualEffect VEffect;//爆発した際のエフェクト
     [SerializeField] GameObject BombOuter;//爆弾の外枠のオブジェクト
     [SerializeField] Rigidbody BombRB;//爆弾のRigidBody
     [SerializeField] Transform BombSenterPos;//爆発の中心位置
     [SerializeField] bool GetKillCount = false;
+    [SerializeField] Renderer BombRenderer;
     AudioSource PlayerAudioSource;
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
@@ -70,9 +72,20 @@ public class Bombeffects : MonoBehaviour
             BombStrangeValue += GetBombAddStrange();
 
         BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
-        
-        Collider[] hits = Physics.OverlapSphere(BombSenterPos.position, BombRadius, InfluencedMask);
-        //爆弾が爆発した際、爆弾を中心に、爆弾の影響範囲下にある、影響を受けるレイヤーを探す。
+
+        Collider[] hits;
+        Debug.Log(BombRenderer.isVisible);
+        if (BombRenderer.isVisible)
+        {
+            hits = Physics.OverlapSphere(BombSenterPos.position, BombRadius, InfluencedMask);
+            //爆弾が爆発した際、爆弾を中心に、爆弾の影響範囲下にある、影響を受けるレイヤーを探す。
+        }
+        else
+        {
+            hits = Physics.OverlapSphere(BombSenterPos.position, BombRadius + OffScreenAddRadius, InfluencedMask);
+            //画面外にいる際に爆発を強化
+        }
+
 
         GameObject[] P = { };
 
