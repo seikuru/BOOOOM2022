@@ -5,7 +5,7 @@ using UnityEngine;
 
  enum MusicType
 {
-    Type1, Type2
+    Bass,Drums,Chord,Melody
 }
 
 [Serializable]
