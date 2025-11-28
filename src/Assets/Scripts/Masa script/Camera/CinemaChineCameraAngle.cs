@@ -16,7 +16,7 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
     [SerializeField, Header("カメラの最大角度")] float MaxAngle = 80f;
     [SerializeField, Header("カメラの最小角度")] float MinAngle = 10f;
-    [SerializeField, Header("アングル変更速度")] float AngleChengeSpeed = 1000f;
+    [SerializeField, Header("アングル変更速度")] float AngleChengeSpeed = 800;
 
     [SerializeField, Header("落下速度計算上限")] float FallSpeedLimit = 50f;
 
@@ -25,14 +25,17 @@ public class CinemaChineCameraAngle : MonoBehaviour
         , Range(0f, 1f)]
     float UpCameraDiameter = 0.65f;
 
-    [SerializeField, Header("平面移動量計算上限")] float FlatVerocityLimit = 40f;
+    [SerializeField, Header("平面移動量計算上限")] float FlatVerocityLimit = 60f;
     [SerializeField, Header("平面移動によるカメラのLeapの倍率")
         , Range(0f, 1f)]
-    float FlatCameraDiameter = 0.5f;
+    float FlatCameraDiameter = 0.35f;
+
+    [Header("爆発によるカメラの引き")]
 
     [SerializeField, Header("補完する時の最大倍率")] float CompletionMaxDiameter = 1.1f;
 
     [SerializeField, Header("補完時間_引き")] float CompletionTimeBack = 0.1f;
+    [SerializeField, Header("補完時間_最大値維持")] float CompletionTimeMaxValue = 0.15f;
     [SerializeField, Header("補完時間_縮み")] float CompletionTimeForward = 0.7f;
 
     CinemachineTransposer transposer;
@@ -113,14 +116,13 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         if (!player.OnGround && PlayerRB.velocity.y >= 0)
         {
-            
             float distance_y = Mathf.Max(Player.GetTransformPlayer.position.y - ExitGroundPos, 0);
 
             clamp = NormalizeClamp(distance_y, 0, UpPosLimit) * UpCameraDiameter;
 
-            UpClampValue = Mathf.Max(clamp - clampFlat, UpClampValue);
+            UpClampValue = Mathf.Max(clamp, UpClampValue);
 
-            LerpAngle = MinAngle + (MaxAngle - MinAngle) * clamp;
+            LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
         }
         else
         {
@@ -130,7 +132,7 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
             //clamp = Mathf.Max(clamp - clampFlat, 0);
 
-            LerpAngle = MinAngle + (MaxAngle - MinAngle) * clamp;
+            LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
         }
 
         
@@ -170,7 +172,7 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         float AngleFactor = GetRightAngleFactor(PlayerRB.velocity, Player.GetTransformPlayer.position - transform.position);
 
-        float AddFlatAngle = AngleFactor * (CompletionMaxDiameter);
+        float AddFlatAngle = AngleFactor * CompletionMaxDiameter;
 
         if (Coroutine_TargetAngle != null)
         {
@@ -179,18 +181,21 @@ public class CinemaChineCameraAngle : MonoBehaviour
         Coroutine_TargetAngle = StartCoroutine(SlerpTarget_Z(AddFlatAngle));
     }
 
-    IEnumerator SlerpTarget_Z(float AddAngle)
+    IEnumerator SlerpTarget_Z(float TargetAngle)
     {
         //Vector3 Target = TargetOffSet;
+        //float count01 = 
 
-        float count = NormalizeClamp(AddAngleforward, 0f, CompletionMaxDiameter);
+
+        float count = Mathf.Clamp01(AddAngleforward / TargetAngle) * CompletionTimeBack;
 
         while (count < CompletionTimeBack)
         {
-            count += Time.deltaTime;
+            count += Time.fixedDeltaTime;
+
             float t = Mathf.Clamp01(count / CompletionTimeBack);
 
-            float lerp = AddAngle * t;
+            float lerp = TargetAngle * t;
 
             AddAngleforward = lerp;
 
@@ -199,12 +204,15 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         count = CompletionTimeForward;
 
+        yield return new WaitForSeconds(CompletionTimeMaxValue);
+
         while (count > 0)
         {
-            count -= Time.deltaTime;
+            count -= Time.fixedDeltaTime;
+
             float t = Mathf.Clamp01(count / CompletionTimeForward);
 
-            float lerp = AddAngle * t;
+            float lerp = TargetAngle * t;
 
             AddAngleforward = lerp;
 

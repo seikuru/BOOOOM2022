@@ -6,40 +6,34 @@ public class PlayerFallSpeedAdder : MonoBehaviour
     /// 落下中に時間経過と共に重力を強化し、よりスピードのある体験を演出
 
     [SerializeField] Rigidbody PlayerRB; // プレイヤーのRigidbody
-    [SerializeField] bool FallFlag = true; // 落下速度加算機能の有効/無効フラグ
-    [SerializeField] float MaxAddFallSpeed = 13f; // 追加できる最大落下速度
-    [SerializeField] float BaseGravityAcceleration = 9.8f; // 基本重力加速度
-    [SerializeField] float AddFallValue = 2f; // 落下時間カウンターの増加倍率
-    [SerializeField] bool PrintDebug = false; // デバッグログ出力フラグ
+    [SerializeField,Header("落下速度加算機能の有効/無効フラグ")] bool FallFlag = true;
 
+    //[SerializeField] float MaxAddFallSpeed = 13f; // 追加できる最大落下速度
+    //[SerializeField] float BaseGravityAcceleration = 9.8f; // 基本重力加速度
+    //[SerializeField] float AddFallValue = 2f; // 落下時間カウンターの増加倍率
 
+    [SerializeField,Header("デバッグログ出力フラグ")] bool PrintDebug = false;
 
     /// ある特定の条件を満たしたら下方向に急加速する処理を追加実装
 
-    [SerializeField] float FallSpeed = 1.0f;
-    [SerializeField] float FallJudgeTime = 3.0f;
-    float FallJudgeValue = 1.0f;//落下していると判定する下向きのベクトルの強さの値
+    [SerializeField,Header("落下速度上限")] float FallSpeed = 30.0f;
+
+    //[SerializeField] float FallJudgeTime = 3.0f;
+    //float FallJudgeValue = 1.0f;//落下していると判定する下向きのベクトルの強さの値
 
 
     /// 爆弾の爆発を受けてから特定秒数後に急降下する処理を追加
 
-    [SerializeField] float SecondsUntilFall = 3.5f;//爆発から何秒後に加速するか
+    [SerializeField,Header("爆発から何秒後に加速するか")] float SecondsUntilFall = 3.5f;
+
+    public bool _BombHit { set { BombHit = value; } }
+
     float BombHitCounter; //爆発を受けてからのカウント
     bool BombHitSwitch = false;//爆弾がヒットしたことによる処理を行うための値
     bool BombHit = false;//爆弾がヒットしたかどうか（すぐにオフに戻る）
-    public bool _BombHit { set { BombHit = value; } }
-
-
-    
     float TimeCounter; // 落下継続時間のカウンター
     Vector3 BeforeVerocity; // 前フレームの速度（落下判定用）
     
-    
-   
-
-
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -117,6 +111,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
         //FallAccelerate();
     }
 
+    /*
     void FallAccelerate()
     {
         // 落下判定（現在の垂直速度が前フレームより小さい場合）
@@ -170,4 +165,5 @@ public class PlayerFallSpeedAdder : MonoBehaviour
             TimeCounter = 0; // 時間カウンターをリセット
         }
     }
+    */
 }

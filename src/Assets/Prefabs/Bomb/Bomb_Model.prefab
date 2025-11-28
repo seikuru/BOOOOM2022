@@ -195,7 +195,9 @@ MonoBehaviour:
   BombRB: {fileID: 2504155696010783520}
   BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
+
   BombRenderer: {fileID: 2915087217004067399}
+
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
   impulseSource: {fileID: -1099343481597396503}
@@ -594,6 +596,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2504155696010783520}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6021063812554669192}
   m_SourcePrefab: {fileID: 100100000, guid: 58c3db60fef44ee40aed57ff7d927444, type: 3}
 --- !u!1 &352715542732010125 stripped
 GameObject:
@@ -650,9 +656,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &6021063812554669192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352715542732010125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5faff3823122446bd77f759623f974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombRB: {fileID: 2504155696010783520}
+  FallFlag: 1
+  PrintDebug: 0
+  FallSpeed: 130
+  SecondsUntilFall: 1
+  FallSpeedDiameter: 0.0007
 --- !u!4 &1130060760798242871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
+    type: 3}
+  m_PrefabInstance: {fileID: 586718350541967324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2587731209140225725 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6067185528594298527, guid: 58c3db60fef44ee40aed57ff7d927444,
     type: 3}
   m_PrefabInstance: {fileID: 586718350541967324}
   m_PrefabAsset: {fileID: 0}
