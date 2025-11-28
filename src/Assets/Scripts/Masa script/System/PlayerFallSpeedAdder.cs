@@ -30,9 +30,12 @@ public class PlayerFallSpeedAdder : MonoBehaviour
     public bool _BombHit { set { BombHit = value; } }
 
 
-
+    
     float TimeCounter; // 落下継続時間のカウンター
     Vector3 BeforeVerocity; // 前フレームの速度（落下判定用）
+    
+    
+   
 
 
 
@@ -49,7 +52,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
             PlayerRB = component;
         }
 
-
+        
     }
 
     // Update is called once per frame
@@ -86,24 +89,19 @@ public class PlayerFallSpeedAdder : MonoBehaviour
                     TimeCounter = 0;
                     //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.1f, PlayerRB.velocity.y, PlayerRB.velocity.z * 0.1f);
                 }
-                else
+                else 
                 {
-                    if (PlayerRB.velocity.y < 0) 
-                    {
-                        if(TimeCounter > FallJudgeTime)
-                        {
-                            // 追加重力の計算
-                            float AddAcceleration = TimeCounter;
 
-                            //下向きのベクトルを値で入力（最小値で制限）
-                            PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
-                            //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
+                // 追加重力の計算
+                float AddAcceleration = TimeCounter ;
 
-                            // 落下時間カウンターを増加（時間×倍率）
-                            TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
+                //下向きのベクトルを値で入力（最小値で制限）
+                PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
+                  //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
 
-                        }
-                    }            
+                    // 落下時間カウンターを増加（時間×倍率）
+                    TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
+
                 }
             }
         }
