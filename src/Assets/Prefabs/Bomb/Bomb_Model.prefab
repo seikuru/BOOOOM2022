@@ -188,12 +188,14 @@ MonoBehaviour:
   DestroyEnemyTimer: 3
   BombStrange: 35
   BombRadius: 10
+  OffScreenAddRadius: 0
   bombCollider: {fileID: 3819241328568330306}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 2504155696010783520}
   BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
+  BombRenderer: {fileID: 2915087217004067399}
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
   impulseSource: {fileID: -1099343481597396503}
@@ -223,7 +225,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.027
   m_Pitch: 1
   Loop: 0
   Mute: 0
