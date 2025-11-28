@@ -255,7 +255,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -353,12 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerRB: {fileID: 7104464763104517611}
   FallFlag: 1
-  MaxAddFallSpeed: 2.5
-  BaseGravityAcceleration: 9.8
-  AddFallValue: 1
   PrintDebug: 0
   FallSpeed: 65
-  FallJudgeTime: 3
   SecondsUntilFall: 2
 --- !u!1 &4004615901524930672
 GameObject:

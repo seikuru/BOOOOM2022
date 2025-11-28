@@ -23,7 +23,7 @@ public class CollectObject : MonoBehaviour
         {
             if (obj != null)
             {
-                Debug.Log("able");
+                // Debug.Log("able");
 
                 break;
             }
