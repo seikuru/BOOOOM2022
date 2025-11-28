@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 568083875313027701}
   - component: {fileID: 2579846102088291873}
   - component: {fileID: 7834042539771189614}
+  - component: {fileID: 3023593640061063737}
   - component: {fileID: 424469328706394918}
   m_Layer: 3
   m_Name: Player_CinemaChine
@@ -260,6 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHP: 5
+  PlayerBombHit: 0
+  OnGround: 1
 --- !u!114 &2579846102088291873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +292,24 @@ MonoBehaviour:
   PlayerBodyTransform: {fileID: 7878180206275059215}
   PlayerModelTransform: {fileID: 154745808761288618}
   LimitModelVertical: 0.9
+--- !u!114 &3023593640061063737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3640815705827342858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3404f2c6cb3dfad49abbb7f5764fe82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 568083875313027701}
+  PlayerRB: {fileID: 2364280095217102194}
+  FallFlag: 1
+  PrintDebug: 0
+  FallSpeed: 65
+  SecondsUntilFall: 2
 --- !u!95 &424469328706394918
 Animator:
   serializedVersion: 5

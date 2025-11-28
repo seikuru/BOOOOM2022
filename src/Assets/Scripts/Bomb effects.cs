@@ -182,6 +182,16 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<PlayerFallSpeedAdder>(out PlayerFallSpeedAdder PFSA))
                 {
                     PFSA._BombHit = true;
+
+                    if (PFSA.IsFall)
+                    {
+                        PlayerRigidbodies[i].velocity = new()
+                        { 
+                            x = PlayerRigidbodies[i].velocity.x, 
+                            y = PlayerRigidbodies[i].velocity.y * 0.5f,
+                            z = PlayerRigidbodies[i].velocity.z 
+                        };
+                    }
                 }
                 BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
 
