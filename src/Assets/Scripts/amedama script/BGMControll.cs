@@ -33,9 +33,11 @@ public class BGMControll : MonoBehaviour
     [SerializeField] CollectMusicClass[] CMC;
     int beforCollectPoint = 0;
     int ObjectNumber = 0;
+    [SerializeField] float Count = 0f;
     // Start is called before the first frame update
     void Start()
     {
+        Count *= 1.6f;
         beforCollectPoint = CollectObject.CollectPoint;
         foreach (var a1 in CMC)
         {
@@ -43,6 +45,7 @@ public class BGMControll : MonoBehaviour
             {
                 if (b2 != null)
                 {
+                    b2.enabled = true;
                     b2.mute = true;
                 }
             }
@@ -50,36 +53,48 @@ public class BGMControll : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        ObjectNumber = 0;
-        foreach (var b1 in COC)
+        
+        Count += Time.deltaTime;
+
+       //Count = (Count / 1.6f);
+
+        
+
+        if (Count / (1.6f*2.0f) >= 1.0f)
         {
-            foreach (var b2 in b1.CollectObject)
-            {
-                if (b2 == null)
-                {
-                    int i = 0;
-                    foreach (var a1 in CMC)
-                    {
-     
-                        if (a1.CMCMusicType == b1.COCMusicType)
-                        {
-                            break;
-                        }
-                        i++;
-                    }
-                    
-                    if (CMC[i].AudioSources.Length > ObjectNumber 
-                        && CMC[i].AudioSources[ObjectNumber] != null)
-                    {
-                        CMC[i].AudioSources[ObjectNumber].mute = false;
-                    }
-                    ObjectNumber++;
-                }
-                
-            }
+            Debug.Log("o+wow");
             ObjectNumber = 0;
+            foreach (var b1 in COC)
+            {
+                foreach (var b2 in b1.CollectObject)
+                {
+                    if (b2 == null)
+                    {
+                        int i = 0;
+                        foreach (var a1 in CMC)
+                        {
+
+                            if (a1.CMCMusicType == b1.COCMusicType)
+                            {
+                                break;
+                            }
+                            i++;
+                        }
+
+                        if (CMC[i].AudioSources.Length > ObjectNumber
+                            && CMC[i].AudioSources[ObjectNumber] != null)
+                        {
+                            CMC[i].AudioSources[ObjectNumber].mute = false;
+                        }
+                        ObjectNumber++;
+                    }
+
+                }
+                ObjectNumber = 0;
+            }
+            Count = 0;
         }
     }
 
