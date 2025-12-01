@@ -5,6 +5,7 @@ public class PlayerFallSpeedAdder : MonoBehaviour
     /// プレイヤーの落下速度を段階的に加速させるクラス
     /// 落下中に時間経過と共に重力を強化し、よりスピードのある体験を演出
 
+    [SerializeField] Player player;
     [SerializeField] Rigidbody PlayerRB; // プレイヤーのRigidbody
     [SerializeField,Header("落下速度加算機能の有効/無効フラグ")] bool FallFlag = true;
 
@@ -28,6 +29,8 @@ public class PlayerFallSpeedAdder : MonoBehaviour
 
     public bool _BombHit { set { BombHit = value; } }
 
+    public bool IsFall => BombHitSwitch && BombHitCounter > SecondsUntilFall;
+
     float BombHitCounter; //爆発を受けてからのカウント
     bool BombHitSwitch = false;//爆弾がヒットしたことによる処理を行うための値
     bool BombHit = false;//爆弾がヒットしたかどうか（すぐにオフに戻る）
@@ -45,8 +48,6 @@ public class PlayerFallSpeedAdder : MonoBehaviour
         {
             PlayerRB = component;
         }
-
-        
     }
 
     // Update is called once per frame
@@ -67,31 +68,29 @@ public class PlayerFallSpeedAdder : MonoBehaviour
 
         if (BombHitSwitch)
         {
-            BombHitCounter += Time.deltaTime;
+            BombHitCounter += Time.fixedDeltaTime;
 
             if (BombHitCounter > SecondsUntilFall)
             {
-
                 // 落下時間カウンターを増加（時間×倍率）
-                TimeCounter += Time.deltaTime;
+                TimeCounter += Time.fixedDeltaTime;
 
-                //現在の垂直速度が前フレームよりも大きい場合（接地判定）
-                if (PlayerRB.velocity.y > BeforeVerocity.y)
+                //現在地形に接している場合（接地判定）
+                if (player.OnGround)
                 {
                     BombHitSwitch = false;
                     BombHitCounter = 0;
                     TimeCounter = 0;
-                    //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.1f, PlayerRB.velocity.y, PlayerRB.velocity.z * 0.1f);
                 }
                 else 
                 {
+                    // 追加重力の計算
+                    float AddAcceleration = TimeCounter;
 
-                // 追加重力の計算
-                float AddAcceleration = TimeCounter ;
+                    //下向きのベクトルを値で入力（最小値で制限）
+                    PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
 
-                //下向きのベクトルを値で入力（最小値で制限）
-                PlayerRB.velocity = new Vector3(PlayerRB.velocity.x * 0.99f, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z * 0.99f);
-                  //PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
+                  　//PlayerRB.velocity = new Vector3(PlayerRB.velocity.x, Mathf.Max(-FallSpeed, PlayerRB.velocity.y - AddAcceleration), PlayerRB.velocity.z);
 
                     // 落下時間カウンターを増加（時間×倍率）
                     TimeCounter += (TimeCounter * FallSpeed * 0.0007f);
