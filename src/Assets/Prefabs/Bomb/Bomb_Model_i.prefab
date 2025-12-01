@@ -28,10 +28,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.8, y: 13.8, z: 13.8}
+  m_LocalScale: {x: 0.69, y: 0.69, z: 0.69}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1130060760798242871}
+  m_Father: {fileID: 3268544491426306342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &6043239420693527188
 VisualEffect:
@@ -121,11 +121,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3268544491426306342}
   - component: {fileID: 6530253593774039959}
+  - component: {fileID: 7104464763104517611}
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
   - component: {fileID: 6993103614394412173}
+  - component: {fileID: 7358893034013187044}
   m_Layer: 6
-  m_Name: Bomb_ModelUNder
+  m_Name: Bomb_Model_i
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +148,8 @@ Transform:
   m_Children:
   - {fileID: 3966743145461724759}
   - {fileID: 1130060760798242871}
+  - {fileID: 1481242602861437876}
+  - {fileID: 8812981436285873910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &6530253593774039959
@@ -165,10 +169,37 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7104464763104517611
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672593736015811124}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!114 &1066588395531623786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,12 +217,12 @@ MonoBehaviour:
     m_Bits: 140232
   DestroyEnemyTimer: 3
   BombStrange: 20
-  BombRadius: 10
+  BombRadius: 15
   OffScreenAddRadius: 0
-  bombCollider: {fileID: 6351714084091745621}
+  bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
-  BombRB: {fileID: 2952113775743163740}
+  BombRB: {fileID: 7104464763104517611}
   BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
   BombRenderer: {fileID: 2587731209140225725}
@@ -211,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throughTime: 0.2
-  BombCollider: {fileID: 6351714084091745621}
+  BombCollider: {fileID: 6530253593774039959}
 --- !u!82 &6993103614394412173
 AudioSource:
   m_ObjectHideFlags: 0
@@ -297,8 +328,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.2929287
+      value: 0.25170135
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -308,6 +339,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7358893034013187044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672593736015811124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3404f2c6cb3dfad49abbb7f5764fe82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerRB: {fileID: 7104464763104517611}
+  FallFlag: 1
+  PrintDebug: 0
+  FallSpeed: 65
+  SecondsUntilFall: 2
 --- !u!1 &4004615901524930672
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,10 +384,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1130060760798242871}
+  m_Father: {fileID: 3268544491426306342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &8959692598886482616
 VisualEffect:
@@ -507,43 +555,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
         type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      propertyPath: m_TagString
-      value: Bomb
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1481242602861437876}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8812981436285873910}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6351714084091745621}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2952113775743163740}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 963077224603975666}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c3db60fef44ee40aed57ff7d927444, type: 3}
 --- !u!1 &352715542732010125 stripped
 GameObject:
@@ -551,73 +569,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 586718350541967324}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &6351714084091745621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352715542732010125}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4068373912626513877, guid: a0479468db54a6e46b0043ecf0af8202, type: 3}
---- !u!54 &2952113775743163740
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352715542732010125}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!114 &963077224603975666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352715542732010125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5faff3823122446bd77f759623f974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BombRB: {fileID: 2952113775743163740}
-  FallFlag: 1
-  PrintDebug: 0
-  FallSpeed: 130
-  SecondsUntilFall: 1
-  FallSpeedDiameter: 0.0007
 --- !u!4 &1130060760798242871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
