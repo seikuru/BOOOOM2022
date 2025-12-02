@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 enum MusicType
@@ -33,6 +34,7 @@ public class BGMControll : MonoBehaviour
     [SerializeField] CollectObjectClass[] COC;
     [SerializeField] CollectMusicClass[] CMC;
     [SerializeField] Text DebugText;
+    [SerializeField] UnityEvent BounsTimeEvent;
 
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
     int AllCollectPoint = 0, CurrentCollectPoint = 0;
@@ -84,6 +86,9 @@ public class BGMControll : MonoBehaviour
                         {
                             CMC[i].AudioSources[ObjectNumber].mute = false;
                             CurrentCollectPoint++;
+
+                            if (CurrentCollectPoint == AllCollectPoint)
+                                BounsTimeEvent.Invoke();
                         }
                     }
                     ObjectNumber++;
