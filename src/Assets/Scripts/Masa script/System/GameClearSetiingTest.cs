@@ -16,11 +16,26 @@ public class GameClearSetiingTest : MonoBehaviour
     [SerializeField]
     GameObject[] enabledObjects;
 
+    [SerializeField]
+    GameObject[] ClearObject, GameoverObject;
+
     Coroutine coroutine = null;
 
+    public bool ClearCheck = false;
+
+    public void GameOver()
+    {
+        ClearCheck = false;
+        Time.timeScale = 0;
+        if (coroutine == null)
+        {
+            coroutine = StartCoroutine(BlackOut());
+        }
+    }
 
     public void GameClear()
     {
+        ClearCheck = true;
         Time.timeScale = 0;
         if(coroutine ==  null)
         {
@@ -60,6 +75,17 @@ public class GameClearSetiingTest : MonoBehaviour
     void ObjectsEnabled()
     {
         foreach(GameObject obj in enabledObjects)
+        {
+            obj.SetActive(true);
+        }
+
+        if(ClearCheck)
+        foreach (GameObject obj in ClearObject)
+        {
+            obj.SetActive(true);
+        }
+        else
+        foreach (GameObject obj in GameoverObject)
         {
             obj.SetActive(true);
         }
