@@ -33,11 +33,14 @@ public class BGMControll : MonoBehaviour
     [SerializeField] CollectMusicClass[] CMC;
     int beforCollectPoint = 0;
     int ObjectNumber = 0;
-    [SerializeField] float Count = 0f;
+    [SerializeField]float Count = 0;
+    [SerializeField]int BPM = 150;
+    float OneMeasure;
     // Start is called before the first frame update
     void Start()
     {
-        Count *= 1.6f;
+        OneMeasure = 240 / BPM;
+
         beforCollectPoint = CollectObject.CollectPoint;
         foreach (var a1 in CMC)
         {
@@ -58,11 +61,9 @@ public class BGMControll : MonoBehaviour
         
         Count += Time.deltaTime;
 
-       //Count = (Count / 1.6f);
+        Debug.Log(Count);
 
-        
-
-        if (Count / (1.6f*2.0f) >= 1.0f)
+        if (Count >= OneMeasure)
         {
             Debug.Log("o+wow");
             ObjectNumber = 0;
