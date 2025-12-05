@@ -8,9 +8,11 @@ public class CollectObjectRePop : MonoBehaviour
     [SerializeField] GameObject RepopPrehab;
 
     [SerializeField] private GameObject[] CollectObjects;
+
     ObstacleExplosion[] obstacleExplosions;
     Vector3[] RepopPos; 
-    int ObjectValue;
+
+    int ObjectsLength;
 
     bool BreakObject = false;
     bool once = true;
@@ -19,11 +21,11 @@ public class CollectObjectRePop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ObjectValue = CollectObjects.Length;
-        obstacleExplosions = new ObstacleExplosion[ObjectValue];
-        RepopPos = new Vector3[ObjectValue];
+        ObjectsLength = CollectObjects.Length;
+        obstacleExplosions = new ObstacleExplosion[ObjectsLength];
+        RepopPos = new Vector3[ObjectsLength];
 
-        for (int i = 0; i < ObjectValue; i++)
+        for (int i = 0; i < ObjectsLength; i++)
         {
             RepopPos[i] = CollectObjects[i].transform.position;
 
@@ -40,7 +42,7 @@ public class CollectObjectRePop : MonoBehaviour
     {
         int BrokeNumber = 0;
 
-        for (int i = 0; i < ObjectValue; i++)
+        for (int i = 0; i < ObjectsLength; i++)
         {
             if (CollectObjects[i] != null && !obstacleExplosions[i].IsExplosed)
             {
@@ -49,7 +51,7 @@ public class CollectObjectRePop : MonoBehaviour
             else
             {
                 BrokeNumber++;
-                if (BrokeNumber >= ObjectValue)
+                if (BrokeNumber >= ObjectsLength)
                 {
                     BreakObject = true;
                 }
@@ -59,6 +61,7 @@ public class CollectObjectRePop : MonoBehaviour
         if (BreakObject && once)
         {
             once = false;
+            DestroyObstcleCount.DestroyAddCount();
             Destroy(this.gameObject);
         }
 
@@ -70,7 +73,7 @@ public class CollectObjectRePop : MonoBehaviour
             {
                 count = 0;
 
-                for (int i = 0; i < ObjectValue; i++)
+                for (int i = 0; i < ObjectsLength; i++)
                 {
                     if (CollectObjects[i] == null)
                     {

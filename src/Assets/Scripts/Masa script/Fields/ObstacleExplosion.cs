@@ -35,6 +35,18 @@ public class ObstacleExplosion : MonoBehaviour
         if (IsExplosed) return;
         IsExplosed = true;
 
+        if(DestroyTime <= 0)
+        {
+            //オブジェクトを破壊した数をカウント
+            CoinCounter.AddCount();
+
+            // 元のオブジェクトを削除
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject, DestroyTime);
+            
+            return;
+        }
+
         // 破片生成範囲の計算
         Vector3 StartPosVec3 = transform.position - ObjectScale; // 生成開始位置
         Vector3 EndPosVec3 = transform.position + ObjectScale; // 生成終了位置
