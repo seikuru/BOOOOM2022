@@ -5,9 +5,11 @@ using UnityEngine;
 public class CollectObjectRePop : MonoBehaviour
 {
     [SerializeField] float repopCount = 5f;
+    [SerializeField] GameObject RepopPrehab;
+
     [SerializeField] private GameObject[] CollectObjects;
     ObstacleExplosion[] obstacleExplosions;
-
+    Vector3[] RepopPos; 
     int ObjectValue;
 
     bool BreakObject = false;
@@ -19,9 +21,12 @@ public class CollectObjectRePop : MonoBehaviour
     {
         ObjectValue = CollectObjects.Length;
         obstacleExplosions = new ObstacleExplosion[ObjectValue];
-        
-        for(int i = 0; i < ObjectValue; i++)
+        RepopPos = new Vector3[ObjectValue];
+
+        for (int i = 0; i < ObjectValue; i++)
         {
+            RepopPos[i] = CollectObjects[i].transform.position;
+
             if (CollectObjects[i].TryGetComponent<ObstacleExplosion>
                 (out ObstacleExplosion OE))
             {
@@ -61,17 +66,26 @@ public class CollectObjectRePop : MonoBehaviour
         {
             count += Time.deltaTime;
 
-            if(count > repopCount)
-            { 
-            
+            if (count > repopCount)
+            {
+                count = 0;
 
+                for (int i = 0; i < ObjectValue; i++)
+                {
+                    if (CollectObjects[i] == null)
+                    {
+                        CollectObjects[i] = Instantiate(RepopPrehab, RepopPos[i], Quaternion.identity, this.transform);
+                        if (CollectObjects[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion OE))
+                        {
+                            obstacleExplosions[i] = OE;
+                        }
+                    }
+                }
             }
         }
         else
         {
             count = 0;
         }
-
     }
-
 }
