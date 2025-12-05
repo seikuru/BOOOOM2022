@@ -41,7 +41,7 @@ public class BlowUp : MonoBehaviour
 
         if (DetectTimer >= BlowUpTime)
         {
-            PlayerRB.AddForce(BlowUpVector, ForceMode.Impulse);
+            PlayerRB.velocity = BlowUpVector;
             Detected = false;
             DetectTimer = 0;
         }
