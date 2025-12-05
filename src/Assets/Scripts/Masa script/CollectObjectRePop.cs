@@ -5,13 +5,16 @@ using UnityEngine;
 public class CollectObjectRePop : MonoBehaviour
 {
     [SerializeField] float repopCount = 5f;
+
+    [SerializeField] float ScaleUpTime = 1f;
+
     [SerializeField] GameObject RepopPrehab;
 
     [SerializeField] private GameObject[] CollectObjects;
 
     ObstacleExplosion[] obstacleExplosions;
-    Vector3[] RepopPos; 
-
+    Vector3[] RepopPos;
+    Vector3[] RepopScale;
     int ObjectsLength;
 
     bool BreakObject = false;
@@ -24,10 +27,12 @@ public class CollectObjectRePop : MonoBehaviour
         ObjectsLength = CollectObjects.Length;
         obstacleExplosions = new ObstacleExplosion[ObjectsLength];
         RepopPos = new Vector3[ObjectsLength];
+        RepopScale = new Vector3[ObjectsLength];
 
         for (int i = 0; i < ObjectsLength; i++)
         {
             RepopPos[i] = CollectObjects[i].transform.position;
+            RepopScale[i] = CollectObjects[i].transform.localScale;
 
             if (CollectObjects[i].TryGetComponent<ObstacleExplosion>
                 (out ObstacleExplosion OE))
@@ -82,6 +87,8 @@ public class CollectObjectRePop : MonoBehaviour
                         {
                             obstacleExplosions[i] = OE;
                         }
+
+                        StartCoroutine(RepopUpScale(i));
                     }
                 }
             }
@@ -90,5 +97,27 @@ public class CollectObjectRePop : MonoBehaviour
         {
             count = 0;
         }
+    }
+
+    private IEnumerator RepopUpScale(int index)
+    {
+        float elapsed = 0f;
+
+        while (elapsed <= ScaleUpTime)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            if (CollectObjects[index] != null)
+            {
+                float t = Mathf.Clamp01(elapsed / ScaleUpTime);
+
+                CollectObjects[index].transform.localScale = RepopScale[index] * t;
+            }
+
+            yield return null;
+        }
+
+        if (CollectObjects[index] != null)
+            CollectObjects[index].transform.localScale = RepopScale[index];
     }
 }
