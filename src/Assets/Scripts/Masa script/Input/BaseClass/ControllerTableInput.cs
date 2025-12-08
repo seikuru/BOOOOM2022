@@ -134,6 +134,8 @@ public class ControllerTableInput : OperationsInput
         ThrowBomb(powerRange, worldDirection);
     }
 
+    protected void ShotUnder() => ThrowUnderBomb();
+
     /// <summary>
     /// 爆弾を爆発させるボタンが押されているかチェックする
     /// bool変数を挟んで押したときに一回だけ起動するように

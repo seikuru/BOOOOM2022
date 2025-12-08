@@ -27,6 +27,9 @@ public class ControllerInput : ControllerTableInput
         // テーブル回転処理
         RotateTable(angle);
 
+        if (valueContainer.get_under())
+            ShotUnder();
+
         // 爆弾を投擲する処理
         int ThorwRad = valueContainer.get_Trad();
         // 押されていない数値ならreturn

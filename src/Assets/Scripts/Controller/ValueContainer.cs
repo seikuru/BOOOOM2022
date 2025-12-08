@@ -10,6 +10,7 @@ public class ValueContainer : MonoBehaviour
     public int center;
     public List<int> t_rad;
     private List<int> old_rad;
+    private int old_center = 0;
     private int list_num = 2;
 
     private const float oneseg = 1.94343f;
@@ -74,5 +75,17 @@ public class ValueContainer : MonoBehaviour
         }
         old_rad = new(t_rad);
         return ret;
+    }
+
+    public bool get_under()
+    {
+        bool tap = false;
+
+        if(center == 1 && old_center == 0)
+            tap = true;
+
+        old_center = center;
+
+        return tap;
     }
 }
