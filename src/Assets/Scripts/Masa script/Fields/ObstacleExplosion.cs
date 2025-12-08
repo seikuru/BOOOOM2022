@@ -10,7 +10,7 @@ public class ObstacleExplosion : MonoBehaviour
 
     [SerializeField] float DustDivisionSize = 3f; // 破片を生成する間隔（分割サイズ）
 
-    bool IsExplosed = false;// 爆発済みかどうかのフラグ
+    [HideInInspector]public bool IsExplosed = false;// 爆発済みかどうかのフラグ
 
     /// <summary>
     /// オブジェクトのスケールの半分の値を取得
@@ -67,5 +67,8 @@ public class ObstacleExplosion : MonoBehaviour
         // 元のオブジェクトを削除
         Destroy(this.gameObject, DestroyTime);
         this.gameObject.SetActive(false);
+
+        //オブジェクトを破壊した数をカウント
+        CoinCounter.AddCount();
     }
 }

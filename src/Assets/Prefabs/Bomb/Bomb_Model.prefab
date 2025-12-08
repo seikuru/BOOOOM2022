@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
   - component: {fileID: 6993103614394412173}
+  - component: {fileID: -1099343481597396503}
   m_Layer: 6
   m_Name: Bomb_Model
   m_TagString: Bomb
@@ -187,13 +188,19 @@ MonoBehaviour:
   DestroyEnemyTimer: 3
   BombStrange: 35
   BombRadius: 10
+  OffScreenAddRadius: 0
   bombCollider: {fileID: 3819241328568330306}
   VEffect: {fileID: 8959692598886482616}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 2504155696010783520}
+  BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
+
+  BombRenderer: {fileID: 2915087217004067399}
+
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
+  impulseSource: {fileID: -1099343481597396503}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +227,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.027
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -304,6 +311,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1099343481597396503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672593736015811124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: -1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 1
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 100, y: 100, z: 100}
 --- !u!1 &4004615901524930672
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +596,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2504155696010783520}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 58c3db60fef44ee40aed57ff7d927444,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6021063812554669192}
   m_SourcePrefab: {fileID: 100100000, guid: 58c3db60fef44ee40aed57ff7d927444, type: 3}
 --- !u!1 &352715542732010125 stripped
 GameObject:
@@ -592,9 +656,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &6021063812554669192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352715542732010125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5faff3823122446bd77f759623f974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombRB: {fileID: 2504155696010783520}
+  FallFlag: 1
+  PrintDebug: 0
+  FallSpeed: 130
+  SecondsUntilFall: 1
+  FallSpeedDiameter: 0.0007
 --- !u!4 &1130060760798242871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
+    type: 3}
+  m_PrefabInstance: {fileID: 586718350541967324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2587731209140225725 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6067185528594298527, guid: 58c3db60fef44ee40aed57ff7d927444,
     type: 3}
   m_PrefabInstance: {fileID: 586718350541967324}
   m_PrefabAsset: {fileID: 0}

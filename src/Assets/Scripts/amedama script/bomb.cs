@@ -33,7 +33,7 @@ public class bomb : MonoBehaviour
         GameObject Spawned_Bomb = Instantiate(Bomb2, spawnPos, Quaternion.identity);
 
         // Rigidbodyを取得
-        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Rigidbody>();
+        Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Bombeffects>().GetRB;
 
         Vector3 _force = Vector3.down * Underthrow;
 
@@ -127,7 +127,7 @@ public class bomb : MonoBehaviour
 
     private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
     {
-        ComboCounter.ResetCombo();
+        //ComboCounter.ResetCombo();
 
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
@@ -161,7 +161,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce
                     (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
                     , ForceMode.Impulse);
 
@@ -173,7 +173,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");
@@ -183,7 +183,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");
@@ -216,7 +216,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, JumpBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce
                     (-this.transform.up + this.gameObject.GetComponent<Rigidbody>().velocity
                     , ForceMode.Impulse);
 
@@ -229,7 +229,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");
@@ -240,7 +240,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, BrinkBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Rigidbody>().AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(-this.transform.forward * 5.0f + this.gameObject.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");

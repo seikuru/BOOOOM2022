@@ -45,7 +45,7 @@ VisualEffect:
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
@@ -217,13 +217,17 @@ MonoBehaviour:
   DestroyEnemyTimer: 3
   BombStrange: 30
   BombRadius: 20
+  OffScreenAddRadius: 0
   bombCollider: {fileID: 6530253593774039959}
   VEffect: {fileID: 5578185777037969535}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
+  BombSenterPos: {fileID: 3268544491426306342}
   GetKillCount: 0
+  BombRenderer: {fileID: 8361155585019146498}
   BombAudioSource: {fileID: -2240922392109693862}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
+  impulseSource: {fileID: 0}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0

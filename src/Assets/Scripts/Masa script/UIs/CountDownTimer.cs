@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
@@ -17,6 +18,8 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] int AddComboValue = 50; // コンボ数に応じた追加加算値
 
     [SerializeField] bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
+
+    [SerializeField] UnityEvent TimeUpEvent;
 
     bool CountFlag; // カウントダウン実行フラグ
     int seconds; // 現在の秒数（内部カウンター）
@@ -69,6 +72,13 @@ public class CountDownTimer : MonoBehaviour
         if (CountFlag)
         {
             seconds -= Subtractcount;// 設定値分減算
+
+            if (seconds <= 0)
+            {
+                TimeUpEvent.Invoke();
+                CountFlag = false;
+            }
+               
         }
         // UI表示更新
         if (text != null)
@@ -89,10 +99,15 @@ public class CountDownTimer : MonoBehaviour
             // 時間計算（負数対応のため絶対値を使用）
             string h = Mathf.Abs(seconds / (MaxCountSecond * MaxCountMinutes)).ToString(); // 時間部分
             string m = Mathf.Abs(seconds % (MaxCountSecond * MaxCountMinutes) / MaxCountSecond).ToString(); // 分部分
-            string s = Mathf.Abs(seconds % MaxCountSecond).ToString(); // 秒部分
+            // string s = Mathf.Abs(seconds % MaxCountSecond).ToString(); // 秒部分
+
+            if(m.Length == 1)
+            {
+                m = "0" + m;
+            }
 
             // 負数の場合はマイナス記号を付加して表示
-            text.text = (seconds < 0 ? "-" : "") + h + ":" + m + ":" + s;
+            text.text = (seconds < 0 ? "-" : "") + h + ":" + m;// + ":" + s;
         }
         else
         {
