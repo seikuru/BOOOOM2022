@@ -15,7 +15,7 @@ public class SceneChanger : MonoBehaviour
         IsChange = false;
 
         //Time.timeScaleが変更されていた場合元に戻す
-        if (SceneManager.GetActiveScene().name == TitleSceneName)
+        //if (SceneManager.GetActiveScene().name == TitleSceneName)
             Time.timeScale = 1.0f;
     }
 
