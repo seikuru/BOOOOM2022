@@ -1750,14 +1750,17 @@ MonoBehaviour:
     - {fileID: 1453164257}
   CMC:
   - CMCMusicType: 1
-    AudioSources:
-    - {fileID: 646455343}
-    - {fileID: 646455346}
-    - {fileID: 0}
+    ASC:
+    - AudioSource: {fileID: 646455343}
+      entryType: 1
+    - AudioSource: {fileID: 646455346}
+      entryType: 1
   - CMCMusicType: 3
-    AudioSources:
-    - {fileID: 646455345}
-    - {fileID: 646455344}
+    ASC:
+    - AudioSource: {fileID: 646455345}
+      entryType: 0
+    - AudioSource: {fileID: 646455344}
+      entryType: 0
   Count: 0.3
   BPM: 150
 --- !u!82 &646455343
