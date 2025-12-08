@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
- enum MusicType
+enum MusicType
 {
     Bass,Drums,Chord,Melody
 }
@@ -31,14 +33,19 @@ public class BGMControll : MonoBehaviour
     [SerializeField] AudioSource StartBGM;
     [SerializeField] CollectObjectClass[] COC;
     [SerializeField] CollectMusicClass[] CMC;
-    int beforCollectPoint = 0;
+    [SerializeField] Text DebugText;
+    [SerializeField] UnityEvent BounsTimeEvent;
+
+    public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
+    int AllCollectPoint = 0, CurrentCollectPoint = 0;
     int ObjectNumber = 0;
     // Start is called before the first frame update
     void Start()
     {
-        beforCollectPoint = CollectObject.CollectPoint;
         foreach (var a1 in CMC)
         {
+            AllCollectPoint += a1.AudioSources.Length;
+
             foreach (var b2 in a1.AudioSources)
             {
                 if (b2 != null)
@@ -52,6 +59,8 @@ public class BGMControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(DebugText != null)
+            DebugText.text = CurrentCollectPoint.ToString() + "/" + AllCollectPoint.ToString();
         ObjectNumber = 0;
         foreach (var b1 in COC)
         {
@@ -73,7 +82,14 @@ public class BGMControll : MonoBehaviour
                     if (CMC[i].AudioSources.Length > ObjectNumber 
                         && CMC[i].AudioSources[ObjectNumber] != null)
                     {
-                        CMC[i].AudioSources[ObjectNumber].mute = false;
+                        if(CMC[i].AudioSources[ObjectNumber].mute)
+                        {
+                            CMC[i].AudioSources[ObjectNumber].mute = false;
+                            CurrentCollectPoint++;
+
+                            if (CurrentCollectPoint == AllCollectPoint)
+                                BounsTimeEvent.Invoke();
+                        }
                     }
                     ObjectNumber++;
                 }

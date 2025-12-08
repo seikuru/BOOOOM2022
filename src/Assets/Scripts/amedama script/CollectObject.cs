@@ -54,8 +54,8 @@ public class CollectObject : MonoBehaviour
             {
                 CollectPoint++;
                 once = false;
+                DestroyObstcleCount.DestroyAddCount();
                 Destroy(this.gameObject);
-
             }
         }
 
