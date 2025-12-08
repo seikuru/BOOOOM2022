@@ -50,12 +50,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repopCount: 5
+  ScaleUpTime: 1
   RepopPrehab: {fileID: 1114996535927368292, guid: 409885671ca706b4badb1af983b835db,
     type: 3}
   CollectObjects:
-  - {fileID: 5123325854751239537}
-  - {fileID: 6806519487311669521}
-  - {fileID: 2603543457556297599}
+  - ObjectList:
+    - {fileID: 5123325854751239537}
+    - {fileID: 6806519487311669521}
+    - {fileID: 2603543457556297599}
 --- !u!1 &4748670445841048393
 GameObject:
   m_ObjectHideFlags: 0

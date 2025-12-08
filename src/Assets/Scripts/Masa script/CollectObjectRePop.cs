@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using static CollectObjectRePop;
 
 public class CollectObjectRePop : MonoBehaviour
 {
@@ -10,96 +12,167 @@ public class CollectObjectRePop : MonoBehaviour
 
     [SerializeField] GameObject RepopPrehab;
 
-    [SerializeField] private GameObject[] CollectObjects;
+    [SerializeField] private List<CollectObjectlist> CollectObjects;
 
-    ObstacleExplosion[] obstacleExplosions;
-    Vector3[] RepopPos;
-    Vector3[] RepopScale;
-    int ObjectsLength;
+    [System.Serializable]
+    public class CollectObjectlist 
+    { 
+        public GameObject[] ObjectList;
+    }
 
-    bool BreakObject = false;
+    public class RepopGroup
+    {
+        public ObstacleExplosion[] obstacleExplosions;
+        public Vector3[] RepopPos;
+        public Vector3[] RepopScale;
+
+        public int ObjectLength;
+
+        public bool BreakObject = false;
+        public bool AllBreak = true;
+        public float count = 0;
+    }
+    
+    private RepopGroup[] RepopGroups;
+
+    int GroupLength;
     bool once = true;
-    float count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        ObjectsLength = CollectObjects.Length;
-        obstacleExplosions = new ObstacleExplosion[ObjectsLength];
-        RepopPos = new Vector3[ObjectsLength];
-        RepopScale = new Vector3[ObjectsLength];
+        GroupLength = CollectObjects.Count;
+        RepopGroups = new RepopGroup[GroupLength];
 
-        for (int i = 0; i < ObjectsLength; i++)
+        for (int i = 0; i < GroupLength; i++)
         {
-            RepopPos[i] = CollectObjects[i].transform.position;
-            RepopScale[i] = CollectObjects[i].transform.localScale;
+            RepopGroups[i] = new RepopGroup();
 
-            if (CollectObjects[i].TryGetComponent<ObstacleExplosion>
-                (out ObstacleExplosion OE))
+            var Group = RepopGroups[i];
+
+            Group.ObjectLength = CollectObjects[i].ObjectList.Length;
+
+            Group.obstacleExplosions = new ObstacleExplosion[Group.ObjectLength];
+            Group.RepopPos = new Vector3[Group.ObjectLength];
+            Group.RepopScale = new Vector3[Group.ObjectLength];
+
+            for (int j = 0; j < Group.ObjectLength; j++)
             {
-                obstacleExplosions[i] = OE;
+                Group.RepopPos[j] = CollectObjects[i].ObjectList[j].transform.position;
+                Group.RepopScale[j] = CollectObjects[i].ObjectList[j].transform.localScale;
+
+                if (CollectObjects[i].ObjectList[j].TryGetComponent<ObstacleExplosion>
+                    (out ObstacleExplosion OE))
+                {
+                    Group.obstacleExplosions[j] = OE;
+                }
+
+                Group.AllBreak = false;
             }
-        }
+        } 
     }
 
     // Update is called once per frame
     void Update()
     {
-        int BrokeNumber = 0;
+        BrokunCheck();
 
-        for (int i = 0; i < ObjectsLength; i++)
-        {
-            if (CollectObjects[i] != null && !obstacleExplosions[i].IsExplosed)
-            {
-                continue;
-            }
-            else
-            {
-                BrokeNumber++;
-                if (BrokeNumber >= ObjectsLength)
-                {
-                    BreakObject = true;
-                }
-            }       
-        }
-
-        if (BreakObject && once)
+        if(IsAllBreak() && once)
         {
             once = false;
             DestroyObstcleCount.DestroyAddCount();
             Destroy(this.gameObject);
         }
 
-        if(BrokeNumber > 0)
+        RepopCheck();
+    }
+
+    void BrokunCheck()
+    {
+        for (int i = 0; i < GroupLength; i++)
         {
-            count += Time.deltaTime;
+            var Group = RepopGroups[i];
 
-            if (count > repopCount)
+            if (Group.AllBreak)
+                continue;
+
+            int BrokunValue = 0;
+
+            for (int j = 0; j < Group.ObjectLength; j++)
             {
-                count = 0;
-
-                for (int i = 0; i < ObjectsLength; i++)
+                // オブジェクトがある状態、かつまだ爆発していなければスキップ
+                if (CollectObjects[i].ObjectList[j] != null && !Group.obstacleExplosions[i].IsExplosed)
                 {
-                    if (CollectObjects[i] == null)
-                    {
-                        CollectObjects[i] = Instantiate(RepopPrehab, RepopPos[i], Quaternion.identity, this.transform);
-                        if (CollectObjects[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion OE))
-                        {
-                            obstacleExplosions[i] = OE;
-                        }
-
-                        StartCoroutine(RepopUpScale(i));
-                    }
+                    continue;
+                }
+                else
+                {
+                    BrokunValue++;
                 }
             }
-        }
-        else
-        {
-            count = 0;
+
+            if (BrokunValue >= Group.ObjectLength)
+            {
+                Group.AllBreak = true;
+            }
+            else if (BrokunValue > 0)
+            {
+                Group.BreakObject = true;
+            }
         }
     }
 
-    private IEnumerator RepopUpScale(int index)
+    bool IsAllBreak()
+    {
+        foreach (var group in RepopGroups)
+        {
+            if (!group.AllBreak)
+                return false;
+        }
+
+        return true;
+    }
+
+    void RepopCheck()
+    {
+        for (int i = 0; i < GroupLength; i++)
+        {
+            var Group = RepopGroups[i];
+
+            if (Group.AllBreak)
+                continue;
+
+            if (Group.BreakObject)
+            {
+                Group.count += Time.deltaTime;
+
+                if (Group.count > repopCount)
+                {
+                    Group.count = 0;
+
+                    for (int j = 0; j < Group.ObjectLength; j++)
+                    {
+                        if (CollectObjects[i].ObjectList[i] == null)
+                        {
+                            CollectObjects[i].ObjectList[j] = Instantiate(RepopPrehab, Group.RepopPos[j], Quaternion.identity, this.transform);
+                            if (CollectObjects[i].ObjectList[j].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion OE))
+                            {
+                                Group.obstacleExplosions[j] = OE;
+                            }
+
+                            StartCoroutine(RepopUpScale(i,j));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Group.count = 0;
+            }
+        }
+    }
+
+    private IEnumerator RepopUpScale(int Groupindex, int Objectindex)
     {
         float elapsed = 0f;
 
@@ -107,17 +180,19 @@ public class CollectObjectRePop : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
 
-            if (CollectObjects[index] != null)
+            if (CollectObjects[Groupindex].ObjectList[Objectindex] != null)
             {
                 float t = Mathf.Clamp01(elapsed / ScaleUpTime);
 
-                CollectObjects[index].transform.localScale = RepopScale[index] * t;
+                CollectObjects[Groupindex].ObjectList[Objectindex].transform.localScale =
+                    RepopGroups[Groupindex].RepopScale[Objectindex] * t;
             }
 
             yield return null;
         }
 
-        if (CollectObjects[index] != null)
-            CollectObjects[index].transform.localScale = RepopScale[index];
+        if (CollectObjects[Groupindex].ObjectList[Objectindex] != null)
+            CollectObjects[Groupindex].ObjectList[Objectindex].transform.localScale =
+                RepopGroups[Groupindex].RepopScale[Objectindex];
     }
 }
