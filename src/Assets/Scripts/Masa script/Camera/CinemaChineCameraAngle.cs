@@ -34,11 +34,22 @@ public class CinemaChineCameraAngle : MonoBehaviour
     [SerializeField, Header("•âŠ®ŠÔ_Å‘å’lˆÛ")] float CompletionTimeMaxValue = 0.15f;
     [SerializeField, Header("•âŠ®ŠÔ_k‚İ")] float CompletionTimeForward = 0.7f;
 
+    [Header("—‰º‚É‚æ‚éƒJƒƒ‰‚Ìˆø‚«")]
+    [SerializeField, Header("—‰º‚Ìˆø‚«‚ÌÅ‘å”{—¦")] float FallMaxDiameter = 1.2f;
+
+    [SerializeField, Header("—‰º‚µ‚Ä‚©‚ç‚Ì‘Ò‹@ŠÔ")] float FallWaitTime = 0.5f;
+    [SerializeField, Header("—‰º‚Ìˆø‚«ŠÔ”{—¦")] float FallBackDiameter = 1f;
+    [SerializeField, Header("—‰º‚µ‚Ä‚È‚¢‚Ìk‚İŠÔ”{—¦")] float FallForwardDiameter = 2f;
+
+
     CinemachineTransposer transposer;
     Coroutine Coroutine_TargetAngle;
 
     float TargetAngle;
     float AddAngleforward;
+    float AddFallforward;
+
+    float FallStateTime;
 
     bool BeforeGround;
     float ExitGroundPos = 0;
@@ -94,6 +105,9 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         TargetAngle = MinAngle;
         AddAngleforward = 0f;
+        AddFallforward = 0f;
+
+        FallStateTime = 0f;
     }
 
     void FixedUpdate()
@@ -119,6 +133,8 @@ public class CinemaChineCameraAngle : MonoBehaviour
             UpClampValue = Mathf.Max(clamp, UpClampValue);
 
             LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
+
+            FallStateTime = 0;
         }
         else
         {
@@ -129,10 +145,13 @@ public class CinemaChineCameraAngle : MonoBehaviour
             //clamp = Mathf.Max(clamp - clampFlat, 0);
 
             LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
+
+            if (PlayerRB.velocity.y < 0)
+                FallStateTime += Time.fixedDeltaTime;
+            else
+                FallStateTime = 0;
         }
-
         
-
         float FixAngle = TargetAngle;     
 
         if (TargetAngle < LerpAngle)
@@ -145,6 +164,11 @@ public class CinemaChineCameraAngle : MonoBehaviour
         }
 
         TargetAngle = FixAngle;
+
+        if (FallStateTime >= FallWaitTime)
+            AddFallforward = Mathf.Min(1, AddFallforward + Time.fixedDeltaTime * FallBackDiameter);
+        else
+            AddFallforward = Mathf.Max(0, AddFallforward - Time.fixedDeltaTime * FallForwardDiameter);
     }
 
     private void Update()
@@ -153,7 +177,11 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         Vector3 TargetOffSet = new(0,TargetOffSet2D.y, -TargetOffSet2D.x);
 
-        transposer.m_FollowOffset = TargetOffSet + TargetOffSet * (1 + (AddAngleforward - 1));
+       
+
+        float AddOffSetValue = (1 + (AddAngleforward - 1) + (AddFallforward * FallMaxDiameter));
+
+        transposer.m_FollowOffset = TargetOffSet + TargetOffSet * AddOffSetValue;
     }
 
     private void LateUpdate()
