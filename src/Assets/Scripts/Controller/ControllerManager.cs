@@ -21,7 +21,7 @@ public class ControllerManager : MonoBehaviour
     void OnDataRecieved(string message)
     {
         if (message == null) return;
-        if (message.Length >= 10 && message[0] == 'S' && message[9] == 'E') // "S rot(3) button(1) rad(4) E" -> 11 
+        if (message.Length >= 10 && message[0] == 'S' && message[14] == 'E') // "S rot(3) button(1) center(1) rad(4) rad(4) E" -> 15
         {
             // Debug.Log(message);
             string recData;
@@ -37,10 +37,19 @@ public class ControllerManager : MonoBehaviour
             int.TryParse(recData, out t);
             vCon.button = t;
 
-            // rad
-            recData = message.Substring(5, 4);
+            // center
+            recData = message.Substring(5, 1);
             int.TryParse(recData, out t);
-            vCon.t_rad = t;
+            vCon.center = t;
+
+            // rad
+            recData = message.Substring(6, 4);
+            int.TryParse(recData, out t);
+            vCon.t_rad[0] = t;
+
+            recData = message.Substring(10, 4);
+            int.TryParse(recData, out t);
+            vCon.t_rad[1] = t;
         }
     }
 }
