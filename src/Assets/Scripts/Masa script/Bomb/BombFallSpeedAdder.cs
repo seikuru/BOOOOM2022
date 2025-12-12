@@ -65,7 +65,7 @@ public class BombFallSpeedAdder : MonoBehaviour
             {
                 // 追加重力の計算
                 float AddAcceleration = TimeCounter;
-                Debug.Log(-FallSpeed + " " + (BombRB.velocity.y - AddAcceleration));
+                //Debug.Log(-FallSpeed + " " + (BombRB.velocity.y - AddAcceleration));
                 //下向きのベクトルを値で入力（最小値で制限）
                 BombRB.velocity = new Vector3()
                 {

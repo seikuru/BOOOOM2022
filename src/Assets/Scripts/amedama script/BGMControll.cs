@@ -37,28 +37,32 @@ class CollectMusicClass
 
 public class BGMControll : MonoBehaviour
 {
-     
+
     [SerializeField] AudioSource StartBGM;
     [SerializeField] CollectObjectClass[] COC;
     [SerializeField] CollectMusicClass[] CMC;
-    int beforCollectPoint = 0;
+    int beforeCollectPoint = 0;
     int ObjectNumber = 0;
-    [SerializeField]float Count = 0;
-    [SerializeField]int BPM = 150;
+    [SerializeField] float Count = 0;
+    [SerializeField] int BPM = 150;
     float OneMeasure;
     Coroutine[] AudioCoroutine;
     [SerializeField] float FadeInTime = 3.0f;
     [SerializeField] float FirstBigTime = 3.0f;
-    float FadeInTimeOne;
+    float FadeInTimeOne = 0;
+    float FirstBigTimeOne = 0;
     int CoroutineCount = 0;
+    WaitForSeconds wfs1frame;
     // Start is called before the first frame update
     void Start()
     {
+        wfs1frame = new WaitForSeconds(Time.fixedDeltaTime);
         OneMeasure = 240 / BPM;
 
-        FadeInTimeOne = FadeInTime * Time.fixedDeltaTime;
-        
-        beforCollectPoint = CollectObject.CollectPoint;
+        FadeInTimeOne = 1 / FadeInTime * Time.fixedDeltaTime;
+        FirstBigTimeOne = 1 / FirstBigTime * Time.fixedDeltaTime;
+
+        beforeCollectPoint = CollectObject.CollectPoint;
         int i = 0;
         foreach (var a1 in CMC)
         {
@@ -67,11 +71,19 @@ public class BGMControll : MonoBehaviour
                 i++;
                 if (b2.AudioSource != null)
                 {
+
                     b2.AudioSource.enabled = true;
+                    b2.AudioSource.mute = true;
                     b2.AudioSource.volume = 0;
                 }
             }
         }
+
+        StartBGM.enabled = true;
+        StartBGM.mute = false;
+        StartBGM.volume = 1.0f;
+        Debug.Log(i);
+
         AudioCoroutine = new Coroutine[i];
     }
     // Update is called once per frame
@@ -103,20 +115,20 @@ public class BGMControll : MonoBehaviour
                     if (CMC[i].ASC.Length > ObjectNumber
                         && CMC[i].ASC[ObjectNumber].AudioSource != null)
                     {
-                        if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure 
+                        if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure
                             && CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
                             if (Count >= OneMeasure)
                             {
-                                AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource));
+                                AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource, CoroutineCount));
                                 CoroutineCount++;
                             }
                         }
-                        else if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.fadeIn 
+                        else if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.fadeIn
                             && CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
 
-                            AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInAudio(CMC[i].ASC[ObjectNumber].AudioSource));
+                            AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInAudio(CMC[i].ASC[ObjectNumber].AudioSource, CoroutineCount));
                             CoroutineCount++;
                         }
                     }
@@ -140,25 +152,54 @@ public class BGMControll : MonoBehaviour
         //AS[CollectObject.CollectPoint].mute = false;
     }
 
-    IEnumerator FadeInAudio(AudioSource audio)
+    IEnumerator FadeInAudio(AudioSource audio, int CoroutineCount)
     {
-        while (audio.volume < 0.9f)
+
+        audio.mute = false;
+
+        while (audio.volume < 1.0f)
         {
             audio.volume += FadeInTimeOne;
-            yield return null;
+            yield return wfs1frame ;
         }
 
         StopCoroutine(AudioCoroutine[CoroutineCount]);
     }
 
-    IEnumerator firstBigAudio(AudioSource audio)
+    IEnumerator firstBigAudio(AudioSource audio, int CoroutineCount)
     {
+        float time = 0.0f;
 
+        foreach (var a1 in CMC)
+        {
+            foreach (var a2 in a1.ASC)
+            {
+                if (a2.AudioSource.mute == false)
+                {
+                    a2.AudioSource.volume = 0.6f;
+                }
+            }
+        }
+        audio.mute = false;
         audio.volume = 1.0f;
 
-        yield return new WaitForSeconds(FirstBigTime);
+        yield return null;
 
-        audio.volume = 0.9f;
+        while (time <= FirstBigTime)
+        {
+            foreach (var a1 in CMC)
+            {
+                foreach (var a2 in a1.ASC)
+                {
+                    if (a2.AudioSource.mute == false)
+                    {
+                        a2.AudioSource.volume += FirstBigTimeOne;
+                        yield return null;
+                    }
+                }
+            }
+            time += Time.deltaTime;
+        }
 
         StopCoroutine(AudioCoroutine[CoroutineCount]);
 

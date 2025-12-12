@@ -1620,7 +1620,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646455339}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 30b0c4b92ca82164eb42157c995251f9, type: 3}
@@ -1763,6 +1763,8 @@ MonoBehaviour:
       entryType: 0
   Count: 0.3
   BPM: 150
+  FadeInTime: 8
+  FirstBigTime: 8
 --- !u!82 &646455343
 AudioSource:
   m_ObjectHideFlags: 0
