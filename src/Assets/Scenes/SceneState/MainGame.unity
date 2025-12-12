@@ -1242,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108644156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: -0.000000017054676, z: 0.0000000022798154, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249826, y: 0.000000017054678, z: -0.000000002279816, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9484,12 +9484,8 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
-      insertIndex: -1
+      insertIndex: 10
       addedObject: {fileID: 1321393199}
-    - targetCorrespondingSourceObject: {fileID: 3640815705827342858, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1321393206}
   m_SourcePrefab: {fileID: 100100000, guid: 4c4540aab68bb1742aa0ce62f2473a8a, type: 3}
 --- !u!4 &1321393192 stripped
 Transform:
@@ -9578,23 +9574,6 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 1321393191}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1321393206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321393198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3404f2c6cb3dfad49abbb7f5764fe82d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerRB: {fileID: 1321393200}
-  FallFlag: 1
-  PrintDebug: 0
-  FallSpeed: 65
-  SecondsUntilFall: 2
 --- !u!114 &1321393208 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 568083875313027701, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
@@ -11997,7 +11976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1704036775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13977,7 +13956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930925408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13249826, y: -0.000000017054676, z: 0.0000000022798154, w: 0.9911833}
+  m_LocalRotation: {x: 0.13249826, y: 0.000000017054678, z: -0.000000002279816, w: 0.9911833}
   m_LocalPosition: {x: 692.1, y: 4, z: 395.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14084,9 +14063,9 @@ MonoBehaviour:
   PlayerRB: {fileID: 1321393200}
   VirtualCamera: {fileID: 1930925409}
   DefaltDistance: 5
-  MaxAngle: 80
+  MaxAngle: 88
   MinAngle: 10
-  AngleChengeSpeed: 800
+  AngleChengeSpeed: 1600
   FallSpeedLimit: 50
   UpPosLimit: 40
   UpCameraDiameter: 0.65
