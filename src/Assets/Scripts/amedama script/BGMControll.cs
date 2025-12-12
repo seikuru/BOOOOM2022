@@ -53,11 +53,17 @@ public class BGMControll : MonoBehaviour
     float FirstBigTimeOne = 0;
     int CoroutineCount = 0;
     WaitForSeconds wfs1frame;
+
+    public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
+
+    int AllCollectPoint, CurrentCollectPoint;
+
     // Start is called before the first frame update
     void Start()
     {
         wfs1frame = new WaitForSeconds(Time.fixedDeltaTime);
-        OneMeasure = 240 / BPM;
+        OneMeasure =  (float)BPM / 60.0f ;
+        Debug.Log(OneMeasure);
 
         FadeInTimeOne = 1 / FadeInTime * Time.fixedDeltaTime;
         FirstBigTimeOne = 1 / FirstBigTime * Time.fixedDeltaTime;
@@ -82,15 +88,17 @@ public class BGMControll : MonoBehaviour
         StartBGM.enabled = true;
         StartBGM.mute = false;
         StartBGM.volume = 1.0f;
-        Debug.Log(i);
 
         AudioCoroutine = new Coroutine[i];
+
+        AllCollectPoint = i;
+        CurrentCollectPoint = 0;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        Count += Time.deltaTime;
+        Count += Time.deltaTime * OneMeasure;
 
 
         ObjectNumber = 0;
@@ -118,7 +126,7 @@ public class BGMControll : MonoBehaviour
                         if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure
                             && CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
-                            if (Count >= OneMeasure)
+                            if (Count >= 4.0f * 4.0f)
                             {
                                 AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource, CoroutineCount));
                                 CoroutineCount++;
@@ -141,7 +149,7 @@ public class BGMControll : MonoBehaviour
             ObjectNumber = 0;
         }
 
-        if (Count >= OneMeasure)
+        if (Count >= 4.0f * 4.0f)
         {
             Count = 0;
         }
@@ -154,7 +162,7 @@ public class BGMControll : MonoBehaviour
 
     IEnumerator FadeInAudio(AudioSource audio, int CoroutineCount)
     {
-
+        CurrentCollectPoint++;
         audio.mute = false;
 
         while (audio.volume < 1.0f)
@@ -177,9 +185,12 @@ public class BGMControll : MonoBehaviour
                 if (a2.AudioSource.mute == false)
                 {
                     a2.AudioSource.volume = 0.6f;
+                    StartBGM.volume = 0.6f;
                 }
             }
         }
+
+        CurrentCollectPoint++;
         audio.mute = false;
         audio.volume = 1.0f;
 
@@ -194,6 +205,7 @@ public class BGMControll : MonoBehaviour
                     if (a2.AudioSource.mute == false)
                     {
                         a2.AudioSource.volume += FirstBigTimeOne;
+                        StartBGM.volume += FirstBigTimeOne;
                         yield return null;
                     }
                 }
