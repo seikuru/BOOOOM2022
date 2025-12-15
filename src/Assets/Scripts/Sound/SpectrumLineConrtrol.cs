@@ -61,8 +61,8 @@ public class SpectrumLineConrtrol : MonoBehaviour
 
     void FixedUpdate()
     {
-        SpectrumRender();
-        // WaveRender();
+        // SpectrumRender();
+        WaveRender();
     }
 
     private void SpectrumRender()

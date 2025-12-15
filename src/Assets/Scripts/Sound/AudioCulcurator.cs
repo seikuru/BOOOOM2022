@@ -17,10 +17,7 @@ public class AudioCulcurator : MonoBehaviour
 
     // オーディオデータ用
     // private float[,] data = default;
-    private List<float[]> data = default;
-
-    // スペクトラム用
-    private List<float[]> spectrum = default;
+    private List<float[]> data = new List<float[]>();
 
     void Start()
     {
@@ -35,11 +32,6 @@ public class AudioCulcurator : MonoBehaviour
             // data の初期化
             data.Add(new float[clips[i].channels * clips[i].samples]);
             clips[i].GetData(data[i], 0);
-
-            Debug.Log(data[i][0]);
-
-            // spectrum の初期化
-            spectrum.Add(new float[(int)fft_res]);
         }
     }
 
