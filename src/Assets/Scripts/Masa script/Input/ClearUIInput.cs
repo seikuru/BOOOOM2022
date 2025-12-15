@@ -22,6 +22,8 @@ public class ClearUIInput : MonoBehaviour
     [SerializeField, Header("選択するための回転量")]
     float AngleLimit = 20f;
 
+    [SerializeField]
+    ControllerInput controllerInput;
     float angle, beforeAngle, AngleValue;
     bool BeforeEnter;
 
@@ -46,22 +48,20 @@ public class ClearUIInput : MonoBehaviour
     /// </summary>
     void InputOperateUI()
     {
-        // アングルを加算
-        angle -= valueContainer.get_rad();
-        // radリセット処理
-        valueContainer.reset_rad();
-
+        angle = controllerInput.GetAngle;
+        
+        Debug.Log(valueContainer.get_rad());
         AngleCheck();
 
         if (AngleLimit < Mathf.Abs(AngleValue))
         {
             int nextAddIndex = 0;
 
-            if (AngleLimit > 0)
-                nextAddIndex = 1; 
+            if (AngleValue > 0)
+                nextAddIndex = -1; 
 
-            if (AngleLimit < 0)
-                nextAddIndex = -1;
+            if (AngleValue < 0)
+                nextAddIndex = 1;
 
             AngleValue *= 0.01f;
 
@@ -81,6 +81,7 @@ public class ClearUIInput : MonoBehaviour
 
     void AngleCheck()
     {
+        Debug.Log(angle + " " + beforeAngle + " " + AngleValue);
         if(beforeAngle == angle)
             return;
 

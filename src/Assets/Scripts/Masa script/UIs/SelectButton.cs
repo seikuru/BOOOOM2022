@@ -25,7 +25,7 @@ public class SelectButton : MonoBehaviour
         if(currentButtonIndex >= Buttons.Length)
             currentButtonIndex = Buttons.Length - 1;
 
-         audioSE?.PlayOneShot(audioSE.clip);
+         //audioSE?.PlayOneShot(audioSE.clip);
 
         cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
     }
