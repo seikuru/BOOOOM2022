@@ -16,7 +16,6 @@ public class AudioCulcurator : MonoBehaviour
     private AudioClip[] clips = default;
 
     // オーディオデータ用
-    // private float[,] data = default;
     private List<float[]> data = new List<float[]>();
 
     void Start()
@@ -40,12 +39,21 @@ public class AudioCulcurator : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// FFT Resolusion の値を返す
+    /// </summary>
+    /// <returns>int FFT_resolusion</returns>
     public int GetFFTResolusion()
     {
         return (int)fft_res;
     }
 
-    public void GetData(ref float[] target, int dataLength)
+    /// <summary>
+    /// 現在の時間から決められた長さ分の波形データを渡す関数
+    /// </summary>
+    /// <param name="target">この配列に値が格納される、長さは dataLength</param>
+    /// <param name="dataLength">配列の長さ</param>
+    public void GetWaveData(ref float[] target, int dataLength)
     {
         target = new float[dataLength];
 
@@ -63,6 +71,10 @@ public class AudioCulcurator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 現在から0.1秒後までの音量の和を返す関数
+    /// </summary>
+    /// <returns>float 音量</returns>
     public float GetCurrentData()
     {
         float res = 0;
@@ -90,6 +102,10 @@ public class AudioCulcurator : MonoBehaviour
         return res;
     }
 
+    /// <summary>
+    /// 現在のスペクトルを渡す関数
+    /// </summary>
+    /// <param name="target">この配列に値が格納される、長さは fft_res</param>
     public void GetSpectrum(ref float[] target)
     {
         float[] spec = new float[(int)fft_res];

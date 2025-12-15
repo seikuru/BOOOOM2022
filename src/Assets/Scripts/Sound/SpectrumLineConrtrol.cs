@@ -35,14 +35,6 @@ public class SpectrumLineConrtrol : MonoBehaviour
         var fps = 1f / Time.fixedDeltaTime;
         sampleStep = (int)(source.clip.channels * source.clip.frequency / fps);
 
-        //line.positionCount = data.Length/100;
-        //Vector3[] p = new Vector3[data.Length];
-        //for(int i = 0; i < p.Length; i+=100)
-        //{
-        //    p[i] = new Vector3(i / 3000, data[i] * hight, 0);
-        //}
-        //line.SetPositions(p);
-
         // ラインレンダラーの制御用配列
         points = new Vector3[FFT_RESOLUSION];
         var step = waveLength / spectrum.Length;
@@ -65,6 +57,7 @@ public class SpectrumLineConrtrol : MonoBehaviour
         WaveRender();
     }
 
+    // スペクトルを表示
     private void SpectrumRender()
     {
         source.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
@@ -102,6 +95,7 @@ public class SpectrumLineConrtrol : MonoBehaviour
         line.SetPositions(points);
     }
 
+    // 波形データを表示
     private void WaveRender()
     {
         int startIndex = source.timeSamples + bias;
