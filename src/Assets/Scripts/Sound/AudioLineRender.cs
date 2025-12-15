@@ -26,7 +26,6 @@ public class AudioLineRender : MonoBehaviour
         xStep = lineLength / AC.GetFFTResolusion();
     }
 
-    // Update is called once per frame
     void Update()
     {
         AC.GetSpectrum(ref spectrum);
