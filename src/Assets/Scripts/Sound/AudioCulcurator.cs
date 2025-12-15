@@ -34,11 +34,6 @@ public class AudioCulcurator : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// FFT Resolusion ‚Ì’l‚ð•Ô‚·
     /// </summary>
