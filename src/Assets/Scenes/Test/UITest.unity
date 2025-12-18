@@ -2007,12 +2007,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: c1e5f0fe35fb6c046a528fb59d2e2753,
+      objectReference: {fileID: 11400000, guid: be4c0cc4ee0a04d47a54d8884a877edb,
         type: 2}
     - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 18
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
@@ -2052,6 +2052,54 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
+      propertyPath: m_SceneBindings.Array.data[18].key
+      value: 
+      objectReference: {fileID: 3076992043042423358, guid: a0c26f1a232fa0c47ba8f643dc727819,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[19].key
+      value: 
+      objectReference: {fileID: -2429997977691937337, guid: a0c26f1a232fa0c47ba8f643dc727819,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[20].key
+      value: 
+      objectReference: {fileID: 2114537690192087165, guid: a0c26f1a232fa0c47ba8f643dc727819,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[21].key
+      value: 
+      objectReference: {fileID: -3145692942765808471, guid: a0c26f1a232fa0c47ba8f643dc727819,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[22].key
+      value: 
+      objectReference: {fileID: -1643096873540121131, guid: be4c0cc4ee0a04d47a54d8884a877edb,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[23].key
+      value: 
+      objectReference: {fileID: -3015110316233860075, guid: be4c0cc4ee0a04d47a54d8884a877edb,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[24].key
+      value: 
+      objectReference: {fileID: 1955722422662395542, guid: be4c0cc4ee0a04d47a54d8884a877edb,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[25].key
+      value: 
+      objectReference: {fileID: -6251999344985226399, guid: be4c0cc4ee0a04d47a54d8884a877edb,
+        type: 2}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
       propertyPath: m_SceneBindings.Array.data[12].value
       value: 
       objectReference: {fileID: 1987199508}
@@ -2080,6 +2128,46 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[17].value
       value: 
       objectReference: {fileID: 568804708}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[18].value
+      value: 
+      objectReference: {fileID: 1950102536}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[19].value
+      value: 
+      objectReference: {fileID: 8067453576437867519}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[20].value
+      value: 
+      objectReference: {fileID: 232270208}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[21].value
+      value: 
+      objectReference: {fileID: 568804708}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[22].value
+      value: 
+      objectReference: {fileID: 1950102536}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[23].value
+      value: 
+      objectReference: {fileID: 8067453576437867519}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[24].value
+      value: 
+      objectReference: {fileID: 232270208}
+    - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[25].value
+      value: 
+      objectReference: {fileID: 568804708}
     - target: {fileID: 1178723331659939023, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2093,7 +2181,7 @@ PrefabInstance:
     - target: {fileID: 2342537291787343022, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 4110428320862677924, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
@@ -2250,6 +2338,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76c171398949c1146b4ae808dd1da554, type: 3}
+--- !u!95 &8067453576437867519 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4188523909830441960, guid: 76c171398949c1146b4ae808dd1da554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8067453576437867518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
