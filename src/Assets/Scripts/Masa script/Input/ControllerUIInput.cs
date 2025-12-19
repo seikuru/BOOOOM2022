@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearUIInput : MonoBehaviour
+public class ControllerUIInput : MonoBehaviour
 {
     [SerializeField] ValueContainer valueContainer; // コントローラのパラメータ取得クラス
     [SerializeField] SelectButton selectButton;
@@ -16,14 +16,12 @@ public class ClearUIInput : MonoBehaviour
     [SerializeField, Header("入力チェック")]
     public bool InputCheck = false;
 
-    [SerializeField,Header("決定ボタン")]
+    [SerializeField, Header("決定ボタン")]
     TapInput tapInput;
 
     [SerializeField, Header("選択するための回転量")]
     float AngleLimit = 20f;
 
-    [SerializeField]
-    ControllerInput controllerInput;
     float angle, beforeAngle, AngleValue;
     bool BeforeEnter;
 
@@ -32,7 +30,7 @@ public class ClearUIInput : MonoBehaviour
         angle = 0;
         beforeAngle = 0;
         AngleValue = 0;
-        BeforeEnter = false;   
+        BeforeEnter = false;
     }
 
     private void Update()
@@ -48,24 +46,26 @@ public class ClearUIInput : MonoBehaviour
     /// </summary>
     void InputOperateUI()
     {
-        angle = controllerInput.GetAngle;
-        
-        Debug.Log(valueContainer.get_rad());
+        // アングルを加算
+        angle -= valueContainer.get_rad();
+        // radリセット処理
+        valueContainer.reset_rad();
+
         AngleCheck();
 
         if (AngleLimit < Mathf.Abs(AngleValue))
         {
             int nextAddIndex = 0;
 
-            if (AngleValue > 0)
-                nextAddIndex = -1; 
-
-            if (AngleValue < 0)
+            if (AngleLimit > 0)
                 nextAddIndex = 1;
+
+            if (AngleLimit < 0)
+                nextAddIndex = -1;
 
             AngleValue *= 0.01f;
 
-            if(nextAddIndex != 0)
+            if (nextAddIndex != 0)
                 selectButton.ButtonSelectMove(nextAddIndex);
         }
 
@@ -81,16 +81,15 @@ public class ClearUIInput : MonoBehaviour
 
     void AngleCheck()
     {
-        Debug.Log(angle + " " + beforeAngle + " " + AngleValue);
-        if(beforeAngle == angle)
+        if (beforeAngle == angle)
             return;
 
         if (beforeAngle < angle)
         {
-            if(AngleValue < 0)
+            if (AngleValue < 0)
                 AngleValue = 0;
 
-            AngleValue += Mathf.Abs(angle - beforeAngle); 
+            AngleValue += Mathf.Abs(angle - beforeAngle);
         }
 
         if (beforeAngle > angle)
@@ -106,7 +105,7 @@ public class ClearUIInput : MonoBehaviour
     {
         bool IsPush = false;
 
-        if(tapInput == TapInput.UnderButton)
+        if (tapInput == TapInput.UnderButton)
         {
             IsPush = valueContainer.get_under();
         }

@@ -15,7 +15,7 @@ public class SelectButton : MonoBehaviour
     /// ƒ{ƒ^ƒ“‚ÌIndex‚ðˆÚ“®‚³‚¹‚é
     /// </summary>
     /// <param name="buttonIndexAdd">ˆÊ’u</param>
-    public virtual void ButtonMove(int buttonIndexAdd)
+    public virtual void ButtonSelectMove(int buttonIndexAdd)
     {
         currentButtonIndex += buttonIndexAdd;
 
@@ -27,7 +27,15 @@ public class SelectButton : MonoBehaviour
 
          //audioSE?.PlayOneShot(audioSE.clip);
 
-        cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
+        if(cursol != null)
+            cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
+
+        ButtonSelectoverride();
+    }
+
+    protected virtual void ButtonSelectoverride()
+    {
+        return;
     }
 
     public void EnterButton()
