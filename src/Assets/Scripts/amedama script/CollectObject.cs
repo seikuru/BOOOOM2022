@@ -34,7 +34,6 @@ public class CollectObject : MonoBehaviour
         int i = 0;
         foreach (var obj in CollectObjects)
         {
-            Debug.Log(obstacleExplosions[i].IsExplosed);
                 if (obj != null && !obstacleExplosions[i].IsExplosed)
                 {
                     break;

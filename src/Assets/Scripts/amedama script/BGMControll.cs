@@ -245,7 +245,8 @@ public class BGMControll : MonoBehaviour
         
         VolumeControl = DownVolume;
         float VolumeControlBefore1frame = DownVolume;
-        VolumeControl = DownVolume;
+        int CountMax = (int)( FirstBigTime / Time.fixedDeltaTime) + 1;
+        int Countoooo = 0;
         StartBGM.volume = VolumeControl;
         //Debug.Log(FirstBigTimeOne);
 
@@ -270,13 +271,17 @@ public class BGMControll : MonoBehaviour
         yield return null;
 
         float time = 0.0f;
-
-        while (VolumeControl <= 1.0f)
+        Debug.Log(time);
+        while (time <= CountMax)
         {
-            Debug.Log((int)time);
+            //Debug.Log(VolumeControl);
             if (VolumeControl == VolumeControlBefore1frame)
-            {   
-                VolumeControl += FirstBigTimeOne * Time.deltaTime;       
+            {
+                VolumeControl += FirstBigTimeOne;// * Time.deltaTime;       
+            }
+            else
+            {
+                Debug.Log(time);
             }
 
             StartBGM.volume = VolumeControl;
@@ -288,17 +293,18 @@ public class BGMControll : MonoBehaviour
                     {
                         a2.AudioSource.volume = VolumeControl;
                         VolumeControlBefore1frame = VolumeControl;
-                        
+                        yield return wfs1frame;
+                        Debug.Log(a2.AudioSource.clip.samples);
 
                     }
                 }
             }
-
-            yield return wfs1frame;
-            time += Time.deltaTime;
-                    
+           
+            
+            time ++;
+            
         }
-
+        
         StopCoroutine(AudioCoroutine[CoroutineCount]);
 
     }
