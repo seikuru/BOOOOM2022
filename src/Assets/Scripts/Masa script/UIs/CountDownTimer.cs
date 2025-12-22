@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,21 +12,21 @@ public class CountDownTimer : MonoBehaviour
 
     [SerializeField] int Subtractcount = 2; // 毎フレーム減算される値
 
-    [SerializeField] int StartCount = 6000; // 開始時のカウント値
+    [SerializeField] protected int StartCount = 6000; // 開始時のカウント値
 
     [SerializeField] int BaseComboValue = 150; // コンボ時の基本加算値
 
     [SerializeField] int AddComboValue = 50; // コンボ数に応じた追加加算値
 
-    [SerializeField] bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
+    [SerializeField] protected bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
 
     [SerializeField] UnityEvent TimeUpEvent;
 
     bool CountFlag; // カウントダウン実行フラグ
-    int seconds; // 現在の秒数（内部カウンター）
+    protected int seconds; // 現在の秒数（内部カウンター）
 
-    static readonly int MaxCountSecond = 100; // 秒の最大値（時間計算用）
-    static readonly int MaxCountMinutes = 60; // 分の最大値（時間計算用）
+    protected static readonly int MaxCountSecond = 100; // 秒の最大値（時間計算用）
+    protected static readonly int MaxCountMinutes = 60; // 分の最大値（時間計算用）
 
     /// <summary>
     /// カウントダウンを停止
@@ -80,19 +81,20 @@ public class CountDownTimer : MonoBehaviour
             }
                
         }
+               
         // UI表示更新
-        if (text != null)
-        {
-            UpdateText();
-        }
+        UpdateText();
     }
 
     /// <summary>
     /// テキスト表示の更新処理
     /// NoCoronTextフラグに応じて時分秒形式か数値のみかを切り替え
     /// </summary>
-    void UpdateText()
+    protected virtual void UpdateText()
     {
+        if (text == null)
+            return;
+
         // コロン区切り表示（時:分:秒形式）
         if (!NoCoronText)
         {
