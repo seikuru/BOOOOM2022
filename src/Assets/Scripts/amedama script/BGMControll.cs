@@ -43,24 +43,28 @@ public class BGMControll : MonoBehaviour
     [SerializeField] AudioSource StartBGM;
     [SerializeField] CollectObjectClass[] COC;
     [SerializeField] CollectMusicClass[] CMC;
-    int beforeCollectPoint = 0;
-    int ObjectNumber = 0;
+
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
-    float OneMeasureMult;
-    Coroutine[] AudioCoroutine;
     [SerializeField] float FadeInTime = 3.0f;
     [SerializeField] float FirstBigTime = 3.0f;
+    [SerializeField] float FirstBigSeparate = 16.0f;
+    [SerializeField] float DownVolume = 0.6f;
+    int beforeCollectPoint = 0;
+    int ObjectNumber = 0;
+    int CoroutineCount = 0;
+  
+    float OneMeasureMult;
     float FadeInTimeOne = 0;
     float FirstBigTimeOne = 0;
-    int CoroutineCount = 0;
+    float note16 = 0.0f;
+    float VolumeControl = 0.0f;
+    
     WaitForSeconds wfs1frame;
     WaitForSeconds wfs1beat;
     WaitForSeconds wfs16note;
-    float note16 = 0.0f;
-    float VolumeControl = 0.0f;
-    [SerializeField] float FirstBigSeparate = 16.0f;
-    [SerializeField] float DownVolume = 0.6f;
+   
+    Coroutine[] AudioCoroutine;
 
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
 
@@ -80,9 +84,8 @@ public class BGMControll : MonoBehaviour
             FirstBigTime = FirstBigSeparate;
         }
 
-        FadeInTimeOne = 1 * OneMeasureMult / FadeInTime * Time.fixedDeltaTime;
+        FadeInTimeOne = Time.fixedDeltaTime * OneMeasureMult / FadeInTime;
         FirstBigTimeOne = (1.0f - DownVolume) / (FirstBigTime * 10.0f);
-        Debug.Log(FirstBigTimeOne);
 
         beforeCollectPoint = CollectObject.CollectPoint;
         int i = 0; int FadeInNumber = 0;
@@ -163,23 +166,16 @@ public class BGMControll : MonoBehaviour
                             CoroutineCount++;
                         }
                     }
-
-
                     ObjectNumber++;
                 }
-
             }
             ObjectNumber = 0;
         }
-
-
-
 
         if (Count >= FirstBigSeparate)
         {
             Count = 0;
         }
-
 
     }
 
@@ -255,9 +251,8 @@ public class BGMControll : MonoBehaviour
 
         VolumeControl = DownVolume;
         float VolumeControlBefore1frame = DownVolume;
-        int CountBefor = 0;
+        int CountBefore = 0;
         int CountMax = (int)(FirstBigTime / Time.fixedDeltaTime) + 1;
-        int Countoooo = 0;
 
         StartBGM.volume = VolumeControl;
 
@@ -281,10 +276,6 @@ public class BGMControll : MonoBehaviour
 
         yield return null;
 
-        float time = 0.0f;
-
-
-
         while (VolumeControl <= 1.0f )
         { 
 
@@ -293,9 +284,9 @@ public class BGMControll : MonoBehaviour
                 VolumeControl += FirstBigTimeOne;// * Time.deltaTime;       
             }
 
-            if ((int)(Count * 10.0f) != CountBefor)
+            if ((int)(Count * 10.0f) != CountBefore)
             {
-                CountBefor = (int)(Count * 10.0f);
+                CountBefore = (int)(Count * 10.0f);
 
                 StartBGM.volume = VolumeControl;
                 foreach (var a1 in CMC)
@@ -313,11 +304,7 @@ public class BGMControll : MonoBehaviour
             }
 
             yield return wfs1frame;
-            time++;
-
         }
-
         yield break;
-
     }
 }
