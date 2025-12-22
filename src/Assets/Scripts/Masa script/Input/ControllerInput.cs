@@ -11,7 +11,7 @@ public class ControllerInput : ControllerTableInput
     static readonly int NoTorchValue = -999;
 
     float angle = 0;
-
+    public float GetAngle => angle;
     /// <summary>
     /// タッチ入力処理のメイン関数
     /// 基底クラスのInputOperateをオーバーライドしてマルチタッチ処理を実装
