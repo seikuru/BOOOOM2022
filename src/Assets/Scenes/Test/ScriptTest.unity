@@ -1762,15 +1762,16 @@ MonoBehaviour:
   - CMCMusicType: 3
     ASC:
     - AudioSource: {fileID: 646455345}
-      entryType: 1
+      entryType: 0
     - AudioSource: {fileID: 646455347}
-      entryType: 1
+      entryType: 0
     - AudioSource: {fileID: 646455344}
-      entryType: 1
+      entryType: 0
   Count: -1.3
   BPM: 140
-  FadeInTime: 0.8
-  FirstBigTime: 8
+  FadeInTime: 10
+  FirstBigTime: 16
+  FirstBigSeparate: 8
   DownVolume: 0.6
 --- !u!82 &646455343
 AudioSource:
