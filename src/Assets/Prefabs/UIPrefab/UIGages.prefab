@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 6522622557452117140}
   - component: {fileID: 2231731871427542713}
   - component: {fileID: 8407630240612573829}
+  - component: {fileID: 5475063649308222848}
   m_Layer: 0
   m_Name: UIGages
   m_TagString: Untagged
@@ -325,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderKnobRT: {fileID: 1227492344725504584}
   SeekBarBodyRT: {fileID: 1957754670897253110}
-  value: 0
+  seekBar: {fileID: 5475063649308222848}
 --- !u!114 &8407630240612573829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,11 +340,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 7989937521365631642}
-  AudioGageSprites:
-  - {fileID: 5133071709196280980}
-  - {fileID: 3545932989856835489}
-  - {fileID: 1471002626586506430}
-  - {fileID: 919259803443568111}
+  GageImages:
+  - musicType: 1
+    CollectImages:
+    - {fileID: 5133071709196280980}
+    SetColor: {r: 0.96470594, g: 0.7725491, b: 0.45882356, a: 1}
+  - musicType: 0
+    CollectImages:
+    - {fileID: 3545932989856835489}
+    SetColor: {r: 0.80392164, g: 0.5294118, b: 0.72156864, a: 1}
+  - musicType: 2
+    CollectImages:
+    - {fileID: 1471002626586506430}
+    SetColor: {r: 0.52156866, g: 0.7411765, b: 0.40000004, a: 1}
+  - musicType: 3
+    CollectImages:
+    - {fileID: 919259803443568111}
+    SetColor: {r: 0.86274517, g: 0.54509807, b: 0.72156864, a: 1}
+--- !u!114 &5475063649308222848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054702869331998250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ee5a3ac4ee6514da3cc59ca91d9830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  Subtractcount: 2
+  StartCount: 18000
+  BaseComboValue: 150
+  AddComboValue: 50
+  NoCoronText: 0
+  TimeUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TMProUGUI: {fileID: 5480961885058623545}
 --- !u!1 &1976283586368565651
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8627451, g: 0.54509807, b: 0.72156864, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -976,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8039216, g: 0.5294118, b: 0.72156864, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1051,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9647059, g: 0.77254903, b: 0.45490196, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1756,7 +1803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.54509807, g: 0.77254903, b: 0.41568628, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

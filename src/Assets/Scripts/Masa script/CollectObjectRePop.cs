@@ -52,10 +52,11 @@ public class CollectObjectRePop : MonoBehaviour
 
             Group.ObjectLength = CollectObjects[i].ObjectList.Length;
 
+            
             Group.obstacleExplosions = new ObstacleExplosion[Group.ObjectLength];
             Group.RepopPos = new Vector3[Group.ObjectLength];
             Group.RepopScale = new Vector3[Group.ObjectLength];
-
+            
             for (int j = 0; j < Group.ObjectLength; j++)
             {
                 Group.RepopPos[j] = CollectObjects[i].ObjectList[j].transform.position;
@@ -101,8 +102,9 @@ public class CollectObjectRePop : MonoBehaviour
             for (int j = 0; j < Group.ObjectLength; j++)
             {
                 // オブジェクトがある状態、かつまだ爆発していなければスキップ
-                if (CollectObjects[i].ObjectList[j] != null && !Group.obstacleExplosions[i].IsExplosed)
+                if (CollectObjects[i].ObjectList[j] != null && !Group.obstacleExplosions[j].IsExplosed)
                 {
+                    
                     continue;
                 }
                 else

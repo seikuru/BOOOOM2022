@@ -10,11 +10,11 @@ public class SeekBarSlider : MonoBehaviour
     [SerializeField]
     RectTransform SeekBarBodyRT;
 
-    [SerializeField ,Range(0, 1)] float value = 0.5f;
+    [SerializeField] CountDownSeekBar seekBar;
 
     private void Update()
     {
-        SeekBerUpdate(value);
+        SeekBerUpdate(1f - seekBar.GetCurrentTimeClamp());
     }
 
     public void SeekBerUpdate(float clampValue)
