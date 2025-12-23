@@ -2,48 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class UIPause : MonoBehaviour
 {
     [SerializeField]
-    List<GameObject> ActivateObjectList;
+    PlayableDirector playableDirector;
 
     [SerializeField]
-    PlayableDirector playableDirector;
-    
+    TimelineAsset EnableTimelineAsset;
 
-    private void OnEnable()
+
+    public void EnableTimeline()
     {
-        playableDirector.Play();
+        playableDirector.Play(EnableTimelineAsset);
     }
 
-    private void OnDisable()
+    public void DisableTimeline(TimelineAsset disableTimeline)
     {
-        
+        playableDirector.Play(disableTimeline);
     }
 
-
-    public void Enable()
-    {
-        foreach (GameObject obj in ActivateObjectList)
-        {
-            obj.SetActive(true);
-        }
-    }
-
-    public void Disable()
-    {
-        foreach (GameObject obj in ActivateObjectList)
-        {
-            obj.SetActive(false);
-        }
-    }
-
-    
+    public void SetTimeScale(float scale) => Time.timeScale = scale;
 
     // Update is called once per frame
     void Update()
     {
-        
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            EnableTimeline();
+        }
+#endif
     }
 }

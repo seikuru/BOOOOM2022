@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ControllerUIInput : MonoBehaviour
 {
     [SerializeField] ValueContainer valueContainer; // コントローラのパラメータ取得クラス
     [SerializeField] SelectButton selectButton;
+    [SerializeField] PlayableDirector playableDirector;
 
     public enum TapInput
     {
@@ -25,6 +27,8 @@ public class ControllerUIInput : MonoBehaviour
     float angle, beforeAngle, AngleValue;
     bool BeforeEnter;
 
+    public void SetInputCheck(bool b) => InputCheck = b;
+
     private void Start()
     {
         angle = 0;
@@ -36,6 +40,9 @@ public class ControllerUIInput : MonoBehaviour
     private void Update()
     {
         if (!InputCheck)
+            return;
+
+        if (playableDirector != null && playableDirector.state == PlayState.Playing)
             return;
 
         InputOperateUI();
