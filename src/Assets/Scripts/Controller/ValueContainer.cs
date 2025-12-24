@@ -8,21 +8,28 @@ public class ValueContainer : MonoBehaviour
     public int rot;
     public int button;
     public int center;
-    public List<int> t_rad;
-    private List<int> old_rad;
+    public int esc;
+    public List<int> in_rad;
+    public List<int> out_rad;
+    private List<int> oldin_rad;
+    private List<int> oldout_rad;
     private int old_center = 0;
-    private int list_num = 2;
+    private int list_num = 3;
 
     private const float oneseg = 1.94343f;
 
     private void Start()
     {
-        t_rad = new List<int>();
-        old_rad = new List<int>();
+        in_rad = new List<int>();
+        out_rad = new List<int>();
+        oldin_rad = new List<int>();
+        oldout_rad = new List<int>();
         for(int i = 0; i < list_num; i++)
         {
-            t_rad.Add(-999);
-            old_rad.Add(-999);
+            in_rad.Add(-999);
+            out_rad.Add(-999);
+            oldin_rad.Add(-999);
+            oldout_rad.Add(-999);
         }
     }
 
@@ -59,6 +66,15 @@ public class ValueContainer : MonoBehaviour
     }
 
     /// <summary>
+    /// escボタンのフラグを取得
+    /// </summary>
+    /// <returns>押してあるなら 1 </returns>
+    public int get_esc()
+    {
+        return esc;
+    }
+
+    /// <summary>
     /// タッチした時の角度を取得
     /// 中心からの距離は取れないので角度のみ、中心はドーナツ状のように取れない。
     /// </summary>
@@ -66,14 +82,14 @@ public class ValueContainer : MonoBehaviour
     public int get_Trad() 
     {
         int ret;
-        if (t_rad[0] == old_rad[0])
+        if (in_rad[0] == oldin_rad[0])
         {
             ret = -999;
         } else
         {
-            ret = t_rad[0];
+            ret = in_rad[0];
         }
-        old_rad = new(t_rad);
+        oldin_rad = new(in_rad);
         return ret;
     }
 
