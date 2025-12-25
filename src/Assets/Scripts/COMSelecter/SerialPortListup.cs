@@ -19,7 +19,7 @@ public class SerialPortListup : MonoBehaviour
 
     Process process_;
     static readonly string FolderPath = Application.streamingAssetsPath + "/Apps";
-    static readonly string FilePath = FolderPath + "/SerialPortName.exe";
+    static readonly string FilePath = FolderPath + "/GetCOMPortInfo.exe";
 
     int ExistingCOMPort_;
     public List<string> COMPortName_;
