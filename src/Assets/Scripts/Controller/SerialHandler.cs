@@ -8,6 +8,8 @@ using UnityEngine;
 
 using System.IO.Ports; // これを通すために、Api Compatibility Levelの設定を変更
 using System.Threading;
+using System;
+
 public class SerialHandler : MonoBehaviour
 {
     public delegate void SerialDataReceivedEventHandler(string message);
@@ -35,8 +37,16 @@ public class SerialHandler : MonoBehaviour
 
     void Awake()
     {
-        portName = myPortName;
-        Open();
+        if(PassCOMPort.selectedCOMPortName != null)
+        {
+            portName = PassCOMPort.selectedCOMPortName;
+            Open();
+        }
+        else if (myPortName != "")
+        {
+            portName = myPortName;
+            Open();
+        }
     }
 
     void Update()
@@ -51,7 +61,10 @@ public class SerialHandler : MonoBehaviour
 
     void OnDestroy()
     {
-        Close();
+        if (isRunning_)
+        {
+            Close();
+        }
     }
 
     private void Open()
@@ -74,15 +87,23 @@ public class SerialHandler : MonoBehaviour
         isNewMessageReceived_ = false;
         isRunning_ = false;
 
-        if (thread_ != null && thread_.IsAlive)
-        {
-            //thread_.Join();
-            thread_.Abort();
-        }
-
         if (serialPort_ != null && serialPort_.IsOpen)
         {
             serialPort_.Close();
+        }
+
+        if (thread_ != null && thread_.IsAlive)
+        {
+            if (!thread_.Join(500)) // 500msは適当な時間
+            {
+                // 少し待って応答がなければ強制終了
+                Debug.LogWarning("from SerialHandler.cs Close(): Abort");
+                thread_.Abort();
+            }
+        }
+
+        if (serialPort_ != null)
+        {
             serialPort_.Dispose();
         }
     }
@@ -96,9 +117,16 @@ public class SerialHandler : MonoBehaviour
                 message_ = serialPort_.ReadLine();
                 isNewMessageReceived_ = true;
             }
+            catch (TimeoutException)
+            {
+                // このタイムアウトは通常の状態なのでスルーする
+            }
             catch (System.Exception e)
             {
-                Debug.LogWarning(e.Message);
+                if (!isRunning_)
+                    break;
+
+                Debug.LogWarning("from SerialHandler.cs Read(): " + e.Message);
             }
         }
     }
@@ -111,7 +139,7 @@ public class SerialHandler : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning(e.Message);
+            Debug.LogWarning("from SerialHandler.cs Write(): " + e.Message);
         }
     }
 }

@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class SelectButtonPorse : SelectButton
 {
     [SerializeField]
-    Animator PorseAnimator;
+    PlayableDirector UIDirector;
 
     [SerializeField]
-    string IntegerName;
+    TimelineAsset[] timelines;
 
     protected override void ButtonSelectoverride()
     {
-        if(PorseAnimator != null)
+        if(UIDirector != null)// && UIDirector.playableAsset != timelines[currentButtonIndex])
         {
-            PorseAnimator.SetInteger(IntegerName, currentButtonIndex);
+            UIDirector.Play(timelines[currentButtonIndex]);
         }
     }
 }
