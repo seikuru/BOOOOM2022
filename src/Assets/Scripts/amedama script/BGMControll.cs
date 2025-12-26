@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 using static Unity.Animations.SpringBones.GUIElements;
 
 public enum MusicType
