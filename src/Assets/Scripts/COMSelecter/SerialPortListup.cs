@@ -15,7 +15,7 @@ public class SerialPortListup : MonoBehaviour
     public int portNum { get; private set; }
     public string[] portName { get; private set; }
 
-    public bool isCompleted { get; private set; }
+    public bool isCompleted { get; set; }
 
     Process process_;
     static readonly string FolderPath = Application.streamingAssetsPath + "/Apps";
@@ -75,6 +75,17 @@ public class SerialPortListup : MonoBehaviour
         // プロセスを起動する
         process_.Start();
         process_.BeginOutputReadLine();
+    }
+
+    public void StartProcess()
+    {
+        
+        //if (process_ != null)
+        //    return;
+
+        isCompleted = false;
+        portNum = 0;
+        Awake();
     }
 
     void OnStandardOut(object sender, DataReceivedEventArgs e)

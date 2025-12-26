@@ -37,7 +37,12 @@ public class SerialHandler : MonoBehaviour
 
     void Awake()
     {
-        if (myPortName != "")
+        if(PassCOMPort.selectedCOMPortName != null)
+        {
+            portName = PassCOMPort.selectedCOMPortName;
+            Open();
+        }
+        else if (myPortName != "")
         {
             portName = myPortName;
             Open();
