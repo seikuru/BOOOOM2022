@@ -75,6 +75,8 @@ public class ValueContainer : MonoBehaviour
     }
 
     /// <summary>
+    /// Legacy
+    /// 
     /// タッチした時の角度を取得
     /// 中心からの距離は取れないので角度のみ、中心はドーナツ状のように取れない。
     /// </summary>
@@ -91,6 +93,16 @@ public class ValueContainer : MonoBehaviour
         }
         oldin_rad = new(in_rad);
         return ret;
+    }
+
+    public List<int> get_inRad()
+    {
+        return in_rad;
+    }
+
+    public List<int> get_outRad()
+    {
+        return out_rad;
     }
 
     public bool get_under()
