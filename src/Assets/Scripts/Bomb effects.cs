@@ -156,6 +156,13 @@ public class Bombeffects : MonoBehaviour
                     enemyAnimator.SetTrigger("OnDamage");
                 }
 
+                if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
+                {
+                    obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
+                    //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+                    //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+                    continue;
+                }
 
                 //Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
             }
