@@ -80,14 +80,19 @@ public class GameClearSetiingTest : MonoBehaviour
         }
 
         if(ClearCheck)
-        foreach (GameObject obj in ClearObject)
-        {
-            obj.SetActive(true);
-        }
+            foreach (GameObject obj in ClearObject)
+            {
+                obj.SetActive(true);
+            }
         else
-        foreach (GameObject obj in GameoverObject)
+            foreach (GameObject obj in GameoverObject)
+            {
+                obj.SetActive(true);
+            }
+
+        if(TryGetComponent<ClearUIInput>(out var input))
         {
-            obj.SetActive(true);
+            input.InputCheck = true;
         }
     }
 }

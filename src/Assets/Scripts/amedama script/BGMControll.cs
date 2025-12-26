@@ -5,7 +5,8 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
 using static Unity.Animations.SpringBones.GUIElements;
 
- enum MusicType
+public enum MusicType
+
 {
     Bass,Drums,Chord,Melody
 }
@@ -43,6 +44,11 @@ public class BGMControll : MonoBehaviour
     [SerializeField] AudioSource StartBGM;
     [SerializeField] CollectObjectClass[] COC;
     [SerializeField] CollectMusicClass[] CMC;
+
+    [SerializeField] Text DebugText;
+    [SerializeField] UnityEvent BounsTimeEvent;
+    [SerializeField] AudioGageManager GageManager;
+
 
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
@@ -150,10 +156,13 @@ public class BGMControll : MonoBehaviour
                         {
                             if (Count >= FirstBigSeparate)
                             {
-                                AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource));
+                                AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource)); 
                                 CoroutineCount++;
+                           
+                                GageManager?.SetColorImage(CMC[i].CMCMusicType);
 
-
+                               if (CurrentCollectPoint == AllCollectPoint)
+                                    BounsTimeEvent.Invoke();
                             }
                         }
                         else if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.fadeIn
@@ -164,6 +173,7 @@ public class BGMControll : MonoBehaviour
                             CoroutineCount++;
                             AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInOtherDown(CMC[i].ASC[ObjectNumber].AudioSource));
                             CoroutineCount++;
+
                         }
                     }
                     ObjectNumber++;
@@ -216,7 +226,7 @@ public class BGMControll : MonoBehaviour
             }
         }
 
-        //�ꏬ�ߑ҂�
+        //�ꏬ�ߑ҂�
         for (int i = 0; i < 4; i++)
         {
             yield return wfs1beat;

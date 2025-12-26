@@ -12,14 +12,15 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
     [SerializeField, Header("カメラの最大角度")] float MaxAngle = 80f;
     [SerializeField, Header("カメラの最小角度")] float MinAngle = 10f;
-    [SerializeField, Header("アングル変更速度")] float AngleChengeSpeed = 800;
+    [SerializeField, Header("落下時のアングル変更速度")] float AngleChengeSpeedFall = 60f;
+    [SerializeField, Header("上昇時のアングル変更速度")] float AngleChengeSpeedUp = 100f;
 
     [SerializeField, Header("落下速度計算上限")] float FallSpeedLimit = 50f;
 
     [SerializeField, Header("上昇量計算上限")] float UpPosLimit = 40f;
     [SerializeField, Header("上昇によるカメラのLeapの倍率")
         , Range(0f, 1f)]
-    float UpCameraDiameter = 0.65f;
+    float UpCameraDiameter = 0.8f;
 
     [SerializeField, Header("平面移動量計算上限")] float FlatVerocityLimit = 60f;
     [SerializeField, Header("平面移動によるカメラのLeapの倍率")
@@ -34,11 +35,26 @@ public class CinemaChineCameraAngle : MonoBehaviour
     [SerializeField, Header("補完時間_最大値維持")] float CompletionTimeMaxValue = 0.15f;
     [SerializeField, Header("補完時間_縮み")] float CompletionTimeForward = 0.7f;
 
+    [Header("落下によるカメラの引き")]
+    [SerializeField, Header("落下時の引きの最大倍率")] float FallMaxDiameter = 1.4f;
+
+    [SerializeField, Header("落下してからの待機時間")] float FallWaitTime = 0.02f;
+    [SerializeField, Header("落下時の引き時間倍率")] float FallBackDiameter = 0.5f;
+    [SerializeField, Header("落下してない時の縮み時間倍率")] float FallForwardDiameter = 2f;
+
+    [Header("落下によるカメラのFov")]
+
+    [SerializeField, Header("Fovの最大値")] float　FallMaxFov = 90f;
+    [SerializeField, Header("Fovの最小値")] float FallMinFov = 60f;
+
     CinemachineTransposer transposer;
     Coroutine Coroutine_TargetAngle;
 
     float TargetAngle;
     float AddAngleforward;
+    float AddFallforward;
+
+    float FallStateTime;
 
     bool BeforeGround;
     float ExitGroundPos = 0;
@@ -94,6 +110,9 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         TargetAngle = MinAngle;
         AddAngleforward = 0f;
+        AddFallforward = 0f;
+
+        FallStateTime = 0f;
     }
 
     void FixedUpdate()
@@ -119,6 +138,8 @@ public class CinemaChineCameraAngle : MonoBehaviour
             UpClampValue = Mathf.Max(clamp, UpClampValue);
 
             LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
+
+            FallStateTime = 0;
         }
         else
         {
@@ -129,22 +150,30 @@ public class CinemaChineCameraAngle : MonoBehaviour
             //clamp = Mathf.Max(clamp - clampFlat, 0);
 
             LerpAngle = MinAngle + (MaxAngle - MinAngle) * Mathf.Max(clamp - clampFlat, 0);
+
+            if (PlayerRB.velocity.y < 0)
+                FallStateTime += Time.fixedDeltaTime;
+            else
+                FallStateTime = 0;
         }
-
         
-
         float FixAngle = TargetAngle;     
 
         if (TargetAngle < LerpAngle)
         {
-            FixAngle = Mathf.Min(TargetAngle + AngleChengeSpeed * Time.fixedDeltaTime, LerpAngle);
+            FixAngle = Mathf.Min(TargetAngle + AngleChengeSpeedFall * Time.fixedDeltaTime, LerpAngle);
         }
         else if (TargetAngle > LerpAngle)
         {
-            FixAngle = Mathf.Max(TargetAngle - AngleChengeSpeed * Time.fixedDeltaTime, LerpAngle);
+            FixAngle = Mathf.Max(TargetAngle - AngleChengeSpeedUp * Time.fixedDeltaTime, LerpAngle);
         }
 
         TargetAngle = FixAngle;
+
+        if (FallStateTime >= FallWaitTime)
+            AddFallforward = Mathf.Min(1, AddFallforward + Time.fixedDeltaTime * FallBackDiameter);
+        else
+            AddFallforward = Mathf.Max(0, AddFallforward - Time.fixedDeltaTime * FallForwardDiameter);
     }
 
     private void Update()
@@ -153,7 +182,11 @@ public class CinemaChineCameraAngle : MonoBehaviour
 
         Vector3 TargetOffSet = new(0,TargetOffSet2D.y, -TargetOffSet2D.x);
 
-        transposer.m_FollowOffset = TargetOffSet + TargetOffSet * (1 + (AddAngleforward - 1));
+        float AddOffSetValue = (1 + (AddAngleforward - 1) + (AddFallforward * FallMaxDiameter));
+
+        transposer.m_FollowOffset = TargetOffSet + TargetOffSet * AddOffSetValue;
+
+        VirtualCamera.m_Lens.FieldOfView = FallMinFov + AddFallforward *(FallMaxFov - FallMinFov);
     }
 
     private void LateUpdate()

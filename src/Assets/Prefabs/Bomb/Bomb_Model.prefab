@@ -195,7 +195,9 @@ MonoBehaviour:
   BombRB: {fileID: 2504155696010783520}
   BombSenterPos: {fileID: 1130060760798242871}
   GetKillCount: 0
+
   BombRenderer: {fileID: 2587731209140225725}
+
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
   impulseSource: {fileID: 0}
@@ -675,12 +677,6 @@ MonoBehaviour:
 --- !u!4 &1130060760798242871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58c3db60fef44ee40aed57ff7d927444,
-    type: 3}
-  m_PrefabInstance: {fileID: 586718350541967324}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2587731209140225725 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6067185528594298527, guid: 58c3db60fef44ee40aed57ff7d927444,
     type: 3}
   m_PrefabInstance: {fileID: 586718350541967324}
   m_PrefabAsset: {fileID: 0}
