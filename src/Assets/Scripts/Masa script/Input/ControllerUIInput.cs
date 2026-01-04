@@ -27,6 +27,8 @@ public class ControllerUIInput : MonoBehaviour
     float angle, beforeAngle, AngleValue;
     bool BeforeEnter;
 
+    public float GetAngle() => angle;
+
     public void SetInputCheck(bool b) => InputCheck = b;
 
     private void Start()
