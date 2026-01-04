@@ -99,9 +99,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LinePower: 80
+    - _LinePower: 30
     - _LineSpeed: 100
-    - _LineStep: 300
+    - _LineStep: 150
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -121,7 +121,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LineColor: {r: 1, g: 1, b: 1, a: 0}
-    - _PivotPosition: {r: 0, g: 0, b: 0, a: 0}
+    - _PivotPosition: {r: 0, g: -54.27, b: 246.1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6619427920584885701
