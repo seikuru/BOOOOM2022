@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5236127886805686173}
   - component: {fileID: 4979724953189209863}
+  - component: {fileID: 2567546668970421515}
   m_Layer: 0
   m_Name: BGMComtroll
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3177657527459857574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 585.0602, y: -227.97612, z: 725.7426}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60,17 +61,35 @@ MonoBehaviour:
     - {fileID: 0}
   CMC:
   - CMCMusicType: 1
-    AudioSources:
-    - {fileID: 0}
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 1
+    - AudioSource: {fileID: 0}
+      entryType: 1
   - CMCMusicType: 0
-    AudioSources:
-    - {fileID: 0}
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
   - CMCMusicType: 2
-    AudioSources:
-    - {fileID: 0}
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
   - CMCMusicType: 3
-    AudioSources:
-    - {fileID: 0}
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
   DebugText: {fileID: 0}
   BounsTimeEvent:
     m_PersistentCalls:
@@ -87,3 +106,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  GageManager: {fileID: 0}
+  Count: 0
+  BPM: 140
+  FadeInTime: 3
+  FirstBigTime: 3
+  FirstBigSeparate: 4
+  DownVolume: 0.6
+--- !u!114 &2567546668970421515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177657527459857574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5556164c140e4191dc981de871e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources:
+  - musicType: 0
+    audioSources:
+    - {fileID: 0}
+  - musicType: 1
+    audioSources:
+    - {fileID: 0}
+  - musicType: 2
+    audioSources:
+    - {fileID: 0}
+  - musicType: 3
+    audioSources:
+    - {fileID: 0}
+  fft_res: 256

@@ -10,7 +10,9 @@ using static Unity.Animations.SpringBones.GUIElements;
 public enum MusicType
 
 {
-    Bass,Drums,Chord,Melody
+    Bass,Drums,Chord,Melody,
+
+    Max
 }
 
 enum MusicEntry

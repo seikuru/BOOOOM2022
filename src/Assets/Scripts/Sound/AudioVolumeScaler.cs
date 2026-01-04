@@ -19,7 +19,7 @@ public class AudioVolumeScaler : MonoBehaviour
 
     void Update()
     {
-        float vol = AC.GetCurrentData() * changeVolume;
+        float vol = AC.GetOutputData() * changeVolume;
         Vector3 scale = new Vector3(initialScale.x + vol, initialScale.y + vol, initialScale.z + vol);
         targetObject.localScale = scale;
     }
