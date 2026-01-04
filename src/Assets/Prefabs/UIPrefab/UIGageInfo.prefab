@@ -775,8 +775,12 @@ MonoBehaviour:
   image: {fileID: 5331735064015543978}
   Width: 2048
   Height: 256
-  SpectrumColor: {r: 0.47058827, g: 0.73333335, b: 0.8941177, a: 1}
-  EmptyColor: {r: 0, g: 0, b: 0, a: 0}
+  SpectrumColor32:
+    serializedVersion: 2
+    rgba: 4293180280
+  EmptyColor32:
+    serializedVersion: 2
+    rgba: 0
 --- !u!1 &2891092058440764142
 GameObject:
   m_ObjectHideFlags: 0

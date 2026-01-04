@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
@@ -9,15 +10,18 @@ public class SpriteAutoTransform : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private int Width = 256;
-    [SerializeField] private  int Height = 32;
+    [SerializeField] private int Height = 32;
 
-    [SerializeField] Color SpectrumColor = Color.blue;
-    [SerializeField] Color EmptyColor = Color.clear;
+    [SerializeField] Color32 SpectrumColor32 = Color.blue;
+    [SerializeField] Color32 EmptyColor32 = Color.clear;
 
     private Texture2D texture;
     private Sprite sprite;
 
+    // 前回の高さ
     private int[] BeforeIndex;
+    // ピクセルバッファ
+    Color32[] Colorbuffer;
 
     void Awake()
     {
@@ -29,15 +33,22 @@ public class SpriteAutoTransform : MonoBehaviour
             false
         );
 
-        texture.filterMode = FilterMode.Point; // にじみ防止（重要）
+        texture.filterMode = FilterMode.Point; // にじみ防止
         texture.wrapMode = TextureWrapMode.Clamp;
 
-        // 初期化（透明）
+        Colorbuffer = new Color32[Width * Height];
+        BeforeIndex = new int[Width];
+
+        // BeforeIndex 初期化
         for (int x = 0; x < Width; x++)
-            for (int y = 0; y < Height; y++)
-                texture.SetPixel(x, y, EmptyColor);
-        
-        texture.Apply();
+            BeforeIndex[x] = -1;
+
+        // 初期化（透明）
+        for (int i = 0; i < Colorbuffer.Length; i++)
+            Colorbuffer[i] = EmptyColor32;
+
+        texture.SetPixels32(Colorbuffer);
+        texture.Apply(false);
 
         // Sprite 作成
         sprite = Sprite.Create(
@@ -48,43 +59,45 @@ public class SpriteAutoTransform : MonoBehaviour
         );
 
         image.sprite = sprite;
-
-        BeforeIndex = new int[Width];
     }
 
+    /// <summary>
+    /// 値配列（0～1）を受け取り、棒グラフを差分更新
+    /// </summary>
     public void TextureUpdate(float[] Values)
     {
         // 初期化（透明）
         for (int x = 0; x < Width; x++)
         {
-            float value_float = Values[x] * Height;
-            int Index =(int)(value_float);
+            int index = Mathf.Clamp((int)(Values[x] * Height), 0, Height - 1);
+            int before = BeforeIndex[x];
 
-            if (BeforeIndex[x] == Index)
-            {
-                continue;
-            }
+            if (before == index)    
+                continue;         
                 
-            else if(BeforeIndex[x] < Index)
+            else if(before < index)
             {
-                for (int y = BeforeIndex[x]; y < Index; y++)
+                // 伸びる
+                for (int y = before + 1; y <= index; y++)
                 {
-                    texture.SetPixel(x, y, SpectrumColor);
+                    Colorbuffer[x + y * Width] = SpectrumColor32;
                 }
             }
 
-            else if(BeforeIndex[x] > Index)  
+            else if(before > index)  
             {
-                for (int y = BeforeIndex[x]; y >= Index; y--)
+                // 縮む
+                for (int y = before; y > index; y--)
                 {
-                    texture.SetPixel(x, y, EmptyColor);
+                    Colorbuffer[x + y * Width] = EmptyColor32;
                 }   
             }
-               
-            BeforeIndex[x] = Index;
+
+            BeforeIndex[x] = index;
         }
 
-        texture.Apply();
+        texture.SetPixels32(Colorbuffer);
+        texture.Apply(false);
     }
 
     void TextureUpdate2()
@@ -106,36 +119,36 @@ public class SpriteAutoTransform : MonoBehaviour
         texture.Apply();
     }
 
+    // デバッグ用：横方向アルファグラデーション
     void TextureUpdate3()
     {
-        // 初期化（透明）
         for (int x = 0; x < Width; x++)
         {
-            float alpha = x / (float)(Width - 1);
-
-            texture.SetPixel(x, 0, new Color(1f, 1f, 1f, alpha));
+            byte a = (byte)(x * 255 / (Width - 1));
+            Colorbuffer[x] = new Color32(255, 255, 255, a);
         }
-        texture.Apply();
+
+        texture.SetPixels32(Colorbuffer);
+        texture.Apply(false);
     }
 
     float time = 0;
+
     // Update is called once per frame
     void Update()
     {
-
         time += Time.deltaTime;
         if (time > 1f)
         {
             time = 0;
-            float[] f = new float[Width];
-
-            for (int x = 0; x < Width; x++)
-            {
-                f[x] = UnityEngine.Random.Range(0, 1f);
-            }
-
-            TextureUpdate(f);
             //TextureUpdate3();
+
+            float[] values = new float[Width];
+
+            for (int x = 0; x < Width; x++) 
+                values[x] = UnityEngine.Random.Range(0, 1f);
+            
+            TextureUpdate(values);
         }
     }
 }
