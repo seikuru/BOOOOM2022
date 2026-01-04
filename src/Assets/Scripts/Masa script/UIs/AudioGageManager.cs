@@ -15,8 +15,18 @@ public class AudioGageManager : MonoBehaviour
     class CollectImageClass
     {
         public MusicType musicType;
-        public Image[] CollectImages;
-        public Color SetColor;
+        public float[] MaskValue;
+        public RectMask2D mask2D;
+        private int MaskIndex = 0;
+
+        public void SetMask()
+        {
+            if (MaskIndex >= MaskValue.Length - 1) return;
+            MaskIndex++;
+            var currentPadding = mask2D.padding;
+            currentPadding.x = MaskValue[MaskIndex];
+            mask2D.padding = currentPadding;
+        }
     }
 
     public void SetScore(float value) => ScoreText.SetText(value.ToString());
@@ -27,14 +37,8 @@ public class AudioGageManager : MonoBehaviour
         {
             if(item.musicType == musictype)
             {
-                foreach (var image in item.CollectImages)
-                {
-                    if(image.color != item.SetColor)
-                    {
-                        image.color = item.SetColor;
-                        return;
-                    }  
-                }
+                item.SetMask();
+                return;
             }
         }
     }
