@@ -81,6 +81,22 @@ public class BGMControll : MonoBehaviour
     int AllCollectPoint, CurrentCollectPoint;
     bool Once = true;
 
+
+    public void BGMPlay()
+    {
+        foreach (var a1 in CMC)
+        {
+            foreach (var b2 in a1.ASC)
+            { 
+                if (b2.AudioSource != null)
+                {
+                    b2.AudioSource.Play();
+                }
+            }
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,9 +135,12 @@ public class BGMControll : MonoBehaviour
             }
         }
 
-        StartBGM.enabled = true;
-        StartBGM.mute = false;
-        StartBGM.volume = 1.0f;
+        if(StartBGM != null)
+        {
+            StartBGM.enabled = true;
+            StartBGM.mute = false;
+            StartBGM.volume = 1.0f;
+        }
 
         AudioCoroutine = new Coroutine[i + FadeInNumber];
 

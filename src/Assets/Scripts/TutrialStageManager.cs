@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 class PhaseObjectClass
@@ -94,5 +95,12 @@ public class TutrialStageManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+
+    [SerializeField] UnityEvent DisableEvent;
+    private void OnDisable()
+    {
+        DisableEvent.Invoke();
     }
 }
