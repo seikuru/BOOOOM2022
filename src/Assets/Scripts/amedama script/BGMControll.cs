@@ -52,7 +52,7 @@ public class BGMControll : MonoBehaviour
     [SerializeField] Text DebugText;
     [SerializeField] UnityEvent BounsTimeEvent;
     [SerializeField] AudioGageManager GageManager;
-
+    [SerializeField] ScoreManager scoreManager;
 
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
@@ -181,6 +181,8 @@ public class BGMControll : MonoBehaviour
                         }
                     }
                     ObjectNumber++;
+
+                    scoreManager?.AddScoreDestroy();
                 }
             }
             ObjectNumber = 0;
