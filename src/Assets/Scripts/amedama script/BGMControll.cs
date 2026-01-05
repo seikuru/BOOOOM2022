@@ -178,6 +178,7 @@ public class BGMControll : MonoBehaviour
                         if(CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
                             GageManager?.SetColorImage(CMC[i].CMCMusicType);
+                            scoreManager?.AddScoreDestroy();
 
                             if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure)
                             {                          
@@ -203,7 +204,7 @@ public class BGMControll : MonoBehaviour
                     }
                     ObjectNumber++;
 
-                    scoreManager?.AddScoreDestroy();
+                    
                 }
             }
             ObjectNumber = 0;
