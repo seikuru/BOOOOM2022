@@ -33,6 +33,7 @@ public class AudioGageManager : MonoBehaviour
 
     public void SetColorImage(MusicType musictype)
     {
+        Debug.Log(musictype);
         foreach (var item in GageImages)
         {
             if(item.musicType == musictype)
