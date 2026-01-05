@@ -154,31 +154,33 @@ public class BGMControll : MonoBehaviour
                     if (CMC[i].ASC.Length > ObjectNumber
                         && CMC[i].ASC[ObjectNumber].AudioSource != null)
                     {
+                        Debug.Log(b1.COCMusicType + " " + (CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f));
 
-                        if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure
-                            && CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
+                        if(CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
-                            if (Count >= FirstBigSeparate)
-                            {
-                                AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource)); 
-                                CoroutineCount++;
-                           
-                                GageManager?.SetColorImage(CMC[i].CMCMusicType);
+                            GageManager?.SetColorImage(CMC[i].CMCMusicType);
 
-                               if (CurrentCollectPoint == AllCollectPoint)
-                                    BounsTimeEvent.Invoke();
+                            if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure)
+                            {                          
+                                if (Count >= FirstBigSeparate)
+                                {                                    
+                                    AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(CMC[i].ASC[ObjectNumber].AudioSource));
+                                    CoroutineCount++;
+
+                                    if (CurrentCollectPoint == AllCollectPoint)
+                                        BounsTimeEvent.Invoke();
+                                }
+                            }
+                            else if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.fadeIn)
+                            {
+                                AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInAudio(CMC[i].ASC[ObjectNumber].AudioSource));
+                                CoroutineCount++;
+                                AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInOtherDown(CMC[i].ASC[ObjectNumber].AudioSource));
+                                CoroutineCount++;
                             }
                         }
-                        else if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.fadeIn
-                            && CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
-                        {
 
-                            AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInAudio(CMC[i].ASC[ObjectNumber].AudioSource));
-                            CoroutineCount++;
-                            AudioCoroutine[CoroutineCount] = StartCoroutine(FadeInOtherDown(CMC[i].ASC[ObjectNumber].AudioSource));
-                            CoroutineCount++;
-
-                        }
+                       
                     }
                     ObjectNumber++;
                 }

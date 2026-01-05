@@ -3760,6 +3760,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576022570}
   m_CullTransparentMesh: 1
+--- !u!114 &581281561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7888031075883246250, guid: 0e960a87e7d557441a5943cdc9097145,
+    type: 3}
+  m_PrefabInstance: {fileID: 1414814192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0c287b12045f84f9c2cc29a28f84f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582247062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,7 +4509,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631863091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12fecfb89b2492f43b50b789b5a31333, type: 3}
   m_Name: 
@@ -4573,7 +4585,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 595616192}
 --- !u!1 &675852706
@@ -8176,9 +8188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4184b6eaab04fe5439aefbd535b33a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinkEffect: {fileID: 13839043}
-  LinkTo: {fileID: 1018794787}
-  LinkTargetName: Position2
 --- !u!1001 &1255780758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8566,7 +8575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46121958, y: 0.10962448, z: -0.057546843, w: 0.87860537}
+  m_LocalRotation: {x: 0.46121958, y: 0.1096245, z: -0.057546847, w: 0.87860537}
   m_LocalPosition: {x: 482.02286, y: 117.113945, z: 471.65317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8990,6 +8999,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 396646704}
     m_Modifications:
+    - target: {fileID: 44384559607491860, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: Width
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 44384559607491860, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: Height
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 44384559607491860, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: Interval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 44384559607491860, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: audioCulcurator
+      value: 
+      objectReference: {fileID: 6709736818273123049}
     - target: {fileID: 2733314097407798063, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9965,12 +9994,12 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10962448
+      value: 0.1096245
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.057546843
+      value: -0.057546847
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -13318,7 +13347,7 @@ PrefabInstance:
     - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
@@ -13353,7 +13382,7 @@ PrefabInstance:
     - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4527940356656477173, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
@@ -13644,6 +13673,11 @@ PrefabInstance:
       propertyPath: StartBGM
       value: 
       objectReference: {fileID: 141741508}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: GageManager
+      value: 
+      objectReference: {fileID: 581281561}
     - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
       propertyPath: COC.Array.data[0].CollectObject.Array.data[0]
