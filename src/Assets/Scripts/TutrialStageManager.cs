@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 class PhaseObjectClass
@@ -71,6 +72,7 @@ public class TutrialStageManager : MonoBehaviour
             if(currentPhase >= PhaseObjects.Length)
             {
                 enabled = false; // Copilot が提案した早期終了　よくわからん
+                return;          // 多分下のインデックスの範囲外指定を咎めるものと思われる
             }
 
             // Change Material Pivot
@@ -93,5 +95,12 @@ public class TutrialStageManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+
+    [SerializeField] UnityEvent DisableEvent;
+    private void OnDisable()
+    {
+        DisableEvent.Invoke();
     }
 }

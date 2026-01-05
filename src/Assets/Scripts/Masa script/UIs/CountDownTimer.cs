@@ -22,6 +22,8 @@ public class CountDownTimer : MonoBehaviour
 
     [SerializeField] UnityEvent TimeUpEvent;
 
+    [SerializeField] bool StartCountFlag = true;
+
     bool CountFlag; // カウントダウン実行フラグ
     protected int seconds; // 現在の秒数（内部カウンター）
 
@@ -32,6 +34,11 @@ public class CountDownTimer : MonoBehaviour
     /// カウントダウンを停止
     /// </summary>
     public void CountStop() => CountFlag = false;
+
+    /// <summary>
+    /// カウントダウンを開始
+    /// </summary>
+    public void CountStart() => CountFlag = true;
 
     /// <summary>
     /// 現在の秒数を取得
@@ -62,7 +69,7 @@ public class CountDownTimer : MonoBehaviour
     void Start()
     {
         // 初期化処理
-        CountFlag = true; // カウントダウン開始
+        CountFlag = StartCountFlag; // カウントダウン開始
         seconds = StartCount;// 初期値を設定
     }
 

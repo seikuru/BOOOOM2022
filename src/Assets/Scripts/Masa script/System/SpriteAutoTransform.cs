@@ -15,6 +15,9 @@ public class SpriteAutoTransform : MonoBehaviour
     [SerializeField] Color32 SpectrumColor32 = Color.blue;
     [SerializeField] Color32 EmptyColor32 = Color.clear;
 
+    [SerializeField] float Interval = 0.2f;
+    [SerializeField] AudioCulcurator audioCulcurator;
+
     private Texture2D texture;
     private Sprite sprite;
 
@@ -69,7 +72,7 @@ public class SpriteAutoTransform : MonoBehaviour
         // èâä˙âªÅiìßñæÅj
         for (int x = 0; x < Width; x++)
         {
-            int index = Mathf.Clamp((int)(Values[x] * Height), 0, Height - 1);
+            int index = Mathf.Clamp((int)(Values[x] * Height * x), 0, Height - 1);
             int before = BeforeIndex[x];
 
             if (before == index)    
@@ -95,7 +98,7 @@ public class SpriteAutoTransform : MonoBehaviour
 
             BeforeIndex[x] = index;
         }
-
+  
         texture.SetPixels32(Colorbuffer);
         texture.Apply(false);
     }
@@ -138,16 +141,19 @@ public class SpriteAutoTransform : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time > 1f)
+        if (time > Interval)
         {
             time = 0;
             //TextureUpdate3();
 
             float[] values = new float[Width];
 
-            for (int x = 0; x < Width; x++) 
-                values[x] = UnityEngine.Random.Range(0, 1f);
-            
+            if(audioCulcurator != null)
+                audioCulcurator.GetSpectrum(ref values);
+            else
+                for (int x = 0; x < Width; x++)
+                    values[x] = UnityEngine.Random.Range(0, 1f);
+
             TextureUpdate(values);
         }
     }
