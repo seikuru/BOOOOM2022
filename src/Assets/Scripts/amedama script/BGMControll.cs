@@ -96,6 +96,19 @@ public class BGMControll : MonoBehaviour
         }
     }
 
+    public int GetTypeMaxValue(MusicType type)
+    {
+        int length = 0;
+        foreach(var cmc in CMC)
+        {
+            if(cmc.CMCMusicType == type)
+            {
+                length =  cmc.ASC.Length;
+            }
+        }
+
+        return length;
+    }
 
     // Start is called before the first frame update
     void Start()
