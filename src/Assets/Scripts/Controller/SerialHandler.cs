@@ -71,6 +71,8 @@ public class SerialHandler : MonoBehaviour
     {
         serialPort_ = new SerialPort(portName, bitRate, Parity.None, 8, StopBits.One);
 
+        serialPort_.NewLine = "\n";
+
         serialPort_.RtsEnable = true;
         serialPort_.DtrEnable = true;
 
@@ -111,11 +113,18 @@ public class SerialHandler : MonoBehaviour
     private void Read()
     {
         while (isRunning_ && serialPort_ != null && serialPort_.IsOpen)
-        {
+        {            
             try
             {
                 message_ = serialPort_.ReadLine();
                 isNewMessageReceived_ = true;
+                /*
+                string raw = serialPort_.ReadExisting();
+                if (!string.IsNullOrEmpty(raw))
+                {
+                    message_ = raw;
+                    isNewMessageReceived_ = true;
+                }*/
             }
             catch (TimeoutException)
             {

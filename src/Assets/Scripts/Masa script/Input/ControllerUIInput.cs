@@ -24,30 +24,38 @@ public class ControllerUIInput : MonoBehaviour
     [SerializeField, Header("‘I‘ð‚·‚é‚½‚ß‚Ì‰ñ“]—Ê")]
     float AngleLimit = 20f;
 
-    float angle, beforeAngle, AngleValue;
+    float angle, beforeAngle, AngleValue, currentAngleValue;
     bool BeforeEnter;
 
-    public float GetAngle() => angle;
+    public float GetAngle() => currentAngleValue;
 
     public void SetInputCheck(bool b) => InputCheck = b;
 
     private void Start()
     {
-        angle = 0;
-        beforeAngle = 0;
-        AngleValue = 0;
+        AngleReset();
         BeforeEnter = false;
     }
 
     private void Update()
     {
         if (!InputCheck)
+        {
+            AngleReset();
             return;
+        }
 
         if (playableDirector != null && playableDirector.state == PlayState.Playing)
             return;
 
         InputOperateUI();
+    }
+
+    void AngleReset()
+    {
+        angle = 0;
+        beforeAngle = 0;
+        AngleValue = 0;
     }
 
     /// <summary>
@@ -66,10 +74,10 @@ public class ControllerUIInput : MonoBehaviour
         {
             int nextAddIndex = 0;
 
-            if (AngleLimit > 0)
+            if (AngleValue > 0)
                 nextAddIndex = 1;
 
-            if (AngleLimit < 0)
+            if (AngleValue < 0)
                 nextAddIndex = -1;
 
             AngleValue *= 0.01f;
@@ -93,6 +101,17 @@ public class ControllerUIInput : MonoBehaviour
         if (beforeAngle == angle)
             return;
 
+        currentAngleValue = beforeAngle - angle;
+
+        bool sameSign = AngleValue == 0f ||
+            (currentAngleValue > 0f && AngleValue > 0f) ||
+            (currentAngleValue < 0f && AngleValue < 0f);
+
+        if (sameSign == false)
+            AngleValue = 0;
+
+        AngleValue += currentAngleValue;
+        /*
         if (beforeAngle < angle)
         {
             if (AngleValue < 0)
@@ -107,7 +126,7 @@ public class ControllerUIInput : MonoBehaviour
                 AngleValue = 0;
 
             AngleValue -= Mathf.Abs(beforeAngle - angle);
-        }
+        }*/
     }
 
     bool EnterTap()
