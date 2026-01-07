@@ -192,6 +192,7 @@ public class BGMControll : MonoBehaviour
                         {
                             GageManager?.SetColorImage(CMC[i].CMCMusicType);
                             scoreManager?.AddScoreDestroy();
+                            scoreManager?.AddMusicType(CMC[i].CMCMusicType);
 
                             if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure)
                             {                          

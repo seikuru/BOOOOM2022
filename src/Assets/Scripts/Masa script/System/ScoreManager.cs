@@ -46,6 +46,13 @@ public class ScoreManager : MonoBehaviour
         AddScore(_time / 10 + 50);
     }
 
+    public void AddMusicType(MusicType type)
+    {
+        var v = TakeMusic[type];
+        v.Item1++;
+        TakeMusic[type] = v;
+    }
+
     public static int GetScore() => ScoreValue;
 
     public static void TakeMusicValue(MusicType type ,ref int current,ref int maxValue)
