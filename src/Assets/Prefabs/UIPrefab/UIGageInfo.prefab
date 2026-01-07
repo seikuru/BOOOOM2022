@@ -1766,6 +1766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5795783603043925855}
   - component: {fileID: 7475084377859359484}
+  - component: {fileID: 5464572377014520586}
   m_Layer: 5
   m_Name: Gage
   m_TagString: Untagged
@@ -1823,6 +1824,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5464572377014520586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890266977744223397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d60d853f2e801418a528acd77ddafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreText: {fileID: 8609610252349573607}
 --- !u!1 &7250544419880378078
 GameObject:
   m_ObjectHideFlags: 0

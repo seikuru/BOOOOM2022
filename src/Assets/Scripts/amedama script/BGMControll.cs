@@ -52,7 +52,7 @@ public class BGMControll : MonoBehaviour
     [SerializeField] Text DebugText;
     [SerializeField] UnityEvent BounsTimeEvent;
     [SerializeField] AudioGageManager GageManager;
-
+    [SerializeField] ScoreManager scoreManager;
 
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
@@ -96,6 +96,19 @@ public class BGMControll : MonoBehaviour
         }
     }
 
+    public int GetTypeMaxValue(MusicType type)
+    {
+        int length = 0;
+        foreach(var cmc in CMC)
+        {
+            if(cmc.CMCMusicType == type)
+            {
+                length =  cmc.ASC.Length;
+            }
+        }
+
+        return length;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -178,6 +191,7 @@ public class BGMControll : MonoBehaviour
                         if(CMC[i].ASC[ObjectNumber].AudioSource.volume == 0.0f)
                         {
                             GageManager?.SetColorImage(CMC[i].CMCMusicType);
+                            scoreManager?.AddScoreDestroy();
 
                             if (CMC[i].ASC[ObjectNumber].entryType == MusicEntry.Measure)
                             {                          
@@ -202,6 +216,8 @@ public class BGMControll : MonoBehaviour
                        
                     }
                     ObjectNumber++;
+
+                    
                 }
             }
             ObjectNumber = 0;
