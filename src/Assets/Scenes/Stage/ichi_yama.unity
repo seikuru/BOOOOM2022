@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04701439, g: 0.2630383, b: 0.4731505, a: 1}
+  m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1731,33 +1731,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 220285411}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &228198281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5693983818252772709, guid: 0e960a87e7d557441a5943cdc9097145,
-    type: 3}
-  m_PrefabInstance: {fileID: 1414814192}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &228198283
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228198281}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &228574125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6547,9 +6520,9 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 3671641594427015452, guid: 5a4515f845d75a34c957e0a214146696, type: 2}
-    value: {fileID: 228198283}
+    value: {fileID: 0}
   - key: {fileID: 8794590521516095670, guid: 5a4515f845d75a34c957e0a214146696, type: 2}
-    value: {fileID: 2085164731}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &989110526
@@ -8672,7 +8645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46121958, y: 0.10962448, z: -0.057546843, w: 0.87860537}
+  m_LocalRotation: {x: 0.46121958, y: 0.1096245, z: -0.057546847, w: 0.87860537}
   m_LocalPosition: {x: 482.02286, y: 117.113945, z: 471.65317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9229,15 +9202,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5693983818252772709, guid: 0e960a87e7d557441a5943cdc9097145,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 228198283}
-    - targetCorrespondingSourceObject: {fileID: 5890266977744223397, guid: 0e960a87e7d557441a5943cdc9097145,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2085164731}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e960a87e7d557441a5943cdc9097145, type: 3}
 --- !u!1 &1431083453
 GameObject:
@@ -10106,12 +10071,12 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10962448
+      value: 0.1096245
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.057546843
+      value: -0.057546847
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -13107,33 +13072,6 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 2079553129}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2085164729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5890266977744223397, guid: 0e960a87e7d557441a5943cdc9097145,
-    type: 3}
-  m_PrefabInstance: {fileID: 1414814192}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2085164731
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085164729}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2087840540
 GameObject:
   m_ObjectHideFlags: 0

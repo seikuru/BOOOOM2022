@@ -651,9 +651,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224862409}
+  - component: {fileID: 224862410}
   - component: {fileID: 224862412}
   - component: {fileID: 224862411}
-  - component: {fileID: 224862410}
   m_Layer: 5
   m_Name: Image_Disc
   m_TagString: Untagged
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerUIInput: {fileID: 1024171276}
-  rotateSpeed: -8
+  rotateSpeed: -4
 --- !u!114 &224862411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,6 +2955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151069351900880812, guid: 725f27203dae15b4d85d3d132f9edab8,
+        type: 3}
+      propertyPath: portName
+      value: COM3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
