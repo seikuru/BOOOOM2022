@@ -111,11 +111,18 @@ public class SerialHandler : MonoBehaviour
     private void Read()
     {
         while (isRunning_ && serialPort_ != null && serialPort_.IsOpen)
-        {
+        {            
             try
             {
-                message_ = serialPort_.ReadLine();
-                isNewMessageReceived_ = true;
+                //message_ = serialPort_.ReadLine();
+                //isNewMessageReceived_ = true;
+                
+                string raw = serialPort_.ReadExisting();
+                if (!string.IsNullOrEmpty(raw))
+                {
+                    message_ = raw;
+                    isNewMessageReceived_ = true;
+                }
             }
             catch (TimeoutException)
             {
