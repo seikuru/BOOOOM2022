@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -96,13 +97,15 @@ public class BGMControll : MonoBehaviour
     // イベント駆動のため、いる
     public void BGMPlay()
     {
+        // 未来の DSP 時間を取得
+        double currentStartDspTime = AudioSettings.dspTime + 0.1;
         foreach (var a1 in CMC)
         {
             foreach (var b2 in a1.ASC)
             { 
                 if (b2.AudioSource != null)
                 {
-                    b2.AudioSource.Play();
+                    b2.AudioSource.PlayScheduled(currentStartDspTime);
                 }
             }
         }
@@ -151,11 +154,11 @@ public class BGMControll : MonoBehaviour
                 i++;
                 if (b2.AudioSource != null)
                 {
-
+                    
                     b2.AudioSource.enabled = true;
                     b2.AudioSource.mute = true;
                     b2.AudioSource.volume = 0;
-
+                    
                     if (b2.entryType == MusicEntry.fadeIn)
                     {
                         FadeInNumber++;
@@ -171,11 +174,41 @@ public class BGMControll : MonoBehaviour
             StartBGM.volume = 1.0f;
         }
 
+        StartCoroutine(WarmUpAudio());
+
         AudioCoroutine = new Coroutine[i + FadeInNumber];
 
         AllCollectPoint = i;
         CurrentCollectPoint = 0;
     }
+
+    IEnumerator WarmUpAudio()
+    {
+        foreach (var a1 in CMC)
+        {
+            foreach (var b2 in a1.ASC)
+            {
+                if (b2.AudioSource != null)
+                {
+                    var a = b2.AudioSource;
+                    float originalVolume = a.volume;
+                    bool mute = a.mute;
+
+                    a.volume = 0f;
+                    a.mute = false;
+                    a.Play();
+
+                    // Audio Thread に 1 フレーム渡す
+                    yield return null;
+
+                    a.Stop();
+                    a.mute = mute; 
+                    a.volume = originalVolume;
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
