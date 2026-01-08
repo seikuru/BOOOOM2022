@@ -293,7 +293,7 @@ MonoBehaviour:
   DustPrehab: {fileID: 2951154445695890836, guid: 605f3649aca95b641b3f91feb43c1780,
     type: 3}
   DestroyTime: 7
-  DustDivisionSize: 3
+  DustDivisionSize: 12
   IsExplosed: 0
 --- !u!54 &2046993576159936464
 Rigidbody:
@@ -320,7 +320,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!114 &7476528622014824844
 MonoBehaviour:
