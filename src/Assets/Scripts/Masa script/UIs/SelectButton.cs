@@ -30,8 +30,12 @@ public class SelectButton : MonoBehaviour
         {
             currentButtonIndex = Buttons.Length - 1; sameCheck = true;
         }
-            
-         audioSE?.PlayOneShot(audioSE.clip);
+
+        if (audioSE != null && audioSE.clip != null)
+        {
+            audioSE.PlayOneShot(audioSE.clip);
+        }
+        
 
         if(cursol != null)
             cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;

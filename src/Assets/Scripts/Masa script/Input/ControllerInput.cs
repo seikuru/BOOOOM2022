@@ -54,16 +54,16 @@ public class ControllerInput : ControllerTableInput
 
     void ThorwBombSide(ref HashSet<int> angleSet, List<int> thorwInputs)
     {
-        foreach (var thorwRad in thorwInputs)
+        foreach (int thorwRad in thorwInputs)
         {
-            if (ThorwRadCheck(ref angleSet, thorwRad))
+            if (ThorwRadCheck(angleSet, thorwRad))
                 ShotTable(thorwRad);
         }
 
         BeforeAngleSave(ref angleSet, thorwInputs);
     }
 
-    bool ThorwRadCheck(ref HashSet<int> beforeAngles, int rad)
+    bool ThorwRadCheck(HashSet<int> beforeAngles, int rad)
     {
         if (rad == NoTorchValue)
             return false;
@@ -80,7 +80,7 @@ public class ControllerInput : ControllerTableInput
 
         foreach (var input in inputs)
         {
-            if(input == NoTorchValue)
+            if(input != NoTorchValue)
                 angleSet.Add(input);
         }
     }

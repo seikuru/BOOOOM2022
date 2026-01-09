@@ -42,7 +42,7 @@ public class ObstacleExplosion : MonoBehaviour
 
             // 元のオブジェクトを削除
             this.gameObject.SetActive(false);
-            Destroy(this.gameObject, DestroyTime);
+            //Destroy(this.gameObject, DestroyTime);
             
             return;
         }
@@ -77,10 +77,15 @@ public class ObstacleExplosion : MonoBehaviour
                 }
 
         // 元のオブジェクトを削除
-        Destroy(this.gameObject, DestroyTime);
+        //Destroy(this.gameObject, DestroyTime);
         this.gameObject.SetActive(false);
 
         //オブジェクトを破壊した数をカウント
         CoinCounter.AddCount();
+    }
+
+    private void OnEnable()
+    {
+        IsExplosed = false;
     }
 }
