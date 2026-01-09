@@ -4715,6 +4715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 624576008}
+  audioSources: []
+  scheduleOffset: 0.1
 --- !u!1 &631863091
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,11 +9255,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
-      propertyPath: StartCountFlag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
-        type: 3}
       propertyPath: TimeUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 261110039}
@@ -10069,6 +10066,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9200802085272221375}
     m_Modifications:
+    - target: {fileID: 135671124553650282, guid: 88eccc06c43af994aaa2139f2aeb59db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109014535008523071, guid: 88eccc06c43af994aaa2139f2aeb59db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10118,16 +10125,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 135671124553650282, guid: 88eccc06c43af994aaa2139f2aeb59db,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5109014535008523071, guid: 88eccc06c43af994aaa2139f2aeb59db,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14439,6 +14436,16 @@ PrefabInstance:
       propertyPath: Enemylist.Array.data[5]
       value: 
       objectReference: {fileID: 1942690787}
+    - target: {fileID: 8044641526589963898, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044641526589963898, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
