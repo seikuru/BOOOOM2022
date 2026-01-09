@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2579846102088291873}
   - component: {fileID: 7834042539771189614}
   - component: {fileID: 3023593640061063737}
-  - component: {fileID: 424469328706394918}
+  - component: {fileID: 7685371636165046660}
   m_Layer: 3
   m_Name: Player_CinemaChine
   m_TagString: Player
@@ -209,7 +209,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &6567396642241255447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88081868843fd0458abf596d48e98e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAnimator: {fileID: 424469328706394918}
+  PlayerAnimator: {fileID: 7685371636165046660}
   playerRigidbody: {fileID: 2364280095217102194}
 --- !u!114 &4393592498401854528
 MonoBehaviour:
@@ -236,14 +236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c680cc8185fd5d5438afcfa938578e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 3672593736015811124, guid: 05c3f7b033a51d24eb1ecf500d2291d8, type: 3}
-  Bomb2: {fileID: 0}
+  Bomb: {fileID: 3672593736015811124, guid: 16d552253ebcea14fbbb60ec7b071a8c, type: 3}
+  Bomb2: {fileID: 3672593736015811124, guid: 16d552253ebcea14fbbb60ec7b071a8c, type: 3}
   ThrowBombSpawnPosition: {fileID: 4250198401329017485}
   JumpBombSpawnPosition: {fileID: 3111844019099697175}
   BrinkBombSpawnPosition: {fileID: 1714432846268466497}
   Bombthrow: 20
   Underthrow: 3
-  spawnDistance: 2
+  spawnDistance: 1.3
   InputFlag: 0
   FullautoEnable: 0
   BombShotInterval: 8
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerBodyTransform: {fileID: 7878180206275059215}
-  PlayerModelTransform: {fileID: 154745808761288618}
+  PlayerModelTransform: {fileID: 1692146832237582446}
   LimitModelVertical: 0.9
 --- !u!114 &3023593640061063737
 MonoBehaviour:
@@ -310,7 +310,7 @@ MonoBehaviour:
   PrintDebug: 0
   FallSpeed: 65
   SecondsUntilFall: 2
---- !u!95 &424469328706394918
+--- !u!95 &7685371636165046660
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
