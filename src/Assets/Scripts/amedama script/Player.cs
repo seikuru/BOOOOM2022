@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
 
     public bool OnGround = true;
 
+    public int BombAudioNumber = 0;
+
+    public AudioSource OnlyBombAudioSource;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Terrain") || collision.transform.CompareTag("Floor"))
