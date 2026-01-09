@@ -72,7 +72,7 @@ public class Bombeffects : MonoBehaviour
     {
         while (OnlyAudio.volume > 0.0f)
         {
-            OnlyAudio.volume -= 0.01f;
+            OnlyAudio.volume -= 0.015f;
             yield return null;
         }
         yield return null;
@@ -86,31 +86,41 @@ public class Bombeffects : MonoBehaviour
         if (GetKillCount)
             BombStrangeValue += GetBombAddStrange();
 
+            
+           
+
+        //BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
+        //
+        if (BombNumber % 3 == 1)
+        {
+
             if (OnlyBombAudioSource != null)
             {
                 StartCoroutine(SECut(OnlyBombAudioSource));
+                
             }
+            BombAudioSource.PlayOneShot(BombAudioClips[BombAudioNumber % 4]);
             OnlyBombAudioSource = BombAudioSource;
 
-        //BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);       
-        //BombAudioSource.PlayOneShot(BombAudioClips[BombAudioNumber]);
-        Debug.Log(BombAudioNumber+ "+" + BombAudioClips.Length);
-       
+            if (BombNumber % 2 == 1)
+            {
+                BombAudioNumber++;
+            }
+        }
+        //if ( (BombPitchUp == false && 0 > BombAudioNumber - 1) 
+        //    || (BombAudioNumber + 1 >= BombAudioClips.Length && BombPitchUp == true))
+        //{
+        //    BombPitchUp = !BombPitchUp;
+        //}
 
-        if ( (BombPitchUp == false && 0 > BombAudioNumber - 1) 
-            || (BombAudioNumber + 1 >= BombAudioClips.Length && BombPitchUp == true))
-        {
-            BombPitchUp = !BombPitchUp;
-        }
-
-        if (BombPitchUp)
-        {
-            BombAudioNumber++;
-        }
-        else
-        {
-            BombAudioNumber--;
-        }
+        //if (BombPitchUp)
+        //{
+        //    BombAudioNumber++;
+        //}
+        //else
+        //{
+        //    BombAudioNumber--;
+        //}
 
         Collider[] hits;
         Debug.Log(BombRenderer.isVisible);
@@ -153,7 +163,7 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
-                    BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
+                    //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
                     //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
                 }

@@ -231,11 +231,10 @@ MonoBehaviour:
   impulseSource: {fileID: 0}
   AMixer: {fileID: 24100000, guid: 6731d4b6da72cd44b85a507afbd21f72, type: 2}
   BombAudioClips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 8fea3c502615c4847bd3e72374339864, type: 3}
+  - {fileID: 8300000, guid: 2c35d4bbb6ba1d4488186080149c68fb, type: 3}
+  - {fileID: 8300000, guid: 04cc5f8450a27b64a96fc8457261dd88, type: 3}
+  - {fileID: 8300000, guid: e89b5ffeac2d480479c2f94a93920705, type: 3}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +262,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
