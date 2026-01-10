@@ -118,6 +118,12 @@ MonoBehaviour:
   BombAudioSource: {fileID: 3305899597650318272}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
   impulseSource: {fileID: 0}
+  AMixer: {fileID: 24100000, guid: 6731d4b6da72cd44b85a507afbd21f72, type: 2}
+  BombAudioClips:
+  - {fileID: 8300000, guid: 8fea3c502615c4847bd3e72374339864, type: 3}
+  - {fileID: 8300000, guid: 2c35d4bbb6ba1d4488186080149c68fb, type: 3}
+  - {fileID: 8300000, guid: 04cc5f8450a27b64a96fc8457261dd88, type: 3}
+  - {fileID: 8300000, guid: e89b5ffeac2d480479c2f94a93920705, type: 3}
 --- !u!114 &6053529912697853553
 MonoBehaviour:
   m_ObjectHideFlags: 0

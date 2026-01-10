@@ -9,7 +9,7 @@ public class bomb : MonoBehaviour
     [SerializeField] GameObject ThrowBombSpawnPosition;//前に投げる際に参照する位置
     [SerializeField] GameObject JumpBombSpawnPosition;//下に投げる際に参照する位置
     [SerializeField] GameObject BrinkBombSpawnPosition;//後ろに投げる際に参照する位置
-    [SerializeField] float Bombthrow;//爆弾を投げる強さ
+    [SerializeField] float bombThrowPower = 20f;//爆弾を投げる強さ
     [SerializeField] float Underthrow = 3f;
     [SerializeField] float spawnDistance = 2f;
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
@@ -58,6 +58,12 @@ public class bomb : MonoBehaviour
         playerAnimation.onThrow();
     }
 
+    /// <summary>
+    /// 爆弾を横方向に投げる
+    /// </summary>
+    /// <param name="percentage">0～1の範囲で投げる力を乗算で調整</param>
+    /// <param name="direction">爆弾を投げる方向</param>
+    /// <param name="rotation">爆弾の向き</param>
     public void InstantiateBomb(float percentage, Vector3 direction, Quaternion rotation)
     {
         // プレイヤーの前方位置にオフセットして爆弾を生成
@@ -77,7 +83,7 @@ public class bomb : MonoBehaviour
         // 投げる力（プレイヤーの移動速度を加味する）
         // Bombthrow + プレイヤーの速度の大きさ × percentage
         // Vector3 _force = (Bombthrow + PlayerRigidbody.velocity.magnitude) * percentage * direction;
-        Vector3 _force = Bombthrow * direction.normalized;
+        Vector3 _force = (bombThrowPower * percentage) * direction.normalized;
         // Vector3 _force = direction * ThrowPower + this.gameObject.GetComponent<Rigidbody>().linearVelocity * 0.4f;
 
         // Vector3 _Inertia = PlayerRigidbody.velocity * (1f - percentage);
@@ -178,7 +184,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (bombThrowPower + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");
@@ -234,7 +240,7 @@ public class bomb : MonoBehaviour
             {
                 GameObject Spawned_Bomb;
                 Spawned_Bomb = Instantiate(Bomb, ThrowBombSpawnPosition.transform.position, Quaternion.identity);
-                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (Bombthrow + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
+                Spawned_Bomb.GetComponent<Bombeffects>().GetRB.AddForce(this.transform.forward * (bombThrowPower + this.gameObject.GetComponent<Rigidbody>().velocity.magnitude /** 0.8f*/ ), ForceMode.Impulse);
 
                 BombsQueue.Enqueue(Spawned_Bomb.GetComponent<Bombeffects>());
                 // PlayerAnimator.SetTrigger("OnThrow");
