@@ -123,7 +123,7 @@ public class Bombeffects : MonoBehaviour
         //}
 
         Collider[] hits;
-        Debug.Log(BombRenderer.isVisible);
+
         if (BombRenderer.isVisible)
         {
             hits = Physics.OverlapSphere(BombSenterPos.position, BombRadius, InfluencedMask);
