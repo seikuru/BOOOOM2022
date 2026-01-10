@@ -84,6 +84,7 @@ public class BGMControll : MonoBehaviour
     WaitForSeconds wfs16note;
    
     Coroutine[] AudioCoroutine;
+    Queue<AudioSourceClass> MeasureEntryASC;
 
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
 
@@ -177,6 +178,7 @@ public class BGMControll : MonoBehaviour
         StartCoroutine(WarmUpAudio());
 
         AudioCoroutine = new Coroutine[i + FadeInNumber];
+        MeasureEntryASC = new();
 
         AllCollectPoint = i;
         CurrentCollectPoint = 0;
@@ -342,12 +344,21 @@ public class BGMControll : MonoBehaviour
         }         
         */
 
-        // 一定時間経過後にカウントをリセット
+        // 一定時間経過後にMeasureで起動する処理を起動する
         if (Count >= FirstBigSeparate)
         {
             Count = 0;
+            while (MeasureEntryASC != null && MeasureEntryASC.Count != 0)
+            {
+                var ASC = MeasureEntryASC.Dequeue();
+                if(ASC != null)
+                {
+                    // 最初の大音量再生コルーチンを開始
+                    AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(ASC.AudioSource));
+                    CoroutineCount++;
+                }
+            }     
         }
-       
     }
 
     void AudioEntry(AudioSourceClass asc)
@@ -363,14 +374,10 @@ public class BGMControll : MonoBehaviour
             // エントリータイプが Measure の場合
             if (asc.entryType == MusicEntry.Measure)
             {
-                // 一定時間経過後のみ処理
-                if (Count >= FirstBigSeparate)
-                {
-                    // 最初の大音量再生コルーチンを開始
-                    AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(asc.AudioSource));
-                    CoroutineCount++;
-                }
+                // 一定時間経過後のみ処理を待機
+                MeasureEntryASC.Enqueue(asc);                              
             }
+
             // エントリータイプが FadeIn の場合
             else if (asc.entryType == MusicEntry.fadeIn)
             {
@@ -383,7 +390,7 @@ public class BGMControll : MonoBehaviour
             }
         }
     }
-
+    
     IEnumerator FadeInAudio(AudioSource audio)
     {
         //CurrentCollectPoint++;
