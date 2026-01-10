@@ -99,15 +99,18 @@ public class bomb : MonoBehaviour
     {
         float waitTime = 0f;
         PlayerHit = false;
+        int BombNumber = 0;
 
         foreach (Bombeffects bombs in BombsQueue)
         {
             if (bombs == null)
                 continue;
 
-            StartCoroutine(DestroyBombsRoutine(waitTime, bombs));
+            BombNumber++;
 
-            waitTime += Time.fixedDeltaTime;
+            StartCoroutine(DestroyBombsRoutine(waitTime, bombs,BombNumber));
+
+            waitTime += Time.fixedDeltaTime * 2;
 
             //Debug.Log("getHit()" + bombs.getHit());
             if (bombs.getHit())
@@ -125,16 +128,18 @@ public class bomb : MonoBehaviour
         }
     }
 
-    private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
+    private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs,int BombNumber)
     {
         //ComboCounter.ResetCombo();
 
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
+        
 
         if (bombs != null)
         {
-            bombs.Bakuhatu();
+            bombs.Bakuhatu(BombNumber);
+            
         }
     }
 
