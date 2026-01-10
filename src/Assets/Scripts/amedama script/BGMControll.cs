@@ -364,13 +364,12 @@ public class BGMControll : MonoBehaviour
             if (asc.entryType == MusicEntry.Measure)
             {
                 // 一定時間経過後のみ処理
-                //if (Count >= FirstBigSeparate)
-                //{
-                    Debug.Log("on");
+                if (Count >= FirstBigSeparate)
+                {
                     // 最初の大音量再生コルーチンを開始
                     AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(asc.AudioSource));
                     CoroutineCount++;
-                //}
+                }
             }
             // エントリータイプが FadeIn の場合
             else if (asc.entryType == MusicEntry.fadeIn)
