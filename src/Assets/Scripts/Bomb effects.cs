@@ -99,7 +99,8 @@ public class Bombeffects : MonoBehaviour
                 StartCoroutine(SECut(OnlyBombAudioSource));
                 
             }
-            BombAudioSource.PlayOneShot(BombAudioClips[BombAudioNumber % 4]);
+            if(BombAudioClips != null && BombAudioClips.Length > 0)
+                BombAudioSource.PlayOneShot(BombAudioClips[BombAudioNumber % BombAudioClips.Length]);
             OnlyBombAudioSource = BombAudioSource;
 
             if (BombNumber % 2 == 1)
