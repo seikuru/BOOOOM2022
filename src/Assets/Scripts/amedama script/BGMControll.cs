@@ -363,13 +363,9 @@ public class BGMControll : MonoBehaviour
             // エントリータイプが Measure の場合
             if (asc.entryType == MusicEntry.Measure)
             {
-                // 一定時間経過後のみ処理
-                if (Count >= FirstBigSeparate)
-                {
-                    // 最初の大音量再生コルーチンを開始
-                    AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(asc.AudioSource));
-                    CoroutineCount++;
-                }
+                // 一定時間経過後のみ処理を待機
+                StartCoroutine(WaitForFirstBigSeparate(asc));
+
             }
             // エントリータイプが FadeIn の場合
             else if (asc.entryType == MusicEntry.fadeIn)
@@ -383,7 +379,16 @@ public class BGMControll : MonoBehaviour
             }
         }
     }
+    IEnumerator WaitForFirstBigSeparate(AudioSourceClass ASC)
+    {
+        // 条件が true になるまで待機
+        // 一定時間経過後のみ処理を待機
+        yield return new WaitUntil(() => Count >= FirstBigSeparate);
 
+        // 最初の大音量再生コルーチンを開始
+        AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(ASC.AudioSource));
+        CoroutineCount++;
+    }
     IEnumerator FadeInAudio(AudioSource audio)
     {
         //CurrentCollectPoint++;
