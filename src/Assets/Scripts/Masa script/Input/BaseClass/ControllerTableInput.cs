@@ -16,9 +16,9 @@ public class ControllerTableInput : OperationsInput
     [Space]
     [SerializeField] Transform FollowPointTransform; //カメラ制御用Transform
 
-    [SerializeField] float MapingClampMin = 0f; // 投擲力マッピングの最小値
+    [SerializeField] float ThrowPowerInside = 0.5f; // 内側の投擲力
 
-    [SerializeField] float MapingClampMax = 2f; // 投擲力マッピングの最大値
+    [SerializeField] float ThrowPowerOutside = 1f; // 外側の投擲力
 
     protected float UpAngle = 0; // アップ時点の角度（回転基準値）
 
@@ -96,7 +96,8 @@ public class ControllerTableInput : OperationsInput
     /// 距離は現在は固定、方向パラメータで投擲方向を決定
     /// </summary>
     /// <param name="ThorwRad">投擲アングルの値</param>
-    protected void ShotTable(int ThorwRad)
+    /// <param name="IsInside">内側の入力かどうか(内側ならtrue)</param>
+    protected void ShotTable(int ThorwRad ,bool IsInside)
     {
         float rad = ThorwRad * Mathf.Deg2Rad;
 
@@ -115,7 +116,7 @@ public class ControllerTableInput : OperationsInput
 
         // 距離に応じて強さを一定範囲内になるように計算
         // (今回は投げる力は一定にしておく)
-        float powerRange = MappingClamp(2f, 0f, 2f, MapingClampMin, MapingClampMax);
+        float powerRange = IsInside ? ThrowPowerInside : ThrowPowerOutside;
 
         // この2D方向を3D空間のローカル方向として解釈
         Vector3 localDirection = new Vector3(dir.x, 0f, dir.y);
@@ -123,17 +124,19 @@ public class ControllerTableInput : OperationsInput
         // プレイヤーのY軸方向を考慮した回転（ローカル → ワールド）
         Vector3 worldDirection = FollowPointTransform.rotation * localDirection;
 
-        // powerRange が小さいほど Y軸方向の影響を減らす
-        // Y軸方向とは、プレイヤーの上下方向の影響を抑えるために、worldDirection を水平に近づける
-        worldDirection.y *= powerRange;
+        // powerRange がの大きさによってY軸方向の影響を変化させる
+        // Y軸方向が、小さくなる程、worldDirection を水平に近づける
+        // worldDirection.y *= powerRange;
 
-        // 正規化して力の方向を保持
+        // 正規化して力の方向を調整して補正
         worldDirection = worldDirection.normalized;
 
         // 投擲
         ThrowBomb(powerRange, worldDirection);
     }
-
+    /// <summary>
+    /// 足元に爆弾を設置
+    /// </summary>
     protected void ShotUnder() => ThrowUnderBomb();
 
     /// <summary>

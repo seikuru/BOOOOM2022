@@ -57,7 +57,7 @@ public class ControllerInput : ControllerTableInput
         foreach (int thorwRad in thorwInputs)
         {
             if (ThorwRadCheck(angleSet, thorwRad))
-                ShotTable(thorwRad);
+                ShotTable(thorwRad, InputAnglesInside == angleSet);
         }
 
         BeforeAngleSave(ref angleSet, thorwInputs);

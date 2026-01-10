@@ -20,7 +20,7 @@ public class UITableInput : OperationsInput
 
     [SerializeField] float MapingClampMin = 0f; // 投擲力マッピングの最小値
 
-    [SerializeField] float MapingClampMax = 2f; // 投擲力マッピングの最大値
+    [SerializeField] float MapingClampMax = 1f; // 投擲力マッピングの最大値
 
     [SerializeField] bool SenterTapFlag = true; // 中心タップでの下方向投擲有効フラグ
 
@@ -91,7 +91,7 @@ public class UITableInput : OperationsInput
     /// <param name="max1">元の範囲の最大値</param>
     /// <param name="min2">新しい範囲の最小値</param>
     /// <param name="max2">新しい範囲の最大値</param>
-    /// <returns>マッピング後の値</returns>
+    /// <returns>マッピング後(2のほう)の値</returns>
     float MapingClamp(float value, float min1, float max1, float min2, float max2)
     {
         return (value - min1) * (max2 - min2) / (max1 - min1) + min2;
@@ -213,12 +213,12 @@ public class UITableInput : OperationsInput
 
         // プレイヤーのY軸方向を考慮した回転（ローカル → ワールド）
         Vector3 worldDirection = FollowPointTransform.rotation * localDirection;
+        
+        // powerRange がの大きさによってY軸方向の影響を変化させる
+        // Y軸方向が、小さくなる程、worldDirection を水平に近づける
+        // worldDirection.y *= powerRange;
 
-        // powerRange が小さいほど Y軸方向の影響を減らす
-        // Y軸方向とは、プレイヤーの上下方向の影響を抑えるために、worldDirection を水平に近づける
-        worldDirection.y *= powerRange;
-
-        // 正規化して力の方向を保持
+        // 正規化して力の方向を調整して補正
         worldDirection = worldDirection.normalized;
 
         // 投擲
