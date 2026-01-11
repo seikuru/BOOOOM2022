@@ -115,15 +115,16 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _WaveHight: 0.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.23584908, g: 0.17911181, b: 0.17911181, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.57097715, g: 0.8584906, b: 0.830955, a: 0.19215687}
+    - _FresnelColor: {r: 0.57097715, g: 0.8584906, b: 0.830955, a: 0.09803922}
     - _LineColor: {r: 1, g: 1, b: 1, a: 0}
-    - _PivotPosition: {r: 467.7, g: 119.5, b: 25.5, a: 0}
+    - _PivotPosition: {r: 337.1, g: 179.73001, b: 402.6, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6619427920584885701
