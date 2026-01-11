@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LandMarkObject))]
+[CustomEditor(typeof(MusicSymbolObject))]
 public class ObjectChildSetting : Editor
 {
     public override void OnInspectorGUI()
@@ -11,7 +11,7 @@ public class ObjectChildSetting : Editor
         // 通常のInspectorを描画
         DrawDefaultInspector();
 
-        LandMarkObject container = (LandMarkObject)target;
+        MusicSymbolObject container = (MusicSymbolObject)target;
 
         EditorGUILayout.Space();
 
@@ -22,7 +22,7 @@ public class ObjectChildSetting : Editor
         }
     }
 
-    private void RegisterChildren(LandMarkObject container)
+    private void RegisterChildren(MusicSymbolObject container)
     {
         // Undo対応（エディター拡張では重要）
         Undo.RecordObject(container, "Register Enemy Children");

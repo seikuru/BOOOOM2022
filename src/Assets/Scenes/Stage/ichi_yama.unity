@@ -8623,7 +8623,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1333357553
 Camera:
   m_ObjectHideFlags: 0
@@ -8683,7 +8683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333357549}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46121958, y: 0.10962448, z: -0.057546843, w: 0.87860537}
+  m_LocalRotation: {x: 0.46121958, y: 0.1096245, z: -0.057546847, w: 0.87860537}
   m_LocalPosition: {x: 482.02286, y: 117.113945, z: 471.65317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9237,6 +9237,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGageInfo
       objectReference: {fileID: 0}
+    - target: {fileID: 5464572377014520586, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: BGMcontroll
+      value: 
+      objectReference: {fileID: 6709736818273123051}
     - target: {fileID: 7888031075883246250, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: GageImages.Array.data[0].MaskValue.Array.size
@@ -9574,6 +9579,11 @@ PrefabInstance:
     - target: {fileID: 5268000466893035317, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029378849211878304, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6993360665133234171, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
@@ -10342,12 +10352,12 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10962448
+      value: 0.1096245
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.057546843
+      value: -0.057546847
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -13457,6 +13467,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_CinemaChine
       objectReference: {fileID: 0}
+    - target: {fileID: 6570780199438107023, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570780199438107023, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8050834733684318280, guid: 4c4540aab68bb1742aa0ce62f2473a8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13976,6 +13996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyGourp_Melody
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604245072683689376, guid: 44378dad51f8cd84bacc8a381db7fea1,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14792,6 +14817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyGourp_Chord
+      objectReference: {fileID: 0}
+    - target: {fileID: 181132465780749416, guid: cdfbf15772c1d274ab455f79dc408582,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 560545839809653641, guid: cdfbf15772c1d274ab455f79dc408582,
         type: 3}
