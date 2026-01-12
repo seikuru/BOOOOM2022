@@ -229,6 +229,12 @@ MonoBehaviour:
   BombAudioSource: {fileID: 6993103614394412173}
   AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
   impulseSource: {fileID: 0}
+  AMixer: {fileID: 24100000, guid: 6731d4b6da72cd44b85a507afbd21f72, type: 2}
+  BombAudioClips:
+  - {fileID: 8300000, guid: 8b3c760efccf21d4b9939d090bb0f682, type: 3}
+  - {fileID: 8300000, guid: 7fe5ea36852e0cf4da69cf864642c882, type: 3}
+  - {fileID: 8300000, guid: 464017e4361d4f14599ee0ea797c4a82, type: 3}
+  - {fileID: 8300000, guid: 289f70f72e1ed6d4e9c2929c921bb37d, type: 3}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,21 +258,22 @@ AudioSource:
   m_GameObject: {fileID: 3672593736015811124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1752460512320797456, guid: 6731d4b6da72cd44b85a507afbd21f72,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10000
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -274,23 +281,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.4920349
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
+      time: 0.49501038
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

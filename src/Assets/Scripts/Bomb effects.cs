@@ -1,7 +1,9 @@
 using Cinemachine;
+using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.VFX;
 
 
@@ -23,11 +25,15 @@ public class Bombeffects : MonoBehaviour
     [SerializeField] AudioSource BombAudioSource;
     [SerializeField] AudioScriptable AudioScriptable;
     [SerializeField] CinemachineImpulseSource impulseSource;
+    [SerializeField] AudioMixer AMixer;
+    [SerializeField] AudioClip[] BombAudioClips;
     // Animator PlayerAnimation;
     EnemyCount EnemyCountText;
     bool GetPlayerAnimationFlag = false;
     bool isHitPlayer = false;
-
+    static bool BombPitchUp = true;
+    static int BombAudioNumber = 0;
+    static AudioSource OnlyBombAudioSource;
     public Rigidbody GetRB => BombRB;
 
     // public float _bombradius { get { return BombRadius; } set { BombRadius = value; } }
@@ -62,16 +68,60 @@ public class Bombeffects : MonoBehaviour
         if (BombSenterPos == null)
             BombSenterPos = this.transform;
     }
+    IEnumerator SECut(AudioSource OnlyAudio)
+    {
+        while (OnlyAudio.volume > 0.0f)
+        {
+            OnlyAudio.volume -= 0.015f;
+            yield return null;
+        }
+        yield return null;
 
+    }
 
-    public async void Bakuhatu()
+    public async void Bakuhatu(int BombNumber)
     {
         float BombStrangeValue = BombStrange;
 
         if (GetKillCount)
             BombStrangeValue += GetBombAddStrange();
 
-        BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
+            
+           
+
+        //BombAudioSource.PlayOneShot(AudioScriptable._ExplodeSounds);
+        //
+        if (BombNumber % 3 == 1)
+        {
+
+            if (OnlyBombAudioSource != null)
+            {
+                StartCoroutine(SECut(OnlyBombAudioSource));
+                
+            }
+            if(BombAudioClips != null && BombAudioClips.Length > 0)
+                BombAudioSource.PlayOneShot(BombAudioClips[BombAudioNumber % BombAudioClips.Length]);
+            OnlyBombAudioSource = BombAudioSource;
+
+            if (BombNumber % 2 == 1)
+            {
+                BombAudioNumber++;
+            }
+        }
+        //if ( (BombPitchUp == false && 0 > BombAudioNumber - 1) 
+        //    || (BombAudioNumber + 1 >= BombAudioClips.Length && BombPitchUp == true))
+        //{
+        //    BombPitchUp = !BombPitchUp;
+        //}
+
+        //if (BombPitchUp)
+        //{
+        //    BombAudioNumber++;
+        //}
+        //else
+        //{
+        //    BombAudioNumber--;
+        //}
 
         Collider[] hits;
         Debug.Log(BombRenderer.isVisible);
@@ -114,7 +164,7 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
-                    BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
+                    //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
                     //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
                 }
@@ -200,7 +250,7 @@ public class Bombeffects : MonoBehaviour
                         };
                     }
                 }
-                BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
+                //BombAudioSource.PlayOneShot(AudioScriptable._BombHitSounds);
 
                 // Debug.Log("set bombs hit true");
                 isHitPlayer = true;
@@ -235,4 +285,6 @@ public class Bombeffects : MonoBehaviour
     {
         isHitPlayer = hit;
     }
+
+    
 }

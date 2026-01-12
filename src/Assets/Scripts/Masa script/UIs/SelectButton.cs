@@ -9,7 +9,11 @@ public class SelectButton : MonoBehaviour
     [SerializeField] protected Button[] Buttons;
     [SerializeField] protected GameObject cursol;
     [SerializeField] protected AudioSource audioSE;
+    [SerializeField] protected AudioClip audioClipUp;
+    [SerializeField] protected AudioClip audioClipDown;
     [SerializeField] protected int currentButtonIndex = 0;
+
+    static readonly int ResetIndex = -99;
 
     /// <summary>
     /// ƒ{ƒ^ƒ“‚ÌIndex‚ðˆÚ“®‚³‚¹‚é
@@ -17,8 +21,19 @@ public class SelectButton : MonoBehaviour
     /// <param name="buttonIndexAdd">ˆÊ’u</param>
     public virtual void ButtonSelectMove(int buttonIndexAdd)
     {
-        currentButtonIndex += buttonIndexAdd;
+        if (audioSE != null && buttonIndexAdd != ResetIndex)
+        {
+            if (buttonIndexAdd < 0 && audioClipUp != null)
+            {
+                audioSE.PlayOneShot(audioClipUp);
+            }
+            if (buttonIndexAdd > 0 && audioClipDown != null) 
+            {
+                audioSE.PlayOneShot(audioClipDown);
+            }
+        }
 
+        currentButtonIndex += buttonIndexAdd;
         bool sameCheck = false;
 
         if (currentButtonIndex < 0)
@@ -30,12 +45,6 @@ public class SelectButton : MonoBehaviour
         {
             currentButtonIndex = Buttons.Length - 1; sameCheck = true;
         }
-
-        if (audioSE != null && audioSE.clip != null)
-        {
-            audioSE.PlayOneShot(audioSE.clip);
-        }
-        
 
         if(cursol != null)
             cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
