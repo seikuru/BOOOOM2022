@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class ScoreCalculation : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI Bouns;
     [SerializeField] TextMeshProUGUI Total;
     
     void Start()
     {
-        Total.SetText(ScoreManager.GetScore().ToString());
-    }
+        int bonus = ScoreManager.GetBonus();
+        int score = ScoreManager.GetScore();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Bouns.SetText(bonus.ToString());
+        Total.SetText((bonus + score).ToString());
     }
 }

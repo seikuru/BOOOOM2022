@@ -12,7 +12,7 @@ public class CountDownTimer : MonoBehaviour
 
     [SerializeField] int Subtractcount = 2; // 毎フレーム減算される値
 
-    [SerializeField] protected int StartCount = 6000; // 開始時のカウント値
+    [SerializeField] protected int StartCount = 18000; // 開始時のカウント値
 
     [SerializeField] int BaseComboValue = 150; // コンボ時の基本加算値
 
@@ -26,6 +26,8 @@ public class CountDownTimer : MonoBehaviour
 
     bool CountFlag; // カウントダウン実行フラグ
     protected int seconds; // 現在の秒数（内部カウンター）
+
+    public static int BonusTimeValue = 0;
 
     protected static readonly int MaxCountSecond = 100; // 秒の最大値（時間計算用）
     protected static readonly int MaxCountMinutes = 60; // 分の最大値（時間計算用）
@@ -81,12 +83,13 @@ public class CountDownTimer : MonoBehaviour
         {
             seconds -= Subtractcount;// 設定値分減算
 
+            BonusTimeValue = Mathf.Max(0, seconds / MaxCountSecond);
+
             if (seconds <= 0)
             {
                 TimeUpEvent.Invoke();
                 CountFlag = false;
-            }
-               
+            }   
         }
                
         // UI表示更新
