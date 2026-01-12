@@ -35,7 +35,7 @@ public class AudioLineRender : MonoBehaviour
             int isVisible = i <= AC.GetFFTResolusion()*visible/100 ? 1 : 0;
 
             float x = xStep * i;
-            float y = spectrum[i] * height * isVisible;
+            float y = spectrum[i] * height * isVisible * i;
             points[i] = new Vector3(x, y, 0);
         }
 
