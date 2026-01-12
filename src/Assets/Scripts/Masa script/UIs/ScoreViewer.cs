@@ -25,7 +25,7 @@ public class ScoreViewer : MonoBehaviour
 
         scoreText.SetText(current.ToString() + "/" + max.ToString());
 
-        float clamp = Mathf.Clamp01(current / max);
+        float clamp = Mathf.Clamp01((float)current / max);
 
         var vector4 = rectMask2D.padding;
         vector4.z = RightPaddingMax - RightPaddingMax * clamp;
