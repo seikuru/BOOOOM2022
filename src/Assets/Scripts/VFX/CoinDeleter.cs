@@ -7,21 +7,30 @@ public class CoinDeleter : MonoBehaviour
 {
     [SerializeField] private VisualEffect coinEffect;
     [SerializeField] private float delayDeleteTime = 2;
-    
-    void Start()
+    [SerializeField] private Collider coinCollider;
+    [SerializeField] private Rigidbody rigidBody;
+    bool isTake = false;
+
+    public void TakeCoin()
     {
-        
+        if(isTake)  
+            return; 
+        isTake = true;
+
+        coinCollider.enabled = false;
+        rigidBody.isKinematic = true;
+
+        ScoreManager.instance.AddScoreBonus(CountDownTimer.BonusTimeValue);
+
+        coinEffect.SendEvent("OnHit");
+
+        Destroy(gameObject, delayDeleteTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Terrain")
         {
             coinEffect.SendEvent("OnHit");
 
@@ -30,4 +39,5 @@ public class CoinDeleter : MonoBehaviour
             Destroy(gameObject, delayDeleteTime);
         }
     }
+    */
 }

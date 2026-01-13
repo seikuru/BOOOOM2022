@@ -177,6 +177,14 @@ public class Bombeffects : MonoBehaviour
                 //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
+            else if (P[i].tag == "Coin")//敵の弾を爆弾で防ぐ際はこれを使用
+            {
+                if (P[i].TryGetComponent<CoinDeleter>(out CoinDeleter COIN))
+                {
+                    COIN.TakeCoin();
+                    continue;
+                }
+            }
             else if (P[i].tag == "enemy")
             {
 

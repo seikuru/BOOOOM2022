@@ -73,6 +73,7 @@ public class CountDownTimer : MonoBehaviour
         // 初期化処理
         CountFlag = StartCountFlag; // カウントダウン開始
         seconds = StartCount;// 初期値を設定
+        BonusTimeValue = 0;
     }
 
     // Update is called once per frame
