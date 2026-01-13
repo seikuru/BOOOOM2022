@@ -45,7 +45,7 @@ public class BombFallSpeedAdder : MonoBehaviour
     void FixedUpdate()
     {
         // 機能が無効な場合は処理を終了
-        if (BombRB == null || !FallFlag)
+        if (BombRB == null || !FallFlag || BombRB.isKinematic == true)
             return;
         /*
         //現在の垂直速度が前フレームよりも大きい場合（接地判定）
