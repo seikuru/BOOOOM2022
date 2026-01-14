@@ -9,6 +9,8 @@ public class MusicSymbolObject : MonoBehaviour
     [SerializeField] List<GameObject> Enemylist;
 
     [SerializeField] AudioSource openSymbolSource;
+
+    [SerializeField] GameObject[] DisenableObjects;
     public void SetList(List<GameObject> list) => Enemylist = new(list);
 
     bool openSymbol;
@@ -44,6 +46,13 @@ public class MusicSymbolObject : MonoBehaviour
         }
 
         openSymbol = true;
+
+        foreach (var _object in DisenableObjects)
+        {
+            if(_object != null)
+                 _object.SetActive(false);
+        }
+
         BGMControll.OpenTypeSetting(type);
         openSymbolSource.PlayOneShot(openSymbolSource.clip);
     }
