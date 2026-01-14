@@ -319,7 +319,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3177657527459857574, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 698244132156771024}
   m_SourcePrefab: {fileID: 100100000, guid: c0be4ff4caaee004fb9550aaad8ad4a1, type: 3}
 --- !u!4 &2505402548086627273 stripped
 Transform:
@@ -327,3 +331,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7669221996443339860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5077740868350855410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3177657527459857574, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7669221996443339860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &698244132156771024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077740868350855410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50f9e8a8fec7354bae494e3ddc8aa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultAudios:
+  - type: 1
+    RAN:
+    - clipDefalt: {fileID: 8300000, guid: e31a1b625a412d548b3cf71c9d05ca98, type: 3}
+      clipNoize: {fileID: 8300000, guid: c7ce3840dc002b645a4015b8f5acee30, type: 3}
+      audioSource: {fileID: 4329158502143020546}
+    - clipDefalt: {fileID: 8300000, guid: 0a1bb208d48e6b14d89c372944d3514d, type: 3}
+      clipNoize: {fileID: 8300000, guid: d1df43df313473b41ad482deb29e0448, type: 3}
+      audioSource: {fileID: 3455893557160176267}
+  - type: 3
+    RAN:
+    - clipDefalt: {fileID: 8300000, guid: 60f132c0440965743a868b581deebabd, type: 3}
+      clipNoize: {fileID: 8300000, guid: ebd9d667395b3b24995fb05537ab017a, type: 3}
+      audioSource: {fileID: 6606740281084739256}
+    - clipDefalt: {fileID: 8300000, guid: 5cd60555c1403284c98c0b117d189d95, type: 3}
+      clipNoize: {fileID: 8300000, guid: 8fbe8cf217a6922449cb2bac403652d1, type: 3}
+      audioSource: {fileID: 1486624712406779623}
+    - clipDefalt: {fileID: 8300000, guid: b7259b255e3892242a6fbc83ac7d8313, type: 3}
+      clipNoize: {fileID: 8300000, guid: 38334df54e8b28f49ae0b47772cc9bf2, type: 3}
+      audioSource: {fileID: 180378192635441271}
+  - type: 0
+    RAN:
+    - clipDefalt: {fileID: 8300000, guid: f09e94545e0d5a04dbee763a2e96368b, type: 3}
+      clipNoize: {fileID: 8300000, guid: 44c82a3a9339bd04d82bdc3677ff6248, type: 3}
+      audioSource: {fileID: 2605011344327738038}
+    - clipDefalt: {fileID: 8300000, guid: 2de2f3ce1e5e31540b90161c5313758d, type: 3}
+      clipNoize: {fileID: 8300000, guid: 8a1912bc60c0fde4cacbd626dd290d68, type: 3}
+      audioSource: {fileID: 2741011229872599792}
+    - clipDefalt: {fileID: 8300000, guid: dca476b312201514c90c7e2b48a0a24c, type: 3}
+      clipNoize: {fileID: 8300000, guid: 5770981e981170849a480f443c2ff80c, type: 3}
+      audioSource: {fileID: 3425733865417900415}
+  - type: 2
+    RAN:
+    - clipDefalt: {fileID: 8300000, guid: 6a19d7a36e7bd2a428cca6288463fc91, type: 3}
+      clipNoize: {fileID: 8300000, guid: 61cd051c64f81374da8baed62c9f0b3d, type: 3}
+      audioSource: {fileID: 2480715800346028337}
+    - clipDefalt: {fileID: 8300000, guid: be499b8a17a546446bcc4c74f649fddb, type: 3}
+      clipNoize: {fileID: 8300000, guid: 67dcff090b4f90541bf002988895340f, type: 3}
+      audioSource: {fileID: 2328083520140640077}
+    - clipDefalt: {fileID: 8300000, guid: f6444be1e1b41a04a96ee124b9f8494b, type: 3}
+      clipNoize: {fileID: 8300000, guid: e5fafdb6ac88d134d93581e1aabac29a, type: 3}
+      audioSource: {fileID: 6374839970860216075}
+  WaitStartCount: 0.3

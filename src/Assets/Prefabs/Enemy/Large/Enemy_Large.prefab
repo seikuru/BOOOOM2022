@@ -244,6 +244,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7476528622014824844}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bec3e470dfafa664fa900d349c4e2bb1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3222889523847557494}
   m_SourcePrefab: {fileID: 100100000, guid: bec3e470dfafa664fa900d349c4e2bb1, type: 3}
 --- !u!4 &7297632732003877333 stripped
 Transform:
@@ -337,3 +341,24 @@ MonoBehaviour:
   DetectDistance: 20
   BlowUpTime: 7
   BlowUpStrange: 45
+--- !u!95 &3222889523847557494
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930195603851221871}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
