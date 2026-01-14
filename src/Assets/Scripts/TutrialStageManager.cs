@@ -17,7 +17,9 @@ public class TutrialStageManager : MonoBehaviour
 {
     [SerializeField] PhaseObjectClass[] PhaseObjects;
     [SerializeField] Material StageMaterial;
+    [SerializeField] Transform PlayerPosition;
     [SerializeField] String MaterialPivName = "_PivotPosition";
+    [SerializeField] string MaterialCenterName = "_CenterPosition";
 
     private int currentPhase = 0;
 
@@ -81,6 +83,9 @@ public class TutrialStageManager : MonoBehaviour
                 StageMaterial.SetVector(MaterialPivName, PhaseObjects[currentPhase].MaterialCenter.position);
             }
         }
+
+        // Update Material Center Position
+        StageMaterial.SetVector(MaterialCenterName, PlayerPosition.position);
     }
 
     private bool CheckPhaseClear()
