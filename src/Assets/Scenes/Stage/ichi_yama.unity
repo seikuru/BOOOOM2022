@@ -10083,16 +10083,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9200802085272221375}
     m_Modifications:
-    - target: {fileID: 135671124553650282, guid: 88eccc06c43af994aaa2139f2aeb59db,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5109014535008523071, guid: 88eccc06c43af994aaa2139f2aeb59db,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 918382870575891915, guid: 409885671ca706b4badb1af983b835db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10142,6 +10132,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 135671124553650282, guid: 88eccc06c43af994aaa2139f2aeb59db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109014535008523071, guid: 88eccc06c43af994aaa2139f2aeb59db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10730,14 +10730,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718470359}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d26c6eef8dc02d4091329af9cfacda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BounsOnjectPrehab: {fileID: 1868095917622797285, guid: 4bc251cc61d66574392d116d7d786b53,
+  BounsCoinPrehab: {fileID: 4619911433116689508, guid: c72eb7a8ff03d6e489799f3b97df8f6c,
     type: 3}
-  BounsAutoSpawm: 1
+  SpawnPoint:
+  - {fileID: 5340170055891275831}
+  - {fileID: 1468823208}
+  - {fileID: 8849527448272507153}
+  - {fileID: 741462034511408949}
+  SpawnTimer: 5
+  ForceRangeFlat: {x: 7, y: 7}
+  Force_Y: 60
+  BounsSpawm_: 0
 --- !u!1001 &1720194118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14721,6 +14729,31 @@ PrefabInstance:
       propertyPath: COC.Array.data[3].CollectObject.Array.data[0]
       value: 
       objectReference: {fileID: 1673607239}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: BounsTimeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: BounsTimeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718470361}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: BounsTimeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: BounsTimeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: BounsTimeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4932761752644867608, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
       propertyPath: m_Name

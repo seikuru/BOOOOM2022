@@ -20,6 +20,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     static Dictionary<MusicType, (int, int)> TakeMusic;
 
+    public static ScoreManager instance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,8 @@ public class ScoreManager : MonoBehaviour
         TakeMusic = Enum.GetValues(typeof(MusicType))
         .Cast<MusicType>()
         .ToDictionary( type => type, type => (0, BGMcontroll.GetTypeMaxValue(type)));
+
+        instance = this;
     }
 
     void TextSet()
@@ -55,6 +59,8 @@ public class ScoreManager : MonoBehaviour
     public void AddScoreBonus(int _time)
     {
         BonusValue += (_time / 10 + 50);
+
+        Debug.Log(BonusValue);
         TextSet();
     }
 
