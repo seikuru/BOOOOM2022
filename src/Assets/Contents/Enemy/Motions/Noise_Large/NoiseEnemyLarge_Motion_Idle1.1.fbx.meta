@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 60f79d5ec81680743a1579a5504fefac
+guid: f29ad1871cc7c2c44ae22d32466d0e69
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: PlayerCharaV3_Motion_Idle2Slow_forWrite
-      takeName: PlayerCharaV3_Motion_Idle2Slow_forWrite
-      internalID: 894933664953323958
+      name: NoiseEnemies.Motion_Idle.0001_forWrite
+      takeName: NoiseEnemies.Motion_Idle.0001_forWrite
+      internalID: -4879157241389388627
       firstFrame: 1
       lastFrame: 120
       wrapMode: 0
@@ -120,16 +120,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: RootBone
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: fa0d41f22262f594d9d6069a18877282,
-    type: 2}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
