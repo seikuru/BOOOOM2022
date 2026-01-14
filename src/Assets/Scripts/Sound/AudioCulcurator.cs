@@ -49,10 +49,22 @@ public class AudioCulcurator : MonoBehaviour
             musicClips[sources[i].musicType] = audioClips;
             // Debug.Log("Loaded MusicType: " + sources[i].musicType.ToString() + " with " + musicClips[sources[i].musicType][0].name);
 
-            List<float[]> audioDataList = new List<float[]>();
+            //List<float[]> audioDataList = new List<float[]>();
             musicData.Add(sources[i].musicType, new List<float[]>());
             for (int j = 0; j < audioClips.Length; j++)
             {
+                
+                AudioClip clip = audioClips[j];
+                //float[] audioData = new float[clip.samples * clip.channels];
+                //clip.GetData(audioData, 0);
+                //audioDataList.Add(audioData);
+
+                musicData[sources[i].musicType].Add(new float[clip.samples * clip.channels]);
+                //bool isDone = clip.GetData(audioData, 0);
+
+                //Debug.Log("GetData status : " + isDone);
+
+                /*
                 AudioClip clip = audioClips[j];
                 float[] audioData = new float[clip.samples * clip.channels];
                 //clip.GetData(audioData, 0);
@@ -62,6 +74,7 @@ public class AudioCulcurator : MonoBehaviour
                 bool isDone = clip.GetData(audioData, 0);
 
                 Debug.Log("GetData status : " + isDone);
+                */
                 //Debug.Log("  Loaded AudioClip: " + clip.name + " , samples: " + clip.samples + " , channels: " + clip.channels);
                 //Debug.Log("    Sample Data Check: " + musicData[sources[i].musicType][j][480000]);
             }

@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreCalculation : MonoBehaviour
 {
+    [SerializeField] Image fadeImage;
     [SerializeField] TextMeshProUGUI Bouns;
     [SerializeField] TextMeshProUGUI Total;
     [SerializeField] BGMControll controll;
@@ -44,11 +46,12 @@ public class ScoreCalculation : MonoBehaviour
         }
     }
 
-
     MusicType[] types = { MusicType.Drums, MusicType.Bass, MusicType.Melody, MusicType.Chord };
 
     void Start()
     {
+        StartCoroutine(FedeColorChenge());
+
         int bonus = ScoreManager.GetBonus();
         int score = ScoreManager.GetScore();
 
@@ -78,8 +81,21 @@ public class ScoreCalculation : MonoBehaviour
         {
             line.SetColor(clamp);
         }
-            
-        //StartCoroutine(BGMEnable());
+    }
+
+    IEnumerator FedeColorChenge()
+    {
+        var currentColor = fadeImage.color;
+        currentColor.a = 1f;
+
+        while (fadeImage.color.a > 0.0f)
+        {
+            currentColor.a -= Time.smoothDeltaTime;
+            fadeImage.color = currentColor;
+            yield return null;
+        }
+
+        Debug.Log("フェード完了");
     }
 
     IEnumerator BGMEnable()
