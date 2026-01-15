@@ -20,6 +20,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] Transform PlayerPosition;
     [SerializeField] String MaterialPivName = "_PivotPosition";
     [SerializeField] string MaterialCenterName = "_CenterPosition";
+    [SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
 
@@ -73,8 +74,9 @@ public class TutrialStageManager : MonoBehaviour
             currentPhase++;
             if(currentPhase >= PhaseObjects.Length)
             {
-                enabled = false; // Copilot ‚ª’ñˆÄ‚µ‚½‘ŠúI—¹@‚æ‚­‚í‚©‚ç‚ñ
-                return;          // ‘½•ª‰º‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì”ÍˆÍŠOw’è‚ğ™é‚ß‚é‚à‚Ì‚Æv‚í‚ê‚é
+                throughBomb.enabled = false;
+                enabled = false; // Copilot ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½@ï¿½æ‚­ï¿½í‚©ï¿½ï¿½ï¿½
+                return;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒCï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½Ì”ÍˆÍŠOï¿½wï¿½ï¿½ï¿½ï¿½ß‚ï¿½ï¿½ï¿½Ì‚Ævï¿½ï¿½ï¿½ï¿½
             }
 
             // Change Material Pivot

@@ -13,6 +13,7 @@ public class ThroughBomb : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        BombCollider.enabled = false;
         _throughTime = new WaitForSeconds(throughTime);
 
         if (BombCollider != null)
