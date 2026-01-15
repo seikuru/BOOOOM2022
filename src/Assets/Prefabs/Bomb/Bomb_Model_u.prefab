@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a89fdfc38075fa458b40f1b6a722a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throughTime: 0.2
+  throughTime: 0.5
   BombCollider: {fileID: 2365920378711068731}
 --- !u!82 &3305899597650318272
 AudioSource:
@@ -331,7 +331,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3539845908780150924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -445,7 +445,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6050902518112674008}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

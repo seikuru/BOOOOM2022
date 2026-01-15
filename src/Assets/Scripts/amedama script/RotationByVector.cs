@@ -28,6 +28,7 @@ public class RotationByVector : MonoBehaviour
             if(StopCount >= StopForThrowing)
             {
                 Throwing = false;
+                StopCount = 0.0f;
             }
         }
         else if (PlayerRigidbody.velocity.x != 0 || PlayerRigidbody.velocity.z != 0)
