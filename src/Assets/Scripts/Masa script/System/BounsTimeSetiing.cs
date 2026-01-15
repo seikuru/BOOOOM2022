@@ -1,52 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BounsTimeSetiing : MonoBehaviour
 {
-    [SerializeField]
-    GameObject BounsOnjectPrehab;
+    [SerializeField] GameObject BounsCoinPrehab;
+    
+    [SerializeField] Transform[] SpawnPoint;
 
-    [SerializeField,Header("Trueにすると、全て破壊した後常にボーナスを生成する")]
-    bool BounsAutoSpawm = false;
+    [SerializeField] float SpawnTimer = 5f;
 
-    Vector3[] BounsSpawnPos;
-    Vector3 LastDestoryPos = Vector3.zero;
+    [SerializeField] Vector2 ForceRangeFlat = new(7f, 7f);
+    [SerializeField] float Force_Y = 60f;
+
+    [SerializeField] bool BounsSpawm_;
+    public bool BounsSpawm() => BounsSpawm_ = true;
+
+    float TimeCount;
 
     private void Start()
     {
-        LastDestoryPos = Vector3.zero;
-
-        BounsSpawnPos = new Vector3[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            BounsSpawnPos[i] = transform.GetChild(i).position;
-        }
+        BounsSpawm_ = false;
+        TimeCount = 0;
     }
 
-    public void StartBounsTime()
+    public void CoinSpawn()
     {
-        foreach (Vector3 Pos in BounsSpawnPos)
+        foreach (var tf in SpawnPoint)
         {
-            if (LastDestoryPos != Pos)
+            Vector3 spawnPos = tf.transform.position;
+
+            GameObject instantiate = Instantiate(BounsCoinPrehab, spawnPos, Quaternion.identity);
+
+            if (instantiate.TryGetComponent<Rigidbody>(out var rb))
             {
-                GameObject instantiate = Instantiate(BounsOnjectPrehab, Pos, Quaternion.identity);
-                instantiate.transform.parent = this.transform; 
-            }
-               
+                Vector3 force = new()
+                {
+                    x = Random.Range(-ForceRangeFlat.x, ForceRangeFlat.x),
+                    y = Force_Y,
+                    z = Random.Range(-ForceRangeFlat.y, ForceRangeFlat.y)
+                };
+
+                rb.AddForce(force, ForceMode.Impulse);
+            }            
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(transform.childCount == 1)
-        {
-            LastDestoryPos = transform.GetChild(0).position;
-        }
+        if (!BounsSpawm_)
+            return;
 
-        if(BounsAutoSpawm && transform.childCount == 0)
+        TimeCount += Time.fixedDeltaTime;
+
+        if (TimeCount >= SpawnTimer)
         {
-            StartBounsTime();
+            TimeCount = 0f;
+            CoinSpawn();
         }
     }
 }

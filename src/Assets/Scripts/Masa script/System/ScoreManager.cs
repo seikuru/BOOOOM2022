@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -12,28 +13,42 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] BGMControll BGMcontroll;
 
     static int ScoreValue;
+    static int BonusValue;
 
     /// <summary>
     /// タイプ、現在の取得量、最大取得量
     /// </summary>
     static Dictionary<MusicType, (int, int)> TakeMusic;
 
+    public static ScoreManager instance;
+
     // Start is called before the first frame update
     void Start()
     {
         ScoreValue = 0;
-        ScoreText?.SetText(ScoreValue.ToString());
+        BonusValue = 0;
+        TextSet();
 
         TakeMusic = new();
         TakeMusic = Enum.GetValues(typeof(MusicType))
         .Cast<MusicType>()
         .ToDictionary( type => type, type => (0, BGMcontroll.GetTypeMaxValue(type)));
+
+        instance = this;
     }
+
+    void TextSet()
+    {
+        if (ScoreText == null)
+            return;
+
+        ScoreText.SetText((ScoreValue + BonusValue).ToString());
+    } 
 
     public void AddScore(int _add)
     {
         ScoreValue += _add;
-        ScoreText?.SetText(ScoreValue.ToString());
+        TextSet();
     }
 
     public void AddScoreDestroy()
@@ -43,7 +58,10 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScoreBonus(int _time)
     {
-        AddScore(_time / 10 + 50);
+        BonusValue += (_time / 10 + 50);
+
+        Debug.Log(BonusValue);
+        TextSet();
     }
 
     public void AddMusicType(MusicType type)
@@ -54,6 +72,8 @@ public class ScoreManager : MonoBehaviour
     }
 
     public static int GetScore() => ScoreValue;
+
+    public static int GetBonus() => BonusValue;
 
     public static void TakeMusicValue(MusicType type ,ref int current,ref int maxValue)
     {

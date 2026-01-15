@@ -54,9 +54,13 @@ public class PlayerAnimation : MonoBehaviour
         PlayerAnimator.SetTrigger("OnThrow");
     }
 
+    public void ThrowUnder()
+    {
+        PlayerAnimator.SetTrigger("ThrowUnder");
+    }
+
     public void BombHit()
     {
-        Debug.Log("Bomb Hit");
         PlayerAnimator.SetTrigger("BombHit");
     }
 }

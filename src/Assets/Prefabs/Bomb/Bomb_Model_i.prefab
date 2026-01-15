@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 140232
+    m_Bits: 205768
   DestroyEnemyTimer: 3
   BombStrange: 20
   BombRadius: 15
@@ -231,10 +231,10 @@ MonoBehaviour:
   impulseSource: {fileID: 0}
   AMixer: {fileID: 24100000, guid: 6731d4b6da72cd44b85a507afbd21f72, type: 2}
   BombAudioClips:
-  - {fileID: 8300000, guid: 8fea3c502615c4847bd3e72374339864, type: 3}
-  - {fileID: 8300000, guid: 2c35d4bbb6ba1d4488186080149c68fb, type: 3}
-  - {fileID: 8300000, guid: 04cc5f8450a27b64a96fc8457261dd88, type: 3}
-  - {fileID: 8300000, guid: e89b5ffeac2d480479c2f94a93920705, type: 3}
+  - {fileID: 8300000, guid: 8b3c760efccf21d4b9939d090bb0f682, type: 3}
+  - {fileID: 8300000, guid: 7fe5ea36852e0cf4da69cf864642c882, type: 3}
+  - {fileID: 8300000, guid: 464017e4361d4f14599ee0ea797c4a82, type: 3}
+  - {fileID: 8300000, guid: 289f70f72e1ed6d4e9c2929c921bb37d, type: 3}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0

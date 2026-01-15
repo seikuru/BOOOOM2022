@@ -1,13 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static Unity.Animations.SpringBones.GUIElements;
 
 public enum MusicType
 
@@ -94,6 +90,42 @@ public class BGMControll : MonoBehaviour
     static Queue<MusicType> openTypes;
 
     public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
+
+    public void ResultBGMPlay(MusicType type)
+    {
+        // 未来の DSP 時間を取得
+        double currentStartDspTime = AudioSettings.dspTime + 0.1;
+        foreach (var cmc in CMC)
+        {
+            // MusicType が一致したら探索終了
+            if (cmc.CMCMusicType != type)
+            {
+                continue;
+            }
+
+            if (!cmc.CrrentIndexCheck())
+            {           
+                return;
+            }
+
+            var ASC = cmc.ASC[cmc.GetIndex()];
+
+            cmc.NextIndex();
+
+            if (ASC == null)
+            {
+                return;
+            }
+            else
+            {
+                ASC.AudioSource.PlayScheduled(currentStartDspTime);
+                ASC.AudioSource.mute = false;
+                ASC.AudioSource.volume = 0.8f;
+                return;
+            }
+        }
+    } 
+
 
     // イベント駆動のため、いる
     public void BGMPlay()
@@ -234,6 +266,7 @@ public class BGMControll : MonoBehaviour
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
+                    scoreManager?.AddScoreBonus(CountDownTimer.BonusTimeValue);
                     break;
                 }
 

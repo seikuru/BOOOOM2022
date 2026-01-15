@@ -70,7 +70,7 @@ public class Bombeffects : MonoBehaviour
     }
     IEnumerator SECut(AudioSource OnlyAudio)
     {
-        while (OnlyAudio.volume > 0.0f)
+        while (OnlyAudio != null && OnlyAudio.volume > 0.0f)
         {
             OnlyAudio.volume -= 0.015f;
             yield return null;
@@ -177,6 +177,14 @@ public class Bombeffects : MonoBehaviour
                 //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
+            else if (P[i].tag == "Coin")//敵の弾を爆弾で防ぐ際はこれを使用
+            {
+                if (P[i].TryGetComponent<CoinDeleter>(out CoinDeleter COIN))
+                {
+                    COIN.TakeCoin();
+                    continue;
+                }
+            }
             else if (P[i].tag == "enemy")
             {
 
@@ -256,12 +264,17 @@ public class Bombeffects : MonoBehaviour
                 isHitPlayer = true;
             }
 
-            PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.7f + (P[i].transform.position - BombSenterPos.position).normalized * BombStrangeValue;
-            //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
+            if (PlayerRigidbodies[i].isKinematic)
+                continue;
 
+            Vector3 BeforeVelocity = PlayerRigidbodies[i].velocity;
+            Vector3 NewVelocity = (P[i].transform.position - BombSenterPos.position).normalized;
+
+            //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
+            PlayerRigidbodies[i].velocity = BeforeVelocity * 0.7f + NewVelocity * BombStrangeValue;     
         }
 
-        if(bombCollider != null)
+        if (bombCollider != null)
             bombCollider.enabled = false;
         if (BombRB != null)
             BombRB.isKinematic = true;

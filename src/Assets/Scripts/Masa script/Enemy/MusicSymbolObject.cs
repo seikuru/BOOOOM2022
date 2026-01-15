@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandMarkObject : MonoBehaviour
+public class MusicSymbolObject : MonoBehaviour
 {
     [SerializeField] MusicType type;
 
     [SerializeField] List<GameObject> Enemylist;
 
+    [SerializeField] AudioSource openSymbolSource;
+
+    [SerializeField] GameObject[] DisenableObjects;
     public void SetList(List<GameObject> list) => Enemylist = new(list);
 
-    bool openLandMark;
+    bool openSymbol;
 
     // Start is called before the first frame update
     void Start()
     {
-        openLandMark = false;
+        openSymbol = false;
 
         if (Enemylist != null)
             return;
@@ -33,7 +36,7 @@ public class LandMarkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (openLandMark) 
+        if (openSymbol) 
             return;
 
         foreach(var _object in Enemylist)
@@ -42,7 +45,15 @@ public class LandMarkObject : MonoBehaviour
                 return;
         }
 
-        openLandMark = true;
+        openSymbol = true;
+
+        foreach (var _object in DisenableObjects)
+        {
+            if(_object != null)
+                 _object.SetActive(false);
+        }
+
         BGMControll.OpenTypeSetting(type);
+        openSymbolSource.PlayOneShot(openSymbolSource.clip);
     }
 }

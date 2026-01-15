@@ -16,26 +16,31 @@ public class AudioLineRender : MonoBehaviour
     private Vector3[] points = null; // line renderer の頂点位置
     private float xStep; // x座標の間隔
 
-    void Start()
+    void LineSetUp(int Resolusion)
     {
         // local position で指定する
         line.useWorldSpace = false;
-        line.positionCount = AC.GetFFTResolusion();
 
-        points = new Vector3[AC.GetFFTResolusion()];
-        xStep = lineLength / AC.GetFFTResolusion();
+        line.positionCount = Resolusion;
+        points = new Vector3[Resolusion];
+        xStep = lineLength / Resolusion;
     }
 
     void Update()
     {
+        int resolusion = AC.GetFFTResolusion();
+
+        if (points == null)
+            LineSetUp(resolusion);
+
         AC.GetSpectrum(ref spectrum);
 
         for(int i = 0; i < points.Length; i++)
         {
-            int isVisible = i <= AC.GetFFTResolusion()*visible/100 ? 1 : 0;
+            int isVisible = i <= resolusion * visible/100 ? 1 : 0;
 
             float x = xStep * i;
-            float y = spectrum[i] * height * isVisible;
+            float y = spectrum[i] * height * isVisible * i;
             points[i] = new Vector3(x, y, 0);
         }
 
