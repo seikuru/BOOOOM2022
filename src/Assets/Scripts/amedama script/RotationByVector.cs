@@ -7,8 +7,11 @@ public class RotationByVector : MonoBehaviour
     [SerializeField] Rigidbody PlayerRigidbody;
     [SerializeField] Transform PlayerModelTransform;
     [SerializeField] int rotationSpeed = 4;
+    [SerializeField] float StopForThrowing = 1.0f;
     Vector3 Velocity;
-   
+
+    public bool Throwing = false;
+    float StopCount = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,16 @@ public class RotationByVector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (PlayerRigidbody.velocity.x != 0 || PlayerRigidbody.velocity.z != 0)
+        
+        if (Throwing)
+        {
+            StopCount += Time.deltaTime;
+            if(StopCount >= StopForThrowing)
+            {
+                Throwing = false;
+            }
+        }
+        else if (PlayerRigidbody.velocity.x != 0 || PlayerRigidbody.velocity.z != 0)
         {
             Velocity = new Vector3(PlayerRigidbody.velocity.x, 0, PlayerRigidbody.velocity.z).normalized;
 

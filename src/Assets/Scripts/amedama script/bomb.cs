@@ -18,6 +18,7 @@ public class bomb : MonoBehaviour
     [SerializeField] float AudioCoolTime = 0.1f;
     [SerializeField] AudioSource ThrowAudioSource;
     [SerializeField] PlayerAnimation playerAnimation;
+    [SerializeField] RotationByVector rotationByVector;
 
     Queue<Bombeffects> BombsQueue;
     Animator PlayerAnimator;
@@ -59,6 +60,8 @@ public class bomb : MonoBehaviour
         
         // Animator にトリガーを送信
         playerAnimation.ThrowUnder();
+
+        
 
         AudioPlayFlag = true;
     }
@@ -104,6 +107,9 @@ public class bomb : MonoBehaviour
 
         // Animator にトリガーを送信
         playerAnimation.onThrow();
+
+        //爆弾を投げたことをプレイヤーの回転処理に送信
+        rotationByVector.Throwing = true;
 
         AudioPlayFlag = true;
 }
