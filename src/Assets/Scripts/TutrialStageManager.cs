@@ -18,6 +18,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] PhaseObjectClass[] PhaseObjects;
     [SerializeField] Material StageMaterial;
     [SerializeField] String MaterialPivName = "_PivotPosition";
+    [SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
 
@@ -71,6 +72,7 @@ public class TutrialStageManager : MonoBehaviour
             currentPhase++;
             if(currentPhase >= PhaseObjects.Length)
             {
+                throughBomb.enabled = false;
                 enabled = false; // Copilot が提案した早期終了　よくわからん
                 return;          // 多分下のインデックスの範囲外指定を咎めるものと思われる
             }
