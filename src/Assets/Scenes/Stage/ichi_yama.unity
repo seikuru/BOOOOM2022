@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
+  m_IndirectSpecularColor: {r: 0.04701439, g: 0.2630383, b: 0.4731505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4588,12 +4588,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c72eb7a8ff03d6e489799f3b97df8f6c, type: 3}
---- !u!4 &537496797 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3687133078897001662, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539069598
 GameObject:
   m_ObjectHideFlags: 0
@@ -7555,6 +7549,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 918382870575891915, guid: 6ff274a8d24d03047becbb6db7682431,
     type: 3}
   m_PrefabInstance: {fileID: 854844434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &865342368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2387559806210328247, guid: beceeb868ebe2f34da9c093482a80bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8350177848199319561}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &868362224
 GameObject:
@@ -12033,6 +12033,7 @@ MonoBehaviour:
     - {fileID: 305385216}
     - {fileID: 0}
     MaterialCenter: {fileID: 1505032212}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 1737014414}
     NextSpawnObjects:
@@ -12043,6 +12044,7 @@ MonoBehaviour:
     BreakObjects:
     - {fileID: 631863091}
     MaterialCenter: {fileID: 193496171}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 1502834064}
     NextSpawnObjects:
@@ -12058,16 +12060,28 @@ MonoBehaviour:
     - {fileID: 1860851432}
     - {fileID: 1470064941}
     MaterialCenter: {fileID: 1485708822}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 689178921}
     NextSpawnObjects:
     - {fileID: 2061756988}
     - {fileID: 2087840540}
+    - {fileID: 1778214953}
     BreakObjects:
     - {fileID: 539069598}
     - {fileID: 785423127}
     - {fileID: 680035768}
     MaterialCenter: {fileID: 168014767}
+    PlayerDontMove: 1
+  - Flags:
+    - {fileID: 865342368}
+    - {fileID: 1627936934}
+    - {fileID: 2038361588}
+    NextSpawnObjects: []
+    BreakObjects:
+    - {fileID: 1778214953}
+    MaterialCenter: {fileID: 0}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 707521393}
     NextSpawnObjects:
@@ -12075,10 +12089,12 @@ MonoBehaviour:
     BreakObjects:
     - {fileID: 1475386061}
     MaterialCenter: {fileID: 1485708822}
+    PlayerDontMove: 0
   StageMaterial: {fileID: 2100000, guid: d42a884f0648f3d40bce3532405cc613, type: 2}
   PlayerPosition: {fileID: 8050834731649078817}
   MaterialPivName: _PivotPosition
   MaterialCenterName: _CenterPosition
+  PlayerRigidbody: {fileID: 8050834731649078818}
   DisableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -13249,6 +13265,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 592429989473995789, guid: c72eb7a8ff03d6e489799f3b97df8f6c,
     type: 3}
   m_PrefabInstance: {fileID: 1510119293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1627936934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 404172405808613718, guid: beceeb868ebe2f34da9c093482a80bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8350177848199319561}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629547948
 PrefabInstance:
@@ -14905,6 +14927,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775839528}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1778214953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3192701077046919739, guid: beceeb868ebe2f34da9c093482a80bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8350177848199319561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1781060346
 GameObject:
   m_ObjectHideFlags: 0
@@ -16753,6 +16781,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021903472}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2038361588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1359207195517863395, guid: beceeb868ebe2f34da9c093482a80bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8350177848199319561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2045311760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18647,18 +18681,6 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 8350177848199319561}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8050834731649078822 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8662231823960587844, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb6b3a69ff3dce468f6d7103950260c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8350177848199319561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18722,26 +18744,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_CinemaChine
       objectReference: {fileID: 0}
-    - target: {fileID: 4923668886399819558, guid: beceeb868ebe2f34da9c093482a80bf1,
-        type: 3}
-      propertyPath: rotationByVector
-      value: 
-      objectReference: {fileID: 8050834731649078822}
-    - target: {fileID: 4923668886399819558, guid: beceeb868ebe2f34da9c093482a80bf1,
-        type: 3}
-      propertyPath: spawnDistanceUnder
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8662231823960587844, guid: beceeb868ebe2f34da9c093482a80bf1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8662231823960587844, guid: beceeb868ebe2f34da9c093482a80bf1,
-        type: 3}
-      propertyPath: PlayerModelTransform
-      value: 
-      objectReference: {fileID: 537496797}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
