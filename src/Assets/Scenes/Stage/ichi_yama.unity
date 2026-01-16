@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
+  m_IndirectSpecularColor: {r: 0.04701439, g: 0.2630383, b: 0.4731505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12033,6 +12033,7 @@ MonoBehaviour:
     - {fileID: 305385216}
     - {fileID: 0}
     MaterialCenter: {fileID: 1505032212}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 1737014414}
     NextSpawnObjects:
@@ -12043,6 +12044,7 @@ MonoBehaviour:
     BreakObjects:
     - {fileID: 631863091}
     MaterialCenter: {fileID: 193496171}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 1502834064}
     NextSpawnObjects:
@@ -12058,6 +12060,7 @@ MonoBehaviour:
     - {fileID: 1860851432}
     - {fileID: 1470064941}
     MaterialCenter: {fileID: 1485708822}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 689178921}
     NextSpawnObjects:
@@ -12068,6 +12071,7 @@ MonoBehaviour:
     - {fileID: 785423127}
     - {fileID: 680035768}
     MaterialCenter: {fileID: 168014767}
+    PlayerDontMove: 0
   - Flags:
     - {fileID: 707521393}
     NextSpawnObjects:
@@ -12075,10 +12079,12 @@ MonoBehaviour:
     BreakObjects:
     - {fileID: 1475386061}
     MaterialCenter: {fileID: 1485708822}
+    PlayerDontMove: 0
   StageMaterial: {fileID: 2100000, guid: d42a884f0648f3d40bce3532405cc613, type: 2}
   PlayerPosition: {fileID: 8050834731649078817}
   MaterialPivName: _PivotPosition
   MaterialCenterName: _CenterPosition
+  PlayerRigidbody: {fileID: 8050834731649078818}
   DisableEvent:
     m_PersistentCalls:
       m_Calls:

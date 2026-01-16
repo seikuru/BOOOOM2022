@@ -11,6 +11,7 @@ class PhaseObjectClass
     public GameObject[] NextSpawnObjects;
     public GameObject[] BreakObjects;
     public Transform MaterialCenter;
+    public bool PlayerDontMove = false;
 }
 
 public class TutrialStageManager : MonoBehaviour
@@ -20,24 +21,25 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] Transform PlayerPosition;
     [SerializeField] String MaterialPivName = "_PivotPosition";
     [SerializeField] string MaterialCenterName = "_CenterPosition";
+    [SerializeField] Rigidbody PlayerRigidbody;
     //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
 
     void Start()
     {
-        foreach(PhaseObjectClass obj in PhaseObjects)
+        foreach (PhaseObjectClass obj in PhaseObjects)
         {
-            if(obj.NextSpawnObjects != null)
+            if (obj.NextSpawnObjects != null)
             {
                 foreach (GameObject spawnObj in obj.NextSpawnObjects)
                 {
-                    if(spawnObj == null) continue;
+                    if (spawnObj == null) continue;
                     spawnObj.SetActive(false);
                 }
             }
-            
-            if(obj.BreakObjects != null)
+
+            if (obj.BreakObjects != null)
             {
                 //foreach (GameObject breakObj in obj.BreakObjects)
                 //{
@@ -59,20 +61,30 @@ public class TutrialStageManager : MonoBehaviour
             // Break Objects
             foreach (GameObject breakObj in PhaseObjects[currentPhase].BreakObjects)
             {
-                if(breakObj == null) continue;
+                if (breakObj == null) continue;
                 breakObj.SetActive(false);
             }
 
             // Spawn Objects
             foreach (GameObject spawnObj in PhaseObjects[currentPhase].NextSpawnObjects)
             {
-                if(spawnObj == null) continue;
+                if (spawnObj == null) continue;
                 spawnObj.SetActive(true);
+            }
+
+            if (PhaseObjects[currentPhase].PlayerDontMove)
+            {
+                PlayerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                PlayerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
             }
 
             // Next Phase
             currentPhase++;
-            if(currentPhase >= PhaseObjects.Length)
+            if (currentPhase >= PhaseObjects.Length)
             {
                 //throughBomb.enabled = false;
                 enabled = false; // Copilot ����Ă��������I���@�悭�킩���
@@ -96,7 +108,7 @@ public class TutrialStageManager : MonoBehaviour
 
         foreach (GameObject flag in PhaseObjects[currentPhase].Flags)
         {
-            if(flag.activeSelf)
+            if (flag.activeSelf)
             {
                 return false;
             }
@@ -111,3 +123,4 @@ public class TutrialStageManager : MonoBehaviour
         DisableEvent.Invoke();
     }
 }
+
