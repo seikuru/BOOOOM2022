@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a89fdfc38075fa458b40f1b6a722a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throughTime: 0.2
+  throughTime: 0.4
   BombCollider: {fileID: 6530253593774039959}
 --- !u!82 &6993103614394412173
 AudioSource:
@@ -271,7 +271,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 10000
+  MaxDistance: 200
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
