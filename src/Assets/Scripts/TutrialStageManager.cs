@@ -20,7 +20,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] Transform PlayerPosition;
     [SerializeField] String MaterialPivName = "_PivotPosition";
     [SerializeField] string MaterialCenterName = "_CenterPosition";
-    [SerializeField] ThroughBomb throughBomb;
+    //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
 
@@ -74,7 +74,7 @@ public class TutrialStageManager : MonoBehaviour
             currentPhase++;
             if(currentPhase >= PhaseObjects.Length)
             {
-                throughBomb.enabled = false;
+                //throughBomb.enabled = false;
                 enabled = false; // Copilot ����Ă��������I���@�悭�킩���
                 return;          // �������̃C���f�b�N�X�͈̔͊O�w����߂���̂Ǝv����
             }

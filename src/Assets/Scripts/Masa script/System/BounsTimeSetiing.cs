@@ -24,6 +24,7 @@ public class BounsTimeSetiing : MonoBehaviour
 
     public void CoinSpawn()
     {
+        BounsSpawm_ = true;
         foreach (var tf in SpawnPoint)
         {
             Vector3 spawnPos = tf.transform.position;
