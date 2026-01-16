@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class MusicSymbolObject : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MusicSymbolObject : MonoBehaviour
     [SerializeField] AudioSource openSymbolSource;
 
     [SerializeField] GameObject[] DisenableObjects;
+    [SerializeField] VisualEffect openSymbolEffect;
+    
     public void SetList(List<GameObject> list) => Enemylist = new(list);
 
     bool openSymbol;
@@ -55,5 +58,6 @@ public class MusicSymbolObject : MonoBehaviour
 
         BGMControll.OpenTypeSetting(type);
         openSymbolSource.PlayOneShot(openSymbolSource.clip);
+        openSymbolEffect.SendEvent("OnPlay");
     }
 }
