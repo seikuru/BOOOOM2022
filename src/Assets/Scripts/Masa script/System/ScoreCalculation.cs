@@ -67,7 +67,9 @@ public class ScoreCalculation : MonoBehaviour
             allmax += max;
         }
 
+        //a
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
+        //a
 
         BackSprite.color = new Color()
         {
@@ -98,6 +100,7 @@ public class ScoreCalculation : MonoBehaviour
         Debug.Log("フェード完了");
     }
 
+    /*
     IEnumerator BGMEnable()
     {
         yield return new WaitForSeconds(0.5f);
@@ -114,4 +117,5 @@ public class ScoreCalculation : MonoBehaviour
             }
         }
     }
+    */
 }
