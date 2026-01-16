@@ -214,6 +214,8 @@ public class Bombeffects : MonoBehaviour
                     enemyAnimator.SetTrigger("OnDamage");
                 }
 
+                EnemyExplode.CreateExplode(this.transform, P[i].transform);
+
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(BombSenterPos.position, BombStrangeValue);

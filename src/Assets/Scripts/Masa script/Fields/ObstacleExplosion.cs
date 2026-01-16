@@ -10,6 +10,8 @@ public class ObstacleExplosion : MonoBehaviour
 
     [SerializeField] float DustDivisionSize = 3f; // 破片を生成する間隔（分割サイズ）
 
+    [SerializeField] bool Ishide = true; //オブジェクトを即座に消すか
+
     [HideInInspector]public bool IsExplosed = false;// 爆発済みかどうかのフラグ
 
     /// <summary>
@@ -47,34 +49,38 @@ public class ObstacleExplosion : MonoBehaviour
             return;
         }
 
-        // 破片生成範囲の計算
-        Vector3 StartPosVec3 = transform.position - ObjectScale; // 生成開始位置
-        Vector3 EndPosVec3 = transform.position + ObjectScale; // 生成終了位置
+        if (!Ishide)
+        {
+            // 破片生成範囲の計算
+            Vector3 StartPosVec3 = transform.position - ObjectScale; // 生成開始位置
+            Vector3 EndPosVec3 = transform.position + ObjectScale; // 生成終了位置
 
-        // 3重ループで破片を格子状に生成
-        for (float x = StartPosVec3.x; x < EndPosVec3.x; x += DustDivisionSize)
-            for (float y = StartPosVec3.y; y < EndPosVec3.y; y += DustDivisionSize)
-                for (float z = StartPosVec3.z; z < EndPosVec3.z; z += DustDivisionSize)
-                {
-                    // 破片の生成位置を計算
-                    Vector3 createPos = new Vector3(x, y, z);
+            // 3重ループで破片を格子状に生成
+            for (float x = StartPosVec3.x; x < EndPosVec3.x; x += DustDivisionSize)
+                for (float y = StartPosVec3.y; y < EndPosVec3.y; y += DustDivisionSize)
+                    for (float z = StartPosVec3.z; z < EndPosVec3.z; z += DustDivisionSize)
+                    {
+                        // 破片の生成位置を計算
+                        Vector3 createPos = new Vector3(x, y, z);
 
-                    // 破片オブジェクトを生成
-                    GameObject dust = Instantiate(DustPrehab, createPos, Quaternion.identity);
+                        // 破片オブジェクトを生成
+                        GameObject dust = Instantiate(DustPrehab, createPos, Quaternion.identity);
 
-                    // 破片サイズを変更
-                    dust.transform.localScale = Vector3.one * DustDivisionSize; 
+                        // 破片サイズを変更
+                        dust.transform.localScale = Vector3.one * DustDivisionSize;
 
-                    dust.SetActive(true);
+                        dust.SetActive(true);
 
-                    // 物理演算で爆発力を適用
-                    Rigidbody rb = dust.GetComponent<Rigidbody>();
-                    // 爆発中心から破片への方向ベクトルに力を加える
-                    rb.AddForce((dust.transform.position - pos).normalized * power, ForceMode.Impulse);
+                        // 物理演算で爆発力を適用
+                        Rigidbody rb = dust.GetComponent<Rigidbody>();
+                        // 爆発中心から破片への方向ベクトルに力を加える
+                        rb.AddForce((dust.transform.position - pos).normalized * power, ForceMode.Impulse);
 
-                    // 一定時間後に破片を削除
-                    Destroy(dust, DestroyTime);
-                }
+                        // 一定時間後に破片を削除
+                        Destroy(dust, DestroyTime);
+                    }
+
+        }
 
         // 元のオブジェクトを削除
         //Destroy(this.gameObject, DestroyTime);
