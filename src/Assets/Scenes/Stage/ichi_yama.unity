@@ -11786,21 +11786,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1718470360}
     m_Modifications:
-    - target: {fileID: 1362797713034588828, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3408370502745316392, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4776122468957723733, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5268000466893035317, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17852,11 +17837,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1718470360}
     m_Modifications:
-    - target: {fileID: 192155338006158316, guid: 44378dad51f8cd84bacc8a381db7fea1,
-        type: 3}
-      propertyPath: DisenableObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2287954813894245823, guid: 44378dad51f8cd84bacc8a381db7fea1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18590,11 +18570,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyGourp_Chord
-      objectReference: {fileID: 0}
-    - target: {fileID: 1098745192044790254, guid: cdfbf15772c1d274ab455f79dc408582,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8280993828029240538, guid: cdfbf15772c1d274ab455f79dc408582,
         type: 3}
