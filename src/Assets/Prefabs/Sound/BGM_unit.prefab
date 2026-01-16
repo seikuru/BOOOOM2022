@@ -213,14 +213,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979724953189209863, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
         type: 3}
-      propertyPath: CMC.Array.data[0].ASC.Array.data[0].AudioSource
+      propertyPath: StartBGM
       value: 
       objectReference: {fileID: 4329158502143020546}
     - target: {fileID: 4979724953189209863, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
         type: 3}
-      propertyPath: CMC.Array.data[0].ASC.Array.data[1].AudioSource
+      propertyPath: CMC.Array.data[0].ASC.Array.data[0].AudioSource
       value: 
       objectReference: {fileID: 3455893557160176267}
+    - target: {fileID: 4979724953189209863, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
+        type: 3}
+      propertyPath: CMC.Array.data[0].ASC.Array.data[1].AudioSource
+      value: 
+      objectReference: {fileID: 4329158502143020546}
     - target: {fileID: 4979724953189209863, guid: c0be4ff4caaee004fb9550aaad8ad4a1,
         type: 3}
       propertyPath: CMC.Array.data[1].ASC.Array.data[0].AudioSource

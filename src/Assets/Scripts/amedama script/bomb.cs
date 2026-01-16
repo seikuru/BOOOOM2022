@@ -10,8 +10,9 @@ public class bomb : MonoBehaviour
     [SerializeField] GameObject JumpBombSpawnPosition;//下に投げる際に参照する位置
     [SerializeField] GameObject BrinkBombSpawnPosition;//後ろに投げる際に参照する位置
     [SerializeField] float bombThrowPower = 20f;//爆弾を投げる強さ
-    [SerializeField] float Underthrow = 3f;
+    [SerializeField] float UnderthrowForce = 3f;
     [SerializeField] float spawnDistance = 2f;
+    [SerializeField] float spawnDistanceUnder = 1f;
     [SerializeField] bool InputFlag = false;//パソコン操作時に下に投げるかどうかの判定に用いているflag
     [SerializeField] bool FullautoEnable = false;
     [SerializeField] int BombShotInterval = 25;//爆弾を投げる間隔
@@ -31,7 +32,7 @@ public class bomb : MonoBehaviour
     public void InstantiateUnder()
     {
         // float spawnDistance = 2f;
-        Vector3 spawnPos = this.transform.position + (Vector3.down * spawnDistance);
+        Vector3 spawnPos = this.transform.position + (Vector3.down * spawnDistanceUnder);
 
         // 爆弾を生成
         GameObject Spawned_Bomb = Instantiate(Bomb2, spawnPos, Quaternion.identity);
@@ -39,7 +40,7 @@ public class bomb : MonoBehaviour
         // Rigidbodyを取得
         Rigidbody Bomb_rb = Spawned_Bomb.GetComponent<Bombeffects>().GetRB;
 
-        Vector3 _force = Vector3.down * Underthrow;
+        Vector3 _force = Vector3.down * UnderthrowForce;
 
         // 投げる力にプレイヤーの移動速度（慣性）を加算する
         // Vector3 _force = direction * (Bombthrow + PlayerRigidbody.linearVelocity.magnitude);

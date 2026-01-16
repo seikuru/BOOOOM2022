@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TutrialStage
-  m_Shader: {fileID: -6465566751694194690, guid: 45f0d79d6cae04644a05a1412fb5860d,
+  m_Name: Tutrial2
+  m_Shader: {fileID: -6465566751694194690, guid: f1446815c56b86d439ad510d228874b3,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -84,6 +84,8 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _AmbientOcclusion: 0
+    - _AngleChange: 2.9
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -96,38 +98,48 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FresnelPower: 5
+    - _FarPower: 0.44
+    - _FarRange: 76.41
+    - _FrameRate: 3.72
+    - _FresnelPower: 2.29
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LinePower: 30
-    - _LineSpeed: 100
-    - _LineStep: 150
+    - _LightMax: 0.28
     - _Metallic: 0
+    - _MoveSpeed: -0.05
+    - _NearPower: 1.55
+    - _NearRange: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _ShadowPower: 5.38
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WaveHight: 0.1
+    - _VoronoiScale: 91.27
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CenterPosition: {r: 294.41437, g: 305.7156, b: 590.09595, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.57097715, g: 0.8584906, b: 0.830955, a: 0.09803922}
-    - _LineColor: {r: 1, g: 1, b: 1, a: 0}
-    - _PivotPosition: {r: 1418.2, g: 236.50003, b: 475, a: 0}
+    - _FarColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+    - _FresnelColor: {r: 0.6755073, g: 0.8679245, b: 0.8634497, a: 0.9568627}
+    - _MainColor: {r: 0.9407263, g: 1.225375, b: 1.3207548, a: 1}
+    - _NearColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+    - _PivotPosition: {r: 325.2, g: 392.7, b: 586.5, a: 0}
+    - _ShadowColor: {r: 0.7381185, g: 0.7562269, b: 0.9150943, a: 0.0627451}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _VoronoiColor: {r: 0.6183142, g: 0.16456029, b: 0.8113207, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &6619427920584885701
+--- !u!114 &8171549362180128305
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

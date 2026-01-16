@@ -1,14 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static Unity.Animations.SpringBones.GUIElements;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
 public enum MusicType
 
@@ -50,6 +45,8 @@ class CollectMusicClass
     public int GetIndex() => currentIndex;
 
     public void NextIndex() => currentIndex++;
+
+    public int useIndex = 1;
 }
 
 public class BGMControll : MonoBehaviour
@@ -86,6 +83,9 @@ public class BGMControll : MonoBehaviour
    
     Coroutine[] AudioCoroutine;
     Queue<AudioSourceClass> MeasureEntryASC;
+
+    [SerializeField]
+    
 
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
 
@@ -144,9 +144,11 @@ public class BGMControll : MonoBehaviour
                 if (b2.AudioSource != null)
                 {
                     b2.AudioSource.PlayScheduled(currentStartDspTime);
+                    Debug.Log(b2.AudioSource.name);
                 }
             }
         }
+        
     }
 
     public int GetTypeMaxValue(MusicType type)
@@ -156,7 +158,7 @@ public class BGMControll : MonoBehaviour
         {
             if(cmc.CMCMusicType == type)
             {
-                length =  cmc.ASC.Length;
+                length =  cmc.useIndex;
             }
         }
 
@@ -184,6 +186,7 @@ public class BGMControll : MonoBehaviour
         //beforeCollectPoint = CollectObject.CollectPoint;
 
         int i = 0; int FadeInNumber = 0;
+        AllCollectPoint = 0;
 
         foreach (var a1 in CMC)
         {
@@ -203,6 +206,8 @@ public class BGMControll : MonoBehaviour
                     }
                 }
             }
+
+            AllCollectPoint += a1.useIndex;
         }
 
         if(StartBGM != null)
@@ -217,7 +222,6 @@ public class BGMControll : MonoBehaviour
         AudioCoroutine = new Coroutine[i + FadeInNumber];
         MeasureEntryASC = new();
 
-        AllCollectPoint = i;
         CurrentCollectPoint = 0;
     }
 
@@ -233,7 +237,7 @@ public class BGMControll : MonoBehaviour
                     float originalVolume = a.volume;
                     bool mute = a.mute;
 
-                    a.volume = 0f;
+                    a.volume = 0.01f;
                     a.mute = false;
                     a.Play();
 

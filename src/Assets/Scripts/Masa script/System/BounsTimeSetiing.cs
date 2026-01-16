@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class BounsTimeSetiing : MonoBehaviour
 {
@@ -28,6 +24,7 @@ public class BounsTimeSetiing : MonoBehaviour
 
     public void CoinSpawn()
     {
+        BounsSpawm_ = true;
         foreach (var tf in SpawnPoint)
         {
             Vector3 spawnPos = tf.transform.position;

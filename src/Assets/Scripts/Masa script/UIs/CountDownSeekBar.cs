@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
@@ -13,6 +14,7 @@ public class CountDownSeekBar : CountDownTimer
     [SerializeField] TextMeshProUGUI CountDownTextUGUI;
     [SerializeField] Transform CountDownTextTransform;
     [SerializeField] float TextTargetScale = 7f;
+    [SerializeField] UnityEvent CountDownStart;
 
     public float GetCurrentTimeClamp() =>Mathf.Clamp01((float)seconds / (float)StartCount);
 
@@ -49,10 +51,12 @@ public class CountDownSeekBar : CountDownTimer
 
         if (CountDownTextUGUI != null && OutputCountDownSecond >= seconds)
         {
-            
-            if(seconds % MaxCountSecond == 0 && seconds / MaxCountSecond > 0)
+            if(OutputCountDownSecond == seconds)
+                CountDownStart.Invoke();
+
+            if (seconds % MaxCountSecond == 0 && seconds / MaxCountSecond > 0)
             {
-                Debug.Log(seconds);
+                //Debug.Log(seconds);
                 // 負数の場合はマイナス記号を付加して表示
                 CountDownTextUGUI.SetText((seconds / MaxCountSecond).ToString());
                 StartCoroutine(CountDownTextMove());

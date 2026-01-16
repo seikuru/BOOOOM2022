@@ -51,9 +51,12 @@ public class ResultBGMControll : MonoBehaviour
             {
                 ra.RAN[i].SetClip(i < current);       
             }
-        }       
+        }
+
+        StartCoroutine(WarmUpAudio());
+
     }
-      
+
     void AllBGMPlay()
     {
         double currentStartDspTime = AudioSettings.dspTime + 0.1;
@@ -105,12 +108,12 @@ public class ResultBGMControll : MonoBehaviour
                 a.volume = AP.Item2;
             }
         }
+
+        Invoke("AllBGMPlay", WaitStartCount);
     }
 
     void Start()
     {
-        AudioClipSetting();
-        StartCoroutine(WarmUpAudio());
-        Invoke("AllBGMPlay", WaitStartCount);
+        AudioClipSetting();      
     }
 }

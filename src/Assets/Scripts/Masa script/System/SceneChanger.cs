@@ -16,7 +16,7 @@ public class SceneChanger : MonoBehaviour
     private void Start()
     {
         IsChange = false;
-
+        canActivateScene = false;
         //Time.timeScaleが変更されていた場合元に戻す
         //if (SceneManager.GetActiveScene().name == TitleSceneName)
             Time.timeScale = 1.0f;
@@ -129,6 +129,58 @@ public class SceneChanger : MonoBehaviour
                 // ここで演出を入れられる
                 // フェード完了待ち、一定時間待つ等
                 yield return new WaitForSeconds(waitTime);
+
+                async.allowSceneActivation = true;
+            }
+
+            yield return null; // フリーズ防止（最重要）
+        }
+    }
+
+    bool canActivateScene = false;
+    
+    public void OnPressContinue()
+    {
+        canActivateScene = true;
+    }
+
+
+    public void SceneChangeAsyncActivate(string sceneName)
+    {
+        if (IsChange) return;
+
+        AsyncCoroutine = StartCoroutine(LoadSceneAsyncActivate(sceneName));
+    }
+
+    IEnumerator LoadSceneAsyncActivate(string sceneName)
+    {
+        IsChange = true;
+        // 非同期ロード開始
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+
+        // 90% で止める（Unity仕様）
+        async.allowSceneActivation = false;
+
+        while (!async.isDone)
+        {
+            /*
+            // progress は 0 ～ 0.9 までしか来ない
+            float progress = Mathf.Clamp01(async.progress / 0.9f);
+
+            if (progressBar != null)
+                progressBar.value = progress;
+            */
+
+            Debug.Log(async.progress);
+
+            // 90% 到達＝ロード完了
+            if (async.progress >= 0.9f)
+            {
+                IsChange = false;
+
+                // ここで演出を入れられる
+                // フェード完了待ち、外からの入力を待つ
+                yield return new WaitUntil(() => canActivateScene);
 
                 async.allowSceneActivation = true;
             }
