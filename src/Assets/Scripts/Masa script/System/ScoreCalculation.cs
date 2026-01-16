@@ -68,7 +68,6 @@ public class ScoreCalculation : MonoBehaviour
             allmax += max;
         }
 
-        //a
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
 
         if (clamp < 1)
@@ -80,7 +79,7 @@ public class ScoreCalculation : MonoBehaviour
         {
             PlayerAnimator.SetBool("GameClear", true);
             PlayerAnimator.SetBool("ResultOn", true);
-        }//a
+        }
 
             BackSprite.color = new Color()
             {
