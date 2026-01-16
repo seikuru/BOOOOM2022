@@ -59,8 +59,13 @@ public class ControllerTableInput : OperationsInput
     /// </summary>
     void StartUIRotate()
     {
+
+        Transform parent = FollowPointTransform.parent;
+
         // プレイヤーのY軸角度を取得
-        float yAngle = FollowPointTransform.localEulerAngles.y;
+        float yAngle = parent.localEulerAngles.y;
+        // プレイヤーのY軸角度を取得
+        //float yAngle = FollowPointTransform.localEulerAngles.y;
 
         // 負の角度を正の角度に変換
         if (yAngle < 0)

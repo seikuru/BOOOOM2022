@@ -123,17 +123,23 @@ public class UITableInput : OperationsInput
     /// </summary>
     void StartUIRotate()
     {
+        Transform parent = FollowPointTransform.parent;
+
         // プレイヤーのY軸角度を取得
-        float yAngle = FollowPointTransform.localEulerAngles.y; 
+        float yAngle = parent.localEulerAngles.y;
+
+        //parent.rotation = Quaternion.identity;
 
         // 負の角度を正の角度に変換
         if (yAngle < 0)
             yAngle += 360f;
 
         // テーブルのZ軸回転を設定（画面上での回転表現）
-        OutSideTableRect.eulerAngles = new(0, 0, yAngle);
+        //OutSideTableRect.eulerAngles = new(0, 0, yAngle + 90);
 
-        MouseUpangle = yAngle; // 基準角度として保存
+        MouseUpangle = -yAngle; // 基準角度として保存
+
+        RotateAngle_Y(yAngle);
     }
 
     /// <summary>
@@ -156,6 +162,8 @@ public class UITableInput : OperationsInput
 
         // ベクトルAからBへの角度差
         float angle = Vector2.SignedAngle(dirA, dirB);
+
+        Debug.Log(angle);
 
         // マウスアップ時点の角度に今回の回転分を加えた絶対角度を計算
         float absoluteAngle = MouseUpangle + angle;
