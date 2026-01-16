@@ -12,6 +12,7 @@ public class ScoreCalculation : MonoBehaviour
     [SerializeField] BGMControll controll;
     [SerializeField] SpriteRenderer BackSprite;
     [SerializeField] MackLine[] mackLines;
+    [SerializeField] Animator PlayerAnimator;
 
     [Serializable]
     public class MackLine
@@ -67,17 +68,26 @@ public class ScoreCalculation : MonoBehaviour
             allmax += max;
         }
 
-        //a
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
-        //a
 
-        BackSprite.color = new Color()
+        if (clamp < 1)
         {
-            r = 1f - (1f - clamp) / 2f,
-            g = 1f - (1f - clamp) / 2f,
-            b = 1f - (1f - clamp) / 2f,
-            a = 1f
-        };
+            PlayerAnimator.SetBool("GameClear", false);
+            PlayerAnimator.SetBool("ResultOn", true);
+        }
+        else
+        {
+            PlayerAnimator.SetBool("GameClear", true);
+            PlayerAnimator.SetBool("ResultOn", true);
+        }
+
+            BackSprite.color = new Color()
+            {
+                r = 1f - (1f - clamp) / 2f,
+                g = 1f - (1f - clamp) / 2f,
+                b = 1f - (1f - clamp) / 2f,
+                a = 1f
+            };
 
         foreach (var line in mackLines)
         {
