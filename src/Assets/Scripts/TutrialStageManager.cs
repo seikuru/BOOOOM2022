@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.VFX;
 
 [Serializable]
 class PhaseObjectClass
@@ -22,6 +23,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] String MaterialPivName = "_PivotPosition";
     [SerializeField] string MaterialCenterName = "_CenterPosition";
     [SerializeField] Rigidbody PlayerRigidbody;
+    [SerializeField] List<VisualEffect> PhaseChangeEffect;
     //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
@@ -57,7 +59,7 @@ public class TutrialStageManager : MonoBehaviour
         // Check Phase Clear
         if (CheckPhaseClear())
         {
-            Debug.Log("Phase " + (currentPhase + 1) + " Clear!");
+            // Debug.Log("Phase " + (currentPhase + 1) + " Clear!");
             // Break Objects
             foreach (GameObject breakObj in PhaseObjects[currentPhase].BreakObjects)
             {
@@ -95,6 +97,15 @@ public class TutrialStageManager : MonoBehaviour
             if (PhaseObjects[currentPhase].MaterialCenter != null)
             {
                 StageMaterial.SetVector(MaterialPivName, PhaseObjects[currentPhase].MaterialCenter.position);
+            }
+
+            // Play Effect
+            if (PhaseChangeEffect != null)
+            {
+                foreach(VisualEffect vfx in PhaseChangeEffect)
+                {
+                    vfx.SendEvent("OnPlay");
+                }
             }
         }
 
