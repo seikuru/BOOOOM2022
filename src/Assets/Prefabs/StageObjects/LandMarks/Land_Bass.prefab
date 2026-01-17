@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5715665880330818930}
   - component: {fileID: 5664711791407890820}
   - component: {fileID: 6820291363459571647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 3719200778932177149}
   - component: {fileID: 8758075198758059867}
   - component: {fileID: 7777160208044844961}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 4176133484777030356}
   - component: {fileID: 211081186970786986}
   - component: {fileID: 4439077312900827470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 8066424661926222568}
   - component: {fileID: 6577178580770088211}
   - component: {fileID: 79878748892681437}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,9 +522,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8294150705538160400}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Land_Bass
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,7 +539,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 342.2, y: 105.9, z: 653.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2739998, y: 1.2740002, z: 1.274}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1217125619257935585}
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 7078986114694240203}
   - component: {fileID: 1968208986592525941}
   - component: {fileID: 4595241095751856338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,6 +766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LandMarkBassfbx
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c6d0471fa10bf4f44bc7c560290f2f19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
