@@ -18,6 +18,11 @@ public class ResultAudioNode
     {
         audioSource?.PlayScheduled(DpsTime);
     }
+
+    public bool CheckClip()
+    {
+        return audioSource.clip == clipDefalt;
+    }
 }
 
 [Serializable]
@@ -66,6 +71,10 @@ public class ResultBGMControll : MonoBehaviour
             for (int i = 0; i < AudioLength[ra.type]; i++)
             {
                 ra.RAN[i].PlayScheduled(currentStartDspTime);
+                if (ra.RAN[i].CheckClip())
+                {
+                    ra.RAN[i].audioSource.time = 8;
+                }
             }
             /*
             foreach (var ran in ra.RAN)

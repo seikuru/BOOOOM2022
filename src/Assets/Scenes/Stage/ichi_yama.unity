@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
+  m_IndirectSpecularColor: {r: 0.04701439, g: 0.2630383, b: 0.4731505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15014,8 +15014,6 @@ MonoBehaviour:
   - {fileID: 1099067427}
   PlayerMotionAnimator: {fileID: 8050834731649078821}
   subCamera: {fileID: 1894417049}
-  throughBomb: {fileID: 5067167621653919192, guid: 16d552253ebcea14fbbb60ec7b071a8c,
-    type: 3}
   DisableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16868,6 +16866,16 @@ PrefabInstance:
         type: 3}
       propertyPath: DefaltDistance
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521591128446003027, guid: c3896364f0e0bd14e9e122fab3c44a32,
+        type: 3}
+      propertyPath: FallMaxDiameter
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3521591128446003027, guid: c3896364f0e0bd14e9e122fab3c44a32,
+        type: 3}
+      propertyPath: CompletionMaxDiameter
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
