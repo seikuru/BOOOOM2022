@@ -193,6 +193,7 @@ MonoBehaviour:
   openSymbolSource: {fileID: 6604245072683689376}
   DisenableObjects:
   - {fileID: 2307429093265436597}
+  - {fileID: 8978160175581795456}
   openSymbolEffect: {fileID: 4941411922035459120}
 --- !u!82 &6604245072683689376
 AudioSource:
@@ -593,6 +594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melody
       objectReference: {fileID: 0}
+    - target: {fileID: 7267047792659437055, guid: 6052198882de672479c1f0a5c6fbb3a9,
+        type: 3}
+      propertyPath: m_ResetSeedOnPlay
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -607,6 +613,12 @@ GameObject:
 --- !u!4 &5694665456720090860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1690266891581214612, guid: 6052198882de672479c1f0a5c6fbb3a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6373311213273635192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8978160175581795456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2660037329131720184, guid: 6052198882de672479c1f0a5c6fbb3a9,
     type: 3}
   m_PrefabInstance: {fileID: 6373311213273635192}
   m_PrefabAsset: {fileID: 0}

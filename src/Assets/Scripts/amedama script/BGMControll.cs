@@ -272,6 +272,9 @@ public class BGMControll : MonoBehaviour
                     continue;
                 }
 
+                // スコア加算
+                scoreManager.AddScoreSymbol();
+
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
@@ -291,8 +294,7 @@ public class BGMControll : MonoBehaviour
 
                 // ゲージの色を MusicType に応じて変更
                 GageManager?.SetColorImage(cmc.CMCMusicType);
-                // スコア加算（破壊扱い）
-                scoreManager?.AddScoreDestroy();
+                
                 // 取得した MusicType をスコア側に通知
                 scoreManager?.AddMusicType(cmc.CMCMusicType);
 
