@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] string MaterialCenterName = "_CenterPosition";
     [SerializeField] Rigidbody PlayerRigidbody;
     [SerializeField] List<VisualEffect> PhaseChangeEffect;
+    [SerializeField] Animator PlayerMotionAnimator;
+    [SerializeField] CinemachineVirtualCamera subCamera;
     //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
@@ -79,11 +82,14 @@ public class TutrialStageManager : MonoBehaviour
             if (PhaseObjects[currentPhase].PlayerDontMove)
             {
                 PlayerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+                PlayerMotionAnimator.SetBool("Binding", true);
+                subCamera.Priority = 11;
             }
             else
             {
                 PlayerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-
+                PlayerMotionAnimator.SetBool("Binding", false);
+                subCamera.Priority= 1;
             }
 
             // Next Phase
