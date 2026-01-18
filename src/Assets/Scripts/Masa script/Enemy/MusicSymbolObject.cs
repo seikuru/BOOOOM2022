@@ -16,6 +16,7 @@ public class MusicSymbolObject : MonoBehaviour
     [SerializeField] VisualEffect openSymbolEffect;
     [SerializeField] float RotateSpeed  = 15.0f;
     [SerializeField] float fuwaSpeed = 2.0f;
+    [SerializeField] Transform KurufuwaTransform;
 
 
     public void SetList(List<GameObject> list) => Enemylist = new(list);
@@ -69,14 +70,14 @@ public class MusicSymbolObject : MonoBehaviour
 
     IEnumerator Kurufuwa()
     {
-        Vector3 Position = this.transform.position;
+        Vector3 Position = KurufuwaTransform.localPosition;
         float sin = Mathf.Sin(Time.time);
 
         while (true)
         {
-            this.transform.Rotate(new Vector3(0, RotateSpeed, 0) * Time.deltaTime);
+            KurufuwaTransform.Rotate(new Vector3(0, RotateSpeed, 0) * Time.deltaTime);
             sin = Mathf.Sin(Time.time);
-            this.transform.position = new Vector3(Position.x, Position.y + (sin * fuwaSpeed), Position.z);
+            KurufuwaTransform.localPosition = new Vector3(Position.x, Position.y + (sin * fuwaSpeed), Position.z);
 
             yield return null;
         }

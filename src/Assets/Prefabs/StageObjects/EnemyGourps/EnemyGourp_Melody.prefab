@@ -195,6 +195,9 @@ MonoBehaviour:
   - {fileID: 2307429093265436597}
   - {fileID: 8978160175581795456}
   openSymbolEffect: {fileID: 4941411922035459120}
+  RotateSpeed: 15
+  fuwaSpeed: 2
+  KurufuwaTransform: {fileID: 5694665456720090860}
 --- !u!82 &6604245072683689376
 AudioSource:
   m_ObjectHideFlags: 0
@@ -542,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 1690266891581214612, guid: 6052198882de672479c1f0a5c6fbb3a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1690266891581214612, guid: 6052198882de672479c1f0a5c6fbb3a9,
         type: 3}

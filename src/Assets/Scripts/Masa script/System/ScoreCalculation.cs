@@ -9,7 +9,6 @@ public class ScoreCalculation : MonoBehaviour
     [SerializeField] Image fadeImage;
     [SerializeField] TextMeshProUGUI Bouns;
     [SerializeField] TextMeshProUGUI Total;
-    [SerializeField] BGMControll controll;
     [SerializeField] SpriteRenderer BackSprite;
     [SerializeField] MackLine[] mackLines;
     [SerializeField] Animator PlayerAnimator;
@@ -70,7 +69,7 @@ public class ScoreCalculation : MonoBehaviour
 
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
 
-        if (clamp < 1)
+        if (clamp < 0)
         {
             PlayerAnimator.SetBool("GameClear", false);
             PlayerAnimator.SetBool("ResultOn", true);
@@ -102,7 +101,7 @@ public class ScoreCalculation : MonoBehaviour
 
         while (fadeImage.color.a > 0.0f)
         {
-            currentColor.a -= Time.smoothDeltaTime;
+            currentColor.a -= Time.deltaTime;
             fadeImage.color = currentColor;
             yield return null;
         }

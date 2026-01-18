@@ -60,7 +60,7 @@ public class BGMControll : MonoBehaviour
     [SerializeField] UnityEvent BounsTimeEvent;
     [SerializeField] AudioGageManager GageManager;
     [SerializeField] ScoreManager scoreManager;
-
+    [SerializeField] SymbolEmission symbolEmission;
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
     [SerializeField] float FadeInTime = 3.0f;
@@ -294,7 +294,8 @@ public class BGMControll : MonoBehaviour
 
                 // ゲージの色を MusicType に応じて変更
                 GageManager?.SetColorImage(cmc.CMCMusicType);
-                
+                // MusicType に応じてエミッション起動
+                symbolEmission.SetEmission(cmc.CMCMusicType);
                 // 取得した MusicType をスコア側に通知
                 scoreManager?.AddMusicType(cmc.CMCMusicType);
 
