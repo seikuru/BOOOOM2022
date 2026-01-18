@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -13,7 +14,10 @@ public class MusicSymbolObject : MonoBehaviour
 
     [SerializeField] GameObject[] DisenableObjects;
     [SerializeField] VisualEffect openSymbolEffect;
-    
+    [SerializeField] float RotateSpeed  = 15.0f;
+    [SerializeField] float fuwaSpeed = 2.0f;
+
+
     public void SetList(List<GameObject> list) => Enemylist = new(list);
 
     bool openSymbol;
@@ -59,5 +63,24 @@ public class MusicSymbolObject : MonoBehaviour
         BGMControll.OpenTypeSetting(type);
         openSymbolSource.PlayOneShot(openSymbolSource.clip);
         openSymbolEffect.SendEvent("OnPlay");
+
+        StartCoroutine(Kurufuwa());
+    }
+
+    IEnumerator Kurufuwa()
+    {
+        Vector3 Position = this.transform.position;
+        float sin = Mathf.Sin(Time.time);
+
+        while (true)
+        {
+            this.transform.Rotate(new Vector3(0, RotateSpeed, 0) * Time.deltaTime);
+            sin = Mathf.Sin(Time.time);
+            this.transform.position = new Vector3(Position.x, Position.y + (sin * fuwaSpeed), Position.z);
+
+            yield return null;
+        }
+
+        yield return null;
     }
 }
