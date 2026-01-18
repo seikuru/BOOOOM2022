@@ -30,6 +30,8 @@ public class TutrialStageManager : MonoBehaviour
 
     void Start()
     {
+        ThroughBomb.TutrialCheck = true;
+
         foreach (PhaseObjectClass obj in PhaseObjects)
         {
             if (obj.NextSpawnObjects != null)
@@ -88,6 +90,7 @@ public class TutrialStageManager : MonoBehaviour
             currentPhase++;
             if (currentPhase >= PhaseObjects.Length)
             {
+                ThroughBomb.TutrialCheck = false;
                 //throughBomb.enabled = false;
                 enabled = false; // Copilot ����Ă��������I���@�悭�킩���
                 return;          // �������̃C���f�b�N�X�͈̔͊O�w����߂���̂Ǝv����
