@@ -14,6 +14,7 @@ class PhaseObjectClass
     public GameObject[] BreakObjects;
     public Transform MaterialCenter;
     public bool PlayerDontMove = false;
+    public bool ChangeCamera = false;
 }
 
 public class TutrialStageManager : MonoBehaviour
@@ -55,7 +56,26 @@ public class TutrialStageManager : MonoBehaviour
             }
         }
 
-        StageMaterial.SetVector(MaterialPivName, PhaseObjects[currentPhase].MaterialCenter.position);
+        if(PhaseObjects[currentPhase].MaterialCenter != null)
+            StageMaterial.SetVector(MaterialPivName, PhaseObjects[currentPhase].MaterialCenter.position);
+
+        if(PhaseObjects[currentPhase].PlayerDontMove)
+        {
+            BindPlayer();
+            Debug.Log("Bind Player at Start");
+        }
+        else
+        {
+            ReleasePlayer();
+        }
+        if (PhaseObjects[currentPhase].ChangeCamera)
+        {
+            subCamera.Priority = 11;
+        }
+        else
+        {
+            subCamera.Priority = 1;
+        }
     }
 
     // Update is called once per frame
@@ -79,27 +99,37 @@ public class TutrialStageManager : MonoBehaviour
                 spawnObj.SetActive(true);
             }
 
-            if (PhaseObjects[currentPhase].PlayerDontMove)
-            {
-                PlayerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-                PlayerMotionAnimator.SetBool("Binding", true);
-                subCamera.Priority = 11;
-            }
-            else
-            {
-                PlayerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-                PlayerMotionAnimator.SetBool("Binding", false);
-                subCamera.Priority= 1;
-            }
-
             // Next Phase
             currentPhase++;
             if (currentPhase >= PhaseObjects.Length)
             {
                 ThroughBomb.TutrialCheck = false;
                 //throughBomb.enabled = false;
-                enabled = false; // Copilot ����Ă��������I���@�悭�킩���
-                return;          // �������̃C���f�b�N�X�͈̔͊O�w����߂���̂Ǝv����
+                enabled = false; // Disable this script
+
+                ReleasePlayer();
+
+                return;          // End of all phases
+            }
+
+            // Player Bind/Release
+            if (PhaseObjects[currentPhase].PlayerDontMove)
+            {
+                BindPlayer();
+            }
+            else
+            {
+                ReleasePlayer();
+            }
+
+            // Change Camera Priority
+            if (PhaseObjects[currentPhase].ChangeCamera)
+            {
+                subCamera.Priority = 11;
+            }
+            else
+            {
+                subCamera.Priority = 1;
             }
 
             // Change Material Pivot
@@ -136,6 +166,19 @@ public class TutrialStageManager : MonoBehaviour
         return true;
     }
 
+    private void BindPlayer()
+    {
+        PlayerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        PlayerMotionAnimator.SetBool("Binding", true);
+        PlayerMotionAnimator.SetBool("Ground", true);
+    }
+
+    private void ReleasePlayer()
+    {
+        PlayerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        PlayerMotionAnimator.SetBool("Binding", false);
+        PlayerMotionAnimator.SetBool("Ground", false);
+    }
 
     [SerializeField] UnityEvent DisableEvent;
     private void OnDisable()
