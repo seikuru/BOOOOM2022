@@ -36,7 +36,7 @@ public class SelectButton : MonoBehaviour
             }
         }
 
-        Debug.Log(currentButtonIndex);
+        //Debug.Log(currentButtonIndex);
         currentButtonIndex += buttonIndexAdd;
         bool sameCheck = false;
 
@@ -49,7 +49,7 @@ public class SelectButton : MonoBehaviour
         {
             currentButtonIndex = Buttons.Length - 1; sameCheck = true;
         }
-        Debug.Log(currentButtonIndex);
+        //Debug.Log(currentButtonIndex);
 
         if (cursol != null)
             cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;

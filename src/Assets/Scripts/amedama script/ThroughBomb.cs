@@ -21,7 +21,6 @@ public class ThroughBomb : MonoBehaviour
         if (!TutrialCheck || isUnder)
             return;
 
-        Debug.Log("22");
         BombCollider.enabled = false;
         _throughTime = new WaitForSeconds(throughTime);
 
