@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
+  m_IndirectSpecularColor: {r: 0.046714347, g: 0.26231292, b: 0.47318178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6644,18 +6645,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
+      propertyPath: m_CameraRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
+        type: 3}
       propertyPath: m_SmoothingTime
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_DampingWhenOccluded
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_MinimumOcclusionTime
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -14606,7 +14612,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631863091}
-  m_Mesh: {fileID: 595616192}
+  m_Mesh: {fileID: 211385702}
 --- !u!64 &631863097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14628,7 +14634,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 595616192}
+  m_Mesh: {fileID: 211385702}
 --- !u!1001 &649332920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22377,7 +22383,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 70
   orthographic: 0
@@ -27544,18 +27550,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
+      propertyPath: m_CameraRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
+        type: 3}
       propertyPath: m_SmoothingTime
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_DampingWhenOccluded
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_MinimumOcclusionTime
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576529615821044652, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -27581,6 +27592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lens.FieldOfView
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010596371804002674, guid: c3896364f0e0bd14e9e122fab3c44a32,
+        type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8276747181351159818, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
