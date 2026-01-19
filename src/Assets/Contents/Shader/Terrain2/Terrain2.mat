@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -125,9 +125,11 @@ Material:
     - _SrcBlendAlpha: 1
     - _Step: 1.92
     - _Surface: 0
+
     - _Volume: 0
     - _VoroiPower: 0.27
     - _VoronoiScale: 112.22
+
     - _Width: 0.2
     m_Colors:
     - _AccentColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}

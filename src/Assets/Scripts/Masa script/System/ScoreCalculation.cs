@@ -69,7 +69,6 @@ public class ScoreCalculation : MonoBehaviour
         }
 
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
-
         if (clamp < 1)
         {
             PlayerAnimator.SetBool("GameClear", false);

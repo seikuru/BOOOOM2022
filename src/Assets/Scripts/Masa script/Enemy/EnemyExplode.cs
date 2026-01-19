@@ -31,8 +31,5 @@ public class EnemyExplode : MonoBehaviour
         GameObject create = Instantiate(ExplodePrefab, createPos, rot);
         
         Destroy(create, DestroyTime);
-
-
-        //Quaternion quaternion = Quaternion.LookRotation
     }
 }

@@ -163,8 +163,6 @@ public class UITableInput : OperationsInput
         // ベクトルAからBへの角度差
         float angle = Vector2.SignedAngle(dirA, dirB);
 
-        Debug.Log(angle);
-
         // マウスアップ時点の角度に今回の回転分を加えた絶対角度を計算
         float absoluteAngle = MouseUpangle + angle;
 

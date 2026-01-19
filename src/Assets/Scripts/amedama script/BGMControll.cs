@@ -96,42 +96,6 @@ public class BGMControll : MonoBehaviour
 
     public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
 
-    public void ResultBGMPlay(MusicType type)
-    {
-        // 未来の DSP 時間を取得
-        double currentStartDspTime = AudioSettings.dspTime + 0.1;
-        foreach (var cmc in CMC)
-        {
-            // MusicType が一致したら探索終了
-            if (cmc.CMCMusicType != type)
-            {
-                continue;
-            }
-
-            if (!cmc.CrrentIndexCheck())
-            {           
-                return;
-            }
-
-            var ASC = cmc.ASC[cmc.GetIndex()];
-
-            cmc.NextIndex();
-
-            if (ASC == null)
-            {
-                return;
-            }
-            else
-            {
-                ASC.AudioSource.PlayScheduled(currentStartDspTime);
-                ASC.AudioSource.mute = false;
-                ASC.AudioSource.volume = 0.8f;
-                return;
-            }
-        }
-    } 
-
-
     // イベント駆動のため、いる
     public void BGMPlay()
     {
@@ -144,6 +108,7 @@ public class BGMControll : MonoBehaviour
                 if (b2.AudioSource != null)
                 {
                     b2.AudioSource.PlayScheduled(currentStartDspTime);
+                    b2.AudioSource.time = 7.8f;
                     Debug.Log(b2.AudioSource.name);
                 }
             }
@@ -272,6 +237,9 @@ public class BGMControll : MonoBehaviour
                     continue;
                 }
 
+                // スコア加算
+                scoreManager.AddScoreSymbol();
+
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
@@ -291,8 +259,7 @@ public class BGMControll : MonoBehaviour
 
                 // ゲージの色を MusicType に応じて変更
                 GageManager?.SetColorImage(cmc.CMCMusicType);
-                // スコア加算（破壊扱い）
-                scoreManager?.AddScoreDestroy();
+                
                 // 取得した MusicType をスコア側に通知
                 scoreManager?.AddMusicType(cmc.CMCMusicType);
 
@@ -477,6 +444,7 @@ public class BGMControll : MonoBehaviour
         }
 
         int secondsFlame = (int)(DownVolume / Time.fixedDeltaTime) + 1;
+        float FadeOutVolumeUp = (1 - DownVolume) / (float)secondsFlame;
 
         for (int i = 0; i < secondsFlame; i++)
         {
@@ -487,8 +455,8 @@ public class BGMControll : MonoBehaviour
                 {
                     if (a2.AudioSource.mute == false)
                     {
-                        a2.AudioSource.volume += Time.deltaTime;
-                        StartBGM.volume += Time.deltaTime;
+                        a2.AudioSource.volume += FadeOutVolumeUp;
+                        StartBGM.volume += FadeOutVolumeUp;
                         yield return wfs1frame;
                     }
                 }

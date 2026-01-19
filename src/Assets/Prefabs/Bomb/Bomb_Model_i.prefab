@@ -242,13 +242,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3672593736015811124}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a89fdfc38075fa458b40f1b6a722a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   throughTime: 0.4
   BombCollider: {fileID: 6530253593774039959}
+  isUnder: 0
 --- !u!82 &6993103614394412173
 AudioSource:
   m_ObjectHideFlags: 0
@@ -361,8 +362,8 @@ MonoBehaviour:
   BombRB: {fileID: 7104464763104517611}
   FallFlag: 1
   PrintDebug: 0
-  FallSpeed: 70
-  SecondsUntilFall: 2
+  FallSpeed: 75
+  SecondsUntilFall: 1.8
   FallSpeedDiameter: 0.0007
 --- !u!1 &4004615901524930672
 GameObject:
