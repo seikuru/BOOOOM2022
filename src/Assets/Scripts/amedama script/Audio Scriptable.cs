@@ -9,6 +9,8 @@ public class AudioScriptable : ScriptableObject
     [SerializeField] AudioClip ExplodeSounds;
     [SerializeField] AudioClip BombHitSounds;
     [SerializeField] AudioClip DestroyObstacleSounds;
+    [SerializeField] AudioClip HitEnemySounds;
+    [SerializeField] AudioClip HitCoinSounds;
 
     public AudioClip _ExplodeSounds
     {
@@ -22,5 +24,14 @@ public class AudioScriptable : ScriptableObject
     {
         get { return DestroyObstacleSounds; }
     }
+    public AudioClip _HitEnemySounds
+    {
+        get { return HitEnemySounds; }
+    }
+    public AudioClip _HitCoinSounds
+    {
+        get { return HitCoinSounds; }
+    }
+
 
 }
