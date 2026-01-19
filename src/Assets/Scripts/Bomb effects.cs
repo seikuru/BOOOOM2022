@@ -164,7 +164,7 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
                 {
                     obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
-                    //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
+                    BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds); 
                     //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                     continue;
                 }
@@ -173,7 +173,7 @@ public class Bombeffects : MonoBehaviour
             {
                 Destroy(P[i]);
                
-                BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
+                //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
@@ -182,6 +182,7 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<CoinDeleter>(out CoinDeleter COIN))
                 {
                     COIN.TakeCoin();
+                    BombAudioSource.PlayOneShot(AudioScriptable._HitCoinSounds);
                     continue;
                 }
             }
@@ -211,6 +212,10 @@ public class Bombeffects : MonoBehaviour
                 if (P[i].TryGetComponent<Animator>(out Animator enemyAnimator))
                 {
                     enemyAnimator.SetTrigger("OnDamage");
+                }
+                if (P[i].TryGetComponent<AudioSource>(out AudioSource audioSource))
+                {
+;                    BombAudioSource.PlayOneShot(AudioScriptable._HitEnemySounds);
                 }
 
                 // 敵のエフェクト表示
