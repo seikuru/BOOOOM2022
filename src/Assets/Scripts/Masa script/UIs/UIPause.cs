@@ -12,6 +12,8 @@ public class UIPause : MonoBehaviour
     [SerializeField]
     TimelineAsset EnableTimelineAsset;
 
+    [SerializeField]
+    BGMControll BGMcontroll;
 
     public void EnableTimeline()
     {
@@ -23,6 +25,12 @@ public class UIPause : MonoBehaviour
         playableDirector.Play(disableTimeline);
     }
 
+    // ˆêŽž’âŽ~
+    public void BGMPause() => BGMcontroll.BGMPause();
+
+    // ˆêŽž’âŽ~‰ðœ
+    public void BGMUnPause() => BGMcontroll.BGMUnPause();
+       
     public void SetTimeScale(float scale) => Time.timeScale = scale;
 
     // Update is called once per frame

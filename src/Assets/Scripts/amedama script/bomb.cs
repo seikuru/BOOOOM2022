@@ -26,7 +26,7 @@ public class bomb : MonoBehaviour
     Rigidbody PlayerRigidbody;
     int ShotInterval_Count = 0;
     private bool PlayerHit = false;
-    float AudioCount;
+    float AudioCount, DestroyWait;
     bool AudioPlayFlag;
 
     public void InstantiateUnder()
@@ -117,9 +117,13 @@ public class bomb : MonoBehaviour
 
     public void DestroyBombs()
     {
+        if (Time.timeScale == 0f || DestroyWait< 10)
+            return;
+
         float waitTime = 0f;
         PlayerHit = false;
         int BombNumber = 0;
+        int SameCount = 0;
 
         foreach (Bombeffects bombs in BombsQueue)
         {
@@ -129,8 +133,12 @@ public class bomb : MonoBehaviour
             BombNumber++;
 
             StartCoroutine(DestroyBombsRoutine(waitTime, bombs,BombNumber));
-
-            waitTime += Time.fixedDeltaTime * 2;
+            SameCount++;
+            if(SameCount <= 3)
+            {
+                SameCount = 0;
+                waitTime += Time.fixedDeltaTime * 2;
+            }
 
             //Debug.Log("getHit()" + bombs.getHit());
             if (bombs.getHit())
@@ -166,6 +174,7 @@ public class bomb : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        DestroyWait = 0;
         PlayerRigidbody = this.gameObject.GetComponent<Rigidbody>();
         PlayerAnimator = this.gameObject.GetComponent<Animator>();
         BombsQueue = new Queue<Bombeffects>();
@@ -175,6 +184,7 @@ public class bomb : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        DestroyWait = Mathf.Min (DestroyWait + 1, 31);
         if (!InputFlag)
             return;
 
@@ -229,6 +239,9 @@ public class bomb : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0f)
+            DestroyWait = 0;
+
         AudioCount += Time.deltaTime;
         if (AudioCount >= AudioCoolTime && AudioPlayFlag)
         {

@@ -177,8 +177,9 @@ public class Bombeffects : MonoBehaviour
                 //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
                 continue;
             }
-            else if (P[i].tag == "Coin")//敵の弾を爆弾で防ぐ際はこれを使用
+            else if (P[i].tag == "Coin")
             {
+                BombAudioSource.PlayOneShot(AudioScriptable._CoinHitSounds);
                 if (P[i].TryGetComponent<CoinDeleter>(out CoinDeleter COIN))
                 {
                     COIN.TakeCoin();
@@ -212,6 +213,8 @@ public class Bombeffects : MonoBehaviour
                 {
                     enemyAnimator.SetTrigger("OnDamage");
                 }
+
+                BombAudioSource.PlayOneShot(AudioScriptable._ExplodeEnemySounds);
 
                 // 敵のエフェクト表示
                 EnemyExplode.CreateExplode(this.transform, P[i].transform);

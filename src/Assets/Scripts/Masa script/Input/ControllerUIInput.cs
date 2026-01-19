@@ -8,11 +8,13 @@ public class ControllerUIInput : MonoBehaviour
     [SerializeField] ValueContainer valueContainer; // コントローラのパラメータ取得クラス
     [SerializeField] SelectButton selectButton;
     [SerializeField] PlayableDirector playableDirector;
+    [SerializeField] ControllerInput controllerInput;
 
     public enum TapInput
     {
         UnderButton,
         DestroyButton,
+        EscButton,
     }
 
     [SerializeField, Header("入力チェック")]
@@ -63,10 +65,17 @@ public class ControllerUIInput : MonoBehaviour
     /// </summary>
     void InputOperateUI()
     {
-        // アングルを加算
-        angle -= valueContainer.get_rad();
-        // radリセット処理
-        valueContainer.reset_rad();
+        if (controllerInput == null || controllerInput.enabled == false)
+        {
+            // アングルを加算
+            angle -= valueContainer.get_rad();
+            // radリセット処理
+            valueContainer.reset_rad();
+        }
+        else 
+        {
+            angle = controllerInput.GetAngle;
+        }
 
         AngleCheck();
 
@@ -141,7 +150,10 @@ public class ControllerUIInput : MonoBehaviour
         {
             IsPush = valueContainer.get_button() == 1;
         }
-
-        return IsPush;
+        else if(tapInput == TapInput.EscButton)
+        {
+            IsPush = valueContainer.get_esc() == 1;
+        }
+            return IsPush;
     }
 }

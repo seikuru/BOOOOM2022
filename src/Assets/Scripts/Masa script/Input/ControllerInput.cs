@@ -14,6 +14,7 @@ public class ControllerInput : ControllerTableInput
     HashSet<int> InputAnglesInside, InputAnglesOutside;
 
     public float GetAngle => angle;
+
     /// <summary>
     /// タッチ入力処理のメイン関数
     /// 基底クラスのInputOperateをオーバーライドしてマルチタッチ処理を実装
@@ -22,9 +23,15 @@ public class ControllerInput : ControllerTableInput
     {
         // アングルを加算
         angle -= valueContainer.get_rad();
+        //Debug.Log(angle);
 
         // radリセット処理
         valueContainer.reset_rad();
+
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
 
         // テーブル回転処理
         RotateTable(angle);

@@ -62,6 +62,12 @@ public class ScoreManager : MonoBehaviour
         TextSet();
     }
 
+    void AddScoreBonus(int _add)
+    {
+        BonusValue += _add;
+        TextSet();
+    }
+
     public void AddScoreSymbol()
     {
         AddScore(Symbol);
@@ -74,12 +80,12 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScoreCoin()
     {
-        AddScore(Coin);
+        AddScoreBonus(Coin);
     }
 
-    public void AddScoreBonus(int _time)
+    public void AddScoreBonusCoin(int _time)
     {
-        AddScore(_time / 10 + Coin);
+        AddScoreBonus(_time / 10 + Coin);
     }
 
     public void AddMusicType(MusicType type)

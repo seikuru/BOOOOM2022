@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ScoreCalculation : MonoBehaviour
 {
     [SerializeField] Image fadeImage;
+    [SerializeField] float fadeSpeed = 0.1f;
     [SerializeField] TextMeshProUGUI Bouns;
     [SerializeField] TextMeshProUGUI Total;
     [SerializeField] SpriteRenderer BackSprite;
@@ -52,6 +53,7 @@ public class ScoreCalculation : MonoBehaviour
 
     void Start()
     {
+        fadeImage.gameObject.SetActive(true);
         StartCoroutine(FedeColorChenge());
 
         int bonus = ScoreManager.GetBonus();
@@ -104,7 +106,7 @@ public class ScoreCalculation : MonoBehaviour
 
         while (fadeImage.color.a > 0.0f)
         {
-            currentColor.a -= Time.deltaTime;
+            currentColor.a -= Time.fixedDeltaTime * fadeSpeed;
             fadeImage.color = currentColor;
             yield return null;
         }
