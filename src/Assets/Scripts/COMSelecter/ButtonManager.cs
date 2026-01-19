@@ -156,6 +156,9 @@ public class ButtonManager : MonoBehaviour
             // ここにCOMポートを使用する処理を追加
             PassCOMPort.selectedCOMPortName = serialPortListup_.COMPortName_[selectedIndex_];
             PassCOMPort.selectedCOMPortDetail = serialPortListup_.COMPortDetail_[selectedIndex_];
+
+            // シーンをリロード
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         }
     }
 
