@@ -120,6 +120,7 @@ public class bomb : MonoBehaviour
         float waitTime = 0f;
         PlayerHit = false;
         int BombNumber = 0;
+        int SameCount = 0;
 
         foreach (Bombeffects bombs in BombsQueue)
         {
@@ -129,8 +130,12 @@ public class bomb : MonoBehaviour
             BombNumber++;
 
             StartCoroutine(DestroyBombsRoutine(waitTime, bombs,BombNumber));
-
-            waitTime += Time.fixedDeltaTime * 2;
+            SameCount++;
+            if(SameCount <= 3)
+            {
+                SameCount = 0;
+                waitTime += Time.fixedDeltaTime * 2;
+            }
 
             //Debug.Log("getHit()" + bombs.getHit());
             if (bombs.getHit())

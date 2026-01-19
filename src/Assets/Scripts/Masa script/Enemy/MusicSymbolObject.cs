@@ -13,7 +13,7 @@ public class MusicSymbolObject : MonoBehaviour
     [SerializeField] AudioSource openSymbolSource;
 
     [SerializeField] GameObject[] DisenableObjects;
-    [SerializeField] VisualEffect openSymbolEffect;
+    [SerializeField] VisualEffect[] openSymbolEffects;
     [SerializeField] float RotateSpeed  = 15.0f;
     [SerializeField] float fuwaSpeed = 2.0f;
     [SerializeField] Transform KurufuwaTransform;
@@ -22,6 +22,11 @@ public class MusicSymbolObject : MonoBehaviour
     public void SetList(List<GameObject> list) => Enemylist = new(list);
 
     bool openSymbol;
+
+    private void OnEnable()
+    {
+        Start();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +43,12 @@ public class MusicSymbolObject : MonoBehaviour
         {
             Transform child = this.transform.GetChild(i);
             Enemylist.Add(child.gameObject);
+        }
+
+        foreach (var Effect in openSymbolEffects)
+        {
+            Effect.Stop();
+            Effect.gameObject.SetActive(false);
         }
     }
 
@@ -63,8 +74,13 @@ public class MusicSymbolObject : MonoBehaviour
 
         BGMControll.OpenTypeSetting(type);
         openSymbolSource.PlayOneShot(openSymbolSource.clip);
-        openSymbolEffect.SendEvent("OnPlay");
 
+        foreach (var Effect in openSymbolEffects)
+        {
+            Effect.gameObject.SetActive(true);
+            Effect.SendEvent("OnPlay");
+        }
+        
         StartCoroutine(Kurufuwa());
     }
 
