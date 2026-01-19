@@ -21,6 +21,9 @@ public class SelectButton : MonoBehaviour
     /// <param name="buttonIndexAdd">ˆÊ’u</param>
     public virtual void ButtonSelectMove(int buttonIndexAdd)
     {
+        if (Buttons.Length < 2)
+            return;
+
         if (audioSE != null && buttonIndexAdd != ResetIndex)
         {
             if (buttonIndexAdd < 0 && audioClipUp != null)
@@ -33,6 +36,7 @@ public class SelectButton : MonoBehaviour
             }
         }
 
+        Debug.Log(currentButtonIndex);
         currentButtonIndex += buttonIndexAdd;
         bool sameCheck = false;
 
@@ -45,8 +49,9 @@ public class SelectButton : MonoBehaviour
         {
             currentButtonIndex = Buttons.Length - 1; sameCheck = true;
         }
+        Debug.Log(currentButtonIndex);
 
-        if(cursol != null)
+        if (cursol != null)
             cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
 
         if(!sameCheck)
@@ -68,17 +73,30 @@ public class SelectButton : MonoBehaviour
         Buttons[currentButtonIndex].onClick.Invoke();
     }
 
-    void Update()
+    public void SetIndex(int num) => currentButtonIndex = num;
+
+    protected virtual void DebugInput()
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             ButtonSelectMove(1);
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
-        { 
-            ButtonSelectMove(-1); 
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            ButtonSelectMove(-1);
         }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            ButtonInvoke();
+        }
+#endif
+    }
+
+    void Update()
+    {
+#if UNITY_EDITOR
+        DebugInput();
 #endif
     }
 }

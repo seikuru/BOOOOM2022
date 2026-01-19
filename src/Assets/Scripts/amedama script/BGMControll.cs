@@ -90,15 +90,52 @@ public class BGMControll : MonoBehaviour
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
 
     int AllCollectPoint, CurrentCollectPoint;
-    bool Once = true;
+    bool PauseCheck = false;
 
     static Queue<MusicType> openTypes;
 
     public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
 
+    // 一時停止
+    public void BGMPause()
+    { 
+        if (PauseCheck)
+            return;
+
+        foreach (var a1 in CMC)
+        {
+            foreach (var b2 in a1.ASC)
+            {
+                if (b2.AudioSource != null)
+                {
+                    b2.AudioSource.Pause();
+                }
+            }
+        }
+    }
+
+    // 一時停止解除
+    public void BGMUnPause()
+    {
+        if (PauseCheck)
+            return;
+
+        foreach (var a1 in CMC)
+        {
+            foreach (var b2 in a1.ASC)
+            {
+                if (b2.AudioSource != null)
+                {
+                    b2.AudioSource.UnPause();
+                }
+            }
+        }
+    }
+
     // イベント駆動のため、いる
     public void BGMPlay()
     {
+        PauseCheck = false;
         // 未来の DSP 時間を取得
         double currentStartDspTime = AudioSettings.dspTime + 0.1;
         foreach (var a1 in CMC)
@@ -133,6 +170,7 @@ public class BGMControll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PauseCheck = true;
         openTypes = new Queue<MusicType>();
 
         wfs1frame = new WaitForSeconds(Time.fixedDeltaTime);
@@ -243,7 +281,7 @@ public class BGMControll : MonoBehaviour
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
-                    scoreManager?.AddScoreBonus(CountDownTimer.BonusTimeValue);
+                    scoreManager?.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
                     break;
                 }
 

@@ -6,19 +6,19 @@ using UnityEngine;
 public class AudioScriptable : ScriptableObject
 {
 
-    [SerializeField] AudioClip ExplodeSounds;
-    [SerializeField] AudioClip BombHitSounds;
+    [SerializeField] AudioClip ExplodeEnemySounds;
+    [SerializeField] AudioClip CoinHitSounds;
     [SerializeField] AudioClip DestroyObstacleSounds;
     [SerializeField] AudioClip HitEnemySounds;
     [SerializeField] AudioClip HitCoinSounds;
 
-    public AudioClip _ExplodeSounds
+    public AudioClip _ExplodeEnemySounds
     {
-        get { return ExplodeSounds; }
+        get { return ExplodeEnemySounds; }
     }
-    public AudioClip _BombHitSounds
+    public AudioClip _CoinHitSounds
     {
-        get { return BombHitSounds; }
+        get { return CoinHitSounds; }
     }
     public AudioClip _DestroyObstacleSounds
     {

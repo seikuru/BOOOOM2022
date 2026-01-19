@@ -20,7 +20,7 @@ public class CoinDeleter : MonoBehaviour
         coinCollider.enabled = false;
         rigidBody.isKinematic = true;
 
-        ScoreManager.instance.AddScoreBonus(CountDownTimer.BonusTimeValue);
+        ScoreManager.instance.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
 
         coinEffect.SendEvent("OnHit");
 
