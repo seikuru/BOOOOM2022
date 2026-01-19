@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1488442998}
+  fadeSpeed: 0.4
   Bouns: {fileID: 1556821740}
   Total: {fileID: 514610593}
   BackSprite: {fileID: 978628651}
@@ -1592,7 +1593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1d9e14983ada7a449b13e3202cf481fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96b6783e349367b4c87b5e9348801390, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
