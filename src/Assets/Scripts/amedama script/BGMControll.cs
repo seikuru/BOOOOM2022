@@ -243,7 +243,7 @@ public class BGMControll : MonoBehaviour
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
-                    scoreManager?.AddScoreBonus(CountDownTimer.BonusTimeValue);
+                    scoreManager?.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
                     break;
                 }
 
