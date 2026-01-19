@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SpriteAutoTransform : MonoBehaviour
 {
@@ -18,6 +16,8 @@ public class SpriteAutoTransform : MonoBehaviour
     [SerializeField] float Interval = 0.2f;
     [SerializeField] AudioCulcurator audioCulcurator;
 
+    [SerializeField] GageSpectrum[] gageSpectrums;
+
     private Texture2D texture;
     private Sprite sprite;
 
@@ -25,6 +25,8 @@ public class SpriteAutoTransform : MonoBehaviour
     private int[] BeforeIndex;
     // ピクセルバッファ
     Color32[] Colorbuffer;
+
+    float time = 0;
 
     void Awake()
     {
@@ -62,6 +64,8 @@ public class SpriteAutoTransform : MonoBehaviour
         );
 
         image.sprite = sprite;
+
+        openTypes = new();
     }
 
     /// <summary>
@@ -135,7 +139,9 @@ public class SpriteAutoTransform : MonoBehaviour
         texture.Apply(false);
     }
 
-    float time = 0;
+    static Queue<MusicType> openTypes;
+
+    public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
 
     // Update is called once per frame
     void Update()
@@ -148,13 +154,33 @@ public class SpriteAutoTransform : MonoBehaviour
 
             float[] values = new float[Width];
 
-            if(audioCulcurator != null)
+            if (audioCulcurator != null)
                 audioCulcurator.GetSpectrum(ref values);
             else
                 for (int x = 0; x < Width; x++)
                     values[x] = UnityEngine.Random.Range(0, 1f);
 
             TextureUpdate(values);
+
+            foreach (var gage in gageSpectrums)
+            {
+                gage.TextureUpdateRange(values);
+            }
+        }
+
+        while (openTypes != null && openTypes.Count != 0)
+        {
+            var type = openTypes.Dequeue();
+
+            OpenSpectrums(type);
+        }
+    }
+
+    void OpenSpectrums(MusicType type)
+    {
+        foreach (var gage in gageSpectrums)
+        {
+            gage.OpenSpectrumCheck(type);
         }
     }
 }
