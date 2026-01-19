@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public enum MusicType
@@ -61,6 +63,7 @@ public class BGMControll : MonoBehaviour
     [SerializeField] AudioGageManager GageManager;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] SymbolEmission symbolEmission;
+    [SerializeField] AudioMixer AudioMixer;
     [SerializeField] float Count = 0;
     [SerializeField] int BPM = 150;
     [SerializeField] float FadeInTime = 3.0f;
@@ -76,6 +79,7 @@ public class BGMControll : MonoBehaviour
     float FirstBigTimeOne = 0;
     float note16 = 0.0f;
     float VolumeControl = 0.0f;
+    float SE_VolumeControl = 0.0f;
     
     WaitForSeconds wfs1frame;
     WaitForSeconds wfs1beat;
@@ -458,12 +462,16 @@ public class BGMControll : MonoBehaviour
 
     IEnumerator FadeInOtherDown(AudioSource audio)
     {
-
+        SE_VolumeControl = -60.0f;
+        AudioMixer.SetFloat("SE_Volume", SE_VolumeControl);
+        int ActiveBGMs = 1; ;
 
         yield return wfs1beat;
         yield return wfs1beat;
 
         StartBGM.volume = DownVolume;
+        
+        
         foreach (var a1 in CMC)
         {
             foreach (var a2 in a1.ASC)
@@ -471,7 +479,7 @@ public class BGMControll : MonoBehaviour
                 if (a2.AudioSource.volume >= DownVolume && a2.AudioSource != audio)
                 {
                     a2.AudioSource.volume = DownVolume;
-
+                    ActiveBGMs++;
                 }
             }
         }
@@ -482,8 +490,9 @@ public class BGMControll : MonoBehaviour
             yield return wfs1beat;
         }
 
-        int secondsFlame = (int)(DownVolume / Time.fixedDeltaTime) + 1;
+        int secondsFlame = (int)(DownVolume / Time.deltaTime) * (30 / ActiveBGMs) + 1;
         float FadeOutVolumeUp = (1 - DownVolume) / (float)secondsFlame;
+        float FadeOutSEVolumeUp = 60.0f / (float)secondsFlame;
 
         for (int i = 0; i < secondsFlame; i++)
         {
@@ -500,6 +509,9 @@ public class BGMControll : MonoBehaviour
                     }
                 }
             }
+            SE_VolumeControl += FadeOutVolumeUp;
+            AudioMixer.SetFloat("SE_Volume", -60 - SE_VolumeControl);
+
 
         }
 
@@ -512,10 +524,14 @@ public class BGMControll : MonoBehaviour
 
         VolumeControl = DownVolume;
         float VolumeControlBefore1frame = DownVolume;
+        float SE_VolumeOne = 0.0f;
         int CountBefore = 0;
         int CountMax = (int)(FirstBigTime / Time.fixedDeltaTime) + 1;
 
         StartBGM.volume = VolumeControl;
+        SE_VolumeControl = -60.0f;
+        AudioMixer.SetFloat("SE_Volume", SE_VolumeControl);
+        SE_VolumeOne = 60.0f / (FirstBigTime * 10.0f);
 
         foreach (var a1 in CMC)
         {
@@ -542,7 +558,9 @@ public class BGMControll : MonoBehaviour
 
             if (VolumeControl == VolumeControlBefore1frame)
             {
-                VolumeControl += FirstBigTimeOne;// * Time.deltaTime;       
+                VolumeControl += FirstBigTimeOne;// * Time.deltaTime;
+                SE_VolumeControl += SE_VolumeOne;
+                AudioMixer.SetFloat("SE_Volume", SE_VolumeControl);
             }
 
             if ((int)(Count * 10.0f) != CountBefore)

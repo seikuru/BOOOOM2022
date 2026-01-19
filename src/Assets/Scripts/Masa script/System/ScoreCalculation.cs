@@ -13,8 +13,8 @@ public class ScoreCalculation : MonoBehaviour
     [SerializeField] SpriteRenderer BackSprite;
     [SerializeField] MackLine[] mackLines;
     [SerializeField] Animator PlayerAnimator;
-    [SerializeField] GameObject NoizeObject;
-    [SerializeField] GameObject KirakiraObject;
+    [SerializeField] GameObject[] NoizeObjects;
+    [SerializeField] GameObject[] KirakiraObjects;
 
     [Serializable]
     public class MackLine
@@ -76,13 +76,21 @@ public class ScoreCalculation : MonoBehaviour
         {
             PlayerAnimator.SetBool("GameClear", false);
             PlayerAnimator.SetBool("ResultOn", true);
-            NoizeObject.SetActive(true);
+
+            foreach (var noize in NoizeObjects)
+            {
+                noize.SetActive(true);
+            }
         }
         else
         {
             PlayerAnimator.SetBool("GameClear", true);
             PlayerAnimator.SetBool("ResultOn", true);
-            KirakiraObject.SetActive(true);
+
+            foreach (var kirakira in KirakiraObjects)
+            {
+                kirakira.SetActive(true);
+            }
         }
 
             BackSprite.color = new Color()

@@ -73,6 +73,8 @@ public class MusicSymbolObject : MonoBehaviour
         }
 
         BGMControll.OpenTypeSetting(type);
+        SpriteAutoTransform.OpenTypeSetting(type);
+
         openSymbolSource.PlayOneShot(openSymbolSource.clip);
 
         foreach (var Effect in openSymbolEffects)
