@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 2645832095546795640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 60.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,13 +162,13 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 2
+      - m_Value: 0.4
         m_Name: BubbleSize
         m_Overridden: 1
       - m_Value: 2
         m_Name: SparcleSize
         m_Overridden: 1
-      - m_Value: 18
+      - m_Value: 125.6
         m_Name: SpawnSize
         m_Overridden: 1
     m_Vector2f:
@@ -199,7 +199,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2645832095546795640}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

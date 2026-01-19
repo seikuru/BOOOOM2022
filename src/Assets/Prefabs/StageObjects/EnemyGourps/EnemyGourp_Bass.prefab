@@ -148,7 +148,7 @@ Transform:
   - {fileID: 1322208768339363450}
   - {fileID: 5582518164189667698}
   - {fileID: 83008539230219499}
-  - {fileID: 9216529987971521110}
+  - {fileID: 8296924810899870566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -50.515, z: 0}
 --- !u!114 &8287959073377027113
@@ -197,7 +197,7 @@ MonoBehaviour:
   - {fileID: 5470178306022253885}
   openSymbolEffects:
   - {fileID: 3369837917615698037}
-  - {fileID: 4072797569822547023}
+  - {fileID: 0}
   RotateSpeed: 15
   fuwaSpeed: 2
   KurufuwaTransform: {fileID: 7909636066662973860}
@@ -297,7 +297,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &7363545969726939874
+--- !u!1 &7563525587940554893
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,9 +305,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9216529987971521110}
-  - component: {fileID: 4072797569822547023}
-  - component: {fileID: 7346672453357350126}
+  - component: {fileID: 8296924810899870566}
+  - component: {fileID: 4700614208015217997}
+  - component: {fileID: 5322289801312283870}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -315,28 +315,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &9216529987971521110
+--- !u!4 &8296924810899870566
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363545969726939874}
+  m_GameObject: {fileID: 7563525587940554893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 11.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5268000466893035317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &4072797569822547023
+--- !u!2083052967 &4700614208015217997
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363545969726939874}
+  m_GameObject: {fileID: 7563525587940554893}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: ccdca6314c35fc04ea91fa9222696b6f, type: 3}
   m_InitialEventName: OnPlay
@@ -348,21 +348,30 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 2
+      - m_Value: 0.82
         m_Name: BubbleSize
         m_Overridden: 1
-      - m_Value: 2
+      - m_Value: 0.8
         m_Name: SparcleSize
         m_Overridden: 1
-      - m_Value: 18
+      - m_Value: 153
         m_Name: SpawnSize
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: Spread
+        m_Overridden: 1
+      - m_Value: 1.76
+        m_Name: FallSpeed
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.967953, y: 3.880833, z: 3.973391, w: 1}
+        m_Name: SparcleColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -377,14 +386,14 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &7346672453357350126
+--- !u!73398921 &5322289801312283870
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363545969726939874}
+  m_GameObject: {fileID: 7563525587940554893}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0

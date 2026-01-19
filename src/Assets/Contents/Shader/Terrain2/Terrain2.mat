@@ -85,7 +85,7 @@ Material:
     - <noninit>: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientOcclusion: 0
+    - _AmbientOcclusion: 1
     - _AngleOffset: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -103,7 +103,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _IsShowOuter: 0
-    - _LightMax: 7.2
+    - _LightMax: 4.5
     - _MaxHight: 234.5
     - _Metallic: 0
     - _MinHight: 89
@@ -115,7 +115,7 @@ Material:
     - _QueueOffset: 0
     - _Radius: 332
     - _ReceiveShadows: 1
-    - _ShadowPower: 85.43
+    - _ShadowPower: 60.3
     - _ShadowRatio: 0.9
     - _ShadowSmooth: 0.34
     - _Smoothness: 0.5
@@ -125,7 +125,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Step: 1.92
     - _Surface: 0
-    - _Volume: 0.00018309474
+    - _Volume: 0.0012511708
     - _VoroiPower: 0.2
     - _VoronoiScale: 45.26
     - _Width: 0.2
@@ -136,7 +136,7 @@ Material:
     - _HigherColor: {r: 0.71559423, g: 0.8301887, b: 0.6383055, a: 0}
     - _LineColor: {r: 1, g: 1, b: 1, a: 0}
     - _LowerColor: {r: 0.3077608, g: 0.7169812, b: 0.5025204, a: 0}
-    - _ShadowColor: {r: 0.21293166, g: 0.7308769, b: 0.8207547, a: 0}
+    - _ShadowColor: {r: 0.054901958, g: 1, b: 0.7416264, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3223005780660020705
 MonoBehaviour:
