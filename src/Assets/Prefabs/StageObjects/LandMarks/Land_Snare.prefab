@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3403785663563685707}
   - component: {fileID: 5023515122159314276}
   - component: {fileID: 433794157114171248}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7312242685233317040}
   - component: {fileID: 7494356551164820218}
   - component: {fileID: 4278633693238261277}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 5593973573783099332}
   - component: {fileID: 5896374056326671349}
   - component: {fileID: 109926640018248689}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,9 +318,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6264967015887945336}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Land_Snare
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +335,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 350.99, y: 171.12, z: 758.63}
-  m_LocalScale: {x: 1.2917, y: 1.2917, z: 1.2917}
+  m_LocalScale: {x: 1.6456261, y: 1.6456261, z: 1.6456258}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3048352453160977128}
@@ -431,6 +431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LandMarkSnare
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e842a1045a92ed94f94e9d1833b1797d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

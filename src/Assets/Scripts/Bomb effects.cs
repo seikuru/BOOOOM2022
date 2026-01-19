@@ -146,11 +146,11 @@ public class Bombeffects : MonoBehaviour
           
         }
 
-        Rigidbody[] PlayerRigidbodies = new Rigidbody[P.Length];//格納した数だけRigidbodyを宣言
+        Rigidbody[] TargetRigidbodies = new Rigidbody[P.Length];//格納した数だけRigidbodyを宣言
 
         for (int i = 0; i < P.Length; i++)
         {
-            PlayerRigidbodies[i] = P[i].GetComponent<Rigidbody>();
+            TargetRigidbodies[i] = P[i].GetComponent<Rigidbody>();
         }
 
 
@@ -187,10 +187,8 @@ public class Bombeffects : MonoBehaviour
             }
             else if (P[i].tag == "enemy")
             {
-
-                ComboCounter.AddCombo();
-
-                PlayerRigidbodies[i].isKinematic = false;
+                TargetRigidbodies[i].isKinematic = false;
+                /*
                 if (P[i].TryGetComponent<EnemiesAttack>(out EnemiesAttack EA))
                 {
                     EA.willDestoroy = true;
@@ -209,26 +207,24 @@ public class Bombeffects : MonoBehaviour
                 {
                     StartCoroutine(BT.BossStateChange());
                 }
+                */
                 if (P[i].TryGetComponent<Animator>(out Animator enemyAnimator))
                 {
                     enemyAnimator.SetTrigger("OnDamage");
                 }
 
+                // 敵のエフェクト表示
                 EnemyExplode.CreateExplode(this.transform, P[i].transform);
 
-                if (P[i].TryGetComponent<ObstacleExplosion>(out ObstacleExplosion obstacle))
-                {
-                    obstacle.Explosion(BombSenterPos.position, BombStrangeValue);
-                    //BombAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
-                    //PlayerAudioSource.PlayOneShot(AudioScriptable._DestroyObstacleSounds);
-                    continue;
-                }
+                // 非表示
+                P[i].transform.gameObject.SetActive(false);
 
-                //Destroy(P[i], DestroyEnemyTimer);//DestoryEnemyTimer秒後に消滅
+                //スコア加算
+                ScoreManager.instance.AddScoreEnemy();
             }
             else if (P[i].tag == "Attack2")//敵の弾を爆弾で防ぐ際はこれを使用
             {
-                PlayerRigidbodies[i].velocity = PlayerRigidbodies[i].velocity * 0.1f;
+                TargetRigidbodies[i].velocity = TargetRigidbodies[i].velocity * 0.1f;
             }
             else if (P[i].tag == "Player")
             {
@@ -252,11 +248,11 @@ public class Bombeffects : MonoBehaviour
 
                     if (PFSA.IsFall)
                     {
-                        PlayerRigidbodies[i].velocity = new()
+                        TargetRigidbodies[i].velocity = new()
                         { 
-                            x = PlayerRigidbodies[i].velocity.x, 
-                            y = PlayerRigidbodies[i].velocity.y * 0.5f,
-                            z = PlayerRigidbodies[i].velocity.z 
+                            x = TargetRigidbodies[i].velocity.x, 
+                            y = TargetRigidbodies[i].velocity.y * 0.5f,
+                            z = TargetRigidbodies[i].velocity.z 
                         };
                     }
                 }
@@ -266,14 +262,14 @@ public class Bombeffects : MonoBehaviour
                 isHitPlayer = true;
             }
 
-            if (PlayerRigidbodies[i].isKinematic)
+            if (TargetRigidbodies[i].isKinematic)
                 continue;
 
-            Vector3 BeforeVelocity = PlayerRigidbodies[i].velocity;
+            Vector3 BeforeVelocity = TargetRigidbodies[i].velocity;
             Vector3 NewVelocity = (P[i].transform.position - BombSenterPos.position).normalized;
 
             //最後に受けた爆発の影響が出やすくなるように今のVectorに0,7を掛ける
-            PlayerRigidbodies[i].velocity = BeforeVelocity * 0.7f + NewVelocity * BombStrangeValue;     
+            TargetRigidbodies[i].velocity = BeforeVelocity * 0.7f + NewVelocity * BombStrangeValue;     
         }
 
         if (bombCollider != null)

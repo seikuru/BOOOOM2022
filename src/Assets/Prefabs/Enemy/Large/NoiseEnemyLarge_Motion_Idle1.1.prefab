@@ -975,10 +975,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f29ad1871cc7c2c44ae22d32466d0e69,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8139536649333545789}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f29ad1871cc7c2c44ae22d32466d0e69,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7331161596838134500}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f29ad1871cc7c2c44ae22d32466d0e69,
         type: 3}
@@ -1026,23 +1022,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19, y: 0.23921621, z: 0.30326253}
   m_Center: {x: 0, y: 0.117377475, z: -0.00017638505}
---- !u!114 &8139536649333545789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068385133686514557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ecb5dc6dd595e44a4bab4f6757b3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DustPrehab: {fileID: 2951154445695890836, guid: 605f3649aca95b641b3f91feb43c1780,
-    type: 3}
-  DestroyTime: 7
-  DustDivisionSize: 12
-  IsExplosed: 0
 --- !u!54 &7331161596838134500
 Rigidbody:
   m_ObjectHideFlags: 0

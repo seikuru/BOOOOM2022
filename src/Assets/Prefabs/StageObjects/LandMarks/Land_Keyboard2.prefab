@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1681746062473446401}
   - component: {fileID: 51490521297909822}
   - component: {fileID: 1597759887523850415}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7422177315528768250}
   - component: {fileID: 370906287186734421}
   - component: {fileID: 8444212352423440400}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 2273400477145864757}
   - component: {fileID: 8484032054389473342}
   - component: {fileID: 8823357261035625447}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 6806327725022332431}
   - component: {fileID: 278846576974253326}
   - component: {fileID: 439022917369888503}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 5816219697083192653}
   - component: {fileID: 6979429042835131621}
   - component: {fileID: 829072007158691033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,9 +654,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3183657205535841182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Land_Keyboard2
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,7 +671,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6453, y: 1.6453, z: 1.6453}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8813639418667324313}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 9105809824971838838}
   - component: {fileID: 4805978459301910215}
   - component: {fileID: 2063318316736284948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 303085689806561908}
   - component: {fileID: 4323559442088752702}
   - component: {fileID: 7231666454263462830}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,6 +1021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LandMarkKeybord2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9c61e2e4c8230a4f9703d539dbc4996,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -82,9 +82,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - <noninit>: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientOcclusion: 0
+    - _AngleOffset: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -124,22 +126,19 @@ Material:
     - _Step: 1.92
     - _Surface: 0
 
-    - _Volume: 0.00224753
+    - _Volume: 0
+    - _VoroiPower: 0.27
+    - _VoronoiScale: 112.22
 
     - _Width: 0.2
-    - _WorkflowMode: 1
-    - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _AccentColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
     - _CenterPosition: {r: 380, g: 110, b: 790, a: 0}
     - _CenterPositon: {r: 380, g: 110, b: 790, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HigherColor: {r: 0.8254717, g: 1, b: 0.9563679, a: 1}
-    - _LineColor: {r: 3.9533498, g: 3.9533498, b: 3.9533498, a: 0}
-    - _LowerColor: {r: 0.5769224, g: 0.7830189, b: 0.43952474, a: 1}
-    - _ShadowColor: {r: 0, g: 0.27408144, b: 0.4339623, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _HigherColor: {r: 0.6232645, g: 0.8867924, b: 0.81609714, a: 1}
+    - _LineColor: {r: 1, g: 1, b: 1, a: 0}
+    - _LowerColor: {r: 0.42239228, g: 0.7924528, b: 0.59289205, a: 1}
+    - _ShadowColor: {r: 0.21293166, g: 0.7308769, b: 0.8207547, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3223005780660020705
 MonoBehaviour:

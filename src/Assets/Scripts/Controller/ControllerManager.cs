@@ -6,6 +6,7 @@ public class ControllerManager : MonoBehaviour
 {
     [SerializeField] SerialHandler serialHandler;
     [SerializeField] ValueContainer vCon;
+    [SerializeField] private int TouchOffset = 0;
 
     void Start()
     {
@@ -53,7 +54,7 @@ public class ControllerManager : MonoBehaviour
             {
                 recData = message.Substring(inradHead + i * 4, 4);
                 int.TryParse(recData, out t);
-                vCon.in_rad[i] = t;
+                vCon.in_rad[i] = t + TouchOffset;
             }
 
             int outradHead = 19;
@@ -61,7 +62,7 @@ public class ControllerManager : MonoBehaviour
             {
                 recData = message.Substring(outradHead + i * 4, 4);
                 int.TryParse(recData, out t);
-                vCon.out_rad[i] = t;
+                vCon.out_rad[i] = t + TouchOffset;
             }
         }
     }

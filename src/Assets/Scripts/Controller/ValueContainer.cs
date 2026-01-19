@@ -16,6 +16,8 @@ public class ValueContainer : MonoBehaviour
     private int old_center = 0;
     private int list_num = 3;
 
+    
+
     private const float oneseg = 3f;//1.94343f;
 
     private void Start()

@@ -1,16 +1,23 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] BGMControll BGMcontroll;
+
+    [Space, Header("スコア数値")]
+    [SerializeField]
+    int symbolScore = 3000;
+    [SerializeField]
+    int enemyScore = 300;
+    [SerializeField]
+    int coinScore = 50;
+
+    static int Symbol, Enemy, Coin;
 
     static int ScoreValue;
     static int BonusValue;
@@ -25,6 +32,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Symbol = symbolScore;
+        Enemy = enemyScore;
+        Coin = coinScore;
+
         ScoreValue = 0;
         BonusValue = 0;
         TextSet();
@@ -45,23 +56,30 @@ public class ScoreManager : MonoBehaviour
         ScoreText.SetText((ScoreValue + BonusValue).ToString());
     } 
 
-    public void AddScore(int _add)
+    void AddScore(int _add)
     {
         ScoreValue += _add;
         TextSet();
     }
 
-    public void AddScoreDestroy()
+    public void AddScoreSymbol()
     {
-        AddScore(500);
+        AddScore(Symbol);
+    }
+
+    public void AddScoreEnemy()
+    {
+        AddScore(Enemy);
+    }
+
+    public void AddScoreCoin()
+    {
+        AddScore(Coin);
     }
 
     public void AddScoreBonus(int _time)
     {
-        BonusValue += (_time / 10 + 50);
-
-        Debug.Log(BonusValue);
-        TextSet();
+        AddScore(_time / 10 + Coin);
     }
 
     public void AddMusicType(MusicType type)

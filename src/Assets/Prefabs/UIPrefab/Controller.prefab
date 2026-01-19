@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialHandler: {fileID: 3151069351900880812}
   vCon: {fileID: 3975687774985455653}
+  TouchOffset: -50
 --- !u!114 &3975687774985455653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +95,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rot: 0
   button: 0
-  t_rad: 0
+  center: 0
+  esc: 0
+  in_rad: 
+  out_rad: 
 --- !u!1 &8164258124028871075
 GameObject:
   m_ObjectHideFlags: 0

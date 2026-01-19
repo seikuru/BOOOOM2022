@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5179044531585715110}
   - component: {fileID: 7647930649959283831}
   - component: {fileID: 7173219483513821041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,9 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1966741039301463816}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Land_Guita
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6511139252573353696}
   - component: {fileID: 186202905561372502}
   - component: {fileID: 5197587684400679234}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 6326463466997474768}
   - component: {fileID: 8642551602126686286}
   - component: {fileID: 7110537219453495821}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 2079090620432979065}
   - component: {fileID: 2045065437366316510}
   - component: {fileID: 6304804715428027958}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 6062881034380192217}
   - component: {fileID: 8508259246452313988}
   - component: {fileID: 8080174993861476964}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7660112120169664074}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 1163883409144536620}
   - component: {fileID: 2009440153078995984}
   - component: {fileID: 2171045389403377937}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SoundPolygon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 4443556558364625862}
   - component: {fileID: 3519540257254444445}
   - component: {fileID: 2228674841995075477}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,6 +935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LandMarkGuitar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a076d8f3d3e4f148b25bb379f11db00,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

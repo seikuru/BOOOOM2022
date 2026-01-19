@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 7888031075883246250}
   - component: {fileID: 4814950165166364145}
   - component: {fileID: 8156935166988149301}
+  - component: {fileID: 5172806812471030460}
   m_Layer: 0
   m_Name: UIGageInfo
   m_TagString: Untagged
@@ -1240,6 +1241,9 @@ MonoBehaviour:
   CountDownTextUGUI: {fileID: 513760843375316278}
   CountDownTextTransform: {fileID: 1345589626690599336}
   TextTargetScale: 7
+  CountDownStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!320 &8156935166988149301
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1261,6 +1265,23 @@ PlayableDirector:
     value: {fileID: 7475084377859359484}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &5172806812471030460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677056698640079082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d60d853f2e801418a528acd77ddafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreText: {fileID: 4567857319784993631}
+  BGMcontroll: {fileID: 0}
+  symbolScore: 3000
+  enemyScore: 300
+  coinScore: 50
 --- !u!1 &3718306493419231034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2079,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5795783603043925855}
   - component: {fileID: 7475084377859359484}
-  - component: {fileID: 5464572377014520586}
   m_Layer: 5
   m_Name: Gage
   m_TagString: Untagged
@@ -2117,20 +2137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5464572377014520586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5890266977744223397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d60d853f2e801418a528acd77ddafb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScoreText: {fileID: 4567857319784993631}
-  BGMcontroll: {fileID: 0}
 --- !u!1 &7250544419880378078
 GameObject:
   m_ObjectHideFlags: 0
