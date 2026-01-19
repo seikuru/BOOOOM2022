@@ -108,7 +108,7 @@ public class BGMControll : MonoBehaviour
                 if (b2.AudioSource != null)
                 {
                     b2.AudioSource.PlayScheduled(currentStartDspTime);
-                    b2.AudioSource.time = 8;
+                    b2.AudioSource.time = 7.8f;
                     Debug.Log(b2.AudioSource.name);
                 }
             }

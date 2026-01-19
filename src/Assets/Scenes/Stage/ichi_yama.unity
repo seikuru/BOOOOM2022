@@ -22491,6 +22491,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1718470360}
     m_Modifications:
+    - target: {fileID: 724072100568433580, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 955545624999389966, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2996249259619629104, guid: e3131a52833e0f8489922d50247a8cdc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22556,6 +22566,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.8564
       objectReference: {fileID: 0}
+    - target: {fileID: 3687840464710912163, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774996490918076417, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3864626992508111684, guid: e3131a52833e0f8489922d50247a8cdc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22591,6 +22611,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 142.476
       objectReference: {fileID: 0}
+    - target: {fileID: 4533499105542230526, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4669355961584495038, guid: e3131a52833e0f8489922d50247a8cdc,
         type: 3}
       propertyPath: m_Enabled
@@ -22621,10 +22646,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -107.914
       objectReference: {fileID: 0}
+    - target: {fileID: 6043953271713148000, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442730623905062303, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6450337567328180768, guid: e3131a52833e0f8489922d50247a8cdc,
         type: 3}
       propertyPath: m_Name
       value: EnemyGourp_Drum
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937955471733331600, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7550389417865219130, guid: e3131a52833e0f8489922d50247a8cdc,
         type: 3}
@@ -22660,6 +22700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -4.947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894668900475211725, guid: e3131a52833e0f8489922d50247a8cdc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -22802,6 +22847,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGM_unit
       objectReference: {fileID: 0}
+    - target: {fileID: 6606740281084739256, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 60f132c0440965743a868b581deebabd, type: 3}
     - target: {fileID: 8041624603452764633, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
       propertyPath: m_LocalPosition.x
