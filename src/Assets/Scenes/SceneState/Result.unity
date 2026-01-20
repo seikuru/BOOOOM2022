@@ -4409,8 +4409,8 @@ PlayableDirector:
   m_GameObject: {fileID: 735659024}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 5d917e55caba22a49b086ee7e41a2be4, type: 2}
-  m_InitialState: 0
+  m_PlayableAsset: {fileID: 11400000, guid: 9c1e025bbdbfc49448bc3328c73aa06b, type: 2}
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4418,6 +4418,10 @@ PlayableDirector:
   - key: {fileID: -1346107468557567310, guid: 5d917e55caba22a49b086ee7e41a2be4, type: 2}
     value: {fileID: 1211131236}
   - key: {fileID: -998533295880194785, guid: 5d917e55caba22a49b086ee7e41a2be4, type: 2}
+    value: {fileID: 1733804516}
+  - key: {fileID: -1346107468557567310, guid: 9c1e025bbdbfc49448bc3328c73aa06b, type: 2}
+    value: {fileID: 1211131236}
+  - key: {fileID: -998533295880194785, guid: 9c1e025bbdbfc49448bc3328c73aa06b, type: 2}
     value: {fileID: 1733804516}
   m_ExposedReferences:
     m_References: []
@@ -5033,10 +5037,12 @@ MonoBehaviour:
       - m_Target: {fileID: 735659025}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 5d917e55caba22a49b086ee7e41a2be4,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableAsset,
+            UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

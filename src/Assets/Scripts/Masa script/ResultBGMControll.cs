@@ -73,7 +73,7 @@ public class ResultBGMControll : MonoBehaviour
                 ra.RAN[i].PlayScheduled(currentStartDspTime);
                 if (ra.RAN[i].CheckClip())
                 {
-                    ra.RAN[i].audioSource.time = 7.8f;
+                    ra.RAN[i].audioSource.time = 1.0f;
                 }
                 else
                 {

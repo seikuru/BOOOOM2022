@@ -53,8 +53,8 @@ public class ScoreCalculation : MonoBehaviour
 
     void Start()
     {
-        fadeImage.gameObject.SetActive(true);
-        StartCoroutine(FedeColorChenge());
+        //fadeImage.gameObject.SetActive(true);
+        //StartCoroutine(FedeColorChenge());
 
         int bonus = ScoreManager.GetBonus();
         int score = ScoreManager.GetScore();

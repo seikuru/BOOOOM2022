@@ -123,16 +123,20 @@ public class TextureCreate : EditorWindow
                 float distance = Vector2.Distance(new(Senter, Senter), new(x, y));
 
                 Color c = endColor2;
-
+                /*
                 if(distance * 2 <= Senter)
                     c = startColor2;
-                else if(distance <= Senter)
+                else*/
+                if (distance <= Senter)
                 {
-                    float t = Mathf.Clamp01(distance / Senter);
+                    float t = Mathf.Clamp01(1 - distance / Senter);
 
-                    c = Color.Lerp(startColor2,endColor2, t);
+                    c = Color.Lerp(startColor2, endColor2, t);
                 }
-               
+                else
+                    c = startColor2;
+
+
                 texture.SetPixel(x, y, c);
             }
         }

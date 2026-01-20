@@ -4905,7 +4905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 266500008}
-  max_a: 255
+  max_a: 172
   types: 00000000010000000200000003000000
   typeColor:
   - {r: 0.60784316, g: 0.627451, b: 0.90196085, a: 1}
@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56d365a146ca3c649820fad30dcb7820, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00df94de80ec9f74a93fb2086780dc98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7139,17 +7139,17 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6015893
+      value: 0.60158926
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3716051
+      value: 0.37160507
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.60158926
+      value: 0.6015893
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -25918,6 +25918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -10.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823285940092728787, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5268000466893035317, guid: 13abcc6c1f7ee7346b3b3111627abd2e,
         type: 3}
