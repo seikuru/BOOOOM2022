@@ -1024,6 +1024,21 @@ PrefabInstance:
       propertyPath: m_ResetSeedOnPlay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6054670788348952887, guid: 235c431662d1cae4a99dc7b5aa6dba01,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 5.5143795
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054670788348952887, guid: 235c431662d1cae4a99dc7b5aa6dba01,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 5.608867
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054670788348952887, guid: 235c431662d1cae4a99dc7b5aa6dba01,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 25.688938
+      objectReference: {fileID: 0}
     - target: {fileID: 8528150157648956034, guid: 235c431662d1cae4a99dc7b5aa6dba01,
         type: 3}
       propertyPath: m_LocalScale.x

@@ -725,6 +725,21 @@ PrefabInstance:
       propertyPath: m_ResetSeedOnPlay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7267047792659437055, guid: 6052198882de672479c1f0a5c6fbb3a9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 25.688938
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267047792659437055, guid: 6052198882de672479c1f0a5c6fbb3a9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 5.5143795
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267047792659437055, guid: 6052198882de672479c1f0a5c6fbb3a9,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 16.50235
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
