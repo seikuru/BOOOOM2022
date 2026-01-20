@@ -209,14 +209,15 @@ public class Bombeffects : MonoBehaviour
                 {
                     StartCoroutine(BT.BossStateChange());
                 }
-                */
                 if (P[i].TryGetComponent<Animator>(out Animator enemyAnimator))
                 {
                     enemyAnimator.SetTrigger("OnDamage");
                 }
+                */
+
                 if (P[i].TryGetComponent<AudioSource>(out AudioSource audioSource))
                 {
-;                    BombAudioSource.PlayOneShot(AudioScriptable._HitEnemySounds);
+                     BombAudioSource.PlayOneShot(AudioScriptable._HitEnemySounds);
                 }
 
                 BombAudioSource.PlayOneShot(AudioScriptable._ExplodeEnemySounds);

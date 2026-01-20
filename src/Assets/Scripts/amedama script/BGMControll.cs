@@ -105,13 +105,16 @@ public class BGMControll : MonoBehaviour
     { 
         if (PauseCheck)
             return;
-
+        
         foreach (var a1 in CMC)
         {
             foreach (var b2 in a1.ASC)
             {
+                Debug.Log(b2.AudioSource != null);
                 if (b2.AudioSource != null)
                 {
+
+                    
                     b2.AudioSource.Pause();
                 }
             }

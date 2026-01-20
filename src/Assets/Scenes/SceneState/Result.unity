@@ -807,9 +807,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a22aa5af188e9641b6f90ac9726969e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleSceneName: Title
+  TitleSceneName: Title_2
   MainGaneSceneName: MainGame
-  waitTime: 0.3
+  EasyName: ichi_yama
+  HardName: Ame_Hard
+  waitTime: 1
 --- !u!1 &265337458
 GameObject:
   m_ObjectHideFlags: 0
@@ -5005,8 +5007,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 254942577}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: SceneChangeAsync
-        m_Mode: 5
+        m_MethodName: SceneChengeRetry
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

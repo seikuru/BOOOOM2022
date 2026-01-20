@@ -769,6 +769,7 @@ MonoBehaviour:
   valueContainer: {fileID: 1204037601}
   selectButton: {fileID: 1180349755}
   playableDirector: {fileID: 1180349752}
+  controllerInput: {fileID: 0}
   InputCheck: 0
   tapInput: 1
   AngleLimit: 15
@@ -2163,6 +2164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleSceneName: Title
   MainGaneSceneName: ichi_yama
+  EasyName: ichi_yama
+  HardName: Ame_Hard
   waitTime: 0.8
 --- !u!4 &816240675
 Transform:
@@ -2522,6 +2525,7 @@ MonoBehaviour:
   valueContainer: {fileID: 1204037601}
   selectButton: {fileID: 1182554886}
   playableDirector: {fileID: 1182554887}
+  controllerInput: {fileID: 0}
   InputCheck: 1
   tapInput: 1
   AngleLimit: 15
@@ -2578,6 +2582,7 @@ MonoBehaviour:
   valueContainer: {fileID: 1204037601}
   selectButton: {fileID: 651364455}
   playableDirector: {fileID: 651364456}
+  controllerInput: {fileID: 0}
   InputCheck: 0
   tapInput: 1
   AngleLimit: 15
@@ -4823,9 +4828,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u4F7F\u7528\u697D\u66F2\n\r\n\u30E1\u30A4\u30F3\u66F2 : \u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\r\n\u30BF\u30A4\u30C8\u30EB\u66F2
-    : \u30E6\u30EC\u30EB\u30DF\u30CA\u30E2\u30CB\r\n\u4F5C\u7DE8\u66F2\u540D\u7FA9
-    : \u30B7\u30CA\u30B8\u30CA\r\n\r\n\u79C1\u306F\u3001\u305B\u3044\u304F\u308B\u304C\u5B9F\u65BD\u3059\u308B\u5352\u696D\u5236\u4F5C\u306B\u95A2\u3057\u3001\u79C1\u304C\u5236\u4F5C\u3057\u305F\u697D\u66F2\u306A\u3089\u3073\u306B\u52B9\u679C\u97F3\uFF08SE\uFF09\u3092\u5F53\u8A72\u4F5C\u54C1\u5185\u3067\u4F7F\u7528\u3059\u308B\u3053\u3068\u3092\u3001\u3053\u3053\u306B\u8A31\u53EF\u3057\u307E\u3059\u3002\r\n"
+  m_text: "\u5236\u4F5C\u3000\u305B\u3044\u304F\u308B\r\n\u5929\u4E45 \u7409\u7FD4\u3000\u5E02\u539F
+    \u60A0\u99AC\u3000\u4F50\u4F2F \u660C\u4FCA\u3000\u7027 \u6B69\u4F9D\n\nBGM \u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\u3001\u30E6\u30EC\u30EB\u30DF\u30CA\u30E2\u30CB\u3001SE\n\u4F5C\u66F2\u3000\u30B7\u30CA\u30B8\u30CA\r\n\n\u30D5\u30A9\u30F3\u30C8\r\n\u6E90\u30CE\u89D2\u30B4\u30B7\u30C3\u30AFJP\r\nThis
+    game uses the font \u2018\u6E90\u30CE\u89D2\u30B4\u30B7\u30C3\u30AFJP\u2019 licensed
+    under the SIL Open Font License 1.1.\r\n851\u30B4\u30C1\u30AB\u30AF\u30C3\u30C8\u30008:51:22
+    pm\r\n\u30D0\u30CA\u30CA\u30B9\u30EA\u30C3\u30D7\u3000\u30E4\u30DE\u30CA\u30AB\u30C7\u30B6\u30A4\u30F3\u30EF\u30FC\u30AF\u30B9\r\n\n\u30B5\u30A6\u30F3\u30C9\u30A8\u30D5\u30A7\u30AF\u30C8\r\n\u52B9\u679C\u97F3\u30E9\u30DC\r\n\u9B54\u738B\u9B42"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3444a9a5af7394d488a8cda773b53a83, type: 2}
   m_sharedMaterial: {fileID: -5163462792667914659, guid: 3444a9a5af7394d488a8cda773b53a83,
@@ -4848,13 +4855,13 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 97690656
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5068,7 +5075,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ichi_yama
+          m_StringArgument: Ame_Hard
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1273178364}
@@ -6180,7 +6187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5125f15cfb667f945ac47f82e66dd44f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6649b3724b068fe4aa71053266c79871, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

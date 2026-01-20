@@ -5,9 +5,13 @@ using UnityEngine.UIElements;
 
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] string TitleSceneName = "Title";
+    [SerializeField] string TitleSceneName = "Title_2";
     [SerializeField] string MainGaneSceneName = "MainGame";
+    [SerializeField] string EasyName = "ichi_yama";
+    [SerializeField] string HardName = "Ame_Hard";
     [SerializeField] float waitTime = 0.3f;
+
+    static string beforeName;
 
     bool IsChange;//複数回遷移防止
 
@@ -15,6 +19,11 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == HardName)
+            beforeName = HardName;
+        if (SceneManager.GetActiveScene().name == EasyName)
+            beforeName = EasyName;
+
         IsChange = false;
         canActivateScene = false;
         //Time.timeScaleが変更されていた場合元に戻す
@@ -100,6 +109,13 @@ public class SceneChanger : MonoBehaviour
         if (IsChange) return;
 
         AsyncCoroutine = StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    public void SceneChengeRetry()
+    {
+        if (IsChange) return;
+
+        AsyncCoroutine = StartCoroutine(LoadSceneAsync(beforeName));
     }
 
     IEnumerator LoadSceneAsync(string sceneName)
