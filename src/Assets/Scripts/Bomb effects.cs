@@ -42,10 +42,10 @@ public class Bombeffects : MonoBehaviour
     /// 爆弾が与える力の大きさを追加するパラメータの数値を取得
     /// </summary>
     /// <returns>追加するパラメータの数値</returns>
-    float GetBombAddStrange()
-    {
-        return BombExtraParameter.GetAddStrange();      
-    }
+    //float GetBombAddStrange()
+    //{
+    //    return BombExtraParameter.GetAddStrange();      
+    //}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,8 +83,8 @@ public class Bombeffects : MonoBehaviour
     {
         float BombStrangeValue = BombStrange;
 
-        if (GetKillCount)
-            BombStrangeValue += GetBombAddStrange();
+        //if (GetKillCount)
+        //    BombStrangeValue += GetBombAddStrange();
 
             
            
