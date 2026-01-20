@@ -1,18 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class ResultSetting : MonoBehaviour
 {
     [SerializeField] Image fede;
-
+    [SerializeField] PlayableDirector roading;
     [SerializeField] UnityEvent unityEvent;
-
+    [SerializeField] bool CheckPlayable = true;
     public void FedeOut()
     {
-        StartCoroutine(FedeColorChenge());
+        if (CheckPlayable)
+        {
+            roading.Play();
+            StartCoroutine(FedePlayable());
+        }        
+        else
+            StartCoroutine(FedeColorChenge());
+    }
+
+    IEnumerator FedePlayable()
+    {
+        yield return null;
+
+        yield return new WaitWhile(() => roading.state == PlayState.Playing);
+
+        unityEvent.Invoke();
+
+        // ChangeColor‚ªI‚í‚Á‚½Œã‚Ìˆ—‚ğ‚±‚±‚É‘‚­
+        Debug.Log(" FedePlayableŠ®—¹");
+
+        yield break;
     }
 
     IEnumerator FedeColorChenge()

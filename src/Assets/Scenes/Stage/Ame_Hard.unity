@@ -5413,17 +5413,17 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.48741817
+      value: 0.4874182
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.31808418
+      value: 0.3180842
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1964831
+      value: -0.19648308
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -22161,7 +22161,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1731628643}
+      - m_Target: {fileID: 1731628646}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -25442,15 +25442,15 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!1 &1731628643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1966446066968566821, guid: fc11f49d2d635864288fd6ce6cbd9362,
-    type: 3}
-  m_PrefabInstance: {fileID: 2379971592696025378}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1731628644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6980856428367676688, guid: fc11f49d2d635864288fd6ce6cbd9362,
+    type: 3}
+  m_PrefabInstance: {fileID: 2379971592696025378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &1731628646 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 8132885093726579683, guid: fc11f49d2d635864288fd6ce6cbd9362,
     type: 3}
   m_PrefabInstance: {fileID: 2379971592696025378}
   m_PrefabAsset: {fileID: 0}
