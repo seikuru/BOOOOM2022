@@ -293,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Composer:\u30B7\u30CA\u30B8\u30CA\n"
+  m_text: "by \u30B7\u30CA\u30B8\u30CA\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3444a9a5af7394d488a8cda773b53a83, type: 2}
   m_sharedMaterial: {fileID: -5163462792667914659, guid: 3444a9a5af7394d488a8cda773b53a83,
@@ -1007,6 +1007,7 @@ MonoBehaviour:
   Height: 32
   UseRangeWidthMin: 205
   UseRangeWidthMax: 255
+  UseSegmentIndex: 5
   SpectrumColor32:
     serializedVersion: 2
     rgba: 2145306853
@@ -1650,6 +1651,7 @@ MonoBehaviour:
   Height: 32
   UseRangeWidthMin: 52
   UseRangeWidthMax: 102
+  UseSegmentIndex: 5
   SpectrumColor32:
     serializedVersion: 2
     rgba: 2145557660
@@ -1917,6 +1919,7 @@ MonoBehaviour:
   Height: 32
   UseRangeWidthMin: 1
   UseRangeWidthMax: 51
+  UseSegmentIndex: 5
   SpectrumColor32:
     serializedVersion: 2
     rgba: 2141113834
@@ -2584,7 +2587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MusicTitle:\u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\n"
+  m_text: "\u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3444a9a5af7394d488a8cda773b53a83, type: 2}
   m_sharedMaterial: {fileID: -5163462792667914659, guid: 3444a9a5af7394d488a8cda773b53a83,
@@ -2934,6 +2937,7 @@ MonoBehaviour:
   Height: 32
   UseRangeWidthMin: 154
   UseRangeWidthMax: 204
+  UseSegmentIndex: 5
   SpectrumColor32:
     serializedVersion: 2
     rgba: 2137761370

@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -40,12 +38,14 @@ public class CoinDeleter : MonoBehaviour
         {
             count += Time.deltaTime;
 
-            float clamp = Mathf.Clamp01(count / ScaleMinusTime);
+            float clamp = Mathf.Clamp01(1 - count / ScaleMinusTime);
 
             coinTransform.localScale = local * clamp;
 
             yield return null;
         }
+
+        coinTransform.localScale = Vector3.zero;
     }
     /*
     private void OnTriggerEnter(Collider other)
