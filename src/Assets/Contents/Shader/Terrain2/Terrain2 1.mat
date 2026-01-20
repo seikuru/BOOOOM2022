@@ -85,7 +85,7 @@ Material:
     - <noninit>: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientOcclusion: 1
+    - _AmbientOcclusion: 0.27
     - _AngleOffset: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -103,7 +103,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _IsShowOuter: 0
-    - _LightMax: 27
+    - _LightMax: 30.2
     - _MaxHight: 400
     - _Metallic: 0
     - _MinHight: 0
@@ -115,7 +115,7 @@ Material:
     - _QueueOffset: 0
     - _Radius: 639.3
     - _ReceiveShadows: 1
-    - _ShadowPower: 89
+    - _ShadowPower: 96.8
     - _ShadowRatio: 0.9
     - _ShadowSmooth: 0.34
     - _Smoothness: 0.5
@@ -125,18 +125,18 @@ Material:
     - _SrcBlendAlpha: 1
     - _Step: 1.92
     - _Surface: 0
-    - _Volume: 0.008138546
-    - _VoroiPower: 0.212
-    - _VoronoiScale: 45.26
+    - _Volume: 0.000000954051
+    - _VoroiPower: 0.13
+    - _VoronoiScale: 92.3
     - _Width: 0.2
     m_Colors:
-    - _AccentColor: {r: 0, g: 0, b: 0, a: 0}
+    - _AccentColor: {r: 0.03125, g: 0.030718412, b: 0, a: 0.14117648}
     - _CenterPosition: {r: 500, g: 110, b: 500, a: 0}
     - _CenterPositon: {r: 505.4, g: 110, b: 542.3, a: 0}
-    - _HigherColor: {r: 1, g: 1, b: 1, a: 0}
-    - _LineColor: {r: 1, g: 1, b: 1, a: 0}
-    - _LowerColor: {r: 0.7509433, g: 0.7509433, b: 0.7509433, a: 0}
-    - _ShadowColor: {r: 0.6062574, g: 0.62352943, b: 0.4509804, a: 0}
+    - _HigherColor: {r: 2.2058027, g: 2.2058027, b: 0.9884493, a: 0}
+    - _LineColor: {r: 2.828427, g: 2.828427, b: 2.828427, a: 0}
+    - _LowerColor: {r: 0.65136266, g: 0.6452192, b: 0.6298554, a: 0}
+    - _ShadowColor: {r: 0.3773585, g: 0.37237865, b: 0.17977929, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3223005780660020705
 MonoBehaviour:

@@ -241,7 +241,7 @@ VisualEffect:
       - m_Value: 0.8
         m_Name: BubbleSize
         m_Overridden: 1
-      - m_Value: 0.69
+      - m_Value: 0.5
         m_Name: SparcleSize
         m_Overridden: 1
       - m_Value: 141.6
@@ -281,7 +281,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4558017734275614742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
