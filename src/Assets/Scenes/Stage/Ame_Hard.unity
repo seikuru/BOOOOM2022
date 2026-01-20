@@ -5413,17 +5413,17 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.48741817
+      value: 0.4874182
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.31808418
+      value: 0.3180842
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1964831
+      value: -0.19648308
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -15464,12 +15464,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 854844434}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &865342368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2387559806210328247, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &868362224
 GameObject:
   m_ObjectHideFlags: 0
@@ -18584,9 +18578,9 @@ GameObject:
   - component: {fileID: 1214138905}
   - component: {fileID: 1214138904}
   - component: {fileID: 1214138903}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain_(-1000.00, 0.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21085,9 +21079,9 @@ GameObject:
   - component: {fileID: 1443848722}
   - component: {fileID: 1443848721}
   - component: {fileID: 1443848720}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain_(0.00, 0.00, -1000.00)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21658,12 +21652,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1457433991}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1457433993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1068385133686514557, guid: df377306a2c331e478762537c724544d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1457433991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457658277
 GameObject:
   m_ObjectHideFlags: 0
@@ -22048,64 +22036,6 @@ MonoBehaviour:
   - Flags:
     - {fileID: 125871625}
     NextSpawnObjects:
-    - {fileID: 1718470359}
-    - {fileID: 542625659}
-    BreakObjects:
-    - {fileID: 1475386061}
-    MaterialCenter: {fileID: 0}
-    PlayerDontMove: 0
-    ChangeCamera: 0
-  - Flags:
-    - {fileID: 0}
-    NextSpawnObjects:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    BreakObjects:
-    - {fileID: 0}
-    MaterialCenter: {fileID: 0}
-    PlayerDontMove: 0
-    ChangeCamera: 0
-  - Flags:
-    - {fileID: 0}
-    NextSpawnObjects:
-    - {fileID: 0}
-    BreakObjects:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    MaterialCenter: {fileID: 0}
-    PlayerDontMove: 0
-    ChangeCamera: 0
-  - Flags:
-    - {fileID: 0}
-    NextSpawnObjects:
-    - {fileID: 1778214953}
-    BreakObjects: []
-    MaterialCenter: {fileID: 0}
-    PlayerDontMove: 1
-    ChangeCamera: 0
-  - Flags:
-    - {fileID: 865342368}
-    - {fileID: 1457433993}
-    - {fileID: 1627936934}
-    - {fileID: 2038361588}
-    NextSpawnObjects:
-    - {fileID: 0}
-    - {fileID: 0}
-    BreakObjects:
-    - {fileID: 1778214953}
-    - {fileID: 0}
-    MaterialCenter: {fileID: 0}
-    PlayerDontMove: 0
-    ChangeCamera: 0
-  - Flags:
-    - {fileID: 0}
-    NextSpawnObjects:
-    - {fileID: 2087840540}
     - {fileID: 1718470359}
     - {fileID: 542625659}
     BreakObjects:
@@ -23730,12 +23660,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 592429989473995789, guid: c72eb7a8ff03d6e489799f3b97df8f6c,
     type: 3}
   m_PrefabInstance: {fileID: 1510119293}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1627936934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 404172405808613718, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629547948
 PrefabInstance:
@@ -25653,9 +25577,9 @@ GameObject:
   - component: {fileID: 1751349527}
   - component: {fileID: 1751349526}
   - component: {fileID: 1751349525}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain_(1000.00, 0.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -26479,12 +26403,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775839528}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1778214953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3192701077046919739, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1781060346
 GameObject:
   m_ObjectHideFlags: 0
@@ -28852,12 +28770,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &2038361588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1359207195517863395, guid: beceeb868ebe2f34da9c093482a80bf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8350177848199319561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2045311760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29220,9 +29132,9 @@ GameObject:
   - component: {fileID: 2072778659}
   - component: {fileID: 2072778658}
   - component: {fileID: 2072778657}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Terrain_(0.00, 0.00, 1000.00)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

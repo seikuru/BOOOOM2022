@@ -183,6 +183,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] UnityEvent DisableEvent;
     private void OnDisable()
     {
+        ThroughBomb.TutrialCheck = false;
         DisableEvent.Invoke();
     }
 }
