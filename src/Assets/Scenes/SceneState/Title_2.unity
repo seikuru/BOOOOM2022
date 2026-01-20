@@ -4587,7 +4587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: 81}
   m_SizeDelta: {x: 1500, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659943585
@@ -4610,11 +4610,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5236\u4F5C\u3000\u305B\u3044\u304F\u308B\r\n\u5929\u4E45 \u7409\u7FD4\u3000\u5E02\u539F
-    \u60A0\u99AC\u3000\u4F50\u4F2F \u660C\u4FCA\u3000\u7027 \u6B69\u4F9D\n\nBGM \u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\u3001\u30E6\u30EC\u30EB\u30DF\u30CA\u30E2\u30CB\u3001SE\n\u4F5C\u66F2\u3000\u30B7\u30CA\u30B8\u30CA\r\n\n\u30D5\u30A9\u30F3\u30C8\r\n\u6E90\u30CE\u89D2\u30B4\u30B7\u30C3\u30AFJP\r\nThis
+  m_text: "\u5236\u4F5C\u3000\u305B\u3044\u304F\u308B\r\n\u3000\u5929\u4E45 \u7409\u7FD4\u3000\u5E02\u539F
+    \u60A0\u99AC\u3000\u4F50\u4F2F \u660C\u4FCA\u3000\u7027 \u6B69\u4F9D\n\nBGM(\u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD\u3001\u30E6\u30EC\u30EB\u30DF\u30CA\u30E2\u30CB)\u3001SE\n\u3000\u4F5C\u66F2\u3000\u30B7\u30CA\u30B8\u30CA\r\n\n\u30B5\u30A6\u30F3\u30C9\u30A8\u30D5\u30A7\u30AF\u30C8\r\n\u3000\u52B9\u679C\u97F3\u30E9\u30DC\r\n\u3000\u9B54\u738B\u9B42\n\n\u30D5\u30A9\u30F3\u30C8\r\n\u3000\u6E90\u30CE\u89D2\u30B4\u30B7\u30C3\u30AFJP\r\n\u3000\u3000This
     game uses the font \u2018\u6E90\u30CE\u89D2\u30B4\u30B7\u30C3\u30AFJP\u2019 licensed
-    under the SIL Open Font License 1.1.\r\n851\u30B4\u30C1\u30AB\u30AF\u30C3\u30C8\u30008:51:22
-    pm\r\n\u30D0\u30CA\u30CA\u30B9\u30EA\u30C3\u30D7\u3000\u30E4\u30DE\u30CA\u30AB\u30C7\u30B6\u30A4\u30F3\u30EF\u30FC\u30AF\u30B9\r\n\n\u30B5\u30A6\u30F3\u30C9\u30A8\u30D5\u30A7\u30AF\u30C8\r\n\u52B9\u679C\u97F3\u30E9\u30DC\r\n\u9B54\u738B\u9B42"
+    under the SIL Open Font License 1.1.\r\n\u3000851\u30B4\u30C1\u30AB\u30AF\u30C3\u30C8\u3000\n\u3000\u30008:51:22
+    pm\r\n\u3000\u30D0\u30CA\u30CA\u30B9\u30EA\u30C3\u30D7\u3000\n\u3000\u3000Copyright
+    (C) 2020 \u30E4\u30DE\u30CA\u30AB\u30C7\u30B6\u30A4\u30F3\u30EF\u30FC\u30AF\u30B9\n\r\n\u97F3\u7B26\u753B\u50CF\r\n\u3000Copyright(c)2016-2026
+    \u7121\u6599\u306E\u30B7\u30EB\u30A8\u30C3\u30C8\u30A4\u30E9\u30B9\u30C8 \u30A2\u30A4\u30B3\u30F3\u7D20\u6750
+    ALL RIGHTS RESERVED.\n\nFantasy Skybox FREE 1.6.0\r\n\u3000Skybox textures from
+    \u201CFantasy Skybox FREE\u201D by Render Knight, available on Unity Asset Store.
+    \n\nHarazemiLibrary\n\u3000MIT License\r\n\u3000Copyright (c) 2025 hara0123\r\r\n\u3000Permission
+    is hereby granted, free of charge, to any person obtaining a copy of this software
+    and associated documentation files (the \"Software\"), to deal in the Software
+    without restriction, including without limitation the rights to use, copy, modify,
+    merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software,
+    and to permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:\r\n\u3000The above copyright notice and this permission
+    notice shall be included in all copies or substantial portions of the Software.\r\n\r\u3000THE
+    SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3444a9a5af7394d488a8cda773b53a83, type: 2}
   m_sharedMaterial: {fileID: -5163462792667914659, guid: 3444a9a5af7394d488a8cda773b53a83,
@@ -4642,8 +4660,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4678,7 +4696,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -55.527466}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
