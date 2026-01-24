@@ -7,7 +7,6 @@ public class ButtonInvoke : MonoBehaviour
 {
     [SerializeField] Button button;
     
-
     // Update is called once per frame
     void Update()
     {
@@ -15,6 +14,10 @@ public class ButtonInvoke : MonoBehaviour
             button.onClick.Invoke();
     }
 
+
+   
+    /// 　以下テスト用コード(音源再生テストで使用)
+    /*
     [Header("同期再生する AudioSource 群")]
     [SerializeField]
     private List<AudioSource> audioSources = new List<AudioSource>();
@@ -74,4 +77,5 @@ public class ButtonInvoke : MonoBehaviour
             src.volume = 1f;
         }
     }
+    */
 }
