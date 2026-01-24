@@ -45,7 +45,7 @@ VisualEffect:
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 7104464763104517611}
   - component: {fileID: 1066588395531623786}
   - component: {fileID: 5067167621653919192}
+  - component: {fileID: -2240922392109693862}
   m_Layer: 6
   m_Name: Bomb_PC
   m_TagString: Bomb
@@ -212,15 +213,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InfluencedMask:
     serializedVersion: 2
-    m_Bits: 9160
+    m_Bits: 140232
   DestroyEnemyTimer: 3
   BombStrange: 30
   BombRadius: 20
+  OffScreenAddRadius: 0
   bombCollider: {fileID: 6530253593774039959}
-  VEffect: {fileID: 0}
+  VEffect: {fileID: 5578185777037969535}
   BombOuter: {fileID: 352715542732010125}
   BombRB: {fileID: 7104464763104517611}
+  BombSenterPos: {fileID: 3268544491426306342}
   GetKillCount: 0
+  BombRenderer: {fileID: 8361155585019146498}
+  BombAudioSource: {fileID: -2240922392109693862}
+  AudioScriptable: {fileID: 11400000, guid: cb59d31d270f36949bba23e8321577c8, type: 2}
+  impulseSource: {fileID: 0}
 --- !u!114 &5067167621653919192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +242,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throughTime: 0.2
   BombCollider: {fileID: 6530253593774039959}
+--- !u!82 &-2240922392109693862
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672593736015811124}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8389106368048437426
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,10 +380,10 @@ VisualEffect:
   m_GameObject: {fileID: 8389106368048437426}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: bd23fd706a8872341883d67c1f967ad4, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
-  m_ResetSeedOnPlay: 1
+  m_ResetSeedOnPlay: 0
   m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
@@ -289,6 +392,9 @@ VisualEffect:
       - m_Value: 20
         m_Name: Radius
         m_Overridden: 1
+      - m_Value: 5
+        m_Name: Distortion Max
+        m_Overridden: 0
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -304,7 +410,39 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 1024, g: 407.1347, b: 0, a: 0}
+          key1: {r: 47.93726, g: 19.063084, b: 0.005958941, a: 1}
+          key2: {r: 21.361254, g: 21.361254, b: 21.361254, a: 1}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 17540
+          ctime2: 65535
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 11758
+          atime2: 25636
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 4
+        m_Name: Strip Gradient
+        m_Overridden: 0
     m_NamedObject:
       m_Array: []
     m_Bool:

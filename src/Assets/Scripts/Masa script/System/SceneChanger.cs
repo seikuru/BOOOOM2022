@@ -1,21 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] string TitleSceneName = "Title";
+    [SerializeField] string TitleSceneName = "Title_2";
     [SerializeField] string MainGaneSceneName = "MainGame";
+    [SerializeField] string EasyName = "ichi_yama";
+    [SerializeField] string HardName = "Ame_Hard";
     [SerializeField] float waitTime = 0.3f;
+
+    static string beforeName;
 
     bool IsChange;//複数回遷移防止
 
+    Coroutine AsyncCoroutine;
+
     private void Start()
     {
-        IsChange = false;
+        if (SceneManager.GetActiveScene().name == HardName)
+            beforeName = HardName;
+        if (SceneManager.GetActiveScene().name == EasyName)
+            beforeName = EasyName;
 
+        IsChange = false;
+        canActivateScene = false;
         //Time.timeScaleが変更されていた場合元に戻す
-        if (SceneManager.GetActiveScene().name == TitleSceneName)
+        //if (SceneManager.GetActiveScene().name == TitleSceneName)
             Time.timeScale = 1.0f;
     }
 
@@ -90,5 +102,106 @@ public class SceneChanger : MonoBehaviour
             SceneManager.LoadSceneAsync(MainGaneSceneName);
         else
             StartCoroutine(WaitForSecondCoroutine(waitTime, MainGaneSceneName));
+    }
+
+    public void SceneChangeAsync(string sceneName)
+    {
+        if (IsChange) return;
+
+        AsyncCoroutine = StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    public void SceneChengeRetry()
+    {
+        if (IsChange) return;
+
+        AsyncCoroutine = StartCoroutine(LoadSceneAsync(beforeName));
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        IsChange = true;
+        // 非同期ロード開始
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+
+        // 90% で止める（Unity仕様）
+        async.allowSceneActivation = false;
+
+        while (!async.isDone)
+        {
+            /*
+            // progress は 0 ～ 0.9 までしか来ない
+            float progress = Mathf.Clamp01(async.progress / 0.9f);
+
+            if (progressBar != null)
+                progressBar.value = progress;
+            */
+
+            // 90% 到達＝ロード完了
+            if (async.progress >= 0.9f)
+            {
+                IsChange = false;
+
+                // ここで演出を入れられる
+                // フェード完了待ち、一定時間待つ等
+                yield return new WaitForSeconds(waitTime);
+
+                async.allowSceneActivation = true;
+            }
+
+            yield return null; // フリーズ防止（最重要）
+        }
+    }
+
+    bool canActivateScene = false;
+    
+    public void OnPressContinue()
+    {
+        canActivateScene = true;
+    }
+
+
+    public void SceneChangeAsyncActivate(string sceneName)
+    {
+        if (IsChange) return;
+
+        AsyncCoroutine = StartCoroutine(LoadSceneAsyncActivate(sceneName));
+    }
+
+    IEnumerator LoadSceneAsyncActivate(string sceneName)
+    {
+        IsChange = true;
+        // 非同期ロード開始
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+
+        // 90% で止める（Unity仕様）
+        async.allowSceneActivation = false;
+
+        while (!async.isDone)
+        {
+            /*
+            // progress は 0 ～ 0.9 までしか来ない
+            float progress = Mathf.Clamp01(async.progress / 0.9f);
+
+            if (progressBar != null)
+                progressBar.value = progress;
+            */
+
+            Debug.Log(async.progress);
+
+            // 90% 到達＝ロード完了
+            if (async.progress >= 0.9f)
+            {
+                IsChange = false;
+
+                // ここで演出を入れられる
+                // フェード完了待ち、外からの入力を待つ
+                yield return new WaitUntil(() => canActivateScene);
+
+                async.allowSceneActivation = true;
+            }
+
+            yield return null; // フリーズ防止（最重要）
+        }
     }
 }

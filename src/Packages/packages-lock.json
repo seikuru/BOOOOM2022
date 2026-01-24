@@ -1,11 +1,14 @@
 {
   "dependencies": {
-    "com.cysharp.unitask": {
-      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.coffee.ui-particle": {
+      "version": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#4.11.4",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
-      "hash": "ec9204d381eb406a8f6e68fd67429a96ca6c5322"
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "hash": "04c1ca72cde82318e11eb1281dc4c3d314a2e68c"
     },
     "com.unity.burst": {
       "version": "1.8.12",

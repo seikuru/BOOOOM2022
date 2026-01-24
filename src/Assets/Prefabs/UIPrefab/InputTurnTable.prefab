@@ -161,6 +161,8 @@ GameObject:
   - component: {fileID: 9221303649064141504}
   - component: {fileID: 892774487872043940}
   - component: {fileID: 6517762818485769081}
+  - component: {fileID: 4527940356656477173}
+  - component: {fileID: 5111915784715442840}
   m_Layer: 5
   m_Name: InputTurnTable
   m_TagString: Untagged
@@ -210,7 +212,7 @@ MonoBehaviour:
   InSideRange: 400
   SenterRange: 100
   MapingClampMin: 0
-  MapingClampMax: 2
+  MapingClampMax: 1
   SenterTapFlag: 1
   FollowPointTransform: {fileID: 0}
 --- !u!114 &6517762818485769081
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145243405148272137}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68b0dc742a229d24e80ef2b4cc765de7, type: 3}
   m_Name: 
@@ -233,9 +235,51 @@ MonoBehaviour:
   InSideRange: 400
   SenterRange: 100
   MapingClampMin: 0
-  MapingClampMax: 2
+  MapingClampMax: 1
   SenterTapFlag: 1
   FollowPointTransform: {fileID: 0}
+--- !u!114 &4527940356656477173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145243405148272137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737855bce04d6ac4bab8e862a101817f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombClass: {fileID: 0}
+  rotateAction: {fileID: 0}
+  OutSideTableRect: {fileID: 8880686438128464987}
+  InSideTableRect: {fileID: 6141265550163291532}
+  OutSideRange: 512
+  InSideRange: 400
+  SenterRange: 100
+  MapingClampMin: 0
+  MapingClampMax: 1
+  SenterTapFlag: 1
+  FollowPointTransform: {fileID: 0}
+  TraceDistance: 80
+--- !u!114 &5111915784715442840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145243405148272137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff565883d189034eaa26ea142fea70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombClass: {fileID: 0}
+  rotateAction: {fileID: 0}
+  FollowPointTransform: {fileID: 0}
+  ThrowPowerInside: 0.2
+  ThrowPowerOutside: 1
+  valueContainer: {fileID: 0}
 --- !u!1 &7054559093413011264
 GameObject:
   m_ObjectHideFlags: 0

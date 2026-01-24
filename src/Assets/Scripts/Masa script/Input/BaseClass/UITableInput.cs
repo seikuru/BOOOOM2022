@@ -20,7 +20,7 @@ public class UITableInput : OperationsInput
 
     [SerializeField] float MapingClampMin = 0f; // 投擲力マッピングの最小値
 
-    [SerializeField] float MapingClampMax = 2f; // 投擲力マッピングの最大値
+    [SerializeField] float MapingClampMax = 1f; // 投擲力マッピングの最大値
 
     [SerializeField] bool SenterTapFlag = true; // 中心タップでの下方向投擲有効フラグ
 
@@ -91,7 +91,7 @@ public class UITableInput : OperationsInput
     /// <param name="max1">元の範囲の最大値</param>
     /// <param name="min2">新しい範囲の最小値</param>
     /// <param name="max2">新しい範囲の最大値</param>
-    /// <returns>マッピング後の値</returns>
+    /// <returns>マッピング後(2のほう)の値</returns>
     float MapingClamp(float value, float min1, float max1, float min2, float max2)
     {
         return (value - min1) * (max2 - min2) / (max1 - min1) + min2;
@@ -107,23 +107,39 @@ public class UITableInput : OperationsInput
         return TableDistansePow(input, OutSideTableRect.position) < TableRectRangePow(OutSideRange);
     }
 
+    /// <summary>
+    /// 入力位置が内側テーブルの有効範囲内かを判定
+    /// </summary>
+    /// <param name="input">入力位置</param>
+    /// <returns>範囲内の場合true</returns>
+    protected bool IsInInnerTableRect(Vector3 input)
+    {
+        return TableDistansePow(input, InSideTableRect.position) < TableRectRangePow(InSideRange);
+    }
+
     // <summary>
     /// UIテーブルの初期回転を設定
     /// プレイヤーの現在の回転に合わせてテーブルを初期化
     /// </summary>
     void StartUIRotate()
     {
+        Transform parent = FollowPointTransform.parent;
+
         // プレイヤーのY軸角度を取得
-        float yAngle = FollowPointTransform.localEulerAngles.y; 
+        float yAngle = parent.localEulerAngles.y;
+
+        //parent.rotation = Quaternion.identity;
 
         // 負の角度を正の角度に変換
         if (yAngle < 0)
             yAngle += 360f;
 
         // テーブルのZ軸回転を設定（画面上での回転表現）
-        OutSideTableRect.eulerAngles = new(0, 0, yAngle);
+        //OutSideTableRect.eulerAngles = new(0, 0, yAngle + 90);
 
-        MouseUpangle = yAngle; // 基準角度として保存
+        MouseUpangle = -yAngle; // 基準角度として保存
+
+        RotateAngle_Y(yAngle);
     }
 
     /// <summary>
@@ -164,13 +180,14 @@ public class UITableInput : OperationsInput
     /// 距離で力を決定し、方向で投擲方向を決定
     /// </summary>
     /// <param name="TouchDownPos">タッチ位置</param>
-    protected void ShotTable(Vector3 TouchDownPos)
+    /// <param name="overTouch">内側から外れても投擲するか</param>
+    protected void ShotTable(Vector3 TouchDownPos, bool overTouch = false)
     {
         // 入力位置と中心位置の距離の2乗
         float distansPow = TableDistansePow(TouchDownPos, InSideTableRect.position);
 
         // 範囲外除外
-        if (distansPow > TableRectRangePow(InSideRange))
+        if (!overTouch && distansPow > TableRectRangePow(InSideRange))
             return;
 
         // 入力位置と中心位置の距離
@@ -202,12 +219,12 @@ public class UITableInput : OperationsInput
 
         // プレイヤーのY軸方向を考慮した回転（ローカル → ワールド）
         Vector3 worldDirection = FollowPointTransform.rotation * localDirection;
+        
+        // powerRange がの大きさによってY軸方向の影響を変化させる
+        // Y軸方向が、小さくなる程、worldDirection を水平に近づける
+        // worldDirection.y *= powerRange;
 
-        // powerRange が小さいほど Y軸方向の影響を減らす
-        // Y軸方向とは、プレイヤーの上下方向の影響を抑えるために、worldDirection を水平に近づける
-        worldDirection.y *= powerRange;
-
-        // 正規化して力の方向を保持
+        // 正規化して力の方向を調整して補正
         worldDirection = worldDirection.normalized;
 
         // 投擲

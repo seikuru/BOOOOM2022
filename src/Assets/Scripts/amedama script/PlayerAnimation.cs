@@ -15,9 +15,10 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         // ã‰º‚Ì“®‚«
         var VecY = playerRigidbody.velocity.y;
-        if(Mathf.Abs(VecY) < 0.1f) VecY = 0;
+        if (Mathf.Abs(VecY) < 0.1f) VecY = 0;
         PlayerAnimator.SetFloat("VectorY", VecY);
 
         // …•½•ûŒü‚ÌˆÚ“®—Ê
@@ -53,9 +54,13 @@ public class PlayerAnimation : MonoBehaviour
         PlayerAnimator.SetTrigger("OnThrow");
     }
 
+    public void ThrowUnder()
+    {
+        PlayerAnimator.SetTrigger("ThrowUnder");
+    }
+
     public void BombHit()
     {
-        Debug.Log("Bomb Hit");
         PlayerAnimator.SetTrigger("BombHit");
     }
 }

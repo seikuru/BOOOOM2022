@@ -26,14 +26,14 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _DISABLE_SSR_TRANSPARENT
   - _PROJECTIONTYPE_TRIPLANAR_UV_PROJECTION
   m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
   - _PROJECTIONTYPE_UV_PROJECTION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:

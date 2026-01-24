@@ -1,62 +1,69 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ComboCounter : MonoBehaviour
 {
-    /// コンボカウンターを管理するシングルトンクラス
+    /// コンボカウンターを管理するstaticクラス
     /// ヒット数をカウントし、UI表示とスコア加算を行う
 
-    [SerializeField] CountDownTimer countDownTimer;// スコア加算処理を行うタイマー
+    // [SerializeField] CountDownTimer countDownTimer;// スコア加算処理を行うタイマー
 
-    [SerializeField] Text text;// コンボ数を表示するUIテキスト
+    [SerializeField] TextMeshProUGUI TMPro;// コンボ数を表示するUIテキスト
 
-    [SerializeField] string gobi_text = "Hit!";// コンボ表示時の接尾辞テキスト
+    [SerializeField] RectTransform GaugeRectTF; 
 
-    int comboCount; // 現在のコンボ数
+    [SerializeField] static string gobi_text = "Hit!";// コンボ表示時の接尾辞テキスト
 
-    // シングルトン用のインスタンス
-    [HideInInspector]
-    static ComboCounter Instance;
+    [SerializeField] static float TimeLimit = 10f; // コンボが終了するまでの時間
 
-    // 外部からインスタンスを取得するプロパティ
-    [HideInInspector]
-    public static ComboCounter GetCounter => Instance;
+    static TextMeshProUGUI staticText;
+    static RectTransform RectTF;
+    static int comboCount; // 現在のコンボ数
+    static float TimeCounter = 0;
 
-    private void Awake()
-    {
-        // シングルトンパターンの初期化
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject); // 複数生成を防止
-            return;
-        }
+    static Vector3 RectPos;
+    static float sizeDelta_x;
 
-        Instance = this;
-    }
 
     void Start()
     {
         // 初期化処理
+        staticText = TMPro;
+        RectTF = GaugeRectTF;
+
+        // 初期数値を取得
+        RectPos = RectTF.position;
+        sizeDelta_x = RectTF.sizeDelta.x;
+
         ResetCombo();
         comboCount = 0; // コンボ数を初期化
         ComboView(); // 初期表示を更新
+
+        ComboGaugeView(0f);
+
+        TimeCounter = 0;
     }
 
     /// <summary>
     /// コンボ数を1増加させる
     /// スコア加算とUI更新も同時に行う
     /// </summary>
-    public void AddCombo()
+    public static void AddCombo()
     {
         comboCount++;
-        AddScore();
+        TimeCounter = TimeLimit;
+
+        ComboGaugeView(1f);
+
+        //AddScore();
         ComboView();
     }
 
     /// <summary>
     /// コンボ数をリセットする
     /// </summary>
-    public void ResetCombo() 
+    public static void ResetCombo() 
     {
         comboCount = 0; // コンボ数を初期化
         ComboView(); // 初期表示を更新
@@ -67,25 +74,59 @@ public class ComboCounter : MonoBehaviour
     /// </summary>
     void AddScore()
     {
-        countDownTimer?.AddCountWithCombo(comboCount);
+        //countDownTimer?.AddCountWithCombo(comboCount);
     }
 
     /// <summary>
     /// コンボ数のUI表示を更新
     /// コンボ数が0の場合は空文字、それ以外は数値+接尾辞を表示
     /// </summary>
-    void ComboView()
+    static void ComboView()
     {
         //Debug.Log(comboCount);
 
         // UI要素の存在確認
-        if (text == null)
+        if (staticText == null)
             return;
 
         // コンボ数に応じた表示切り替え
         if (comboCount == 0)
-            text.text = string.Empty;  // 0の場合は非表示
+            staticText.SetText(string.Empty);  // 0の場合は非表示
         else
-            text.text = comboCount.ToString() + gobi_text; // 数値+接尾辞で表示
+            staticText.SetText(comboCount.ToString() + gobi_text); // 数値+接尾辞で表示
+    }
+
+    static void ComboGaugeView(float Value_01)
+    {
+        if (RectTF == null)
+            return;
+
+        RectTF.position = new Vector3()
+        {
+            x = (RectPos.x - sizeDelta_x / 2) + (sizeDelta_x / 2) * Value_01,
+            y = RectPos.y,
+            z = RectPos.z,
+        };
+
+        RectTF.sizeDelta = new Vector2()
+        {
+            x = sizeDelta_x * Value_01,
+            y = RectTF.sizeDelta.y,
+        };
+    }
+
+    private void FixedUpdate()
+    {
+        if (TimeCounter <= 0)
+            return;
+
+        TimeCounter -= Time.fixedDeltaTime;
+
+        ComboGaugeView(Mathf.Clamp01(TimeCounter / TimeLimit));
+
+        if (TimeCounter <= 0)
+        {
+            ResetCombo();
+        }
     }
 }

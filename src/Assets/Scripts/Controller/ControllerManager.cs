@@ -6,6 +6,7 @@ public class ControllerManager : MonoBehaviour
 {
     [SerializeField] SerialHandler serialHandler;
     [SerializeField] ValueContainer vCon;
+    [SerializeField] private int TouchOffset = 0;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class ControllerManager : MonoBehaviour
     void OnDataRecieved(string message)
     {
         if (message == null) return;
-        if (message.Length >= 10 && message[0] == 'S' && message[9] == 'E') // "S rot(3) button(1) rad(4) E" -> 11 
+        if (message.Length >= 31 && message[0] == 'S'/* && message[14] == 'E'*/) // "S rot(3) bomb(1) center(1) esc(1) INdeg1(4) INdeg2(4) INdeg3(4) OUTdeg1(4) OUTdeg2(4) OUTdeg(4) E \n" -> 32
         {
             // Debug.Log(message);
             string recData;
@@ -32,15 +33,37 @@ public class ControllerManager : MonoBehaviour
             int.TryParse(recData, out t);
             vCon.rot += t;
 
-            // button
+            // bomb
             recData = message.Substring(4, 1);
             int.TryParse(recData, out t);
             vCon.button = t;
 
-            // rad
-            recData = message.Substring(5, 4);
+            // center
+            recData = message.Substring(5, 1);
             int.TryParse(recData, out t);
-            vCon.t_rad = t;
+            vCon.center = t;
+
+            // esc
+            recData = message.Substring(6, 1);
+            int.TryParse(recData, out t);
+            vCon.esc = t;
+
+            // in rad
+            int inradHead = 7;
+            for(int i = 0; i < 3; i++)
+            {
+                recData = message.Substring(inradHead + i * 4, 4);
+                int.TryParse(recData, out t);
+                vCon.in_rad[i] = t + TouchOffset;
+            }
+
+            int outradHead = 19;
+            for(int i = 0; i < 3; i++)
+            {
+                recData = message.Substring(outradHead + i * 4, 4);
+                int.TryParse(recData, out t);
+                vCon.out_rad[i] = t + TouchOffset;
+            }
         }
     }
 }

@@ -89,13 +89,15 @@ public class bomb_auto : MonoBehaviour
     public void DestroyBombs()
     {
         float waitTime = 0f;
+        int BombNumber = 0;
 
         foreach (Bombeffects bombs in BombsQueue)
         {
             if (bombs == null)
                 continue;
+            BombNumber++;
 
-            StartCoroutine(DestroyBombsRoutine(waitTime, bombs));
+            StartCoroutine(DestroyBombsRoutine(waitTime, bombs,BombNumber));
 
             waitTime += Time.fixedDeltaTime;
         }
@@ -103,14 +105,14 @@ public class bomb_auto : MonoBehaviour
         BombsQueue.Clear();
     }
 
-    private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs)
+    private IEnumerator DestroyBombsRoutine(float WaitTime, Bombeffects bombs, int BombNumber)
     {
         // FixedUpdate のタイミングまで待機
         yield return new WaitForSeconds(WaitTime);
 
         if (bombs != null)
         {
-            bombs.Bakuhatu();
+            bombs.Bakuhatu(BombNumber);
         }
     }
 

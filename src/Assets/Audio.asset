@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454dcf2c8248258488b5cde5d803909c, type: 3}
   m_Name: Audio
   m_EditorClassIdentifier: 
-  ExplodeSounds: {fileID: 8300000, guid: d055c7758e8264b46bd85cfb535fee77, type: 3}
-  BombHitSounds: {fileID: 8300000, guid: d055c7758e8264b46bd85cfb535fee77, type: 3}
-  DestroyObstacleSounds: {fileID: 8300000, guid: d055c7758e8264b46bd85cfb535fee77,
+  ExplodeEnemySounds: {fileID: 8300000, guid: 52e1bef3a3d0b584ebc7325b46e78091, type: 3}
+  CoinHitSounds: {fileID: 8300000, guid: 1dc6493e465070841a2c8a340cbee543, type: 3}
+  DestroyObstacleSounds: {fileID: 8300000, guid: e01d5770838573341beb41020d4f143a,
     type: 3}
+  HitEnemySounds: {fileID: 8300000, guid: f6a8dcf5da10574458605b0951aa591d, type: 3}
+  HitCoinSounds: {fileID: 8300000, guid: 2da7aee5a1496c14e91813ddf6926b5b, type: 3}

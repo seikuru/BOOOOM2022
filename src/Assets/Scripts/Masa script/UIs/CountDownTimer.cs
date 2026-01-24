@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
@@ -10,24 +12,35 @@ public class CountDownTimer : MonoBehaviour
 
     [SerializeField] int Subtractcount = 2; // 毎フレーム減算される値
 
-    [SerializeField] int StartCount = 6000; // 開始時のカウント値
+    [SerializeField] protected int StartCount = 18000; // 開始時のカウント値
 
     [SerializeField] int BaseComboValue = 150; // コンボ時の基本加算値
 
     [SerializeField] int AddComboValue = 50; // コンボ数に応じた追加加算値
 
-    [SerializeField] bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
+    [SerializeField] protected bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
+
+    [SerializeField] UnityEvent TimeUpEvent;
+
+    [SerializeField] bool StartCountFlag = true;
 
     bool CountFlag; // カウントダウン実行フラグ
-    int seconds; // 現在の秒数（内部カウンター）
+    protected int seconds; // 現在の秒数（内部カウンター）
 
-    static readonly int MaxCountSecond = 100; // 秒の最大値（時間計算用）
-    static readonly int MaxCountMinutes = 60; // 分の最大値（時間計算用）
+    public static int BonusTimeValue = 0;
+
+    protected static readonly int MaxCountSecond = 100; // 秒の最大値（時間計算用）
+    protected static readonly int MaxCountMinutes = 60; // 分の最大値（時間計算用）
 
     /// <summary>
     /// カウントダウンを停止
     /// </summary>
     public void CountStop() => CountFlag = false;
+
+    /// <summary>
+    /// カウントダウンを開始
+    /// </summary>
+    public void CountStart() => CountFlag = true;
 
     /// <summary>
     /// 現在の秒数を取得
@@ -58,8 +71,9 @@ public class CountDownTimer : MonoBehaviour
     void Start()
     {
         // 初期化処理
-        CountFlag = true; // カウントダウン開始
+        CountFlag = StartCountFlag; // カウントダウン開始
         seconds = StartCount;// 初期値を設定
+        BonusTimeValue = 0;
     }
 
     // Update is called once per frame
@@ -69,30 +83,44 @@ public class CountDownTimer : MonoBehaviour
         if (CountFlag)
         {
             seconds -= Subtractcount;// 設定値分減算
+
+            BonusTimeValue = Mathf.Max(0, seconds / MaxCountSecond);
+
+            if (seconds <= 0)
+            {
+                TimeUpEvent.Invoke();
+                CountFlag = false;
+            }   
         }
+               
         // UI表示更新
-        if (text != null)
-        {
-            UpdateText();
-        }
+        UpdateText();
     }
 
     /// <summary>
     /// テキスト表示の更新処理
     /// NoCoronTextフラグに応じて時分秒形式か数値のみかを切り替え
     /// </summary>
-    void UpdateText()
+    protected virtual void UpdateText()
     {
+        if (text == null)
+            return;
+
         // コロン区切り表示（時:分:秒形式）
         if (!NoCoronText)
         {
             // 時間計算（負数対応のため絶対値を使用）
             string h = Mathf.Abs(seconds / (MaxCountSecond * MaxCountMinutes)).ToString(); // 時間部分
             string m = Mathf.Abs(seconds % (MaxCountSecond * MaxCountMinutes) / MaxCountSecond).ToString(); // 分部分
-            string s = Mathf.Abs(seconds % MaxCountSecond).ToString(); // 秒部分
+            // string s = Mathf.Abs(seconds % MaxCountSecond).ToString(); // 秒部分
+
+            if(m.Length == 1)
+            {
+                m = "0" + m;
+            }
 
             // 負数の場合はマイナス記号を付加して表示
-            text.text = (seconds < 0 ? "-" : "") + h + ":" + m + ":" + s;
+            text.text = (seconds < 0 ? "-" : "") + h + ":" + m;// + ":" + s;
         }
         else
         {

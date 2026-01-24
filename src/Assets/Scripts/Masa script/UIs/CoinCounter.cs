@@ -16,7 +16,7 @@ public class CoinCounter : MonoBehaviour
 
     private void Start()
     {
-        Count++;
+        //Count++;
         Text = CoinText;
         TextLegacy = CoinTextLegacy;
 

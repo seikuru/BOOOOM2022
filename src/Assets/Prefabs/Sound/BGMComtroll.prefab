@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3177657527459857574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5236127886805686173}
+  - component: {fileID: 4979724953189209863}
+  - component: {fileID: 2567546668970421515}
+  m_Layer: 0
+  m_Name: BGMComtroll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5236127886805686173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177657527459857574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4979724953189209863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177657527459857574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd873f596e220a40ac48368a6169437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartBGM: {fileID: 0}
+  COC:
+  - COCMusicType: 1
+    CollectObject:
+    - {fileID: 0}
+  - COCMusicType: 0
+    CollectObject:
+    - {fileID: 0}
+  - COCMusicType: 2
+    CollectObject:
+    - {fileID: 0}
+  - COCMusicType: 3
+    CollectObject:
+    - {fileID: 0}
+    - {fileID: 0}
+  CMC:
+  - CMCMusicType: 1
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 1
+    - AudioSource: {fileID: 0}
+      entryType: 1
+    useIndex: 1
+  - CMCMusicType: 0
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    useIndex: 1
+  - CMCMusicType: 2
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    useIndex: 1
+  - CMCMusicType: 3
+    ASC:
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    - AudioSource: {fileID: 0}
+      entryType: 0
+    useIndex: 2
+  DebugText: {fileID: 0}
+  BounsTimeEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BounsTimeSetiing, Assembly-CSharp
+        m_MethodName: CoinSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  GageManager: {fileID: 0}
+  scoreManager: {fileID: 0}
+  symbolEmission: {fileID: 0}
+  AudioMixer: {fileID: 24100000, guid: 6731d4b6da72cd44b85a507afbd21f72, type: 2}
+  Count: 0
+  BPM: 140
+  FadeInTime: 1
+  FirstBigTime: 3
+  FirstBigSeparate: 4
+  DownVolume: 0.2
+--- !u!114 &2567546668970421515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177657527459857574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5556164c140e4191dc981de871e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sources:
+  - musicType: 0
+    audioSources:
+    - {fileID: 0}
+  - musicType: 1
+    audioSources:
+    - {fileID: 0}
+    - {fileID: 0}
+  - musicType: 2
+    audioSources:
+    - {fileID: 0}
+  - musicType: 3
+    audioSources:
+    - {fileID: 0}
+  fft_res: 256

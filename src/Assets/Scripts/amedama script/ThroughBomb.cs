@@ -6,6 +6,11 @@ public class ThroughBomb : MonoBehaviour
 
     [SerializeField] float throughTime = 0.2f;
     [SerializeField] Collider BombCollider;
+    [SerializeField] bool isUnder = false;
+
+    [HideInInspector]
+    public static bool TutrialCheck = true;
+
 
     WaitForSeconds _throughTime;//コライダーが機能するまでの時間
 
@@ -13,6 +18,10 @@ public class ThroughBomb : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!TutrialCheck || isUnder)
+            return;
+
+        BombCollider.enabled = false;
         _throughTime = new WaitForSeconds(throughTime);
 
         if (BombCollider != null)
