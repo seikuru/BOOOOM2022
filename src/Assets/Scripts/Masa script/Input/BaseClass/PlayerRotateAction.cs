@@ -97,13 +97,13 @@ public class PlayerRotateAction : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         // 回転補間キューを初期化
         slapesQueue = new Queue<QuaternionSlape>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // キューに補間データが残っている場合
         if (slapesQueue.Count > 0)

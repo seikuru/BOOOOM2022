@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using TMPro;
 using UnityEngine;
 
 public class ControllerTableInput : OperationsInput
@@ -34,7 +30,7 @@ public class ControllerTableInput : OperationsInput
     /// <param name="min2">新しい範囲の最小値</param>
     /// <param name="max2">新しい範囲の最大値</param>
     /// <returns>マッピング後の値</returns>
-    float MappingClamp(float value, float min1, float max1, float min2, float max2)
+    private float MappingClamp(float value, float min1, float max1, float min2, float max2)
     {
         float mapping = (value - min1) * (max2 - min2) / (max1 - min1) + min2;
 
@@ -57,7 +53,7 @@ public class ControllerTableInput : OperationsInput
     /// UIテーブルの初期回転を設定
     /// プレイヤーの現在の回転に合わせてテーブルを初期化
     /// </summary>
-    void StartUIRotate()
+   private void StartUIRotate()
     {
 
         Transform parent = FollowPointTransform.parent;

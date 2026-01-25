@@ -1,11 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CountDownSeekBar : CountDownTimer
 {
+    /// カウントダウンタイマーに連動したシークバー、演出表示クラス
+    /// 一定秒数以下になるとカウント演出を表示する
+
     [SerializeField] TextMeshProUGUI TMProUGUI; // タイマー表示用のUIテキスト(TMPro)
 
     [SerializeField] int OutputCountDownSecond = 1000;
@@ -14,6 +16,7 @@ public class CountDownSeekBar : CountDownTimer
     [SerializeField] float TextTargetScale = 7f;
     [SerializeField] UnityEvent CountDownStart;
 
+    // 現在時間を0から1に正規化（シークバー用）
     public float GetCurrentTimeClamp() =>Mathf.Clamp01((float)seconds / (float)StartCount);
 
     /// <summary>
@@ -47,27 +50,32 @@ public class CountDownSeekBar : CountDownTimer
             }
         }
 
+        // カウントダウン演出用テキスト処理
         if (CountDownTextUGUI != null && OutputCountDownSecond >= seconds)
         {
-            if(OutputCountDownSecond == seconds)
+            // 初回到達時にイベント発火
+            if (OutputCountDownSecond == seconds)
                 CountDownStart.Invoke();
 
+            // 秒切り替わり時のみ表示更新
             if (seconds % MaxCountSecond == 0 && seconds / MaxCountSecond > 0)
             {
-                //Debug.Log(seconds);
-                // 負数の場合はマイナス記号を付加して表示
                 CountDownTextUGUI.SetText((seconds / MaxCountSecond).ToString());
                 StartCoroutine(CountDownTextMove());
             }
         }
     }
 
+    /// <summary>
+    /// カウントダウン数字の拡大、フェードアウト演出
+    /// </summary>
     private IEnumerator CountDownTextMove()
     {
         Color TextVertex = CountDownTextUGUI.color;
         
         var _time = 0.0f;
-        
+
+        // 拡大演出
         while (_time < 0.1f)
         {
             var scaleRate = Mathf.Min(_time / 0.1f, 1.0f);
@@ -80,6 +88,7 @@ public class CountDownSeekBar : CountDownTimer
         _time = 0;
         var color = CountDownTextUGUI.color;
 
+        // フェードアウト演出
         while (_time < 0.7f)
         {
             var alphaRate = Mathf.Min(_time / 0.7f, 1.0f);
@@ -90,6 +99,7 @@ public class CountDownSeekBar : CountDownTimer
             _time += Time.fixedDeltaTime;
         }
 
+        // 状態リセット
         CountDownTextTransform.localScale = Vector3.zero;
         CountDownTextUGUI.color = TextVertex;
     }

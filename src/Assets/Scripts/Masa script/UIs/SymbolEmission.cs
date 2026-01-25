@@ -4,13 +4,18 @@ using UnityEngine.UI;
 
 public class SymbolEmission : MonoBehaviour
 {
+    /// シンボル開放時にエミッションとして画面を光らせる処理
+    
     [SerializeField] Image image;
     [SerializeField] float max_a = 40;
     [SerializeField] MusicType[] types;
     [SerializeField] Color[] typeColor;
     [SerializeField] float FadeinTime = 0.6f;
 
-    // Update is called once per frame
+   /// <summary>
+   /// MusicTypeから色に変換して非同期処理を実行する
+   /// </summary>
+   /// <param name="type">MusicType</param>
     public void SetEmission(MusicType type)
     {
         int i = 0;
@@ -26,7 +31,12 @@ public class SymbolEmission : MonoBehaviour
         StartCoroutine(PlayEmission(typeColor[i]));
     }
 
-    IEnumerator PlayEmission(Color color)
+    /// <summary>
+    /// 画面を光らせる処理
+    /// </summary>
+    /// <param name="color">光らせる色</param>
+    /// <returns>光らせて元に戻す</returns>
+    private IEnumerator PlayEmission(Color color)
     {
         Color c = color;
         image.color = typeColor[0];
