@@ -11,33 +11,33 @@ public class ButtonInvoke : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Tab))
             button.onClick.Invoke();
     }
 
-    [Header("“¯ŠúÄ¶‚·‚é AudioSource ŒQ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ AudioSource ï¿½Q")]
     [SerializeField]
     private List<AudioSource> audioSources = new List<AudioSource>();
 
-    [Header("Ä¶ŠJn‚Ü‚Å‚Ì—\–ñŠÔi•bj")]
+    [Header("ï¿½Äï¿½ï¿½Jï¿½nï¿½Ü‚Å‚Ì—\ï¿½ñŠÔiï¿½bï¿½j")]
     [SerializeField]
     private double scheduleOffset = 0.1;
 
-    // Œ»İ‚ÌÄ¶ŠJnDSPŠÔ
+    // ï¿½ï¿½ï¿½İ‚ÌÄï¿½ï¿½Jï¿½nDSPï¿½ï¿½ï¿½ï¿½
     private double currentStartDspTime;
 
     /// <summary>
-    /// Button ‚È‚Ç‚©‚çŒÄ‚Ô“¯ŠúÄ¶
+    /// Button ï¿½È‚Ç‚ï¿½ï¿½ï¿½Ä‚Ô“ï¿½ï¿½ï¿½ï¿½Äï¿½
     /// </summary>
     public void PlayAllScheduled()
     {
-        // ‚·‚Å‚ÉÄ¶’†‚È‚ç~‚ß‚éiİŒvŸ‘æ‚Åíœ‰Âj
+        // ï¿½ï¿½ï¿½Å‚ÉÄï¿½ï¿½ï¿½ï¿½È‚ï¿½~ï¿½ß‚ï¿½iï¿½İŒvï¿½ï¿½ï¿½ï¿½Åíœï¿½Âj
         StopAllScheduled();
 
-        // –¢—ˆ‚Ì DSP ŠÔ‚ğæ“¾
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DSP ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½æ“¾
         currentStartDspTime = AudioSettings.dspTime + scheduleOffset;
 
-        // ‘S AudioSource ‚ğ“¯ˆê DSP ŠÔ‚ÅÄ¶—\–ñ
+        // ï¿½S AudioSource ï¿½ğ“¯ˆï¿½ DSP ï¿½ï¿½ï¿½Ô‚ÅÄï¿½ï¿½\ï¿½ï¿½
         foreach (var src in audioSources)
         {
             if (src == null || src.clip == null)
@@ -48,7 +48,7 @@ public class ButtonInvoke : MonoBehaviour
     }
 
     /// <summary>
-    /// ‘S’â~i‘¦j
+    /// ï¿½Sï¿½ï¿½~ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½j
     /// </summary>
     public void StopAllScheduled()
     {
