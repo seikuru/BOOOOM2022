@@ -85,7 +85,7 @@ Material:
     - <noninit>: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientOcclusion: 1
+    - _AmbientOcclusion: 0.07
     - _AngleOffset: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -98,15 +98,19 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Emission: 0.04
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Hight: 16.59
+    - _HightEffection: 0
     - _IsShowOuter: 0
-    - _LightMax: 4.5
-    - _MaxHight: 234.5
+    - _LightMax: 1
+    - _LineWidth: 0.1
+    - _MaxHight: 212.8
     - _Metallic: 0
-    - _MinHight: 89
+    - _MinHight: 0
     - _OcclusionStrength: 1
     - _PO: 0.43
     - _Parallax: 0.005
@@ -115,9 +119,12 @@ Material:
     - _QueueOffset: 0
     - _Radius: 332
     - _ReceiveShadows: 1
-    - _ShadowPower: 60.3
+    - _Reflect: 0
+    - _ShadowEffection: 0.4
+    - _ShadowPower: 1311.2
     - _ShadowRatio: 0.9
     - _ShadowSmooth: 0.34
+    - _Smooth: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -131,12 +138,14 @@ Material:
     - _Width: 0.2
     m_Colors:
     - _AccentColor: {r: 0.8773585, g: 0.8308714, b: 0.2855554, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CenterPosition: {r: 380, g: 110, b: 790, a: 0}
     - _CenterPositon: {r: 380, g: 110, b: 790, a: 0}
-    - _HigherColor: {r: 0.71559423, g: 0.8301887, b: 0.6383055, a: 0}
+    - _HigherColor: {r: 0.7725116, g: 0.9528302, b: 0.7236116, a: 1}
+    - _HightColor: {r: 0.90588236, g: 0.0248268, b: 0, a: 1}
     - _LineColor: {r: 1, g: 1, b: 1, a: 0}
-    - _LowerColor: {r: 0.3077608, g: 0.7169812, b: 0.5025204, a: 0}
-    - _ShadowColor: {r: 0.054901958, g: 1, b: 0.7416264, a: 1}
+    - _LowerColor: {r: 0.33922213, g: 0.7264151, b: 0.3612575, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3223005780660020705
 MonoBehaviour:
