@@ -52,7 +52,7 @@ public class UITableInput : OperationsInput
     /// </summary>
     /// <param name="range">範囲の値</param>
     /// <returns>範囲の二乗値</returns>
-    float TableRectRangePow(float range)
+    private float TableRectRangePow(float range)
     {
         return range * range;
     }
@@ -75,7 +75,7 @@ public class UITableInput : OperationsInput
     /// <param name="vector_Senter">中心点</param>
     /// <param name="vector_Touch">タッチ点</param>
     /// <returns>距離の二乗値</returns>
-    float TableDistansePow(Vector3 vector_Senter, Vector3 vector_Touch)
+    private float TableDistansePow(Vector3 vector_Senter, Vector3 vector_Touch)
     {
         Vector2 Direction2D = GetDirection2D(vector_Senter, vector_Touch);
 
@@ -92,7 +92,7 @@ public class UITableInput : OperationsInput
     /// <param name="min2">新しい範囲の最小値</param>
     /// <param name="max2">新しい範囲の最大値</param>
     /// <returns>マッピング後(2のほう)の値</returns>
-    float MapingClamp(float value, float min1, float max1, float min2, float max2)
+    private float MapingClamp(float value, float min1, float max1, float min2, float max2)
     {
         return (value - min1) * (max2 - min2) / (max1 - min1) + min2;
     }
@@ -121,7 +121,7 @@ public class UITableInput : OperationsInput
     /// UIテーブルの初期回転を設定
     /// プレイヤーの現在の回転に合わせてテーブルを初期化
     /// </summary>
-    void StartUIRotate()
+    private void StartUIRotate()
     {
         Transform parent = FollowPointTransform.parent;
 

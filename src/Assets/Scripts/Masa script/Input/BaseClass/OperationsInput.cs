@@ -51,10 +51,15 @@ public class OperationsInput : MonoBehaviour
         // 向いている方向に回転を合わせて投擲（direction方向に向ける）
         Quaternion lookDirection = Quaternion.LookRotation(direction, Vector3.up); // 方向からクォータニオンを生成
 
-        rotateAction.RecordingModelRotate(lookDirection); // プレイヤーモデルを段階的に回転
+        // プレイヤーモデルを段階的に回転
+        rotateAction.RecordingModelRotate(lookDirection);
 
-        BombClass.InstantiateBomb(percentage, direction, lookDirection); // 爆弾を生成・投擲
+        // 爆弾を生成・投擲
+        BombClass.InstantiateBomb(percentage, direction, lookDirection); 
     }
 
+    /// <summary>
+    /// 爆弾を爆破
+    /// </summary>
     protected void BombsDestroy() => BombClass.DestroyBombs();
 }

@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class SpriteAutoTransform : MonoBehaviour
 {
+    /// スペクトラム表示用スプライトを動的に生成・更新するクラス
+    /// Texture2Dを動的変更して棒グラフスペクトラムを描画
+
     [SerializeField] private Image image;
     [SerializeField] private int Width = 256;
     [SerializeField] private int Height = 32;
@@ -16,17 +17,30 @@ public class SpriteAutoTransform : MonoBehaviour
     [SerializeField] float Interval = 0.2f;
     [SerializeField] AudioCulcurator audioCulcurator;
 
-    [SerializeField] GageSpectrum[] gageSpectrums;
+    [SerializeField] GageSpectrum[] gageSpectrums;// 各ゲージへのスペクトラム連動
 
+    // 描画用テクスチャ
     private Texture2D texture;
+
+    // UI表示用スプライト
     private Sprite sprite;
 
     // 前回の高さ
     private int[] BeforeIndex;
+
     // ピクセルバッファ
     Color32[] Colorbuffer;
 
+    // 更新タイマー
     float time = 0;
+
+    // MusicType解放通知キュー
+    static Queue<MusicType> openTypes;
+
+    /// <summary>
+    /// 外部からMusicType解放を通知
+    /// </summary>
+    public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
 
     void Awake()
     {
@@ -63,8 +77,10 @@ public class SpriteAutoTransform : MonoBehaviour
             1f // Pixels Per Unit（UIでは1でOK）
         );
 
+        // Imageに反映
         image.sprite = sprite;
 
+        // MusicType解放通知用キュー初期化
         openTypes = new();
     }
 
@@ -73,12 +89,13 @@ public class SpriteAutoTransform : MonoBehaviour
     /// </summary>
     public void TextureUpdate(float[] Values)
     {
-        // 初期化（透明）
+        // 各X列ごとにスペクトラム高さを計算
         for (int x = 0; x < Width; x++)
         {
             int index = Mathf.Clamp((int)(Values[x] * Height * x), 0, Height - 1);
             int before = BeforeIndex[x];
 
+            // 前回と同じ高さなら更新なし
             if (before == index)    
                 continue;         
                 
@@ -100,9 +117,11 @@ public class SpriteAutoTransform : MonoBehaviour
                 }   
             }
 
+            // 今回の高さを保存
             BeforeIndex[x] = index;
         }
-  
+
+        // ピクセル反映
         texture.SetPixels32(Colorbuffer);
         texture.Apply(false);
     }
@@ -138,36 +157,36 @@ public class SpriteAutoTransform : MonoBehaviour
         texture.SetPixels32(Colorbuffer);
         texture.Apply(false);
     }
-
-    static Queue<MusicType> openTypes;
-
-    public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
-
+    
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+
+        // 一定間隔でスペクトラム更新
         if (time > Interval)
         {
             time = 0;
-            //TextureUpdate3();
-
             float[] values = new float[Width];
 
             if (audioCulcurator != null)
                 audioCulcurator.GetSpectrum(ref values);
+            // ないならランダムな値
             else
                 for (int x = 0; x < Width; x++)
                     values[x] = UnityEngine.Random.Range(0, 1f);
 
+            // スペクトラム描画更新
             TextureUpdate(values);
 
+            // 各ゲージへ値を反映
             foreach (var gage in gageSpectrums)
             {
                 gage.TextureUpdateRange(values);
             }
         }
 
+        // MusicType解放イベント処理
         while (openTypes != null && openTypes.Count != 0)
         {
             var type = openTypes.Dequeue();
@@ -176,6 +195,9 @@ public class SpriteAutoTransform : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 指定MusicTypeに対応するスペクトラムを解放
+    /// </summary>
     void OpenSpectrums(MusicType type)
     {
         foreach (var gage in gageSpectrums)

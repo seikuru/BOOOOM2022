@@ -3,42 +3,58 @@ using UnityEngine.UI;
 
 public class GageSpectrum : MonoBehaviour
 {
+    /// 特定MusicType用のスペクトラムゲージ表示クラス
+    /// 指定した周波数帯域のみを抽出して表示
+    /// 
     [SerializeField] private Image image;
+
+    // 元スペクトラムの想定サイズ
     [SerializeField] private int Width = 256;
     [SerializeField] private int Height = 32;
 
+    // 使用する周波数帯域の範囲
     [SerializeField] private int UseRangeWidthMin = 1;
     [SerializeField] private int UseRangeWidthMax = 51;
 
-    [SerializeField] private int UseSegmentIndex = 5;
+    [SerializeField] private int UseSegmentIndex = 5;// 何分割で平均化するか
 
     [SerializeField] Color32 SpectrumColor32 = Color.blue;
     [SerializeField] Color32 EmptyColor32 = Color.clear;
 
-    [SerializeField] MusicType musicType;
-
-    public void OpenSpectrumCheck(MusicType type)
-    {
-        if(musicType == type)
-            isOpen = true;
-    }
+    [SerializeField] MusicType musicType; // このゲージが対応するMusicType
 
     private bool isOpen;
 
+    // 描画用テクスチャ
     private Texture2D texture;
+
+    // UI表示用スプライト
     private Sprite sprite;
 
+    // 実際に使用する横幅（平均化後）
     private int UseRange = 10;
    
     // 前回の高さ
     private int[] BeforeIndex;
+
     // ピクセルバッファ
     Color32[] Colorbuffer;
 
-    void Awake()
+    /// <summary>
+    /// 指定されたMusicTypeが一致した場合、スペクトラム表示を解放する
+    /// </summary>
+    public void OpenSpectrumCheck(MusicType type)
     {
+        if (musicType == type)
+            isOpen = true;
+    }
+
+    private void Awake()
+    {
+        // 初期状態では非表示
         isOpen = false;
 
+        // 使用帯域幅を平均化後の解像度に変換
         UseRange = (UseRangeWidthMax - UseRangeWidthMin) / UseSegmentIndex;
 
         // Texture 作成
@@ -52,7 +68,10 @@ public class GageSpectrum : MonoBehaviour
         texture.filterMode = FilterMode.Point; // にじみ防止
         texture.wrapMode = TextureWrapMode.Clamp;
 
+        // ピクセルバッファ確保
         Colorbuffer = new Color32[UseRange * Height];
+
+        // 各列の前回描画高さを保持
         BeforeIndex = new int[UseRange];
 
         // BeforeIndex 初期化
@@ -77,20 +96,26 @@ public class GageSpectrum : MonoBehaviour
         image.sprite = sprite;
     }
 
-
+    /// <summary>
+    /// 指定した範囲のスペクトラム値を平均化して描画更新
+    /// </summary>
     public void TextureUpdateRange(float[] Values)
     {
+        // 未解放状態では更新しない
         if (!isOpen)
             return;
 
         int value = 0,count = 0, index = 0;
 
+        // 指定された周波数帯域のみを使用
         for (int x = UseRangeWidthMin; x < UseRangeWidthMax; x++)
         {
+            // スペクトラム値を高さに変換して加算
             value += Mathf.Clamp((int)(Values[x] * Height * x), 0, Height - 1);
            
             count++;
 
+            // セグメント単位で平均化
             if (count < UseSegmentIndex)
             {
                 continue;
@@ -118,6 +143,7 @@ public class GageSpectrum : MonoBehaviour
                 }
             }
 
+            // 今回の高さを保存
             BeforeIndex[index] = value;
 
             index++;

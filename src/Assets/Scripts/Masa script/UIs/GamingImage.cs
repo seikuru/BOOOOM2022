@@ -3,8 +3,11 @@ using UnityEngine.UI;
 
 public class GamingImage : MonoBehaviour
 {
+    /// Imageをゲーミングカラーに変更する
+    
     [SerializeField] Image _image;
     [SerializeField] float Speed = 0.2f;
+
     /// <summary>
     /// 色相を回転させる（0～1で一周）
     /// </summary>
@@ -20,7 +23,6 @@ public class GamingImage : MonoBehaviour
         return Color.HSVToRGB(h, s, v);
     }
 
-    // Update is called once per frame
     void Update()
     {
         _image.color = RotateHue(_image.color, Time.deltaTime * Speed);

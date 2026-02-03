@@ -3,16 +3,23 @@ using UnityEngine;
 
 public class ControllerInput : ControllerTableInput
 {
+    /// コントローラー入力を管理するクラス
+    /// テーブルの回転、爆弾の投擲(内側/外側)、爆破ボタン、下投げなどの入力処理を統合管理
+
     [Header("ControllerInput")]
     [Space]
     [SerializeField] ValueContainer valueContainer; // コントローラのパラメータ取得クラス
 
+    // タッチされていない状態を示す定数
     static readonly int NoTorchValue = -999;
 
+    // 現在の回転角度
     float angle = 0;
 
+    // 前フレームの入力角度を保持(内側・外側別)
     HashSet<int> InputAnglesInside, InputAnglesOutside;
 
+    // 外部から角度を取得するプロパティ
     public float GetAngle => angle;
 
     /// <summary>
@@ -59,7 +66,14 @@ public class ControllerInput : ControllerTableInput
         */
     }
 
-    void ThorwBombSide(ref HashSet<int> angleSet, List<int> thorwInputs)
+    /// <summary>
+    /// 指定された側(内側/外側)の爆弾投擲処理
+    /// 前フレームと比較して新規入力のみを投擲
+    /// </summary>
+    /// <param name="angleSet">前フレームの入力角度セット</param>
+    /// <param name="thorwInputs">今フレームの入力角度リスト</param>
+
+    private void ThorwBombSide(ref HashSet<int> angleSet, List<int> thorwInputs)
     {
         foreach (int thorwRad in thorwInputs)
         {
@@ -70,21 +84,34 @@ public class ControllerInput : ControllerTableInput
         BeforeAngleSave(ref angleSet, thorwInputs);
     }
 
-    bool ThorwRadCheck(HashSet<int> beforeAngles, int rad)
+    /// <summary>
+    /// 投擲角度が有効かチェック
+    /// NoTorchValueまたは前フレームで既に入力済みの場合はfalse
+    /// </summary>
+    /// <returns>投擲可能ならtrue</returns>
+    private bool ThorwRadCheck(HashSet<int> beforeAngles, int rad)
     {
+        // タッチされていない場合
         if (rad == NoTorchValue)
             return false;
 
+        // 初回入力の場合
         if (beforeAngles == null)
             return true;
 
+        // 前フレームに含まれていない新規入力のみtrue
         return !beforeAngles.Contains(rad);
     }
 
-    void BeforeAngleSave(ref HashSet<int> angleSet, List<int> inputs)
+    /// <summary>
+    /// 今フレームの入力角度を保存
+    /// 次フレームで新規入力判定に使用
+    /// </summary>
+    private void BeforeAngleSave(ref HashSet<int> angleSet, List<int> inputs)
     {
         angleSet = new();
 
+        // 有効な入力のみセットに追加
         foreach (var input in inputs)
         {
             if(input != NoTorchValue)

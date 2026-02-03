@@ -1,24 +1,39 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class SceneChanger : MonoBehaviour
 {
+    /// シーン移行を管理するクラス
+
     [SerializeField] string TitleSceneName = "Title_2";
     [SerializeField] string MainGaneSceneName = "MainGame";
     [SerializeField] string EasyName = "ichi_yama";
     [SerializeField] string HardName = "Ame_Hard";
     [SerializeField] float waitTime = 0.3f;
 
+    // 一つ前のシーンの名前の文字列
     static string beforeName;
 
     bool IsChange;//複数回遷移防止
 
+    // 非同期処理の変数
     Coroutine AsyncCoroutine;
+
+    // シーン移行のためのbool変数
+    bool canActivateScene = false;
+
+    /// <summary>
+    /// シーン移行のためのbool変数を変更
+    /// </summary>
+    public void OnPressContinue()
+    {
+        canActivateScene = true;
+    }
 
     private void Start()
     {
+        // シーン名を保存
         if (SceneManager.GetActiveScene().name == HardName)
             beforeName = HardName;
         if (SceneManager.GetActiveScene().name == EasyName)
@@ -26,9 +41,9 @@ public class SceneChanger : MonoBehaviour
 
         IsChange = false;
         canActivateScene = false;
-        //Time.timeScaleが変更されていた場合元に戻す
-        //if (SceneManager.GetActiveScene().name == TitleSceneName)
-            Time.timeScale = 1.0f;
+        
+        // タイムスケールを元に戻す
+        Time.timeScale = 1.0f;
     }
 
     /// <summary>
@@ -104,6 +119,10 @@ public class SceneChanger : MonoBehaviour
             StartCoroutine(WaitForSecondCoroutine(waitTime, MainGaneSceneName));
     }
 
+    /// <summary>
+    /// 指定した名前のシーンに遷移させる
+    /// </summary>
+    /// <param name="sceneName">シーン名</param>
     public void SceneChangeAsync(string sceneName)
     {
         if (IsChange) return;
@@ -111,14 +130,23 @@ public class SceneChanger : MonoBehaviour
         AsyncCoroutine = StartCoroutine(LoadSceneAsync(sceneName));
     }
 
+    /// <summary>
+    /// ひとつ前に遷移していたシーンに遷移させる
+    /// </summary>
+    /// <param name="sceneName">シーン名</param>
     public void SceneChengeRetry()
     {
-        if (IsChange) return;
+        if (IsChange || beforeName == "") return;
 
         AsyncCoroutine = StartCoroutine(LoadSceneAsync(beforeName));
     }
 
-    IEnumerator LoadSceneAsync(string sceneName)
+    /// <summary>
+    /// 非同期処理によってシーン移行処理を9割で止めた後に一定時間後に移行する
+    /// </summary>
+    /// <param name="sceneName">シーン名</param>
+    /// <returns>シーン遷移</returns>
+    private IEnumerator LoadSceneAsync(string sceneName)
     {
         IsChange = true;
         // 非同期ロード開始
@@ -129,14 +157,6 @@ public class SceneChanger : MonoBehaviour
 
         while (!async.isDone)
         {
-            /*
-            // progress は 0 ～ 0.9 までしか来ない
-            float progress = Mathf.Clamp01(async.progress / 0.9f);
-
-            if (progressBar != null)
-                progressBar.value = progress;
-            */
-
             // 90% 到達＝ロード完了
             if (async.progress >= 0.9f)
             {
@@ -153,14 +173,11 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
-    bool canActivateScene = false;
-    
-    public void OnPressContinue()
-    {
-        canActivateScene = true;
-    }
 
-
+    /// <summary>
+    /// ひとつ前に遷移していたシーンに遷移させる
+    /// </summary>
+    /// <param name="sceneName">シーン名</param>
     public void SceneChangeAsyncActivate(string sceneName)
     {
         if (IsChange) return;
@@ -168,7 +185,12 @@ public class SceneChanger : MonoBehaviour
         AsyncCoroutine = StartCoroutine(LoadSceneAsyncActivate(sceneName));
     }
 
-    IEnumerator LoadSceneAsyncActivate(string sceneName)
+    /// <summary>
+    /// 非同期処理によってシーン移行処理を9割で止めた後にbool変数で移行する
+    /// </summary>
+    /// <param name="sceneName">シーン名</param>
+    /// <returns>シーン移行</returns>
+    private IEnumerator LoadSceneAsyncActivate(string sceneName)
     {
         IsChange = true;
         // 非同期ロード開始
@@ -179,15 +201,6 @@ public class SceneChanger : MonoBehaviour
 
         while (!async.isDone)
         {
-            /*
-            // progress は 0 ～ 0.9 までしか来ない
-            float progress = Mathf.Clamp01(async.progress / 0.9f);
-
-            if (progressBar != null)
-                progressBar.value = progress;
-            */
-
-            Debug.Log(async.progress);
 
             // 90% 到達＝ロード完了
             if (async.progress >= 0.9f)

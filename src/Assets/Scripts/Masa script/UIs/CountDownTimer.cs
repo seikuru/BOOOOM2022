@@ -48,26 +48,7 @@ public class CountDownTimer : MonoBehaviour
     /// <returns>現在のカウント値</returns>
     public int GetCountSecond() => seconds;
 
-    /// <summary>
-    /// コンボ数に応じてカウントを加算
-    /// 基本値 + (コンボ数 × 追加値) の計算式を使用
-    /// </summary>
-    /// <param name="combo">現在のコンボ数</param>
-    public void AddCountWithCombo(int combo)
-    {
-        //Debug.Log(combo);
-        seconds += BaseComboValue + combo * AddComboValue;// コンボボーナス計算
-    }
-
-    /// <summary>
-    /// 指定された値をカウントに加算
-    /// </summary>
-    /// <param name="count">加算する値</param>
-    public void AddCountSecond(int count)
-    {
-        seconds += count;
-    }
-
+    
     void Start()
     {
         // 初期化処理
@@ -128,4 +109,26 @@ public class CountDownTimer : MonoBehaviour
             text.text = seconds.ToString();
         }
     }
+
+    /*
+    /// <summary>
+    /// コンボ数に応じてカウントを加算
+    /// 基本値 + (コンボ数 × 追加値) の計算式を使用
+    /// </summary>
+    /// <param name="combo">現在のコンボ数</param>
+    public void AddCountWithCombo(int combo)
+    {
+        //Debug.Log(combo);
+        seconds += BaseComboValue + combo * AddComboValue;// コンボボーナス計算
+    }
+
+    /// <summary>
+    /// 指定された値をカウントに加算
+    /// </summary>
+    /// <param name="count">加算する値</param>
+    public void AddCountSecond(int count)
+    {
+        seconds += count;
+    }
+    */
 }
