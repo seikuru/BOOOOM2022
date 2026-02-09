@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -288,7 +288,8 @@ public class BGMControll : MonoBehaviour
                 if (!cmc.CrrentIndexCheck())
                 {
                     Debug.Log("Index超過");
-                    scoreManager?.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
+                    scoreManager?.AddScoreCoin();
+                    //scoreManager?.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
                     break;
                 }
 

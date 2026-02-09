@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectButton : MonoBehaviour
 {
-    /// •¡”ƒ{ƒ^ƒ“‚Ì‘I‘ğó‘Ô‚ğŠÇ—‚·‚éŠî’êƒNƒ‰ƒX
-    /// ƒJ[ƒ\ƒ‹ˆÚ“®ASEÄ¶AŒˆ’è“ü—Í‚ğ‹¤’Êˆ—‚Æ‚µ‚Ä‚Ü‚Æ‚ß‚é   
+    /// è¤‡æ•°ãƒœã‚¿ãƒ³ã®é¸æŠçŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹åŸºåº•ã‚¯ãƒ©ã‚¹
+    /// ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•ã€SEå†ç”Ÿã€æ±ºå®šå…¥åŠ›ã‚’å…±é€šå‡¦ç†ã¨ã—ã¦ã¾ã¨ã‚ã‚‹   
 
     [SerializeField] protected Button[] Buttons;
     [SerializeField] protected GameObject cursol;
@@ -15,20 +15,20 @@ public class SelectButton : MonoBehaviour
     [SerializeField] protected AudioClip audioClipDown;
     [SerializeField] protected int currentButtonIndex = 0;
 
-    // Index‚ğ•ÏX‚¹‚¸‰Šú‰»‚È‚Ç‚Ég‚¤’l
+    // Indexã‚’å¤‰æ›´ã›ãšåˆæœŸåŒ–ãªã©ã«ä½¿ã†å€¤
     static readonly int ResetIndex = -99;
 
     /// <summary>
-    /// ƒ{ƒ^ƒ“‚ÌIndex‚ğˆÚ“®‚³‚¹‚é
+    /// ãƒœã‚¿ãƒ³ã®Indexã‚’ç§»å‹•ã•ã›ã‚‹
     /// </summary>
-    /// <param name="buttonIndexAdd">ˆÊ’u</param>
+    /// <param name="buttonIndexAdd">ä½ç½®</param>
     public virtual void ButtonSelectMove(int buttonIndexAdd)
     {
-        // ƒ{ƒ^ƒ“‚ª1‚ÂˆÈ‰º‚È‚çˆ—•s—v
+        // ãƒœã‚¿ãƒ³ãŒ1ã¤ä»¥ä¸‹ãªã‚‰å‡¦ç†ä¸è¦
         if (Buttons.Length < 2)
             return;
 
-        // ˆÚ“®‚ÌSEÄ¶iResetIndexw’è‚Í–Â‚ç‚³‚È‚¢j
+        // ç§»å‹•æ™‚ã®SEå†ç”Ÿï¼ˆResetIndexæŒ‡å®šæ™‚ã¯é³´ã‚‰ã•ãªã„ï¼‰
         if (audioSE != null && buttonIndexAdd != ResetIndex)
         {
             if (buttonIndexAdd < 0 && audioClipUp != null)
@@ -41,33 +41,33 @@ public class SelectButton : MonoBehaviour
             }
         }
 
-        // IndexXV
+        // Indexæ›´æ–°
         currentButtonIndex += buttonIndexAdd;
         bool sameCheck = false;
 
-        // ‰ºŒÀƒ`ƒFƒbƒN
+        // ä¸‹é™ãƒã‚§ãƒƒã‚¯
         if (currentButtonIndex < 0)
         {
             currentButtonIndex = 0; sameCheck = true;
         }
 
-        // ãŒÀƒ`ƒFƒbƒN
+        // ä¸Šé™ãƒã‚§ãƒƒã‚¯
         if (currentButtonIndex >= Buttons.Length)
         {
             currentButtonIndex = Buttons.Length - 1; sameCheck = true;
         }
 
-        // ƒJ[ƒ\ƒ‹‚ğ‘I‘ğ’†ƒ{ƒ^ƒ“ˆÊ’u‚ÖˆÚ“®
+        // ã‚«ãƒ¼ã‚½ãƒ«ã‚’é¸æŠä¸­ãƒœã‚¿ãƒ³ä½ç½®ã¸ç§»å‹•
         if (cursol != null)
             cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
 
-        // ÀÛ‚É‘I‘ğ‚ª•Ï‚í‚Á‚½ê‡‚Ì‚İ”h¶ƒNƒ‰ƒXˆ—‚ğŒÄ‚Ô
+        // å®Ÿéš›ã«é¸æŠãŒå¤‰ã‚ã£ãŸå ´åˆã®ã¿æ´¾ç”Ÿã‚¯ãƒ©ã‚¹å‡¦ç†ã‚’å‘¼ã¶
         if (!sameCheck)
             ButtonSelectoverride();
     }
 
     /// <summary>
-    /// ‘I‘ğ•ÏX‚Ì’Ç‰Áˆ——pi”h¶ƒNƒ‰ƒX‚ÅƒI[ƒo[ƒ‰ƒCƒhj
+    /// é¸æŠå¤‰æ›´æ™‚ã®è¿½åŠ å‡¦ç†ç”¨ï¼ˆæ´¾ç”Ÿã‚¯ãƒ©ã‚¹ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ï¼‰
     /// </summary>
     protected virtual void ButtonSelectoverride()
     {
@@ -75,7 +75,7 @@ public class SelectButton : MonoBehaviour
     }
 
     /// <summary>
-    /// Œˆ’è“ü—ÍiŒ»İ‘I‘ğ’†ƒ{ƒ^ƒ“‚ğÀsj
+    /// æ±ºå®šå…¥åŠ›ï¼ˆç¾åœ¨é¸æŠä¸­ãƒœã‚¿ãƒ³ã‚’å®Ÿè¡Œï¼‰
     /// </summary>
     public void EnterButton()
     {
@@ -83,20 +83,34 @@ public class SelectButton : MonoBehaviour
     }
 
     /// <summary>
-    /// Œ»İ‚Ìƒ{ƒ^ƒ“Index‚ÌonClick‚ğŒÄ‚Ño‚·
+    /// ãƒœã‚¿ãƒ³ã®å…¥åŠ›ã‚’åˆ¶å¾¡ã™ã‚‹
     /// </summary>
-    private void ButtonInvoke()
+    /// <param name="enable">trueã§èµ·å‹•</param>
+    public void IntreactSet(bool enable)
     {
-        Buttons[currentButtonIndex].onClick.Invoke();
+        foreach (var b in Buttons)
+        {
+            if(b != null)
+                b.interactable = enable;
+        }
     }
 
     /// <summary>
-    /// ŠO•”‚©‚çIndex‚ğ’¼Úİ’è‚·‚é
+    /// ç¾åœ¨ã®ãƒœã‚¿ãƒ³Indexã®onClickã‚’å‘¼ã³å‡ºã™
+    /// </summary>
+    private void ButtonInvoke()
+    {
+        if(Buttons[currentButtonIndex].interactable)
+            Buttons[currentButtonIndex].onClick.Invoke();
+    }
+
+    /// <summary>
+    /// å¤–éƒ¨ã‹ã‚‰Indexã‚’ç›´æ¥è¨­å®šã™ã‚‹
     /// </summary>
     public void SetIndex(int num) => currentButtonIndex = num;
 
     /// <summary>
-    /// ƒGƒfƒBƒ^ã‚Å‚ÌƒfƒoƒbƒO‘€ì—p“ü—Í
+    /// ã‚¨ãƒ‡ã‚£ã‚¿ä¸Šã§ã®ãƒ‡ãƒãƒƒã‚°æ“ä½œç”¨å…¥åŠ›
     /// </summary>
     protected virtual void DebugInput()
     {

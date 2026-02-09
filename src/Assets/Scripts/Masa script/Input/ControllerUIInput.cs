@@ -1,51 +1,58 @@
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class ControllerUIInput : MonoBehaviour
 {
-    /// UI‘€ì—p‚ÌƒRƒ“ƒgƒ[ƒ‰[“ü—ÍŠÇ—ƒNƒ‰ƒX
-    /// ‰ñ“]“ü—Í‚É‚æ‚éUI‘I‘ğˆÚ“®‚ÆAŠeíƒ{ƒ^ƒ“‚É‚æ‚éŒˆ’èˆ—‚ğŠÇ—
+    /// UIæ“ä½œç”¨ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼å…¥åŠ›ç®¡ç†ã‚¯ãƒ©ã‚¹
+    /// å›è»¢å…¥åŠ›ã«ã‚ˆã‚‹UIé¸æŠç§»å‹•ã¨ã€å„ç¨®ãƒœã‚¿ãƒ³ã«ã‚ˆã‚‹æ±ºå®šå‡¦ç†ã‚’ç®¡ç†
 
-    [SerializeField] ValueContainer valueContainer; // ƒRƒ“ƒgƒ[ƒ‰‚Ìƒpƒ‰ƒ[ƒ^æ“¾ƒNƒ‰ƒX
+    [SerializeField] ValueContainer valueContainer; // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å–å¾—ã‚¯ãƒ©ã‚¹
     [SerializeField] SelectButton selectButton;
     [SerializeField] PlayableDirector playableDirector;
     [SerializeField] ControllerInput controllerInput;
 
     /// <summary>
-    /// Œˆ’èƒ{ƒ^ƒ“‚Ìí—Ş
+    /// æ±ºå®šãƒœã‚¿ãƒ³ã®ç¨®é¡
     /// </summary>
     public enum TapInput
     {
-        UnderButton,// ‰º“Š‚°ƒ{ƒ^ƒ“
-        DestroyButton,// ”š”jƒ{ƒ^ƒ“
-        EscButton,// ƒGƒXƒP[ƒvƒ{ƒ^ƒ“
+        UnderButton,// ä¸‹æŠ•ã’ãƒœã‚¿ãƒ³
+        DestroyButton,// çˆ†ç ´ãƒœã‚¿ãƒ³
+        EscButton,// ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒœã‚¿ãƒ³
     }
 
-    [SerializeField, Header("“ü—Íƒ`ƒFƒbƒN")]
+    [SerializeField, Header("å…¥åŠ›ãƒã‚§ãƒƒã‚¯")]
     public bool InputCheck = false;
 
-    [SerializeField, Header("Œˆ’èƒ{ƒ^ƒ“")]
+    [SerializeField, Header("æ±ºå®šãƒœã‚¿ãƒ³")]
     TapInput tapInput;
 
-    [SerializeField, Header("‘I‘ğ‚·‚é‚½‚ß‚Ì‰ñ“]—Ê")]
+    [SerializeField, Header("é¸æŠã™ã‚‹ãŸã‚ã®å›è»¢é‡")]
     float AngleLimit = 20f;
 
-    // ‰ñ“]Šp“xŠÖ˜A‚Ì•Ï”
-    float angle;              // Œ»İ‚Ì‰ñ“]Šp“x
-    float beforeAngle;        // ‘OƒtƒŒ[ƒ€‚Ì‰ñ“]Šp“x
-    float angleValue;         // —İÏ‰ñ“]—Ê
-    float currentAngleValue;  // ¡ƒtƒŒ[ƒ€‚Ì‰ñ“]·•ª
+    [SerializeField,Header("å…¥åŠ›ã‚’å¾©æ—§ã•ã›ã‚‹ã‹")]
+    bool InputRpairFlag = false;
 
-    // ‘OƒtƒŒ[ƒ€‚ÌŒˆ’èƒ{ƒ^ƒ“ó‘Ô
+    [SerializeField, Header("å¾©æ—§ã™ã‚‹ãŸã‚ã®å¾…æ©Ÿæ™‚é–“")]
+    float RpairTime = 4f;
+
+    // å›è»¢è§’åº¦é–¢é€£ã®å¤‰æ•°
+    float angle;              // ç¾åœ¨ã®å›è»¢è§’åº¦
+    float beforeAngle;        // å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®å›è»¢è§’åº¦
+    float angleValue;         // ç´¯ç©å›è»¢é‡
+    float currentAngleValue;  // ä»Šãƒ•ãƒ¬ãƒ¼ãƒ ã®å›è»¢å·®åˆ†
+
+    // å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®æ±ºå®šãƒœã‚¿ãƒ³çŠ¶æ…‹
     bool beforeEnter;
 
     /// <summary>
-    /// ŠO•”‚©‚çŒ»İ‚Ì‰ñ“]·•ª‚ğæ“¾
+    /// å¤–éƒ¨ã‹ã‚‰ç¾åœ¨ã®å›è»¢å·®åˆ†ã‚’å–å¾—
     /// </summary>
     public float GetAngle() => currentAngleValue;
 
     /// <summary>
-    /// “ü—Íƒ`ƒFƒbƒN‚Ì—LŒø/–³Œø‚ğİ’è
+    /// å…¥åŠ›ãƒã‚§ãƒƒã‚¯ã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®š
     /// </summary>
     public void SetInputCheck(bool check) => InputCheck = check;
 
@@ -53,18 +60,20 @@ public class ControllerUIInput : MonoBehaviour
     {
         AngleReset();
         beforeEnter = false;
+        if (InputRpairFlag)
+            StartCoroutine(WaitRpair());
     }
 
     private void Update()
     {
-        // “ü—Íƒ`ƒFƒbƒN‚ª–³Œø‚Ìê‡‚ÍŠp“x‚ğƒŠƒZƒbƒg‚µ‚ÄI—¹
+        // å…¥åŠ›ãƒã‚§ãƒƒã‚¯ãŒç„¡åŠ¹ã®å ´åˆã¯è§’åº¦ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¦çµ‚äº†
         if (!InputCheck)
         {
             AngleReset();
             return;
         }
 
-        // TimelineÄ¶’†‚Í“ü—Í‚ğó‚¯•t‚¯‚È‚¢
+        // Timelineå†ç”Ÿä¸­ã¯å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ãªã„
         if (playableDirector != null && playableDirector.state == PlayState.Playing)
             return;
 
@@ -72,7 +81,7 @@ public class ControllerUIInput : MonoBehaviour
     }
 
     /// <summary>
-    /// Šp“xŠÖ˜A‚Ì•Ï”‚ğ‰Šú‰»
+    /// è§’åº¦é–¢é€£ã®å¤‰æ•°ã‚’åˆæœŸåŒ–
     /// </summary>
     private void AngleReset()
     {
@@ -82,52 +91,52 @@ public class ControllerUIInput : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒ^ƒbƒ`“ü—Íˆ—‚ÌƒƒCƒ“ŠÖ”
-    /// ‰ñ“]“ü—Í‚É‚æ‚é‘I‘ğˆÚ“®‚ÆŒˆ’èƒ{ƒ^ƒ“‚Ìˆ—
+    /// ã‚¿ãƒƒãƒå…¥åŠ›å‡¦ç†ã®ãƒ¡ã‚¤ãƒ³é–¢æ•°
+    /// å›è»¢å…¥åŠ›ã«ã‚ˆã‚‹é¸æŠç§»å‹•ã¨æ±ºå®šãƒœã‚¿ãƒ³ã®å‡¦ç†
     /// </summary>
     private void InputOperateUI()
     {
-        // ControllerInput‚ª–³Œø‚Ìê‡‚Í’¼ÚValueContainer‚©‚çæ“¾
+        // ControllerInputãŒç„¡åŠ¹ã®å ´åˆã¯ç›´æ¥ValueContainerã‹ã‚‰å–å¾—
         if (controllerInput == null || controllerInput.enabled == false)
         {
-            // ƒAƒ“ƒOƒ‹‚ğ‰ÁZ
+            // ã‚¢ãƒ³ã‚°ãƒ«ã‚’åŠ ç®—
             angle -= valueContainer.get_rad();
-            // radƒŠƒZƒbƒgˆ—
+            // radãƒªã‚»ãƒƒãƒˆå‡¦ç†
             valueContainer.reset_rad();
         }
         else 
         {
-            // ControllerInput‚©‚çŠp“x‚ğæ“¾
+            // ControllerInputã‹ã‚‰è§’åº¦ã‚’å–å¾—
             angle = controllerInput.GetAngle;
         }
 
-        // ‰ñ“]—Ê‚ğƒ`ƒFƒbƒN‚µ‚Ä—İÏ
+        // å›è»¢é‡ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ç´¯ç©
         AngleCheck();
 
-        // —İÏ‰ñ“]—Ê‚ªè‡’l‚ğ’´‚¦‚½‚ç‘I‘ğˆÚ“®
+        // ç´¯ç©å›è»¢é‡ãŒé–¾å€¤ã‚’è¶…ãˆãŸã‚‰é¸æŠç§»å‹•
         if (AngleLimit < Mathf.Abs(angleValue))
         {
             int nextAddIndex = 0;
 
-            // ‰ñ“]•ûŒü‚É‰‚¶‚ÄˆÚ“®•ûŒü‚ğŒˆ’è
+            // å›è»¢æ–¹å‘ã«å¿œã˜ã¦ç§»å‹•æ–¹å‘ã‚’æ±ºå®š
             if (angleValue > 0)
                 nextAddIndex = 1;
 
             if (angleValue < 0)
                 nextAddIndex = -1;
 
-            // —İÏ’l‚ğƒŠƒZƒbƒg(­‚µc‚·)
+            // ç´¯ç©å€¤ã‚’ãƒªã‚»ãƒƒãƒˆ(å°‘ã—æ®‹ã™)
             angleValue *= 0.01f;
 
-            // ‘I‘ğƒ{ƒ^ƒ“‚ğˆÚ“®
+            // é¸æŠãƒœã‚¿ãƒ³ã‚’ç§»å‹•
             if (nextAddIndex != 0)
                 selectButton.ButtonSelectMove(nextAddIndex);
         }
 
-        // Œˆ’èƒ{ƒ^ƒ“‚Ì“ü—Íƒ`ƒFƒbƒN
+        // æ±ºå®šãƒœã‚¿ãƒ³ã®å…¥åŠ›ãƒã‚§ãƒƒã‚¯
         bool Enter = EnterTap();
 
-        // ‰Ÿ‚³‚ê‚½uŠÔ‚Ì‚İ”½‰(ƒGƒbƒWŒŸo)
+        // æŠ¼ã•ã‚ŒãŸç¬é–“ã®ã¿åå¿œ(ã‚¨ãƒƒã‚¸æ¤œå‡º)
         if (Enter && !beforeEnter)
             selectButton.EnterButton();
 
@@ -136,28 +145,28 @@ public class ControllerUIInput : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰ñ“]—Ê‚Ì•Ï‰»‚ğƒ`ƒFƒbƒN‚µ‚Ä—İÏ
-    /// ‰ñ“]•ûŒü‚ª”½“]‚µ‚½ê‡‚Í—İÏ’l‚ğƒŠƒZƒbƒg
+    /// å›è»¢é‡ã®å¤‰åŒ–ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ç´¯ç©
+    /// å›è»¢æ–¹å‘ãŒåè»¢ã—ãŸå ´åˆã¯ç´¯ç©å€¤ã‚’ãƒªã‚»ãƒƒãƒˆ
     /// </summary>
     private void AngleCheck()
     {
-        // Šp“x‚É•Ï‰»‚ª‚È‚¯‚ê‚ÎI—¹
+        // è§’åº¦ã«å¤‰åŒ–ãŒãªã‘ã‚Œã°çµ‚äº†
         if (beforeAngle == angle)
             return;
 
-        // ¡ƒtƒŒ[ƒ€‚Ì‰ñ“]·•ª‚ğŒvZ
+        // ä»Šãƒ•ãƒ¬ãƒ¼ãƒ ã®å›è»¢å·®åˆ†ã‚’è¨ˆç®—
         currentAngleValue = beforeAngle - angle;
 
-        // ‘O‰ñ‚Æ“¯‚¶•ûŒü(•„†)‚©ƒ`ƒFƒbƒN
+        // å‰å›ã¨åŒã˜æ–¹å‘(ç¬¦å·)ã‹ãƒã‚§ãƒƒã‚¯
         bool sameSign = angleValue == 0f ||
             (currentAngleValue > 0f && angleValue > 0f) ||
             (currentAngleValue < 0f && angleValue < 0f);
 
-        // ‰ñ“]•ûŒü‚ª”½“]‚µ‚½‚ç—İÏ’l‚ğƒŠƒZƒbƒg
+        // å›è»¢æ–¹å‘ãŒåè»¢ã—ãŸã‚‰ç´¯ç©å€¤ã‚’ãƒªã‚»ãƒƒãƒˆ
         if (sameSign == false)
             angleValue = 0;
 
-        // ‰ñ“]—Ê‚ğ—İÏ
+        // å›è»¢é‡ã‚’ç´¯ç©
         angleValue += currentAngleValue;
         /*
         if (beforeAngle < angle)
@@ -178,9 +187,9 @@ public class ControllerUIInput : MonoBehaviour
     }
 
     /// <summary>
-    /// İ’è‚³‚ê‚½Œˆ’èƒ{ƒ^ƒ“‚Ì“ü—Íó‘Ô‚ğæ“¾
+    /// è¨­å®šã•ã‚ŒãŸæ±ºå®šãƒœã‚¿ãƒ³ã®å…¥åŠ›çŠ¶æ…‹ã‚’å–å¾—
     /// </summary>
-    /// <returns>ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚ê‚Îtrue</returns>
+    /// <returns>ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚Œã°true</returns>
     private bool EnterTap()
     {
         bool IsPush = false;
@@ -199,4 +208,15 @@ public class ControllerUIInput : MonoBehaviour
         }
             return IsPush;
     }
+
+    IEnumerator WaitRpair()
+    {
+        yield return new WaitForSeconds(RpairTime);
+
+        InputCheck = true;
+
+        yield return null;
+    }
 }
+
+

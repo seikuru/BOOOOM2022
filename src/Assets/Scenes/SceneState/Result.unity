@@ -4735,6 +4735,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 764667585}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &764667586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5009,18 +5021,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 254942577}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: SceneChengeRetry
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ichi_yama
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2084772170}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -5034,6 +5034,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 254942577}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: SceneChengeRetry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ichi_yama
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 735659025}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
@@ -5043,6 +5055,18 @@ MonoBehaviour:
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableAsset,
             UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2084772171}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6394,6 +6418,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Title_2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2084772171}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1108465706
@@ -8725,6 +8761,8 @@ MonoBehaviour:
   InputCheck: 0
   tapInput: 1
   AngleLimit: 20
+  InputRpairFlag: 0
+  RpairTime: 4
 --- !u!1 &1766125890
 GameObject:
   m_ObjectHideFlags: 0
@@ -9137,9 +9175,11 @@ MonoBehaviour:
   selectButton: {fileID: 764667588}
   playableDirector: {fileID: 0}
   controllerInput: {fileID: 0}
-  InputCheck: 1
+  InputCheck: 0
   tapInput: 1
   AngleLimit: 20
+  InputRpairFlag: 1
+  RpairTime: 4
 --- !u!1 &2048486403
 GameObject:
   m_ObjectHideFlags: 0

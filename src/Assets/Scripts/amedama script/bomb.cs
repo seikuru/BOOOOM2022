@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -119,6 +119,9 @@ public class bomb : MonoBehaviour
     {
         if (Time.timeScale == 0f || DestroyWait< 10)
             return;
+
+        // コンボリセット
+        ScoreManager.ComboReset();
 
         float waitTime = 0f;
         PlayerHit = false;

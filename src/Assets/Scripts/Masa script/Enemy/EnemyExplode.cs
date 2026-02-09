@@ -1,26 +1,26 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyExplode : MonoBehaviour
 {
-    /// “G‚Ì”š”­ƒGƒtƒFƒNƒg‚ğ¶¬EŠÇ—‚·‚éƒNƒ‰ƒX
-    /// Ã“Iƒƒ\ƒbƒh‚Å”CˆÓ‚ÌêŠ‚©‚ç”š”­ƒGƒtƒFƒNƒg‚ğŒÄ‚Ño‚µ‰Â”\
+    /// æ•µã®çˆ†ç™ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆãƒ»ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+    /// é™çš„ãƒ¡ã‚½ãƒƒãƒ‰ã§ä»»æ„ã®å ´æ‰€ã‹ã‚‰çˆ†ç™ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å‘¼ã³å‡ºã—å¯èƒ½
     
     [SerializeField] GameObject explodePrefab;
 
     [SerializeField] float createDistance = 4f;
     [SerializeField] float destroyTime = 5f;
 
-    // Ã“IQÆ—p‚Ì•Ï”(‘¼‚ÌƒNƒ‰ƒX‚©‚çŒÄ‚Ño‚¹‚é‚æ‚¤‚É‚·‚é‚½‚ß)
+    // é™çš„å‚ç…§ç”¨ã®å¤‰æ•°(ä»–ã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰å‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚)
     private static GameObject ExplodePrefab;
     private static float CreateDistance;
     private static float DestroyTime;
 
     /// <summary>
-    /// ‰Šú‰»ˆ—
-    /// ƒCƒ“ƒXƒyƒNƒ^‚Åİ’è‚µ‚½’l‚ğÃ“I•Ï”‚ÉƒRƒs[
+    /// åˆæœŸåŒ–å‡¦ç†
+    /// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã§è¨­å®šã—ãŸå€¤ã‚’é™çš„å¤‰æ•°ã«ã‚³ãƒ”ãƒ¼
     /// </summary>
     private void Awake()
     {
@@ -30,26 +30,29 @@ public class EnemyExplode : MonoBehaviour
     }
 
     /// <summary>
-    /// ”š”­ƒGƒtƒFƒNƒg‚ğ¶¬
-    /// ƒ^[ƒQƒbƒg‚Ì­‚µè‘O‚É”š”­•ûŒü‚ğŒü‚¢‚½ƒGƒtƒFƒNƒg‚ğ”z’u
+    /// çˆ†ç™ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
+    /// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®å°‘ã—æ‰‹å‰ã«çˆ†ç™ºæ–¹å‘ã‚’å‘ã„ãŸã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’é…ç½®
     /// </summary>
-    /// <param name="BombTF">”š”­‚Ì‹N“_‚Æ‚È‚éTransform</param>
-    /// <param name="TargetTF">ƒ^[ƒQƒbƒg‚ÌTransform</param>
+    /// <param name="BombTF">çˆ†ç™ºã®èµ·ç‚¹ã¨ãªã‚‹Transform</param>
+    /// <param name="TargetTF">ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®Transform</param>
     static public void CreateExplode(Transform BombTF, Transform TargetTF)
     {
-        // ”š”­•ûŒü‚ğŒvZ
+        // çˆ†ç™ºæ–¹å‘ã‚’è¨ˆç®—
         Vector3 dir = (TargetTF.position - BombTF.position).normalized;
 
-        // ƒ^[ƒQƒbƒgˆÊ’u‚©‚ç­‚µ—£‚ê‚½ˆÊ’u‚É¶¬
+        // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä½ç½®ã‹ã‚‰å°‘ã—é›¢ã‚ŒãŸä½ç½®ã«ç”Ÿæˆ
         Vector3 createPos = TargetTF.position + dir * CreateDistance;
 
-        // ”š”­•ûŒü‚ğŒü‚¢‚½‰ñ“]‚ğİ’è
-        Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
+        // yè»¸ã®ã¿ã®è¨ˆç®—ã«ã™ã‚‹ãŸã‚yã®æ•°å€¤ã‚’å‰Šé™¤
+        dir.y = 0f;
 
-        // ƒGƒtƒFƒNƒg‚ğ¶¬
+        // çˆ†ç™ºæ–¹å‘ã‚’å‘ã„ãŸå›è»¢ã‚’è¨­å®š
+        Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);//Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
+
+        // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
         GameObject create = Instantiate(ExplodePrefab, createPos, rot);
 
-        // w’èŠÔŒã‚É©“®íœ
+        // æŒ‡å®šæ™‚é–“å¾Œã«è‡ªå‹•å‰Šé™¤
         Destroy(create, DestroyTime);
     }
 }
