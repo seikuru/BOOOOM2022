@@ -594,6 +594,18 @@ MonoBehaviour:
           m_StringArgument: Title_2
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7939030588445667806}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1553296349621682411
 Animator:
   serializedVersion: 5
@@ -813,6 +825,30 @@ MonoBehaviour:
       - m_Target: {fileID: 8687018617066012437}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7939030588445667806}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8687018617066012437}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1417,7 +1453,7 @@ MonoBehaviour:
   MainGaneSceneName: ichi_yama
   EasyName: ichi_yama
   HardName: Ame_Hard
-  waitTime: 0.3
+  waitTime: 0.5
 --- !u!82 &7440211559180143528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1723,6 +1759,30 @@ MonoBehaviour:
       - m_Target: {fileID: 7939030588445667806}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8687018617066012437}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7939030588445667806}
+        m_TargetAssemblyTypeName: SelectButton, Assembly-CSharp
+        m_MethodName: IntreactSet
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

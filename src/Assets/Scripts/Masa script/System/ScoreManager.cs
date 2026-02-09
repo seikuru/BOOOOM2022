@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -6,64 +6,68 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    /// ƒXƒRƒAŠÇ—‚ğs‚¤ƒNƒ‰ƒX
-    /// ’ÊíƒXƒRƒA^ƒ{[ƒiƒXƒXƒRƒA‚ÌŠÇ—E•\¦XVEMusicType‚²‚Æ‚Ìæ“¾ó‹µ‚ğŠÇ—
+    /// ã‚¹ã‚³ã‚¢ç®¡ç†ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹
+    /// é€šå¸¸ã‚¹ã‚³ã‚¢ï¼ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢ã®ç®¡ç†ãƒ»è¡¨ç¤ºæ›´æ–°ãƒ»MusicTypeã”ã¨ã®å–å¾—çŠ¶æ³ã‚’ç®¡ç†
     
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] BGMControll BGMcontroll;
 
-    [Space, Header("ƒXƒRƒA”’l")]
+    [Space, Header("ã‚¹ã‚³ã‚¢æ•°å€¤")]
     [SerializeField]
-    int symbolScore = 3000; // ƒVƒ“ƒ{ƒ‹ŠJ•ú‚ÌƒXƒRƒA
+    int symbolScore = 3000; // ã‚·ãƒ³ãƒœãƒ«é–‹æ”¾æ™‚ã®ã‚¹ã‚³ã‚¢
     [SerializeField]
-    int enemyScore = 300; // “GŒ‚”j‚ÌƒXƒRƒA
+    int enemyScore = 300; // æ•µæ’ƒç ´æ™‚ã®ã‚¹ã‚³ã‚¢
     [SerializeField]
-    int coinScore = 50; // ƒRƒCƒ“æ“¾‚Ìƒ{[ƒiƒXƒXƒRƒA
+    int coinScore = 50; // ã‚³ã‚¤ãƒ³å–å¾—æ™‚ã®ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢
 
-    // ÀÛ‚Ég—p‚·‚éƒXƒRƒA’liStart‚ÅSerializeField’l‚ğ‘ã“üj
+    // å®Ÿéš›ã«ä½¿ç”¨ã™ã‚‹ã‚¹ã‚³ã‚¢å€¤ï¼ˆStartã§SerializeFieldå€¤ã‚’ä»£å…¥ï¼‰
     static int Symbol, Enemy, Coin;
 
-    static int ScoreValue;// ’ÊíƒXƒRƒA
-    static int BonusValue;// ƒ{[ƒiƒXƒXƒRƒA
+    static int ScoreValue;// é€šå¸¸ã‚¹ã‚³ã‚¢
+    static int BonusValue;// ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢
+
+    static int ComboCount;// ã‚³ãƒ³ãƒœã®ã‚«ã‚¦ãƒ³ãƒˆ
 
     /// <summary>
-    /// MusicType‚²‚Æ‚Ìæ“¾ó‹µŠÇ—
-    /// ƒ^ƒCƒvAŒ»İ‚Ìæ“¾—ÊAÅ‘åæ“¾—Ê
+    /// MusicTypeã”ã¨ã®å–å¾—çŠ¶æ³ç®¡ç†
+    /// ã‚¿ã‚¤ãƒ—ã€ç¾åœ¨ã®å–å¾—é‡ã€æœ€å¤§å–å¾—é‡
     /// </summary>
     static Dictionary<MusicType, (int, int)> TakeMusic;
 
-    // ŠÈˆÕƒVƒ“ƒOƒ‹ƒgƒ“QÆ
+    // ç°¡æ˜“ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³å‚ç…§
     public static ScoreManager instance;
 
     // Start is called before the first frame update
     private void Start()
     {
-        // ƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è‚µ‚½ƒXƒRƒA’l‚ğ“à•”—p•Ï”‚É”½‰f
+        // ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§è¨­å®šã—ãŸã‚¹ã‚³ã‚¢å€¤ã‚’å†…éƒ¨ç”¨å¤‰æ•°ã«åæ˜ 
         Symbol = symbolScore;
         Enemy = enemyScore;
         Coin = coinScore;
 
-        // ƒXƒRƒA‰Šú‰»
+        // ã‚¹ã‚³ã‚¢åˆæœŸåŒ–
         ScoreValue = 0;
         BonusValue = 0;
 
-        // ‰ŠúƒXƒRƒA•\¦
+        ComboCount = 0;
+
+        // åˆæœŸã‚¹ã‚³ã‚¢è¡¨ç¤º
         TextSet();
 
-        // MusicType‚²‚Æ‚Ìæ“¾”‚ÆÅ‘å’l‚ğ‰Šú‰»
-        // Å‘å’l‚ÍBGMControll‚©‚çæ“¾
+        // MusicTypeã”ã¨ã®å–å¾—æ•°ã¨æœ€å¤§å€¤ã‚’åˆæœŸåŒ–
+        // æœ€å¤§å€¤ã¯BGMControllã‹ã‚‰å–å¾—
         TakeMusic = new();
         TakeMusic = Enum.GetValues(typeof(MusicType))
         .Cast<MusicType>()
         .ToDictionary( type => type, type => (0, BGMcontroll.GetTypeMaxValue(type)));
 
-        // ƒCƒ“ƒXƒ^ƒ“ƒX“o˜^
+        // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç™»éŒ²
         instance = this;
     }
 
     /// <summary>
-    /// ƒXƒRƒA•\¦‚ğXV‚·‚é
-    /// ’ÊíƒXƒRƒA{ƒ{[ƒiƒXƒXƒRƒA‚ğ‡Z‚µ‚Ä•\¦
+    /// ã‚¹ã‚³ã‚¢è¡¨ç¤ºã‚’æ›´æ–°ã™ã‚‹
+    /// é€šå¸¸ã‚¹ã‚³ã‚¢ï¼‹ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢ã‚’åˆç®—ã—ã¦è¡¨ç¤º
     /// </summary>
     private void TextSet()
     {
@@ -74,7 +78,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ’ÊíƒXƒRƒA‚ğ‰ÁZ
+    /// é€šå¸¸ã‚¹ã‚³ã‚¢ã‚’åŠ ç®—
     /// </summary>
     private void AddScore(int _add)
     {
@@ -83,7 +87,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒ{[ƒiƒXƒXƒRƒA‚ğ‰ÁZ
+    /// ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢ã‚’åŠ ç®—
     /// </summary>
     private void AddScoreBonus(int _add)
     {
@@ -91,8 +95,14 @@ public class ScoreManager : MonoBehaviour
         TextSet();
     }
 
+    private void AddCombo()
+    {
+        int BounsValue = (int)Mathf.Pow(ComboCount++,2) * 7;
+        AddScoreBonus(BounsValue);
+    }
+
     /// <summary>
-    /// ƒVƒ“ƒ{ƒ‹ŠJ•ú‚ÌƒXƒRƒA‰ÁZ
+    /// ã‚·ãƒ³ãƒœãƒ«é–‹æ”¾æ™‚ã®ã‚¹ã‚³ã‚¢åŠ ç®—
     /// </summary>
     public void AddScoreSymbol()
     {
@@ -100,23 +110,25 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// “GŒ‚”j‚ÌƒXƒRƒA‰ÁZ
+    /// æ•µæ’ƒç ´æ™‚ã®ã‚¹ã‚³ã‚¢åŠ ç®—
     /// </summary>
     public void AddScoreEnemy()
     {
         AddScore(Enemy);
+        AddCombo();
     }
 
     /// <summary>
-    /// ƒRƒCƒ“æ“¾‚Ìƒ{[ƒiƒXƒXƒRƒA‰ÁZ
+    /// ã‚³ã‚¤ãƒ³å–å¾—æ™‚ã®ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢åŠ ç®—
     /// </summary>
     public void AddScoreCoin()
     {
         AddScoreBonus(Coin);
+        AddCombo();
     }
 
     /// <summary>
-    /// ŠÔ‚É‰‚¶‚½ƒRƒCƒ“ƒ{[ƒiƒX‰ÁZ
+    /// æ™‚é–“ã«å¿œã˜ãŸã‚³ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹åŠ ç®—
     /// </summary>
     public void AddScoreBonusCoin(int _time)
     {
@@ -124,28 +136,28 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚µ‚½MusicType‚Ìæ“¾”‚ğ‰ÁZ
+    /// æŒ‡å®šã—ãŸMusicTypeã®å–å¾—æ•°ã‚’åŠ ç®—
     /// </summary>
     public void AddMusicType(MusicType type)
     {
-        /// ValueTuple‚Í’¼Ú•ÏX‚Å‚«‚È‚¢‚½‚ßAˆê“xæ‚èo‚µ‚ÄÄ‘ã“ü
+        /// ValueTupleã¯ç›´æ¥å¤‰æ›´ã§ããªã„ãŸã‚ã€ä¸€åº¦å–ã‚Šå‡ºã—ã¦å†ä»£å…¥
         var v = TakeMusic[type];
         v.Item1++;
         TakeMusic[type] = v;
     }
 
     /// <summary>
-    /// Œ»İ‚Ì’ÊíƒXƒRƒA‚ğæ“¾
+    /// ç¾åœ¨ã®é€šå¸¸ã‚¹ã‚³ã‚¢ã‚’å–å¾—
     /// </summary>
     public static int GetScore() => ScoreValue;
 
     /// <summary>
-    /// Œ»İ‚Ìƒ{[ƒiƒXƒXƒRƒA‚ğæ“¾
+    /// ç¾åœ¨ã®ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢ã‚’å–å¾—
     /// </summary>
     public static int GetBonus() => BonusValue;
 
     /// <summary>
-    /// w’è‚µ‚½MusicType‚Ìæ“¾ó‹µ‚ğæ“¾
+    /// æŒ‡å®šã—ãŸMusicTypeã®å–å¾—çŠ¶æ³ã‚’å–å¾—
     /// </summary>
     public static void TakeMusicValue(MusicType type ,ref int current,ref int maxValue)
     {
@@ -155,4 +167,9 @@ public class ScoreManager : MonoBehaviour
         current = TakeMusic[type].Item1;
         maxValue = TakeMusic[type].Item2;
     }
+
+    /// <summary>
+    /// ã‚³ãƒ³ãƒœã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
+    /// </summary>
+    public static void ComboReset() => ComboCount = 0;
 }

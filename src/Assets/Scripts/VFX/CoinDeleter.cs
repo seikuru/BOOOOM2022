@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -21,7 +21,8 @@ public class CoinDeleter : MonoBehaviour
         coinCollider.enabled = false;
         rigidBody.isKinematic = true;
 
-        ScoreManager.instance.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
+        //ScoreManager.instance?.AddScoreBonusCoin(CountDownTimer.BonusTimeValue);
+        ScoreManager.instance.AddScoreCoin();
 
         coinEffect.SendEvent("OnHit");
 
