@@ -15,6 +15,7 @@ class PhaseObjectClass
     public Transform MaterialCenter;
     public bool PlayerDontMove = false;
     public bool ChangeCamera = false;
+    public bool FadeOutBGM = false;
 }
 
 public class TutrialStageManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] List<VisualEffect> PhaseChangeEffect;
     [SerializeField] Animator PlayerMotionAnimator;
     [SerializeField] CinemachineVirtualCamera subCamera;
+    [SerializeField] AudioSource TutorialAudio;
     //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
@@ -68,6 +70,7 @@ public class TutrialStageManager : MonoBehaviour
         {
             ReleasePlayer();
         }
+
         if (PhaseObjects[currentPhase].ChangeCamera)
         {
             subCamera.Priority = 11;
@@ -76,6 +79,8 @@ public class TutrialStageManager : MonoBehaviour
         {
             subCamera.Priority = 1;
         }
+
+        
     }
 
     // Update is called once per frame
@@ -132,6 +137,14 @@ public class TutrialStageManager : MonoBehaviour
                 subCamera.Priority = 1;
             }
 
+            if (PhaseObjects[currentPhase].FadeOutBGM)
+            {
+                if (TutorialAudio != null)
+                {
+                    StartCoroutine(FadeOut_TutorialBGM());
+                }
+            }
+
             // Change Material Pivot
             if (PhaseObjects[currentPhase].MaterialCenter != null)
             {
@@ -185,6 +198,16 @@ public class TutrialStageManager : MonoBehaviour
     {
         ThroughBomb.TutrialCheck = false;
         DisableEvent.Invoke();
+    }
+
+    IEnumerator FadeOut_TutorialBGM()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.75f);
+        while (TutorialAudio.volume > 0.0f)
+        {
+            TutorialAudio.volume -= 0.1f;
+            yield return wait;
+        }
     }
 }
 

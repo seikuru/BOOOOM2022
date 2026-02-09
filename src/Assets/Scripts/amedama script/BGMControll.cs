@@ -73,23 +73,23 @@ public class BGMControll : MonoBehaviour
     //int beforeCollectPoint = 0;
     int ObjectNumber = 0;
     int CoroutineCount = 0;
-  
+
     float OneMeasureMult;
     float FadeInTimeOne = 0;
     float FirstBigTimeOne = 0;
     float note16 = 0.0f;
     float VolumeControl = 0.0f;
     float SE_VolumeControl = 0.0f;
-    
+
     WaitForSeconds wfs1frame;
     WaitForSeconds wfs1beat;
     WaitForSeconds wfs16note;
-   
+
     Coroutine[] AudioCoroutine;
     Queue<AudioSourceClass> MeasureEntryASC;
 
     [SerializeField]
-    
+
 
     public bool AllCollectBGMCheck => AllCollectPoint <= CurrentCollectPoint;
 
@@ -102,10 +102,10 @@ public class BGMControll : MonoBehaviour
 
     // 一時停止
     public void BGMPause()
-    { 
+    {
         if (PauseCheck)
             return;
-        
+
         foreach (var a1 in CMC)
         {
             foreach (var b2 in a1.ASC)
@@ -114,7 +114,7 @@ public class BGMControll : MonoBehaviour
                 if (b2.AudioSource != null)
                 {
 
-                    
+
                     b2.AudioSource.Pause();
                 }
             }
@@ -148,7 +148,7 @@ public class BGMControll : MonoBehaviour
         foreach (var a1 in CMC)
         {
             foreach (var b2 in a1.ASC)
-            { 
+            {
                 if (b2.AudioSource != null)
                 {
                     b2.AudioSource.PlayScheduled(currentStartDspTime);
@@ -157,17 +157,17 @@ public class BGMControll : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     public int GetTypeMaxValue(MusicType type)
     {
         int length = 0;
-        foreach(var cmc in CMC)
+        foreach (var cmc in CMC)
         {
-            if(cmc.CMCMusicType == type)
+            if (cmc.CMCMusicType == type)
             {
-                length =  cmc.useIndex;
+                length = cmc.useIndex;
             }
         }
 
@@ -205,11 +205,11 @@ public class BGMControll : MonoBehaviour
                 i++;
                 if (b2.AudioSource != null)
                 {
-                    
+
                     b2.AudioSource.enabled = true;
                     b2.AudioSource.mute = true;
                     b2.AudioSource.volume = 0;
-                    
+
                     if (b2.entryType == MusicEntry.fadeIn)
                     {
                         FadeInNumber++;
@@ -220,7 +220,7 @@ public class BGMControll : MonoBehaviour
             AllCollectPoint += a1.useIndex;
         }
 
-        if(StartBGM != null)
+        if (StartBGM != null)
         {
             StartBGM.enabled = true;
             StartBGM.mute = false;
@@ -255,7 +255,7 @@ public class BGMControll : MonoBehaviour
                     yield return null;
 
                     a.Stop();
-                    a.mute = mute; 
+                    a.mute = mute;
                     a.volume = originalVolume;
                 }
             }
@@ -269,7 +269,7 @@ public class BGMControll : MonoBehaviour
         // Time.deltaTime に拍子倍率を掛けてカウントを進める
         Count += Time.deltaTime * OneMeasureMult;
 
-        while(openTypes != null && openTypes.Count != 0)
+        while (openTypes != null && openTypes.Count != 0)
         {
             var type = openTypes.Dequeue();
 
@@ -406,13 +406,13 @@ public class BGMControll : MonoBehaviour
             while (MeasureEntryASC != null && MeasureEntryASC.Count != 0)
             {
                 var ASC = MeasureEntryASC.Dequeue();
-                if(ASC != null)
+                if (ASC != null)
                 {
                     // 最初の大音量再生コルーチンを開始
                     AudioCoroutine[CoroutineCount] = StartCoroutine(firstBigAudio(ASC.AudioSource));
                     CoroutineCount++;
                 }
-            }     
+            }
         }
     }
 
@@ -430,7 +430,7 @@ public class BGMControll : MonoBehaviour
             if (asc.entryType == MusicEntry.Measure)
             {
                 // 一定時間経過後のみ処理を待機
-                MeasureEntryASC.Enqueue(asc);                              
+                MeasureEntryASC.Enqueue(asc);
             }
 
             // エントリータイプが FadeIn の場合
@@ -445,13 +445,15 @@ public class BGMControll : MonoBehaviour
             }
         }
     }
-    
+
     IEnumerator FadeInAudio(AudioSource audio)
     {
         //CurrentCollectPoint++;
         audio.mute = false;
-        audio.time = StartBGM.time;
-
+        if (StartBGM != null)
+        {
+            audio.time = StartBGM.time;
+        }
         while (audio.volume < 1.0f)
         {
             audio.volume += FadeInTimeOne;
@@ -472,9 +474,11 @@ public class BGMControll : MonoBehaviour
         yield return wfs1beat;
         yield return wfs1beat;
 
-        StartBGM.volume = DownVolume;
-        
-        
+        if (StartBGM != null)
+        {
+            StartBGM.volume = DownVolume;
+        }
+
         foreach (var a1 in CMC)
         {
             foreach (var a2 in a1.ASC)
@@ -507,7 +511,10 @@ public class BGMControll : MonoBehaviour
                     if (a2.AudioSource.mute == false)
                     {
                         a2.AudioSource.volume += FadeOutVolumeUp;
-                        StartBGM.volume += FadeOutVolumeUp;
+                        if (StartBGM != null)
+                        {
+                            StartBGM.volume += FadeOutVolumeUp;
+                        }
                         yield return wfs1frame;
                     }
                 }
@@ -531,7 +538,10 @@ public class BGMControll : MonoBehaviour
         int CountBefore = 0;
         int CountMax = (int)(FirstBigTime / Time.fixedDeltaTime) + 1;
 
-        StartBGM.volume = VolumeControl;
+        if (StartBGM != null)
+        {
+            StartBGM.volume = VolumeControl;
+        }
         SE_VolumeControl = -60.0f;
         AudioMixer.SetFloat("SE_Volume", SE_VolumeControl);
         SE_VolumeOne = 60.0f / (FirstBigTime * 10.0f);
@@ -552,12 +562,14 @@ public class BGMControll : MonoBehaviour
         //CurrentCollectPoint++;
         audio.mute = false;
         audio.volume = 1.0f;
-        audio.time = StartBGM.time;
-
+        if (StartBGM != null)
+        {
+            audio.time = StartBGM.time;
+        }
         yield return null;
 
-        while (VolumeControl <= 1.0f )
-        { 
+        while (VolumeControl <= 1.0f)
+        {
 
             if (VolumeControl == VolumeControlBefore1frame)
             {
@@ -569,8 +581,10 @@ public class BGMControll : MonoBehaviour
             if ((int)(Count * 10.0f) != CountBefore)
             {
                 CountBefore = (int)(Count * 10.0f);
-
-                StartBGM.volume = VolumeControl;
+                if (StartBGM != null)
+                {
+                    StartBGM.volume = VolumeControl;
+                }
                 foreach (var a1 in CMC)
                 {
                     foreach (var a2 in a1.ASC)
