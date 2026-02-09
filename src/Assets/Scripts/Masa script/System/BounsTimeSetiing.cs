@@ -17,6 +17,10 @@ public class BounsTimeSetiing : MonoBehaviour
     // ボーナススポーンの有効フラグ
     [SerializeField] bool BounsSpawm_;
 
+    // 最初のスポーン
+    private bool firstSpawn = false;
+    [SerializeField] private int firstSpawnCount = 10;
+
     /// <summary>
     /// ボーナススポーンを開始
     /// </summary>
@@ -63,6 +67,34 @@ public class BounsTimeSetiing : MonoBehaviour
         }
     }
 
+    private void FirstSpawn()
+    {
+        foreach (var tf in SpawnPoint)
+        {
+            Vector3 spawnPos = tf.transform.position;
+
+            for (int i = 0; i < firstSpawnCount; i++)
+            {
+                GameObject instantiate = Instantiate(BounsCoinPrehab, spawnPos, Quaternion.identity);
+
+                // Rigidbodyがあれば力を加える
+                if (instantiate.TryGetComponent<Rigidbody>(out var rb))
+                {
+                    // ランダムなXZ方向と固定のY方向の力を設定
+                    Vector3 force = new()
+                    {
+                        x = Random.Range(-ForceRangeFlat.x, ForceRangeFlat.x),
+                        y = Force_Y * 0.5f,
+                        z = Random.Range(-ForceRangeFlat.y, ForceRangeFlat.y)
+                    };
+
+                    // 瞬間的な力を加えて射出
+                    rb.AddForce(force, ForceMode.Impulse);
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// 定期的なコインスポーン処理
     /// 指定時間経過ごとにCoinSpawnを呼び出し
@@ -72,6 +104,12 @@ public class BounsTimeSetiing : MonoBehaviour
         // ボーナススポーンが無効なら処理しない
         if (!BounsSpawm_)
             return;
+
+        if(firstSpawn == false)
+        {
+            FirstSpawn();
+            firstSpawn = true;
+        }
 
         // 経過時間を加算
         TimeCount += Time.fixedDeltaTime;
