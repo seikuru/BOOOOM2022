@@ -80,7 +80,11 @@ public class TutrialStageManager : MonoBehaviour
             subCamera.Priority = 1;
         }
 
-        
+        if (TutorialAudio != null)
+        {
+            TutorialAudio.Play();
+        }
+
     }
 
     // Update is called once per frame
