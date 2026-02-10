@@ -814,6 +814,8 @@ MonoBehaviour:
   InputCheck: 0
   tapInput: 1
   AngleLimit: 15
+  InputRpairFlag: 0
+  RpairTime: 4
 --- !u!1 &138663757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,6 +1932,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493314368}
   m_CullTransparentMesh: 1
+--- !u!1 &559500679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559500681}
+  - component: {fileID: 559500680}
+  - component: {fileID: 559500683}
+  - component: {fileID: 559500682}
+  m_Layer: 0
+  m_Name: Ranking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &559500680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559500679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1f4a379ef64bd43ae37be4500f8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: /RankingData.json
+  gameModeName:
+  - ichi_yama
+  - Ame_Hard
+  ResetScore: a8610000f0550000584d0000e0470000983a0000
+--- !u!4 &559500681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559500679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559500682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559500679}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329f529f9c9509f4586024bf78353512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ichi_yama
+  GetCurrentMode: 0
+  scoreTexts: []
+--- !u!114 &559500683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559500679}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329f529f9c9509f4586024bf78353512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ichi_yama
+  GetCurrentMode: 0
+  scoreTexts: []
 --- !u!1 &651364453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2593,8 @@ MonoBehaviour:
   InputCheck: 1
   tapInput: 1
   AngleLimit: 15
+  InputRpairFlag: 0
+  RpairTime: 4
 --- !u!4 &989375518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5210460464927750267, guid: 6176216e40e11894e8c4a7e92095fd47,
@@ -2567,6 +2652,8 @@ MonoBehaviour:
   InputCheck: 0
   tapInput: 1
   AngleLimit: 15
+  InputRpairFlag: 0
+  RpairTime: 4
 --- !u!1 &1026305037
 GameObject:
   m_ObjectHideFlags: 0
@@ -6684,3 +6771,4 @@ SceneRoots:
   - {fileID: 35760997}
   - {fileID: 1026305039}
   - {fileID: 1931487110}
+  - {fileID: 559500681}
