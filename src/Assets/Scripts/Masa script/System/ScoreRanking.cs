@@ -72,6 +72,11 @@ public class ScoreRanking : MonoBehaviour
 
         data = new RankingData();
 
+        ResetData();
+    }
+
+    public void ResetData()
+    {
         data.mode = new GameMode[gameModeName.Length];
 
         for (int i = 0; i < gameModeName.Length; i++)
@@ -83,7 +88,6 @@ public class ScoreRanking : MonoBehaviour
 
         SaveFile();
     }
-
 
     void SaveFile()
     {
