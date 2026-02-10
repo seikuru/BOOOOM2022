@@ -1941,6 +1941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559500681}
+  - component: {fileID: 559500684}
   - component: {fileID: 559500680}
   - component: {fileID: 559500683}
   - component: {fileID: 559500682}
@@ -2013,6 +2014,19 @@ MonoBehaviour:
   sceneName: ichi_yama
   GetCurrentMode: 0
   scoreTexts: []
+--- !u!114 &559500684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559500679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ad65b6502b76e4490f8ad887b1e80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreRanking: {fileID: 559500680}
 --- !u!1 &651364453
 GameObject:
   m_ObjectHideFlags: 0
