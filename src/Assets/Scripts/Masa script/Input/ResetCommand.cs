@@ -7,6 +7,8 @@ public class ResetCommand : MonoBehaviour
     [SerializeField]
     ScoreRanking scoreRanking;
 
+    private int index = 0;
+
     private KeyCode[] command = new KeyCode[]
      {
         KeyCode.UpArrow,
@@ -21,28 +23,35 @@ public class ResetCommand : MonoBehaviour
         KeyCode.A
      };
 
-    private int index = 0;
-
     void Update()
     {
-        if (Input.anyKeyDown)
+        foreach (KeyCode key in command)
         {
-            if (Input.GetKeyDown(command[index]))
+            if (Input.GetKeyDown(key))
             {
-                index++;
+                CheckInput(key);
+                break;
+            }
+        }
+    }
 
-                if (index >= command.Length)
-                {
-                    Debug.Log("コマンド成功！");
-                    index = 0;
-                    scoreRanking.ResetData();
-                }
-            }
-            else
+    void CheckInput(KeyCode key)
+    {
+        if (key == command[index])
+        {
+            index++;
+
+            if (index >= command.Length)
             {
-                // 間違えたらリセット
+                Debug.Log("成功！");
                 index = 0;
+                scoreRanking.ResetData();
             }
+        }
+        else
+        {
+            // もし最初のキーなら1からやり直す
+            index = (key == command[0]) ? 1 : 0;
         }
     }
 }
