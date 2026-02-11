@@ -7,6 +7,9 @@ public class ResetCommand : MonoBehaviour
     [SerializeField]
     ScoreRanking scoreRanking;
 
+    [SerializeField]
+    RankingViewer[] rankingViewer;
+
     private int index = 0;
 
     private KeyCode[] command = new KeyCode[]
@@ -46,6 +49,11 @@ public class ResetCommand : MonoBehaviour
                 Debug.Log("成功！");
                 index = 0;
                 scoreRanking.ResetData();
+
+                foreach(var viewer in rankingViewer)
+                {
+                    viewer.SetRanking();
+                }
             }
         }
         else

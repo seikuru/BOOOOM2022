@@ -14,14 +14,13 @@ public class RankingViewer : MonoBehaviour
 
     static readonly int RankingValue = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetRanking(int currentValue = -1)
     {
         if (scoreTexts == null || scoreTexts.Length != RankingValue)
             return;
 
         int[] score = GetCurrentMode ?
-            ScoreRanking.GetRankingDataBeforeMode():
+            ScoreRanking.GetRankingDataBeforeMode() :
             ScoreRanking.GetRankingData(sceneName);
 
         if (score == null || score.Length != RankingValue)
@@ -29,5 +28,11 @@ public class RankingViewer : MonoBehaviour
 
         for (int i = 0; i < RankingValue; i++)
             scoreTexts[i].SetText(score[i].ToString());
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SetRanking();
     }
 }
