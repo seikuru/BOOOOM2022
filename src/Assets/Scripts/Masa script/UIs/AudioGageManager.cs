@@ -1,20 +1,25 @@
-using System.Collections.Generic;
-using TMPro;
+ï»¿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class AudioGageManager : MonoBehaviour
 {
-    /// ƒI[ƒfƒBƒIƒQ[ƒW•\¦‚ğŠÇ—‚·‚éƒNƒ‰ƒX
-    /// ƒXƒRƒA”’l‚Ì•\¦‚ÆMusicType‚²‚Æ‚ÌƒQ[ƒW‰‰o§Œä
+    /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚²ãƒ¼ã‚¸è¡¨ç¤ºã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+    /// ã‚¹ã‚³ã‚¢æ•°å€¤ã®è¡¨ç¤ºã¨MusicTypeã”ã¨ã®ã‚²ãƒ¼ã‚¸æ¼”å‡ºåˆ¶å¾¡
     /// 
     [SerializeField] TextMeshProUGUI ScoreText;
 
-    [SerializeField] List<CollectImageClass> GageImages;// MusicType‚²‚Æ‚ÌƒQ[ƒWî•ñƒŠƒXƒg
+    [SerializeField] List<CollectImageClass> GageImages;// MusicTypeã”ã¨ã®ã‚²ãƒ¼ã‚¸æƒ…å ±ãƒªã‚¹ãƒˆ
+
+    [SerializeField] float gageWaitTime = 1.4f;
+    [SerializeField] float gageMoveTime = 0.4f;
 
     /// <summary>
-    /// ƒQ[ƒW1–{•ª‚Ìî•ñ‚ğ‚Ü‚Æ‚ß‚½ƒNƒ‰ƒX
-    /// RectMask2D‚Ìpadding‚ğ’iŠK“I‚É•ÏX‚µ‚ÄƒQ[ƒWis‚ğ•\Œ»‚·‚é
+    /// ã‚²ãƒ¼ã‚¸1æœ¬åˆ†ã®æƒ…å ±ã‚’ã¾ã¨ã‚ãŸã‚¯ãƒ©ã‚¹
+    /// RectMask2Dã®paddingã‚’æ®µéšçš„ã«å¤‰æ›´ã—ã¦ã‚²ãƒ¼ã‚¸é€²è¡Œã‚’è¡¨ç¾ã™ã‚‹
     /// </summary>
     [System.Serializable]
     class CollectImageClass
@@ -23,44 +28,75 @@ public class AudioGageManager : MonoBehaviour
         public float[] MaskValue;
         public RectMask2D mask2D;
 
-        // Œ»İ“K—p‚³‚ê‚Ä‚¢‚éMaskValue‚ÌƒCƒ“ƒfƒbƒNƒX
+        // ç¾åœ¨é©ç”¨ã•ã‚Œã¦ã„ã‚‹MaskValueã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
         private int MaskIndex = 0;
 
         /// <summary>
-        /// ƒQ[ƒW‚ğ1’iŠKi‚ß‚é
-        /// MaskValue‚Ì”z—ñ”ÍˆÍ‚ğ’´‚¦‚È‚¢‚æ‚¤‚É§Œä
+        /// ã‚²ãƒ¼ã‚¸ã‚’1æ®µéšé€²ã‚ã‚‹
+        /// MaskValueã®é…åˆ—ç¯„å›²ã‚’è¶…ãˆãªã„ã‚ˆã†ã«åˆ¶å¾¡
         /// </summary>
-        public void SetMask()
+        public bool SetMaskCheck()
         {
-            if (MaskIndex >= MaskValue.Length - 1) return;
+            if (MaskIndex >= MaskValue.Length - 1) 
+                return false;
+
             MaskIndex++;
 
-            // Œ»İ‚Ìpadding‚ğæ“¾‚µAX•ûŒü‚Ì‚İXV
-            var currentPadding = mask2D.padding;
-            currentPadding.x = MaskValue[MaskIndex];
-            mask2D.padding = currentPadding;
+            return true;
         }
+
+        public float GetMaskValue() => MaskValue[MaskIndex];
     }
 
     /// <summary>
-    /// ƒXƒRƒA•\¦‚ğXV(ƒfƒoƒbƒO—p)
+    /// ã‚¹ã‚³ã‚¢è¡¨ç¤ºã‚’æ›´æ–°(ãƒ‡ãƒãƒƒã‚°ç”¨)
     /// </summary>
     public void SetScore(float value) => ScoreText.SetText(value.ToString());
 
     /// <summary>
-    /// w’è‚µ‚½MusicType‚É‘Î‰‚·‚éƒQ[ƒW‚ğis‚³‚¹‚é
+    /// æŒ‡å®šã—ãŸMusicTypeã«å¯¾å¿œã™ã‚‹ã‚²ãƒ¼ã‚¸ã‚’é€²è¡Œã•ã›ã‚‹
     /// </summary>
     public void SetColorImage(MusicType musictype)
     {
         // Debug.Log(musictype);
-        // ‘Î‰‚·‚éMusicType‚ÌƒQ[ƒW‚Ì‚İ‚ğXV
+        // å¯¾å¿œã™ã‚‹MusicTypeã®ã‚²ãƒ¼ã‚¸ã®ã¿ã‚’æ›´æ–°
         foreach (var item in GageImages)
         {
             if(item.musicType == musictype)
             {
-                item.SetMask();
+                if(item.SetMaskCheck())              
+                    StartCoroutine(MoveGage(item.GetMaskValue(), item.mask2D));
                 return;
             }
         }
     }
+
+    /// <summary>
+    /// ç¾åœ¨ã®paddingã‚’å–å¾—ã—ã€Xæ–¹å‘ã®ã¿æ›´æ–°
+    /// </summary>
+    IEnumerator MoveGage(float TargetValue, RectMask2D rectMask2D)
+    {
+        yield return new WaitForSeconds(gageWaitTime);
+
+        var currentPadding = rectMask2D.padding;
+
+        float BeforeValue = currentPadding.x;
+        float count = 0f;
+
+        while (count < gageMoveTime)
+        {
+            count += Time.deltaTime;
+
+            float clamp = Mathf.Clamp01(count / gageMoveTime);
+
+            currentPadding.x = BeforeValue + (TargetValue - BeforeValue) * clamp;
+            rectMask2D.padding = currentPadding;
+
+            yield return null;
+        }
+
+        currentPadding.x = TargetValue;
+        rectMask2D.padding = currentPadding;
+    }
 }
+
