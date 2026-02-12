@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,10 +13,6 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] int Subtractcount = 2; // 毎フレーム減算される値
 
     [SerializeField] protected int StartCount = 18000; // 開始時のカウント値
-
-    [SerializeField] int BaseComboValue = 150; // コンボ時の基本加算値
-
-    [SerializeField] int AddComboValue = 50; // コンボ数に応じた追加加算値
 
     [SerializeField] protected bool NoCoronText = false; // コロン区切り表示の有効/無効フラグ
 

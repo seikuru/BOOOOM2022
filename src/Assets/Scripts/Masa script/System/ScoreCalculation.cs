@@ -1,27 +1,28 @@
-using System;
+ï»¿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreCalculation : MonoBehaviour
 {
-    /// ƒŠƒUƒ‹ƒg‰æ–Ê—p‚ÌƒXƒRƒAŒvZE‰‰o§ŒäƒNƒ‰ƒX
-    /// ÅIƒXƒRƒAEƒ{[ƒiƒX•\¦‚âAƒNƒŠƒA‰‰o•ªŠò
-    /// ‚Ù‚©”wŒiFAƒ‰ƒCƒ“‰‰oAƒGƒtƒFƒNƒg‚Ì§Œä‚ğs‚¤
+    /// ãƒªã‚¶ãƒ«ãƒˆç”»é¢ç”¨ã®ã‚¹ã‚³ã‚¢è¨ˆç®—ãƒ»æ¼”å‡ºåˆ¶å¾¡ã‚¯ãƒ©ã‚¹
+    /// æœ€çµ‚ã‚¹ã‚³ã‚¢ãƒ»ãƒœãƒ¼ãƒŠã‚¹è¡¨ç¤ºã‚„ã€ã‚¯ãƒªã‚¢æ¼”å‡ºåˆ†å²
+    /// ã»ã‹èƒŒæ™¯è‰²ã€ãƒ©ã‚¤ãƒ³æ¼”å‡ºã€ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®åˆ¶å¾¡ã‚’è¡Œã†
 
-    [SerializeField] Image fadeImage;// ƒtƒF[ƒh—pUI
-    [SerializeField] float fadeSpeed = 0.1f;// ƒtƒF[ƒh‘¬“x
-    [SerializeField] TextMeshProUGUI Bouns;// ƒ{[ƒiƒXƒXƒRƒA•\¦
-    [SerializeField] TextMeshProUGUI Total;// ‡ŒvƒXƒRƒA•\¦
-    [SerializeField] SpriteRenderer BackSprite;// ”wŒiƒXƒvƒ‰ƒCƒg
-    [SerializeField] MackLine[] mackLines;// ‰‰o—pƒ‰ƒCƒ“ŒQ
-    [SerializeField] Animator PlayerAnimator;// ƒvƒŒƒCƒ„[‰‰o—pAnimator
-    [SerializeField] GameObject[] NoizeObjects;// –¢ƒNƒŠƒA‚Å•\¦‚·‚éƒmƒCƒY‰‰o
-    [SerializeField] GameObject[] KirakiraObjects;// ƒNƒŠƒA‚Å•\¦‚·‚é‰‰o
+    [SerializeField] Image fadeImage;// ãƒ•ã‚§ãƒ¼ãƒ‰ç”¨UI
+    [SerializeField] float fadeSpeed = 0.1f;// ãƒ•ã‚§ãƒ¼ãƒ‰é€Ÿåº¦
+    [SerializeField] TextMeshProUGUI Bouns;// ãƒœãƒ¼ãƒŠã‚¹ã‚¹ã‚³ã‚¢è¡¨ç¤º
+    [SerializeField] TextMeshProUGUI Total;// åˆè¨ˆã‚¹ã‚³ã‚¢è¡¨ç¤º
+    [SerializeField] SpriteRenderer BackSprite;// èƒŒæ™¯ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
+    [SerializeField] MackLine[] mackLines;// æ¼”å‡ºç”¨ãƒ©ã‚¤ãƒ³ç¾¤
+    [SerializeField] Animator PlayerAnimator;// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æ¼”å‡ºç”¨Animator
+    [SerializeField] GameObject[] NoizeObjects;// æœªã‚¯ãƒªã‚¢ã§è¡¨ç¤ºã™ã‚‹ãƒã‚¤ã‚ºæ¼”å‡º
+    [SerializeField] GameObject[] KirakiraObjects;// ã‚¯ãƒªã‚¢ã§è¡¨ç¤ºã™ã‚‹æ¼”å‡º
+    [SerializeField] ScoreRanking scoreRanking;
 
     /// <summary>
-    /// ƒ‰ƒCƒ“ƒŒƒ“ƒ_ƒ‰[‰‰o§Œä—pƒNƒ‰ƒX
-    /// clamp’l‚É‰‚¶‚ÄF‚ğ•âŠÔ‚·‚é
+    /// ãƒ©ã‚¤ãƒ³ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼æ¼”å‡ºåˆ¶å¾¡ç”¨ã‚¯ãƒ©ã‚¹
+    /// clampå€¤ã«å¿œã˜ã¦è‰²ã‚’è£œé–“ã™ã‚‹
     /// </summary>
     [Serializable]
     public class MackLine
@@ -31,13 +32,13 @@ public class ScoreCalculation : MonoBehaviour
         public Color NoizeColor;
 
         /// <summary>
-        /// clamp01(0`1)‚É‰‚¶‚Äƒ‰ƒCƒ“ƒJƒ‰[‚ğ•ÏX
+        /// clamp01(0ï½1)ã«å¿œã˜ã¦ãƒ©ã‚¤ãƒ³ã‚«ãƒ©ãƒ¼ã‚’å¤‰æ›´
         /// </summary>
         public void SetColor(float clamp01)
         {
             Gradient g = new Gradient();
 
-            // ƒmƒCƒYF ¨ ’ÊíF‚Ö•âŠÔ
+            // ãƒã‚¤ã‚ºè‰² â†’ é€šå¸¸è‰²ã¸è£œé–“
             Color LerpColor = Color.Lerp(NoizeColor,DefaltColor, clamp01);
 
             g.SetKeys(
@@ -53,27 +54,30 @@ public class ScoreCalculation : MonoBehaviour
                 }
             );
 
-            // ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ÆŠJnEI—¹F‚ğ“¯‚Éİ’è
+            // ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã¨é–‹å§‹ãƒ»çµ‚äº†è‰²ã‚’åŒæ™‚ã«è¨­å®š
             lineRenderer.colorGradient = g;
             lineRenderer.startColor = LerpColor;
             lineRenderer.endColor = LerpColor;
         }
     }
 
-    // ”»’è‘ÎÛ‚Æ‚È‚éMusicTypeˆê——
+    // åˆ¤å®šå¯¾è±¡ã¨ãªã‚‹MusicTypeä¸€è¦§
     MusicType[] types = { MusicType.Drums, MusicType.Bass, MusicType.Melody, MusicType.Chord };
 
     void Start()
     {
-        // ƒXƒRƒAæ“¾
+        // ã‚¹ã‚³ã‚¢å–å¾—
         int bonus = ScoreManager.GetBonus();
         int score = ScoreManager.GetScore();
 
-        // ƒXƒRƒA•\¦XV
+        // ã‚¹ã‚³ã‚¢è¡¨ç¤ºæ›´æ–°
         Bouns.SetText(bonus.ToString());
         Total.SetText((bonus + score).ToString());
 
-        // ‘SMusicType‚Ìæ“¾”‡Œv‚ğZo
+        // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’ä¿å­˜
+        scoreRanking.AddHighScore(bonus + score);
+
+        // å…¨MusicTypeã®å–å¾—æ•°åˆè¨ˆã‚’ç®—å‡º
         int allCurrent = 0, allmax = 0;
         int current = 0, max = 1;
 
@@ -84,11 +88,11 @@ public class ScoreCalculation : MonoBehaviour
             allmax += max;
         }
 
-        // æ“¾—¦‚ğ0`1‚É³‹K‰»
+        // å–å¾—ç‡ã‚’0ï½1ã«æ­£è¦åŒ–
         float clamp = Mathf.Clamp01((float)allCurrent / allmax);
 
-        // æ“¾—¦‚É‰‚¶‚ÄƒNƒŠƒA^–¢ƒNƒŠƒA‰‰o‚ğ•ªŠò
-        // –¢ƒNƒŠƒA
+        // å–å¾—ç‡ã«å¿œã˜ã¦ã‚¯ãƒªã‚¢ï¼æœªã‚¯ãƒªã‚¢æ¼”å‡ºã‚’åˆ†å²
+        // æœªã‚¯ãƒªã‚¢
         if (clamp < 1)
         {
             PlayerAnimator.SetBool("GameClear", false);
@@ -99,7 +103,7 @@ public class ScoreCalculation : MonoBehaviour
                 noize.SetActive(true);
             }
         }
-        // ƒNƒŠƒA
+        // ã‚¯ãƒªã‚¢
         else
         {
             PlayerAnimator.SetBool("GameClear", true);
@@ -111,7 +115,7 @@ public class ScoreCalculation : MonoBehaviour
             }
         }
 
-        // æ“¾—¦‚É‰‚¶‚Ä”wŒi‚ğ–¾‚é‚­•â³
+        // å–å¾—ç‡ã«å¿œã˜ã¦èƒŒæ™¯ã‚’æ˜ã‚‹ãè£œæ­£
         BackSprite.color = new Color()
         {
             r = 1f - (1f - clamp) / 2f,
@@ -120,7 +124,7 @@ public class ScoreCalculation : MonoBehaviour
             a = 1f
         };
 
-        // ƒ‰ƒCƒ“‰‰o‚ğæ“¾—¦‚É‰‚¶‚ÄXV
+        // ãƒ©ã‚¤ãƒ³æ¼”å‡ºã‚’å–å¾—ç‡ã«å¿œã˜ã¦æ›´æ–°
         foreach (var line in mackLines)
         {
             line.SetColor(clamp);
@@ -140,7 +144,7 @@ public class ScoreCalculation : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("ƒtƒF[ƒhŠ®—¹");
+        Debug.Log("ãƒ•ã‚§ãƒ¼ãƒ‰å®Œäº†");
     }
 
     
