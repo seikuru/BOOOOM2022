@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResetCommand : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField,Header("上上下下左右左右BA")]
     ScoreRanking scoreRanking;
 
     [SerializeField]
