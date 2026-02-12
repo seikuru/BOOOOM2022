@@ -88,6 +88,7 @@ MonoBehaviour:
   openSymbolEffects:
   - {fileID: 6713336565915032832}
   - {fileID: 4402463378304463827}
+  openSymbolParticle: {fileID: 0}
   RotateSpeed: 15
   fuwaSpeed: 2
   KurufuwaTransform: {fileID: 1098745192044790254}
@@ -369,7 +370,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.18679237, y: 1, z: 0.19635957, w: 1}
+        m_Name: WaveColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
