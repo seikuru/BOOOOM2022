@@ -16,6 +16,7 @@ public class MusicSymbolObject : MonoBehaviour
 
     [SerializeField] GameObject[] DisenableObjects;
     [SerializeField] VisualEffect[] openSymbolEffects;
+    [SerializeField] ParticleSystem openSymbolParticle;
     [SerializeField] float RotateSpeed  = 15.0f;
     [SerializeField] float fuwaSpeed = 2.0f;
     [SerializeField] Transform KurufuwaTransform;
@@ -100,6 +101,9 @@ public class MusicSymbolObject : MonoBehaviour
             Effect.gameObject.SetActive(true);
             Effect.SendEvent("OnPlay");
         }
+ 
+        openSymbolParticle.Stop();
+        openSymbolParticle.Play();
 
         // 回転・浮遊アニメーション開始
         StartCoroutine(Kurufuwa());
