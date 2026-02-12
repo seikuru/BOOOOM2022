@@ -15,6 +15,8 @@ public class SelectButton : MonoBehaviour
     [SerializeField] protected AudioClip audioClipDown;
     [SerializeField] protected int currentButtonIndex = 0;
 
+    public int GetCurrentIndex() => currentButtonIndex;
+
     // Indexを変更せず初期化などに使う値
     static readonly int ResetIndex = -99;
 
@@ -24,6 +26,7 @@ public class SelectButton : MonoBehaviour
     /// <param name="buttonIndexAdd">位置</param>
     public virtual void ButtonSelectMove(int buttonIndexAdd)
     {
+        Debug.Log(buttonIndexAdd);
         // ボタンが1つ以下なら処理不要
         if (Buttons.Length < 2)
             return;
@@ -115,15 +118,15 @@ public class SelectButton : MonoBehaviour
     protected virtual void DebugInput()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            ButtonSelectMove(1);
+            ButtonSelectMove(1); 
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             ButtonSelectMove(-1);
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             ButtonInvoke();
         }

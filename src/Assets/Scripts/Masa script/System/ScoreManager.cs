@@ -63,6 +63,9 @@ public class ScoreManager : MonoBehaviour
 
         // インスタンス登録
         instance = this;
+
+        // ランキングの保存先を設定
+        ScoreRanking.SetCurrentGameMode();
     }
 
     /// <summary>
