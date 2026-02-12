@@ -206,7 +206,7 @@ public class TutrialStageManager : MonoBehaviour
 
     IEnumerator FadeOut_TutorialBGM()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.75f);
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
         while (TutorialAudio.volume > 0.0f)
         {
             TutorialAudio.volume -= 0.1f;
