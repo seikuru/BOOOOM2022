@@ -7397,12 +7397,12 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0000000073193798
+      value: 0.0000000073193807
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000045212363
+      value: 0.0000000045212367
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -20658,6 +20658,11 @@ PrefabInstance:
       propertyPath: audioCulcurator
       value: 
       objectReference: {fileID: 6709736818273123049}
+    - target: {fileID: 635509498335130599, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2733314097407798063, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: m_Pivot.x
@@ -26614,7 +26619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4183161678784126743}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ff565883d189034eaa26ea142fea70e, type: 3}
   m_Name: 
@@ -32926,7 +32931,7 @@ PrefabInstance:
     - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 892774487872043940, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
@@ -32986,7 +32991,7 @@ PrefabInstance:
     - target: {fileID: 5111915784715442840, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5111915784715442840, guid: debb35ea07dd7694b89e0c8318484e11,
         type: 3}
