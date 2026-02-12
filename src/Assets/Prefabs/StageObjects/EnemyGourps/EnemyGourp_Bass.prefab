@@ -56,7 +56,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.1641509, y: 0.17398447, z: 1, w: 1}
+        m_Name: WaveColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -198,6 +201,7 @@ MonoBehaviour:
   openSymbolEffects:
   - {fileID: 3369837917615698037}
   - {fileID: 4700614208015217997}
+  openSymbolParticle: {fileID: 0}
   RotateSpeed: 15
   fuwaSpeed: 2
   KurufuwaTransform: {fileID: 7909636066662973860}
