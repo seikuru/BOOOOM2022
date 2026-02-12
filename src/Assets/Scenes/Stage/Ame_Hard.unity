@@ -5165,7 +5165,6 @@ RectTransform:
   - {fileID: 1000877676}
   - {fileID: 266500010}
   - {fileID: 1731628644}
-  - {fileID: 1656409842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5572,17 +5571,17 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.4874182
+      value: 0.48741817
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3180842
+      value: 0.31808418
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.19648308
+      value: -0.1964831
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -20439,6 +20438,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 579675389}
   - {fileID: 981407018}
   m_Father: {fileID: 396646704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20473,7 +20473,7 @@ MonoBehaviour:
   m_Scale3D: {x: 10, y: 10, z: 10}
   m_AnimatableProperties: []
   m_Particles:
-  - {fileID: 0}
+  - {fileID: 579675391}
   m_MeshSharing: 0
   m_GroupId: 0
   m_GroupMaxId: 0
