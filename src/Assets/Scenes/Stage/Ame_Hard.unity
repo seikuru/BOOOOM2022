@@ -5418,17 +5418,17 @@ PrefabInstance:
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.4874182
+      value: 0.48741817
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3180842
+      value: 0.31808418
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.19648308
+      value: -0.1964831
       objectReference: {fileID: 0}
     - target: {fileID: 4233086501449967028, guid: c3896364f0e0bd14e9e122fab3c44a32,
         type: 3}
@@ -20757,6 +20757,11 @@ PrefabInstance:
       propertyPath: audioCulcurator
       value: 
       objectReference: {fileID: 6709736818273123049}
+    - target: {fileID: 1732876497805803486, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2733314097407798063, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: m_Pivot.x
@@ -20862,6 +20867,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGageInfo
       objectReference: {fileID: 0}
+    - target: {fileID: 4672940844887182987, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: StartCount
@@ -20957,6 +20967,11 @@ PrefabInstance:
       propertyPath: CountDownStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4923032481243614450, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172806812471030460, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: BGMcontroll
@@ -20967,6 +20982,16 @@ PrefabInstance:
       propertyPath: BGMcontroll
       value: 
       objectReference: {fileID: 6709736818273123051}
+    - target: {fileID: 6164304523786069244, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382186146860300043, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7424944537910349459, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: m_Padding.m_Left
@@ -21050,6 +21075,11 @@ PrefabInstance:
     - target: {fileID: 8156935166988149301, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019162979392050716, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
