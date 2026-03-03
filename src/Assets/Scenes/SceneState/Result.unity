@@ -7931,6 +7931,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 200154646166988178, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 698244132156771024, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
       propertyPath: m_Enabled
@@ -8160,6 +8165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BGM_unit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990597802016852524, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5318556350100676959, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}

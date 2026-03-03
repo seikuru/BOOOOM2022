@@ -45,8 +45,16 @@ public class ControllerTableInput : OperationsInput
     {
         IsPushing = false;
 
+        EnableValueCheck(); // 値の初期状態を確認
+
         //　Startで呼ぶ想定だが、OnEnableでも問題なさそうならそのままで
         StartUIRotate(); // UIテーブルの初期回転を設定
+    }
+
+
+    protected virtual void EnableValueCheck()
+    {
+        return;
     }
 
     // <summary>
