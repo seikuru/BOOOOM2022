@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒŠƒUƒ‹ƒg‰æ–Ê‚Ì‰¹ºƒm[ƒh
-/// ’ÊíƒNƒŠƒbƒv‚ÆƒmƒCƒYƒNƒŠƒbƒv‚ğØ‚è‘Ö‚¦‰Â”\
+/// ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã®éŸ³å£°ãƒãƒ¼ãƒ‰
+/// é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã¨ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—ã‚’åˆ‡ã‚Šæ›¿ãˆå¯èƒ½
 /// </summary>
 [Serializable]
 public class ResultAudioNode
@@ -14,7 +14,7 @@ public class ResultAudioNode
     [SerializeField] public AudioSource audioSource;
 
     /// <summary>
-    /// ’ÊíƒNƒŠƒbƒv‚Ü‚½‚ÍƒmƒCƒYƒNƒŠƒbƒv‚ğİ’è
+    /// é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã¾ãŸã¯ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—ã‚’è¨­å®š
     /// </summary>
     public void SetClip(bool isDefaltClip)
     {
@@ -22,7 +22,7 @@ public class ResultAudioNode
     }
 
     /// <summary>
-    /// w’è‚µ‚½DSPŠÔ‚ÅÄ¶—\–ñ
+    /// æŒ‡å®šã—ãŸDSPæ™‚é–“ã§å†ç”Ÿäºˆç´„
     /// </summary>
     public void PlayScheduled(double DpsTime)
     {
@@ -30,7 +30,7 @@ public class ResultAudioNode
     }
 
     /// <summary>
-    /// Œ»İ‚ÌƒNƒŠƒbƒv‚ª’ÊíƒNƒŠƒbƒv‚©ƒ`ƒFƒbƒN
+    /// ç¾åœ¨ã®ã‚¯ãƒªãƒƒãƒ—ãŒé€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã‹ãƒã‚§ãƒƒã‚¯
     /// </summary>
     public bool CheckClip()
     {
@@ -39,7 +39,7 @@ public class ResultAudioNode
 }
 
 /// <summary>
-/// ‰¹Šyƒ^ƒCƒv‚²‚Æ‚Ì‰¹ºƒm[ƒh”z—ñ‚ğ•Û
+/// éŸ³æ¥½ã‚¿ã‚¤ãƒ—ã”ã¨ã®éŸ³å£°ãƒãƒ¼ãƒ‰é…åˆ—ã‚’ä¿æŒ
 /// </summary>
 [Serializable]
 public class ResultAudio
@@ -50,20 +50,50 @@ public class ResultAudio
     public ResultAudioNode[] RAN;
 }
 
+[Serializable]
+public class AudioPack
+{
+    [SerializeField]
+    public string SceneName;
+    [SerializeField]
+    public BGMPack BGM;
+}
+
+
 public class ResultBGMControll : MonoBehaviour
 {
-    /// ƒŠƒUƒ‹ƒg‰æ–Ê‚ÌBGM§ŒäƒNƒ‰ƒX
-    /// ƒXƒRƒA‚É‰‚¶‚Ä’Êí/ƒmƒCƒYƒNƒŠƒbƒv‚ğØ‚è‘Ö‚¦A‘S‰¹Œ¹‚ğ“¯ŠúÄ¶
+    /// ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã®BGMåˆ¶å¾¡ã‚¯ãƒ©ã‚¹
+    /// ã‚¹ã‚³ã‚¢ã«å¿œã˜ã¦é€šå¸¸/ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—ã‚’åˆ‡ã‚Šæ›¿ãˆã€å…¨éŸ³æºã‚’åŒæœŸå†ç”Ÿ
 
     [SerializeField] ResultAudio[] resultAudios;
     [SerializeField] float WaitStartCount = 0.3f;
 
-    // ‰¹Šyƒ^ƒCƒv‚²‚Æ‚Ì—LŒø‚È‰¹ºƒm[ƒh”
+    [Header("è¿½åŠ ")]
+    [SerializeField]
+    AudioPack[] audioPacks;
+
+    // éŸ³æ¥½ã‚¿ã‚¤ãƒ—ã”ã¨ã®æœ‰åŠ¹ãªéŸ³å£°ãƒãƒ¼ãƒ‰æ•°
     Dictionary<MusicType, int> AudioLength;
 
+    AudioPack UsePack;
+
+    private void Awake()
+    {
+        string name = SceneChanger.GetBeforeSceneName();
+
+        foreach (var pack in audioPacks)
+        {
+            if(name == pack.SceneName)
+            {
+                UsePack = pack;
+                return;
+            }
+        }
+    }
+
     /// <summary>
-    /// ƒXƒRƒA‚ÉŠî‚Ã‚¢‚ÄŠe‰¹ºƒm[ƒh‚ÌƒNƒŠƒbƒv‚ğİ’è
-    /// ’B¬“x‚É‰‚¶‚Ä’ÊíƒNƒŠƒbƒv‚ÆƒmƒCƒYƒNƒŠƒbƒv‚ğØ‚è‘Ö‚¦
+    /// ã‚¹ã‚³ã‚¢ã«åŸºã¥ã„ã¦å„éŸ³å£°ãƒãƒ¼ãƒ‰ã®ã‚¯ãƒªãƒƒãƒ—ã‚’è¨­å®š
+    /// é”æˆåº¦ã«å¿œã˜ã¦é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã¨ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—ã‚’åˆ‡ã‚Šæ›¿ãˆ
     /// </summary>
     void AudioClipSetting()
     {
@@ -71,44 +101,44 @@ public class ResultBGMControll : MonoBehaviour
 
         int current = 0, max = 1;
 
-        // Še‰¹Šyƒ^ƒCƒv‚É‚Â‚¢‚Äˆ—
+        // å„éŸ³æ¥½ã‚¿ã‚¤ãƒ—ã«ã¤ã„ã¦å‡¦ç†
         foreach (var ra in resultAudios)
         {
-            // ƒXƒRƒAƒ}ƒl[ƒWƒƒ[‚©‚ç’B¬ó‹µ‚ğæ“¾
+            // ã‚¹ã‚³ã‚¢ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‹ã‚‰é”æˆçŠ¶æ³ã‚’å–å¾—
             ScoreManager.TakeMusicValue(ra.type, ref current, ref max);
 
-            // —LŒø‚È‰¹ºƒm[ƒh”‚ğŒˆ’è(”z—ñ’·‚Æmax’l‚Ì¬‚³‚¢•û)
+            // æœ‰åŠ¹ãªéŸ³å£°ãƒãƒ¼ãƒ‰æ•°ã‚’æ±ºå®š(é…åˆ—é•·ã¨maxå€¤ã®å°ã•ã„æ–¹)
             AudioLength[ra.type] = Mathf.Min(ra.RAN.Length,max);
 
-            // Še‰¹ºƒm[ƒh‚ÉƒNƒŠƒbƒv‚ğİ’è
+            // å„éŸ³å£°ãƒãƒ¼ãƒ‰ã«ã‚¯ãƒªãƒƒãƒ—ã‚’è¨­å®š
             for (int i = 0; i < AudioLength[ra.type]; i++)
             {
-                // current‚æ‚è¬‚³‚¢ƒCƒ“ƒfƒbƒNƒX‚Í’ÊíƒNƒŠƒbƒvA‚»‚êˆÈŠO‚ÍƒmƒCƒYƒNƒŠƒbƒv
+                // currentã‚ˆã‚Šå°ã•ã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã€ãã‚Œä»¥å¤–ã¯ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—
                 ra.RAN[i].SetClip(i < current);       
             }
         }
 
-        // ƒI[ƒfƒBƒI‚ÌƒEƒH[ƒ€ƒAƒbƒvˆ—‚ğŠJn
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®ã‚¦ã‚©ãƒ¼ãƒ ã‚¢ãƒƒãƒ—å‡¦ç†ã‚’é–‹å§‹
         StartCoroutine(WarmUpAudio());
     }
 
     /// <summary>
-    /// ‘S‚Ä‚ÌBGM‚ğ“¯Šú‚µ‚ÄÄ¶ŠJn
-    /// DSPŠÔ‚ğg—p‚µ‚Ä³Šm‚Èƒ^ƒCƒ~ƒ“ƒO‚ÅÄ¶
+    /// å…¨ã¦ã®BGMã‚’åŒæœŸã—ã¦å†ç”Ÿé–‹å§‹
+    /// DSPæ™‚é–“ã‚’ä½¿ç”¨ã—ã¦æ­£ç¢ºãªã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å†ç”Ÿ
     /// </summary>
     void AllBGMPlay()
     {
-        // Œ»İ‚ÌDSPŠÔ‚©‚ç0.1•bŒã‚ğŠJn‚Æ‚µ‚Äİ’è
+        // ç¾åœ¨ã®DSPæ™‚é–“ã‹ã‚‰0.1ç§’å¾Œã‚’é–‹å§‹æ™‚åˆ»ã¨ã—ã¦è¨­å®š
         double currentStartDspTime = AudioSettings.dspTime + 0.1;
 
         foreach (var ra in resultAudios)
         {
-            // —LŒø‚È‰¹ºƒm[ƒh‚Ì‚İÄ¶
+            // æœ‰åŠ¹ãªéŸ³å£°ãƒãƒ¼ãƒ‰ã®ã¿å†ç”Ÿ
             for (int i = 0; i < AudioLength[ra.type]; i++)
             {
                 ra.RAN[i].PlayScheduled(currentStartDspTime);
 
-                // ’ÊíƒNƒŠƒbƒvEƒmƒCƒYƒNƒŠƒbƒv‹¤‚É1•b‚©‚çŠJn
+                // é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ãƒ»ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—å…±ã«1ç§’ã‹ã‚‰é–‹å§‹
                 if (ra.RAN[i].CheckClip())
                 {
                     ra.RAN[i].audioSource.time = 1.0f;
@@ -122,34 +152,34 @@ public class ResultBGMControll : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒI[ƒfƒBƒI‚ÌƒEƒH[ƒ€ƒAƒbƒvˆ—
-    /// ˆê“x–³‰¹‚ÅÄ¶¨’â~‚·‚é‚±‚Æ‚ÅƒI[ƒfƒBƒIƒXƒŒƒbƒh‚ğ€”õ‚µA
-    /// –{”Ô‚Ì“¯ŠúÄ¶‚Ì’x‰„‚ğ–h‚®
+    /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®ã‚¦ã‚©ãƒ¼ãƒ ã‚¢ãƒƒãƒ—å‡¦ç†
+    /// ä¸€åº¦ç„¡éŸ³ã§å†ç”Ÿâ†’åœæ­¢ã™ã‚‹ã“ã¨ã§ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¹ãƒ¬ãƒƒãƒ‰ã‚’æº–å‚™ã—ã€
+    /// æœ¬ç•ªã®åŒæœŸå†ç”Ÿæ™‚ã®é…å»¶ã‚’é˜²ã
     /// </summary>
     IEnumerator WarmUpAudio()
     {
-        // Œ³‚Ìİ’è‚ğ•Û‘¶‚·‚éƒLƒ…[
+        // å…ƒã®è¨­å®šã‚’ä¿å­˜ã™ã‚‹ã‚­ãƒ¥ãƒ¼
         Queue<Tuple<bool, float>> AudioParameters = new();
 
-        // ‘S‰¹Œ¹‚ğ–³‰¹‚ÅÄ¶ŠJn
+        // å…¨éŸ³æºã‚’ç„¡éŸ³ã§å†ç”Ÿé–‹å§‹
         foreach (var ra in resultAudios)
         {
             foreach (var ran in ra.RAN)
             {
                 var a = ran.audioSource;
-                // Œ»İ‚Ìİ’è‚ğ•Û‘¶
+                // ç¾åœ¨ã®è¨­å®šã‚’ä¿å­˜
                 AudioParameters.Enqueue(new(a.mute, a.volume));
-                // –³‰¹İ’è‚É‚µ‚ÄÄ¶
+                // ç„¡éŸ³è¨­å®šã«ã—ã¦å†ç”Ÿ
                 a.mute = false;
                 a.volume = 0f;
                 a.Play();
             }
         }
 
-        // Audio Thread‚Ì€”õ‚ğ‘Ò‚Â
+        // Audio Threadã®æº–å‚™ã‚’å¾…ã¤
         yield return null;
 
-        // ‘S‰¹Œ¹‚ğ’â~‚µAŒ³‚Ìİ’è‚É–ß‚·
+        // å…¨éŸ³æºã‚’åœæ­¢ã—ã€å…ƒã®è¨­å®šã«æˆ»ã™
         foreach (var ra in resultAudios)
         {
             foreach (var ran in ra.RAN)
@@ -158,18 +188,52 @@ public class ResultBGMControll : MonoBehaviour
                 var AP = AudioParameters.Dequeue();
 
                 a.Stop();
-                // Œ³‚Ìİ’è‚ğ•œŒ³
+                // å…ƒã®è¨­å®šã‚’å¾©å…ƒ
                 a.mute = AP.Item1;
                 a.volume = AP.Item2;
             }
         }
 
-        // w’èŠÔŒã‚É–{”Ô‚ÌÄ¶‚ğŠJn
+        // æŒ‡å®šæ™‚é–“å¾Œã«æœ¬ç•ªã®å†ç”Ÿã‚’é–‹å§‹
         Invoke("AllBGMPlay", WaitStartCount);
     }
 
     void Start()
     {
-        AudioClipSetting();      
+        if(UsePack == null)
+            AudioClipSetting();
+        else
+            AudioPackSetting();
+    }
+
+    /// <summary>
+    /// ã‚¹ã‚³ã‚¢ã«åŸºã¥ã„ã¦å„éŸ³å£°ãƒãƒ¼ãƒ‰ã®ã‚¯ãƒªãƒƒãƒ—ã‚’è¨­å®š
+    /// é”æˆåº¦ã«å¿œã˜ã¦é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã¨ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—ã‚’åˆ‡ã‚Šæ›¿ãˆ
+    /// </summary>
+    void AudioPackSetting()
+    {
+        AudioLength = new Dictionary<MusicType, int>();
+
+        int current = 0, max = 1;
+
+        // å„éŸ³æ¥½ã‚¿ã‚¤ãƒ—ã«ã¤ã„ã¦å‡¦ç†
+        foreach (var ra in resultAudios)
+        {
+            // ã‚¹ã‚³ã‚¢ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‹ã‚‰é”æˆçŠ¶æ³ã‚’å–å¾—
+            ScoreManager.TakeMusicValue(ra.type, ref current, ref max);
+
+            // æœ‰åŠ¹ãªéŸ³å£°ãƒãƒ¼ãƒ‰æ•°ã‚’æ±ºå®š(é…åˆ—é•·ã¨maxå€¤ã®å°ã•ã„æ–¹)
+            AudioLength[ra.type] = Mathf.Min(ra.RAN.Length, max);
+
+            // å„éŸ³å£°ãƒãƒ¼ãƒ‰ã«ã‚¯ãƒªãƒƒãƒ—ã‚’è¨­å®š
+            for (int i = 0; i < AudioLength[ra.type]; i++)
+            {
+                // currentã‚ˆã‚Šå°ã•ã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯é€šå¸¸ã‚¯ãƒªãƒƒãƒ—ã€ãã‚Œä»¥å¤–ã¯ãƒã‚¤ã‚ºã‚¯ãƒªãƒƒãƒ—
+                ra.RAN[i].audioSource.clip = UsePack.BGM.TakeBGM(ra.type,i,i < current);
+            }
+        }
+
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®ã‚¦ã‚©ãƒ¼ãƒ ã‚¢ãƒƒãƒ—å‡¦ç†ã‚’é–‹å§‹
+        StartCoroutine(WarmUpAudio());
     }
 }

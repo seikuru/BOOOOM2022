@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abddc58e5e6dec540b99edc9eddf1da1, type: 3}
+  m_Name: "\u30A2\u30EA\u30A2\u30B1\u30CE\u30C4\u30AD"
+  m_EditorClassIdentifier: 
+  DefaltSoundClip: {fileID: 8300000, guid: 277bbddea64aa7a42a3d491192eaa1fe, type: 3}
+  packs:
+  - Mtype: 0
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: b9649add3c1b50d43a652dd91dea7ff9, type: 3}
+      clipNoize: {fileID: 8300000, guid: b6689c1eed5c64341a6a9404145b34d8, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 3422e17bdb969c34090795d60f90e40d, type: 3}
+      clipNoize: {fileID: 8300000, guid: 315cab17fd25583409d984aa190aa76b, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 4b29f3e7be24b374bb79d241586506b9, type: 3}
+      clipNoize: {fileID: 8300000, guid: 4e12b8cb1e4ed944b93ab851a1e244c7, type: 3}
+  - Mtype: 1
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: 277bbddea64aa7a42a3d491192eaa1fe, type: 3}
+      clipNoize: {fileID: 8300000, guid: a2f08b50d4d484e43b302bde0da905d9, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 7bece86803296624da37cdac6d174bed, type: 3}
+      clipNoize: {fileID: 8300000, guid: c65772b66e8bfc049a72dd009415271d, type: 3}
+  - Mtype: 2
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: 717d3e41c5c5ace47be30bc977195565, type: 3}
+      clipNoize: {fileID: 8300000, guid: b853f490b08b47f4ba84aade673ce545, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 52a0df1a60ac30c4f8ff64abe9210bc1, type: 3}
+      clipNoize: {fileID: 8300000, guid: 7920e7f704ba0334ca22b64ccb070a2d, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: dd2d9583b515a2a4a9fcd830f8bf21cb, type: 3}
+      clipNoize: {fileID: 8300000, guid: 2ff823ec1271a864f9e37feea26c49c9, type: 3}
+  - Mtype: 3
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: 193e28b87f02e0d41b46d3dbb37d989f, type: 3}
+      clipNoize: {fileID: 8300000, guid: 462bf02549977c64c84d2872fd86642a, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 52cd5d9bb63a7444da85a29fa15134fb, type: 3}
+      clipNoize: {fileID: 8300000, guid: f011094cfdf4c5548b0e31958712d7e1, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 2f169c7a2a936094ba08cab1c08eb97d, type: 3}
+      clipNoize: {fileID: 8300000, guid: 0bb5383e590709242a7c0e2696706697, type: 3}

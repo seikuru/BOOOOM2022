@@ -7681,7 +7681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9235,7 +9235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -20977,7 +20977,7 @@ PrefabInstance:
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: StartCount
-      value: 24000
+      value: 26700
       objectReference: {fileID: 0}
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
@@ -21079,6 +21079,11 @@ PrefabInstance:
       propertyPath: BGMcontroll
       value: 
       objectReference: {fileID: 6709736818273123051}
+    - target: {fileID: 7458054868978095697, guid: 0e960a87e7d557441a5943cdc9097145,
+        type: 3}
+      propertyPath: m_text
+      value: Spy Spinner
+      objectReference: {fileID: 0}
     - target: {fileID: 7888031075883246250, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: GageImages.Array.data[0].MaskValue.Array.size
@@ -21291,7 +21296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28475,7 +28480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -30985,11 +30990,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 396646704}
     m_Modifications:
-    - target: {fileID: 825799945576934569, guid: 76c171398949c1146b4ae808dd1da554,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1000
-      objectReference: {fileID: 0}
     - target: {fileID: 1960942010587935483, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: valueContainer
@@ -32142,7 +32142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -33946,6 +33946,11 @@ PrefabInstance:
       objectReference: {fileID: 266500007}
     - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
+      propertyPath: audioPacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
       propertyPath: COC.Array.data[0].CollectObject.Array.data[0]
       value: 
       objectReference: {fileID: 570533969}
@@ -34034,6 +34039,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8475601042250937784, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17834d1dacf75a544bbb4cc58a38543c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

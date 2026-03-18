@@ -11090,11 +11090,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 396646704}
     m_Modifications:
-    - target: {fileID: 825799945576934569, guid: 76c171398949c1146b4ae808dd1da554,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1000
-      objectReference: {fileID: 0}
     - target: {fileID: 1072619226271227842, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_PlayableAsset
@@ -11116,6 +11111,11 @@ PrefabInstance:
       propertyPath: BGMcontroll
       value: 
       objectReference: {fileID: 6709736818273123051}
+    - target: {fileID: 4110428320862677924, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4871667548219727193, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_Enabled
@@ -11131,6 +11131,11 @@ PrefabInstance:
       propertyPath: controllerInput
       value: 
       objectReference: {fileID: 4183161678784126744}
+    - target: {fileID: 4942054624488994159, guid: 76c171398949c1146b4ae808dd1da554,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5312728841049602421, guid: 76c171398949c1146b4ae808dd1da554,
         type: 3}
       propertyPath: m_Name
@@ -27156,6 +27161,11 @@ PrefabInstance:
       objectReference: {fileID: 266500007}
     - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
+      propertyPath: audioPacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
       propertyPath: CMC.Array.data[1].useIndex
       value: 3
       objectReference: {fileID: 0}
@@ -27171,6 +27181,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}
+      propertyPath: audioPacks.Array.data[0].BGM
+      value: 
+      objectReference: {fileID: 11400000, guid: f145078c66bf41641b8a3cee579133a1,
+        type: 2}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: audioPacks.Array.data[1].BGM
+      value: 
+      objectReference: {fileID: 11400000, guid: f145078c66bf41641b8a3cee579133a1,
+        type: 2}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
       propertyPath: CMC.Array.data[2].ASC.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -27178,6 +27200,16 @@ PrefabInstance:
         type: 3}
       propertyPath: CMC.Array.data[3].ASC.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: audioPacks.Array.data[0].SceneName
+      value: Ame_Hard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
+        type: 3}
+      propertyPath: audioPacks.Array.data[1].SceneName
+      value: Ame_Hard
       objectReference: {fileID: 0}
     - target: {fileID: 3419645761911249747, guid: 6dbfc92c7746c5b4899d055243ec659d,
         type: 3}

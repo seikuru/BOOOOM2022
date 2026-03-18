@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum MusicType
@@ -70,6 +71,11 @@ public class BGMControll : MonoBehaviour
     [SerializeField] float FirstBigTime = 3.0f;
     [SerializeField] float FirstBigSeparate = 16.0f;
     [SerializeField] float DownVolume = 0.6f;
+
+    [Header("追加")]
+    [SerializeField]
+    AudioPack[] audioPacks;
+
     //int beforeCollectPoint = 0;
     int ObjectNumber = 0;
     int CoroutineCount = 0;
@@ -99,6 +105,44 @@ public class BGMControll : MonoBehaviour
     static Queue<MusicType> openTypes;
 
     public static void OpenTypeSetting(MusicType type) => openTypes.Enqueue(type);
+
+    private void Awake()
+    {
+        string name = SceneManager.GetActiveScene().name;
+
+        foreach (var pack in audioPacks)
+        {
+            if (name == pack.SceneName)
+            {
+                SetBGMClips(pack);
+                return;
+            }
+        }
+    }
+
+    void SetBGMClips(AudioPack usePack)
+    {
+        StartBGM.clip = usePack.BGM.GetDefaltSoundClip();
+
+        foreach (var cmc in CMC)
+        {
+            for(int i = 0; i < cmc.useIndex;i++)
+            {
+                cmc.ASC[i].AudioSource.clip = usePack.BGM.TakeBGM(cmc.CMCMusicType, i);
+                Debug.Log(cmc.ASC[i].AudioSource.clip.name);
+                if (cmc.CMCMusicType == MusicType.Drums && cmc.ASC[i].AudioSource.clip == StartBGM.clip)
+                {
+                    var clip = usePack.BGM.TakeBGM(cmc.CMCMusicType, i + 1);
+                    if (clip != null && cmc.ASC[i].AudioSource != StartBGM)
+                    {
+                        Debug.Log(cmc.ASC[i].AudioSource.clip.name + clip.name);
+                        cmc.ASC[i].AudioSource.clip = clip;
+                    }
+                        
+                }
+            }       
+        }
+    }
 
     // 一時停止
     public void BGMPause()

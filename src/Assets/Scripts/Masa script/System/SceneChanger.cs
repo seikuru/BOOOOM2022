@@ -23,6 +23,8 @@ public class SceneChanger : MonoBehaviour
     // シーン移行のためのbool変数
     bool canActivateScene = false;
 
+    public static string GetBeforeSceneName() => beforeName;
+
     /// <summary>
     /// シーン移行のためのbool変数を変更
     /// </summary>

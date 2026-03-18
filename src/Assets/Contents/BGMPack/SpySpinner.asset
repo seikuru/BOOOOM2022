@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abddc58e5e6dec540b99edc9eddf1da1, type: 3}
+  m_Name: SpySpinner
+  m_EditorClassIdentifier: 
+  DefaltSoundClip: {fileID: 8300000, guid: 33358f8b60cc4c640a3d81c8b4158817, type: 3}
+  packs:
+  - Mtype: 0
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: 6d4756b91c600da469ef7052621c9e6d, type: 3}
+      clipNoize: {fileID: 8300000, guid: 81bb9801433d58f46ab199aaabc2331a, type: 3}
+  - Mtype: 1
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: 33358f8b60cc4c640a3d81c8b4158817, type: 3}
+      clipNoize: {fileID: 8300000, guid: 69cdbb05ba854dd4694116a6eddcac26, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 9760de7b73dec1e48b3a314f993516b9, type: 3}
+      clipNoize: {fileID: 8300000, guid: b6dfb683ef524a049a22e9387008b82d, type: 3}
+  - Mtype: 2
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: f8d7647c8cc2896428ab6f087255880f, type: 3}
+      clipNoize: {fileID: 8300000, guid: ad46881703941294d8e738d9cb6695f0, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 0f138f2df9da439428a8f846c987255c, type: 3}
+      clipNoize: {fileID: 8300000, guid: 70f72484a76714a41b7273629259f62f, type: 3}
+  - Mtype: 3
+    clips:
+    - clipDefalt: {fileID: 8300000, guid: fe3a136db835f074cae5ebd43a55140d, type: 3}
+      clipNoize: {fileID: 8300000, guid: d054f04f342e5b242a4fdfe02b444067, type: 3}
+    - clipDefalt: {fileID: 8300000, guid: 748a8042750f1884bb192b9b654d4e23, type: 3}
+      clipNoize: {fileID: 8300000, guid: 30884cfdeb2a7e14ca017337d88dd850, type: 3}
