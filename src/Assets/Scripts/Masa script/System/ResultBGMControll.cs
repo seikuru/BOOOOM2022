@@ -77,6 +77,8 @@ public class ResultBGMControll : MonoBehaviour
 
     AudioPack UsePack;
 
+    public AudioPack GetUsePack() => UsePack;
+
     private void Awake()
     {
         string name = SceneChanger.GetBeforeSceneName();

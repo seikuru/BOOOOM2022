@@ -7681,6 +7681,7 @@ GameObject:
   - component: {fileID: 1521763803}
   - component: {fileID: 1521763802}
   - component: {fileID: 1521763801}
+  - component: {fileID: 1521763805}
   m_Layer: 5
   m_Name: Disc
   m_TagString: Untagged
@@ -7761,7 +7762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 946e32fb0d952cd4eb045670395ba681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7ee78bd656bf2c4a981df28cd0ede5e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7779,6 +7780,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521763799}
   m_CullTransparentMesh: 1
+--- !u!114 &1521763805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521763799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5862fd51a0a192b4b926b20724549f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DiscImage: {fileID: 1521763803}
+  resultBGMControll: {fileID: 1612983487}
 --- !u!1 &1556821738
 GameObject:
   m_ObjectHideFlags: 0
@@ -8252,6 +8267,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dbfc92c7746c5b4899d055243ec659d, type: 3}
+--- !u!114 &1612983487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 698244132156771024, guid: 6dbfc92c7746c5b4899d055243ec659d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1612983486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50f9e8a8fec7354bae494e3ddc8aa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1655468523
 GameObject:
   m_ObjectHideFlags: 0

@@ -3516,6 +3516,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 396646704}
     m_Modifications:
+    - target: {fileID: 832493679899165970, guid: 9b7b500d4d6742e4f8eccebf79e24f29,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 946e32fb0d952cd4eb045670395ba681,
+        type: 3}
     - target: {fileID: 1363118642740048480, guid: 9b7b500d4d6742e4f8eccebf79e24f29,
         type: 3}
       propertyPath: m_Enabled
@@ -16642,7 +16648,7 @@ PrefabInstance:
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}
       propertyPath: StartCount
-      value: 30600
+      value: 32250
       objectReference: {fileID: 0}
     - target: {fileID: 4814950165166364145, guid: 0e960a87e7d557441a5943cdc9097145,
         type: 3}

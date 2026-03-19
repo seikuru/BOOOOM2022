@@ -11,6 +11,11 @@ public class BGMPack : ScriptableObject
     [SerializeField]
     Pack[] packs;
 
+    [SerializeField]
+    Sprite DiscSPrite;
+
+    public Sprite GetDisc() => DiscSPrite;
+
     public AudioClip GetDefaltSoundClip() => DefaltSoundClip;
 
     public AudioClip TakeBGM(MusicType type,int index,bool clearSound = true)
