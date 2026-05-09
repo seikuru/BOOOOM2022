@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +19,13 @@ public class AudioCulcurator : MonoBehaviour
         _8192 = 8192, _4096 = 4096, _2048 = 2048, _1024 = 1024, _512 = 512, _256 = 256, _128 = 128, _64 = 64
     }
 
-    // ƒAƒ^ƒbƒ`‚³‚ê‚½‰¹Œ¹‚Ìƒf[ƒ^‚ğ•Ô‚·ƒNƒ‰ƒX
+    // ã‚¢ã‚¿ãƒƒãƒã•ã‚ŒãŸéŸ³æºã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™ã‚¯ãƒ©ã‚¹
     [SerializeField] List<AudioSourceGroup> sources;
     [SerializeField] FFT_resolusion fft_res = FFT_resolusion._256;
 
-    // musicType ‚²‚Æ‚ÌƒI[ƒfƒBƒIƒNƒŠƒbƒvŠi”[—p
+    // musicType ã”ã¨ã®ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¯ãƒªãƒƒãƒ—æ ¼ç´ç”¨
     public Dictionary<MusicType, AudioClip[]> musicClips = new Dictionary<MusicType, AudioClip[]>();
-    // musicType ‚²‚Æ‚ÌƒI[ƒfƒBƒIƒf[ƒ^Ši”[—p
+    // musicType ã”ã¨ã®ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒ¼ã‚¿æ ¼ç´ç”¨
     private Dictionary<MusicType, List<float[]>> musicData = new Dictionary<MusicType, List<float[]>>();
 
 
@@ -34,16 +34,16 @@ public class AudioCulcurator : MonoBehaviour
         
     }
 
-    void Awake()
+    void OnEnable()
     {
         musicClips = new Dictionary<MusicType, AudioClip[]>();
         musicData = new Dictionary<MusicType, List<float[]>>();
-        for (int i = 0; i < sources.Count; i++) // musicType ‚²‚Æ‚Éƒ‹[ƒv
+        for (int i = 0; i < sources.Count; i++) // musicType ã”ã¨ã«ãƒ«ãƒ¼ãƒ—
         {
             AudioClip[] audioClips = new AudioClip[sources[i].audioSources.Count];
             for (int j = 0; j < sources[i].audioSources.Count; j++)
             {
-                // AudioClip ‚ğæ“¾
+                // AudioClip ã‚’å–å¾—
                 audioClips[j] = sources[i].audioSources[j].clip;
             }
             musicClips[sources[i].musicType] = audioClips;
@@ -85,7 +85,7 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// FFT Resolusion ‚Ì’l‚ğ•Ô‚·
+    /// FFT Resolusion ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <returns> int FFT_resolusion </returns>
     public int GetFFTResolusion()
@@ -94,20 +94,20 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// Œ»İ‚ÌŠÔ‚©‚çŒˆ‚ß‚ç‚ê‚½’·‚³•ª‚Ì”gŒ`ƒf[ƒ^‚ğ“n‚·ŠÖ”
+    /// ç¾åœ¨ã®æ™‚é–“ã‹ã‚‰æ±ºã‚ã‚‰ã‚ŒãŸé•·ã•åˆ†ã®æ³¢å½¢ãƒ‡ãƒ¼ã‚¿ã‚’æ¸¡ã™é–¢æ•°
     /// </summary>
-    /// <param name="target"> ‚±‚Ì”z—ñ‚É’l‚ªŠi”[‚³‚ê‚éA’·‚³‚Í dataLength </param>
-    /// <param name="dataLength"> ”z—ñ‚Ì’·‚³ </param>
+    /// <param name="target"> ã“ã®é…åˆ—ã«å€¤ãŒæ ¼ç´ã•ã‚Œã‚‹ã€é•·ã•ã¯ dataLength </param>
+    /// <param name="dataLength"> é…åˆ—ã®é•·ã• </param>
     public void GetWaveData(ref float[] target, int dataLength)
     {
         target = new float[dataLength];
 
-        for(int i = 0; i < sources.Count; i++) // musicType ‚²‚Æ‚Éƒ‹[ƒv
+        for(int i = 0; i < sources.Count; i++) // musicType ã”ã¨ã«ãƒ«ãƒ¼ãƒ—
         {
             if (sources[i].audioSources == null) continue;
 
             int startIndex = sources[i].audioSources[0].timeSamples;
-            for (int j = 0; j < sources[i].audioSources.Count; j++) // Še AudioSource ‚²‚Æ‚Éƒ‹[ƒv
+            for (int j = 0; j < sources[i].audioSources.Count; j++) // å„ AudioSource ã”ã¨ã«ãƒ«ãƒ¼ãƒ—
             {
                 float strength = sources[i].audioSources[j].mute == true ? 0 : 1;
                 strength *= sources[i].audioSources[j].volume;
@@ -121,11 +121,11 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½ MusicType ‚ÌŒ»İ‚ÌŠÔ‚©‚çŒˆ‚ß‚ç‚ê‚½’·‚³•ª‚Ì”gŒ`ƒf[ƒ^‚ğ“n‚·ŠÖ”
+    /// æŒ‡å®šã•ã‚ŒãŸ MusicType ã®ç¾åœ¨ã®æ™‚é–“ã‹ã‚‰æ±ºã‚ã‚‰ã‚ŒãŸé•·ã•åˆ†ã®æ³¢å½¢ãƒ‡ãƒ¼ã‚¿ã‚’æ¸¡ã™é–¢æ•°
     /// </summary>
-    /// <param name="type"> —~‚µ‚¢”gŒ`ƒf[ƒ^‚Ì MusicType </param>
-    /// <param name="target"> ‚±‚Ì”z—ñ‚É’l‚ªŠi”[‚³‚ê‚éA’·‚³‚Í dataLength </param>
-    /// <param name="dataLength"> ”z—ñ‚Ì’·‚³ </param>
+    /// <param name="type"> æ¬²ã—ã„æ³¢å½¢ãƒ‡ãƒ¼ã‚¿ã® MusicType </param>
+    /// <param name="target"> ã“ã®é…åˆ—ã«å€¤ãŒæ ¼ç´ã•ã‚Œã‚‹ã€é•·ã•ã¯ dataLength </param>
+    /// <param name="dataLength"> é…åˆ—ã®é•·ã• </param>
     public void GetWaveData(MusicType type, ref float[] target, int dataLength)
     {
         target = new float[dataLength];
@@ -141,7 +141,7 @@ public class AudioCulcurator : MonoBehaviour
         }
         if(sourceIndex == -1 || sources[sourceIndex].audioSources == null)
         {
-            Debug.LogWarning("w’è‚³‚ê‚½ MusicType ‚Ì AudioSource ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + type);
+            Debug.LogWarning("æŒ‡å®šã•ã‚ŒãŸ MusicType ã® AudioSource ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + type);
             return;
         }
 
@@ -159,9 +159,9 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// Œ»İ‚©‚ç0.1•bŒã‚Ü‚Å‚Ì‰¹—Ê‚Ì˜a‚ğ•Ô‚·ŠÖ”
+    /// ç¾åœ¨ã‹ã‚‰0.1ç§’å¾Œã¾ã§ã®éŸ³é‡ã®å’Œã‚’è¿”ã™é–¢æ•°
     /// </summary>
-    /// <returns> float ‰¹—Ê </returns>
+    /// <returns> float éŸ³é‡ </returns>
     //public float GetCurrentData()
     //{
     //    float res = 0;
@@ -179,7 +179,7 @@ public class AudioCulcurator : MonoBehaviour
     //            float strength = sources[i].audioSources[j].mute == true ? 0 : 1;
     //            strength *= sources[i].audioSources[j].volume;
 
-    //            if (strength <= 0.01f) continue; // \•ª‚É¬‚³‚©‚Á‚½‚çƒXƒLƒbƒv
+    //            if (strength <= 0.01f) continue; // ååˆ†ã«å°ã•ã‹ã£ãŸã‚‰ã‚¹ã‚­ãƒƒãƒ—
 
     //            for (int k = 0; k < sampleNum; k++)
     //            {
@@ -196,10 +196,10 @@ public class AudioCulcurator : MonoBehaviour
     //}
 
     /// <summary>
-    /// w’è‚µ‚½ MusicType ‚ÌŒ»İ‚©‚ç0.1•bŒã‚Ü‚Å‚Ì‰¹—Ê‚Ì˜a‚ğ•Ô‚·ŠÖ”
+    /// æŒ‡å®šã—ãŸ MusicType ã®ç¾åœ¨ã‹ã‚‰0.1ç§’å¾Œã¾ã§ã®éŸ³é‡ã®å’Œã‚’è¿”ã™é–¢æ•°
     /// </summary>
-    /// <param name="type"> —~‚µ‚¢ MusicType </param>
-    /// <returns> float ‰¹—Ê </returns>
+    /// <param name="type"> æ¬²ã—ã„ MusicType </param>
+    /// <returns> float éŸ³é‡ </returns>
     //public float GetCurrentData(MusicType type)
     //{
     //    float res = 0;
@@ -215,7 +215,7 @@ public class AudioCulcurator : MonoBehaviour
 
     //    if (sourceIndex == -1 || sources[sourceIndex].audioSources == null)
     //    {
-    //        Debug.LogWarning("w’è‚³‚ê‚½ MusicType ‚Ì AudioSource ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + type);
+    //        Debug.LogWarning("æŒ‡å®šã•ã‚ŒãŸ MusicType ã® AudioSource ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + type);
     //        return 0f;
     //    }
 
@@ -226,7 +226,7 @@ public class AudioCulcurator : MonoBehaviour
     //    {
     //        float strength = sources[sourceIndex].audioSources[j].mute == true ? 0 : 1;
     //        strength *= sources[sourceIndex].audioSources[j].volume;
-    //        if (strength <= 0.01f) continue; // \•ª‚É¬‚³‚©‚Á‚½‚çƒXƒLƒbƒv
+    //        if (strength <= 0.01f) continue; // ååˆ†ã«å°ã•ã‹ã£ãŸã‚‰ã‚¹ã‚­ãƒƒãƒ—
     //        for (int k = 0; k < sampleNum; k++)
     //        {
     //            sum += Mathf.Abs(musicData[type][j][currentIndex + k]);
@@ -238,9 +238,9 @@ public class AudioCulcurator : MonoBehaviour
     //}
 
     /// <summary>
-    /// Œ»İ‚Ì‰¹—Ê‚Ì˜a‚ğ•Ô‚·ŠÖ”
+    /// ç¾åœ¨ã®éŸ³é‡ã®å’Œã‚’è¿”ã™é–¢æ•°
     /// </summary>
-    /// <returns> float ‰¹—Ê </returns>
+    /// <returns> float éŸ³é‡ </returns>
     public float GetOutputData()
     {
         float res = 0f;
@@ -267,10 +267,10 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚µ‚½ MusicType ‚ÌŒ»İ‚Ì‰¹—Ê‚Ì˜a‚ğ•Ô‚·ŠÖ”
+    /// æŒ‡å®šã—ãŸ MusicType ã®ç¾åœ¨ã®éŸ³é‡ã®å’Œã‚’è¿”ã™é–¢æ•°
     /// </summary>
-    /// <param name="type"> —~‚µ‚¢ MusicType </param>
-    /// <returns> float ‰¹—Ê </returns>
+    /// <param name="type"> æ¬²ã—ã„ MusicType </param>
+    /// <returns> float éŸ³é‡ </returns>
     public float GetOutputData(MusicType type)
     {
         float res = 0f;
@@ -285,7 +285,7 @@ public class AudioCulcurator : MonoBehaviour
         }
         if (sourceIndex == -1 || sources[sourceIndex].audioSources == null)
         {
-            Debug.LogWarning("w’è‚³‚ê‚½ MusicType ‚Ì AudioSource ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + type);
+            Debug.LogWarning("æŒ‡å®šã•ã‚ŒãŸ MusicType ã® AudioSource ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + type);
             return 0f;
         }
 
@@ -304,9 +304,9 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// Œ»İ‚ÌƒXƒyƒNƒgƒ‹‚ğ“n‚·ŠÖ”
+    /// ç¾åœ¨ã®ã‚¹ãƒšã‚¯ãƒˆãƒ«ã‚’æ¸¡ã™é–¢æ•°
     /// </summary>
-    /// <param name="target"> ‚±‚Ì”z—ñ‚É’l‚ªŠi”[‚³‚ê‚éA’·‚³‚Í fft_res </param>
+    /// <param name="target"> ã“ã®é…åˆ—ã«å€¤ãŒæ ¼ç´ã•ã‚Œã‚‹ã€é•·ã•ã¯ fft_res </param>
     public void GetSpectrum(ref float[] target)
     {
         float[] spec = new float[(int)fft_res];
@@ -332,10 +332,10 @@ public class AudioCulcurator : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚µ‚½ MusicType ‚ÌŒ»İ‚ÌƒXƒyƒNƒgƒ‹‚ğ“n‚·ŠÖ”
+    /// æŒ‡å®šã—ãŸ MusicType ã®ç¾åœ¨ã®ã‚¹ãƒšã‚¯ãƒˆãƒ«ã‚’æ¸¡ã™é–¢æ•°
     /// </summary>
-    /// <param name="type"> —~‚µ‚¢ MusicType </param>
-    /// <param name="target"> ‚±‚Ì”z—ñ‚É’l‚ªŠi”[‚³‚ê‚éA’·‚³‚Í fft_res </param>
+    /// <param name="type"> æ¬²ã—ã„ MusicType </param>
+    /// <param name="target"> ã“ã®é…åˆ—ã«å€¤ãŒæ ¼ç´ã•ã‚Œã‚‹ã€é•·ã•ã¯ fft_res </param>
     public void GetSpectrum(MusicType type, ref float[] target)
     {
         float[] spec = new float[(int)fft_res];
@@ -353,7 +353,7 @@ public class AudioCulcurator : MonoBehaviour
 
         if (sourceIndex == -1 || sources[sourceIndex].audioSources == null)
         {
-            Debug.LogWarning("w’è‚³‚ê‚½ MusicType ‚Ì AudioSource ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + type);
+            Debug.LogWarning("æŒ‡å®šã•ã‚ŒãŸ MusicType ã® AudioSource ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + type);
             return;
         }
 

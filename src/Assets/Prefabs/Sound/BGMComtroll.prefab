@@ -133,6 +133,11 @@ MonoBehaviour:
   FirstBigTime: 3
   FirstBigSeparate: 4
   DownVolume: 0.2
+  audioPacks:
+  - SceneName: ichi_yama
+    BGM: {fileID: 11400000, guid: 3691a5733ca35174491f3cec9531e698, type: 2}
+  - SceneName: Ame_Hard
+    BGM: {fileID: 11400000, guid: f145078c66bf41641b8a3cee579133a1, type: 2}
 --- !u!114 &2567546668970421515
 MonoBehaviour:
   m_ObjectHideFlags: 0

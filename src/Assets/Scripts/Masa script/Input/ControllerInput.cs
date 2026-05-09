@@ -1,38 +1,47 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class ControllerInput : ControllerTableInput
 {
-    /// ƒRƒ“ƒgƒ[ƒ‰[“ü—Í‚ğŠÇ—‚·‚éƒNƒ‰ƒX
-    /// ƒe[ƒuƒ‹‚Ì‰ñ“]A”š’e‚Ì“Š±(“à‘¤/ŠO‘¤)A”š”jƒ{ƒ^ƒ“A‰º“Š‚°‚È‚Ç‚Ì“ü—Íˆ—‚ğ“‡ŠÇ—
+    /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼å…¥åŠ›ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+    /// ãƒ†ãƒ¼ãƒ–ãƒ«ã®å›è»¢ã€çˆ†å¼¾ã®æŠ•æ“²(å†…å´/å¤–å´)ã€çˆ†ç ´ãƒœã‚¿ãƒ³ã€ä¸‹æŠ•ã’ãªã©ã®å…¥åŠ›å‡¦ç†ã‚’çµ±åˆç®¡ç†
 
     [Header("ControllerInput")]
     [Space]
-    [SerializeField] ValueContainer valueContainer; // ƒRƒ“ƒgƒ[ƒ‰‚Ìƒpƒ‰ƒ[ƒ^æ“¾ƒNƒ‰ƒX
+    [SerializeField] ValueContainer valueContainer; // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å–å¾—ã‚¯ãƒ©ã‚¹
 
-    // ƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚È‚¢ó‘Ô‚ğ¦‚·’è”
+    // ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ãªã„çŠ¶æ…‹ã‚’ç¤ºã™å®šæ•°
     static readonly int NoTorchValue = -999;
 
-    // Œ»İ‚Ì‰ñ“]Šp“x
+    // ç¾åœ¨ã®å›è»¢è§’åº¦
     float angle = 0;
 
-    // ‘OƒtƒŒ[ƒ€‚Ì“ü—ÍŠp“x‚ğ•Û(“à‘¤EŠO‘¤•Ê)
+    // å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®å…¥åŠ›è§’åº¦ã‚’ä¿æŒ(å†…å´ãƒ»å¤–å´åˆ¥)
     HashSet<int> InputAnglesInside, InputAnglesOutside;
 
-    // ŠO•”‚©‚çŠp“x‚ğæ“¾‚·‚éƒvƒƒpƒeƒB
+    // å¤–éƒ¨ã‹ã‚‰è§’åº¦ã‚’å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public float GetAngle => angle;
 
+    protected override void EnableValueCheck()
+    {
+        if (InputAnglesInside == null)
+            InputAnglesInside = new HashSet<int>();
+
+        if (InputAnglesOutside == null)
+            InputAnglesOutside = new HashSet<int>();
+    }
+
     /// <summary>
-    /// ƒ^ƒbƒ`“ü—Íˆ—‚ÌƒƒCƒ“ŠÖ”
-    /// Šî’êƒNƒ‰ƒX‚ÌInputOperate‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚Äƒ}ƒ‹ƒ`ƒ^ƒbƒ`ˆ—‚ğÀ‘•
+    /// ã‚¿ãƒƒãƒå…¥åŠ›å‡¦ç†ã®ãƒ¡ã‚¤ãƒ³é–¢æ•°
+    /// åŸºåº•ã‚¯ãƒ©ã‚¹ã®InputOperateã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ãƒãƒ«ãƒã‚¿ãƒƒãƒå‡¦ç†ã‚’å®Ÿè£…
     /// </summary>
     protected override void InputOperate()
     {
-        // ƒAƒ“ƒOƒ‹‚ğ‰ÁZ
+        // ã‚¢ãƒ³ã‚°ãƒ«ã‚’åŠ ç®—
         angle -= valueContainer.get_rad();
         //Debug.Log(angle);
 
-        // radƒŠƒZƒbƒgˆ—
+        // radãƒªã‚»ãƒƒãƒˆå‡¦ç†
         valueContainer.reset_rad();
 
         if (Time.timeScale == 0f)
@@ -40,38 +49,38 @@ public class ControllerInput : ControllerTableInput
             return;
         }
 
-        // ƒe[ƒuƒ‹‰ñ“]ˆ—
+        // ãƒ†ãƒ¼ãƒ–ãƒ«å›è»¢å‡¦ç†
         RotateTable(angle);
 
-        // ”š’e‚ğ”š”j‚·‚éˆ—
+        // çˆ†å¼¾ã‚’çˆ†ç ´ã™ã‚‹å‡¦ç†
         bool IsPush = valueContainer.get_button() == 1;
         DestroyButtonCheck(IsPush);
 
-        // ‰º“Š‚°ˆ—
+        // ä¸‹æŠ•ã’å‡¦ç†
         if (valueContainer.get_under())
             ShotUnder();
 
-        // ƒe[ƒuƒ‹“à‘¤‚Ì“Š‚°ˆ—
+        // ãƒ†ãƒ¼ãƒ–ãƒ«å†…å´ã®æŠ•ã’å‡¦ç†
         ThorwBombSide(ref InputAnglesInside,valueContainer.get_inRad());
 
-        // ƒe[ƒuƒ‹ŠO‘¤‚Ì“Š‚°ˆ—
+        // ãƒ†ãƒ¼ãƒ–ãƒ«å¤–å´ã®æŠ•ã’å‡¦ç†
         ThorwBombSide(ref InputAnglesOutside, valueContainer.get_outRad());
         
         /*
-        // ”š’e‚ğ“Š±‚·‚éˆ—
+        // çˆ†å¼¾ã‚’æŠ•æ“²ã™ã‚‹å‡¦ç†
         int ThorwRad = valueContainer.get_Trad();
-        // ‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢”’l‚È‚çreturn
+        // æŠ¼ã•ã‚Œã¦ã„ãªã„æ•°å€¤ãªã‚‰return
         if (ThorwRad != NoTorchValue)
             ShotTable(ThorwRad);
         */
     }
 
     /// <summary>
-    /// w’è‚³‚ê‚½‘¤(“à‘¤/ŠO‘¤)‚Ì”š’e“Š±ˆ—
-    /// ‘OƒtƒŒ[ƒ€‚Æ”äŠr‚µ‚ÄV‹K“ü—Í‚Ì‚İ‚ğ“Š±
+    /// æŒ‡å®šã•ã‚ŒãŸå´(å†…å´/å¤–å´)ã®çˆ†å¼¾æŠ•æ“²å‡¦ç†
+    /// å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã¨æ¯”è¼ƒã—ã¦æ–°è¦å…¥åŠ›ã®ã¿ã‚’æŠ•æ“²
     /// </summary>
-    /// <param name="angleSet">‘OƒtƒŒ[ƒ€‚Ì“ü—ÍŠp“xƒZƒbƒg</param>
-    /// <param name="thorwInputs">¡ƒtƒŒ[ƒ€‚Ì“ü—ÍŠp“xƒŠƒXƒg</param>
+    /// <param name="angleSet">å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã®å…¥åŠ›è§’åº¦ã‚»ãƒƒãƒˆ</param>
+    /// <param name="thorwInputs">ä»Šãƒ•ãƒ¬ãƒ¼ãƒ ã®å…¥åŠ›è§’åº¦ãƒªã‚¹ãƒˆ</param>
 
     private void ThorwBombSide(ref HashSet<int> angleSet, List<int> thorwInputs)
     {
@@ -85,33 +94,33 @@ public class ControllerInput : ControllerTableInput
     }
 
     /// <summary>
-    /// “Š±Šp“x‚ª—LŒø‚©ƒ`ƒFƒbƒN
-    /// NoTorchValue‚Ü‚½‚Í‘OƒtƒŒ[ƒ€‚ÅŠù‚É“ü—ÍÏ‚İ‚Ìê‡‚Ífalse
+    /// æŠ•æ“²è§’åº¦ãŒæœ‰åŠ¹ã‹ãƒã‚§ãƒƒã‚¯
+    /// NoTorchValueã¾ãŸã¯å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã§æ—¢ã«å…¥åŠ›æ¸ˆã¿ã®å ´åˆã¯false
     /// </summary>
-    /// <returns>“Š±‰Â”\‚È‚çtrue</returns>
+    /// <returns>æŠ•æ“²å¯èƒ½ãªã‚‰true</returns>
     private bool ThorwRadCheck(HashSet<int> beforeAngles, int rad)
     {
-        // ƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚È‚¢ê‡
+        // ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ãªã„å ´åˆ
         if (rad == NoTorchValue)
             return false;
 
-        // ‰‰ñ“ü—Í‚Ìê‡
-        if (beforeAngles == null)
-            return true;
+        // åˆå›å…¥åŠ›ã®å ´åˆ
+        //if (beforeAngles == null)
+        //    return true;
 
-        // ‘OƒtƒŒ[ƒ€‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢V‹K“ü—Í‚Ì‚İtrue
+        // å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã«å«ã¾ã‚Œã¦ã„ãªã„æ–°è¦å…¥åŠ›ã®ã¿true
         return !beforeAngles.Contains(rad);
     }
 
     /// <summary>
-    /// ¡ƒtƒŒ[ƒ€‚Ì“ü—ÍŠp“x‚ğ•Û‘¶
-    /// ŸƒtƒŒ[ƒ€‚ÅV‹K“ü—Í”»’è‚Ég—p
+    /// ä»Šãƒ•ãƒ¬ãƒ¼ãƒ ã®å…¥åŠ›è§’åº¦ã‚’ä¿å­˜
+    /// æ¬¡ãƒ•ãƒ¬ãƒ¼ãƒ ã§æ–°è¦å…¥åŠ›åˆ¤å®šã«ä½¿ç”¨
     /// </summary>
     private void BeforeAngleSave(ref HashSet<int> angleSet, List<int> inputs)
     {
-        angleSet = new();
+        angleSet.Clear();
 
-        // —LŒø‚È“ü—Í‚Ì‚İƒZƒbƒg‚É’Ç‰Á
+        // æœ‰åŠ¹ãªå…¥åŠ›ã®ã¿ã‚»ãƒƒãƒˆã«è¿½åŠ 
         foreach (var input in inputs)
         {
             if(input != NoTorchValue)

@@ -1,4 +1,4 @@
-using Cinemachine;
+﻿using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ public class TutrialStageManager : MonoBehaviour
     [SerializeField] List<VisualEffect> PhaseChangeEffect;
     [SerializeField] Animator PlayerMotionAnimator;
     [SerializeField] CinemachineVirtualCamera subCamera;
-    [SerializeField] AudioSource TutorialAudio;
+    [SerializeField] TutoralMute TutorialAudio;
     //[SerializeField] ThroughBomb throughBomb;
 
     private int currentPhase = 0;
@@ -82,7 +82,7 @@ public class TutrialStageManager : MonoBehaviour
 
         if (TutorialAudio != null)
         {
-            TutorialAudio.Play();
+            //TutorialAudio.Play();
         }
 
     }
@@ -145,7 +145,8 @@ public class TutrialStageManager : MonoBehaviour
             {
                 if (TutorialAudio != null)
                 {
-                    StartCoroutine(FadeOut_TutorialBGM());
+                    TutorialAudio.BGMFadeOut();
+                    //StartCoroutine(FadeOut_TutorialBGM());
                 }
             }
 
@@ -204,6 +205,7 @@ public class TutrialStageManager : MonoBehaviour
         DisableEvent.Invoke();
     }
 
+    /*
     IEnumerator FadeOut_TutorialBGM()
     {
         WaitForSeconds wait = new WaitForSeconds(0.5f);
@@ -213,5 +215,6 @@ public class TutrialStageManager : MonoBehaviour
             yield return wait;
         }
     }
+    */
 }
 
